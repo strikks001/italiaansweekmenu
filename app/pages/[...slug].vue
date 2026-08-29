@@ -1,9 +1,8 @@
 <script setup lang="ts">
-// Vangnet-route voor losse pagina's uit de 'paginas'-collectie,
-// zoals /over, /privacy of /contact.
+// Catch-all for standalone pages from the 'paginas' collection, e.g. /over.
 const route = useRoute()
 
-const { data } = await useAsyncData(`pagina:${route.path}`, () =>
+const { data } = await useAsyncData(`page:${route.path}`, () =>
   queryCollection('paginas').path(route.path).first()
 )
 
@@ -11,28 +10,26 @@ if (!data.value) {
   throw createError({ statusCode: 404, statusMessage: 'Pagina niet gevonden', fatal: true })
 }
 
-// Na de throw weet TypeScript dat data.value bestaat; door hem hier vast te
-// leggen werkt het sjabloon met een gegarandeerd niet-lege waarde.
-const pagina = data.value
+const page = data.value
 
 useSeoMeta({
-  title: pagina.seo?.title || pagina.title,
-  description: pagina.seo?.description || pagina.description
+  title: page.seo?.title || page.title,
+  description: page.seo?.description || page.description
 })
-defineOgImage('Standaard', {
-  title: pagina.title,
-  description: pagina.description
+defineOgImage('Default', {
+  title: page.title,
+  description: page.description
 })
 </script>
 
 <template>
   <UContainer class="py-8 lg:py-12">
     <article class="prose dark:prose-invert mx-auto max-w-3xl">
-      <h1>{{ pagina.title }}</h1>
+      <h1>{{ page.title }}</h1>
       <p class="lead">
-        {{ pagina.description }}
+        {{ page.description }}
       </p>
-      <ContentRenderer :value="pagina" />
+      <ContentRenderer :value="page" />
     </article>
   </UContainer>
 </template>

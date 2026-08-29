@@ -5,7 +5,6 @@ gepubliceerd: 2026-08-25
 afbeelding: /images/ragu-alla-bolognese.png
 afbeeldingAlt: "Pan met langzaam gestoofde ragù alla bolognese, geserveerd op verse tagliatelle met parmezaan"
 gang: primo
-regio: Emilia-Romagna
 seizoen:
   - herfst
   - winter
@@ -38,6 +37,7 @@ ingredienten:
       - hoeveelheid: "150"
         eenheid: g
         naam: pancetta
+        productUrl: https://www.spesadaantonio.nl
         opmerking: in kleine blokjes
       - hoeveelheid: "150"
         eenheid: ml

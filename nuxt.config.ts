@@ -11,7 +11,7 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', '~/assets/css/transitions.css', '~/assets/css/print.css'],
 
   // Eén bron van waarheid voor de site-identiteit. @nuxtjs/seo leest dit uit
   // voor de sitemap, canonical URLs, robots.txt en Open Graph-tags.

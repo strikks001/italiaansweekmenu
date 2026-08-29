@@ -9,7 +9,7 @@ const items: NavigationMenuItem[] = [
 </script>
 
 <template>
-  <UHeader :ui="{ root: 'border-b border-default bg-default/80 backdrop-blur' }">
+  <UHeader :ui="{ root: 'print-hide border-b border-default bg-default/80 backdrop-blur' }">
     <template #title>
       <NuxtLink
         to="/"

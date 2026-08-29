@@ -2,14 +2,14 @@
 import type { ReceptenCollectionItem } from '@nuxt/content'
 
 defineProps<{
-  producten: ReceptenCollectionItem['producten']
-  titel?: string
+  products: ReceptenCollectionItem['producten']
+  title?: string
 }>()
 </script>
 
 <template>
   <section
-    v-if="producten?.length"
+    v-if="products?.length"
     aria-labelledby="producten"
     class="rounded-xl border border-default bg-elevated/50 p-6"
   >
@@ -17,7 +17,7 @@ defineProps<{
       id="producten"
       class="text-lg"
     >
-      {{ titel ?? 'Hiermee lukt het het beste' }}
+      {{ title ?? 'Hiermee lukt het het beste' }}
     </h2>
     <p class="mt-1 text-sm text-muted">
       Deze producten bestel je bij
@@ -31,7 +31,7 @@ defineProps<{
 
     <ul class="mt-4 grid gap-3 sm:grid-cols-2">
       <li
-        v-for="product in producten"
+        v-for="product in products"
         :key="product.url"
       >
         <NuxtLink
@@ -64,9 +64,7 @@ defineProps<{
             <span
               v-if="product.waarom"
               class="mt-1 block text-xs leading-snug text-muted"
-            >
-              {{ product.waarom }}
-            </span>
+            >{{ product.waarom }}</span>
           </span>
         </NuxtLink>
       </li>

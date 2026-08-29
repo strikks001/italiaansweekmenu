@@ -1,0 +1,214 @@
+/*
+ * Print / save-as-PDF layout for a recipe.
+ *
+ * Goal: one sheet you lay on the counter and tick off with a pen. So: no site
+ * chrome, no photos, empty boxes instead of rendered check icons, ingredients
+ * in two columns and steps stripped to their text.
+ */
+@media print {
+  @page {
+    margin: 1cm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 9pt;
+    line-height: 1.28;
+  }
+
+  /* Interface that means nothing on paper. */
+  .print-hide {
+    display: none !important;
+  }
+
+  img {
+    display: none !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+
+  h1 {
+    font-size: 14pt !important;
+    margin: 0 0 0.15cm !important;
+  }
+
+  h2 {
+    font-size: 10.5pt !important;
+    margin: 0.3cm 0 0.1cm !important;
+  }
+
+  h3 {
+    font-size: 9.5pt !important;
+  }
+
+  /* Panels lose their pinning, scroll caps and folding on paper. */
+  .print-flat {
+    position: static !important;
+    max-height: none !important;
+    overflow: visible !important;
+    border: 0 !important;
+    background: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .print-open {
+    grid-template-rows: 1fr !important;
+  }
+
+  /* Times and servings as one line instead of five bordered cells. */
+  .print-inline {
+    display: block !important;
+    background: none !important;
+    border: 0 !important;
+    margin: 0 0 0.25cm !important;
+  }
+
+  .print-inline > div {
+    display: inline !important;
+    background: none !important;
+    padding: 0 !important;
+  }
+
+  /* Beats the rule above, which is more specific than .print-hide alone. */
+  .print-inline > .print-hide {
+    display: none !important;
+  }
+
+  .print-inline > div + div::before {
+    content: ' · ';
+  }
+
+  .print-inline dt,
+  .print-inline dd {
+    display: inline !important;
+    margin: 0 !important;
+    font-size: 9pt !important;
+  }
+
+  .print-inline dt::after {
+    content: ' ';
+  }
+
+  /* The servings row is dropped on paper, so the count rides along with the
+     heading instead - and it is the scaled number, not the recipe's default. */
+  .print-servings {
+    display: inline !important;
+  }
+
+  /* Ingredients side by side: halves the height of the longest block. */
+  .print-cols {
+    columns: 2;
+    column-gap: 0.8cm;
+  }
+
+  .print-cols > div {
+    break-inside: avoid;
+    margin-top: 0 !important;
+  }
+
+  /* An empty box to tick with a pen, instead of the on-screen icon. */
+  .print-check::before {
+    content: '';
+    display: inline-block;
+    width: 0.7em;
+    height: 0.7em;
+    margin-inline-end: 0.5em;
+    border: 0.7pt solid #000;
+    vertical-align: baseline;
+  }
+
+  .print-check [class*='iconify'],
+  .print-check svg {
+    display: none !important;
+  }
+
+  /* Steps: no padding, no pill, just a number and the text. */
+  .print-steps {
+    margin-top: 0.2cm !important;
+  }
+
+  .print-steps > li {
+    margin: 0 0 0.15cm !important;
+  }
+
+  .print-steps .print-check {
+    padding: 0 !important;
+    gap: 0.4em !important;
+    border: 0 !important;
+    align-items: baseline !important;
+  }
+
+  .print-num {
+    width: 1.1em !important;
+    height: auto !important;
+    min-height: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    font-size: 9.5pt !important;
+    justify-content: flex-start !important;
+  }
+
+  .print-num::after {
+    content: '.';
+  }
+
+  .print-tip {
+    margin: 0 0 0 1.5em !important;
+    padding: 0 !important;
+    background: none !important;
+    font-size: 8pt !important;
+    line-height: 1.25 !important;
+    font-style: italic;
+  }
+
+  /* Keep a step, an ingredient or a heading together on one page. */
+  li,
+  h1,
+  h2,
+  h3 {
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  /* Ingredients above the steps rather than beside them. */
+  .print-stack {
+    display: block !important;
+    margin-top: 0.3cm !important;
+  }
+
+  /* The screen's generous rhythm costs centimetres on paper. */
+  .print-tight {
+    margin-top: 0.35cm !important;
+  }
+
+  .print-steps > li {
+    margin: 0 0 0.12cm !important;
+  }
+
+  .print-steps p,
+  .print-steps span {
+    line-height: 1.25 !important;
+  }
+
+  /* Ingredient rows: no vertical padding, the rule between them is enough. */
+  .print-cols li {
+    padding: 0 !important;
+  }
+
+  .print-cols ul {
+    margin-top: 0.05cm !important;
+  }
+}

@@ -59,7 +59,6 @@ export default defineContentConfig({
         afbeeldingAlt: z.string().describe('Beschrijf wat je ziet - voor toegankelijkheid én afbeeldingszoekresultaten'),
 
         gang: z.enum(['antipasto', 'primo', 'secondo', 'contorno', 'dolce', 'basis']),
-        regio: z.string().optional().describe('Bijv. "Toscane", "Sicilië"'),
         seizoen: z.array(z.enum(['lente', 'zomer', 'herfst', 'winter'])).default([]),
         dieet: z.array(z.enum(['vegetarisch', 'veganistisch', 'glutenvrij', 'lactosevrij'])).default([]),
 

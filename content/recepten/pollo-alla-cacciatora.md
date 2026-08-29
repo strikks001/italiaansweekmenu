@@ -5,7 +5,6 @@ gepubliceerd: 2026-08-26
 afbeelding: /images/pollo-alla-cacciatora.png
 afbeeldingAlt: "Gietijzeren pan met gestoofde kippendijen in tomatensaus met zwarte olijven en takjes rozemarijn"
 gang: secondo
-regio: Toscane
 seizoen:
   - herfst
   - winter
@@ -37,6 +36,7 @@ ingredienten:
       - hoeveelheid: "100"
         eenheid: g
         naam: zwarte olijven
+        productUrl: https://www.spesadaantonio.nl
         opmerking: bij voorkeur Taggiasca, met pit
       - hoeveelheid: "3"
         eenheid: el

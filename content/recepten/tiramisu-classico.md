@@ -5,7 +5,6 @@ gepubliceerd: 2026-08-28
 afbeelding: /images/tiramisu-classico.png
 afbeeldingAlt: "Vierkante schaal tiramisù met laagjes lange vingers en mascarponecrème, bestoven met cacaopoeder"
 gang: dolce
-regio: Veneto
 seizoen:
   - lente
   - zomer
@@ -29,6 +28,7 @@ ingredienten:
       - hoeveelheid: "500"
         eenheid: g
         naam: mascarpone
+        productUrl: https://www.spesadaantonio.nl
         opmerking: koud uit de koelkast
       - naam: snuf zout
   - groep: Om op te bouwen
@@ -40,6 +40,7 @@ ingredienten:
       - hoeveelheid: "300"
         eenheid: g
         naam: savoiardi
+        productUrl: https://www.spesadaantonio.nl
         opmerking: harde Italiaanse lange vingers
       - hoeveelheid: "20"
         eenheid: g

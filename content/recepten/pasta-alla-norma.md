@@ -18,6 +18,7 @@ ingredienten:
       - hoeveelheid: "800"
         eenheid: g
         naam: San Marzano tomaten uit blik
+        productUrl: https://www.spesadaantonio.nl
       - hoeveelheid: "3"
         naam: tenen knoflook
         opmerking: geplet, niet gesnipperd
@@ -32,9 +33,11 @@ ingredienten:
       - hoeveelheid: "400"
         eenheid: g
         naam: rigatoni of maccheroni
+        productUrl: https://www.spesadaantonio.nl
       - hoeveelheid: "100"
         eenheid: g
         naam: ricotta salata
+        productUrl: https://www.spesadaantonio.nl
         opmerking: of pecorino als alternatief
 moeilijkheid: makkelijk
 personen: 4
@@ -45,7 +48,6 @@ producten:
   - naam: San Marzano DOP tomaten
     url: https://www.spesadaantonio.nl
     waarom: Minder zuur en vleziger dan gewone tomaten, waardoor de saus zoeter wordt zonder suiker.
-regio: Sicilië
 seizoen:
   - zomer
   - herfst

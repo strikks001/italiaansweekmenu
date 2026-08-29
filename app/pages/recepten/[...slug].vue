@@ -2,9 +2,7 @@
 const route = useRoute()
 const site = useSiteConfig()
 
-// queryCollection is typeveilig: 'recepten' komt uit content.config.ts,
-// dus TypeScript kent alle velden die we daar gedefinieerd hebben.
-const { data } = await useAsyncData(`recept:${route.path}`, () =>
+const { data } = await useAsyncData(`recipe:${route.path}`, () =>
   queryCollection('recepten').path(route.path).first()
 )
 
@@ -12,122 +10,107 @@ if (!data.value || data.value.concept) {
   throw createError({ statusCode: 404, statusMessage: 'Recept niet gevonden', fatal: true })
 }
 
-const r = data.value
+const recipe = data.value
 
-// Velden met een .default() in het Zod-schema zijn in het gegenereerde type
-// optioneel: de default wordt pas bij het inlezen toegepast. Hier maken we ze
-// expliciet, zodat het sjabloon met echte waarden werkt.
-const personen = r.personen ?? 4
-const moeilijkheid = r.moeilijkheid ?? 'makkelijk'
-const producten = r.producten ?? []
-const dieet = r.dieet ?? []
+// Fields with a .default() in the Zod schema are optional in the generated
+// type: the default is applied at read time, so TypeScript cannot know.
+const servings = recipe.personen ?? 4
+const difficulty = recipe.moeilijkheid ?? 'makkelijk'
+const products = recipe.producten ?? []
+const diets = recipe.dieet ?? []
 
-// Gerelateerde recepten uit dezelfde gang - houdt bezoekers op de site
-// en verdeelt interne linkwaarde over je hele receptenarchief.
-const { data: gerelateerd } = await useAsyncData(`gerelateerd:${route.path}`, () =>
+const { data: related } = await useAsyncData(`related:${route.path}`, () =>
   queryCollection('recepten')
-    .where('gang', '=', r.gang)
-    .where('path', '<>', r.path)
+    .where('gang', '=', recipe.gang)
+    .where('path', '<>', recipe.path)
     .where('concept', '=', false)
     .order('gepubliceerd', 'DESC')
     .limit(3)
+    .select('path', 'title', 'description', 'afbeelding', 'afbeeldingAlt',
+      'gang', 'voorbereidingstijd', 'bereidingstijd')
     .all()
 )
 
-const totaleTijd = r.voorbereidingstijd + r.bereidingstijd
-const absoluteAfbeelding = new URL(r.afbeelding, site.url).toString()
+const totalMinutes = recipe.voorbereidingstijd + recipe.bereidingstijd
+const absoluteImage = new URL(recipe.afbeelding, site.url).toString()
+const pageUrl = new URL(route.path, site.url).toString()
 
-// Platte lijst met ingrediënten voor schema.org: Google verwacht strings.
-const v = r.voedingswaarde
-const voeding = v
+// Keeps the screen on while cooking; only offered where the browser supports it.
+const wakeLock = useWakeLock()
+
+// schema.org wants plain strings for ingredients.
+const ingredientLines = recipe.ingredienten.flatMap(group =>
+  group.items.map(i => [i.hoeveelheid, i.eenheid, i.naam].filter(Boolean).join(' '))
+)
+
+const nutrition = recipe.voedingswaarde
+const nutritionNode = nutrition
   ? {
       '@type': 'NutritionInformation' as const,
-      ...(v.calorieen ? { calories: `${v.calorieen} kcal` } : {}),
-      ...(v.eiwitten ? { proteinContent: `${v.eiwitten} g` } : {}),
-      ...(v.koolhydraten ? { carbohydrateContent: `${v.koolhydraten} g` } : {}),
-      ...(v.vetten ? { fatContent: `${v.vetten} g` } : {})
+      ...(nutrition.calorieen ? { calories: `${nutrition.calorieen} kcal` } : {}),
+      ...(nutrition.eiwitten ? { proteinContent: `${nutrition.eiwitten} g` } : {}),
+      ...(nutrition.koolhydraten ? { carbohydrateContent: `${nutrition.koolhydraten} g` } : {}),
+      ...(nutrition.vetten ? { fatContent: `${nutrition.vetten} g` } : {})
     }
   : undefined
 
-const ingredientRegels = r.ingredienten.flatMap(groep =>
-  groep.items.map(i =>
-    [i.hoeveelheid, i.eenheid, i.naam].filter(Boolean).join(' ')
-  )
-)
-
 useSeoMeta({
-  title: r.seo?.title || r.title,
-  description: r.seo?.description || r.description,
+  title: recipe.seo?.title || recipe.title,
+  description: recipe.seo?.description || recipe.description,
   ogType: 'article',
-  ogTitle: r.seo?.title || r.title,
-  ogDescription: r.seo?.description || r.description,
-  ogImage: absoluteAfbeelding,
+  ogTitle: recipe.seo?.title || recipe.title,
+  ogDescription: recipe.seo?.description || recipe.description,
+  ogImage: absoluteImage,
   twitterCard: 'summary_large_image',
-  articlePublishedTime: new Date(r.gepubliceerd).toISOString(),
-  articleModifiedTime: r.gewijzigd ? new Date(r.gewijzigd).toISOString() : undefined
+  articlePublishedTime: new Date(recipe.gepubliceerd).toISOString(),
+  articleModifiedTime: recipe.gewijzigd ? new Date(recipe.gewijzigd).toISOString() : undefined
 })
 
-// Dit blok is wat Google leest om een rich result te tonen: foto, kooktijd
-// en ingrediënten direct in de zoekresultaten.
+// This block decides whether Google shows a rich result with photo and times.
 useSchemaOrg([
   defineRecipe({
-    name: r.title,
-    description: r.description,
-    image: absoluteAfbeelding,
-    datePublished: new Date(r.gepubliceerd).toISOString(),
-    prepTime: isoDuur(r.voorbereidingstijd),
-    cookTime: isoDuur(r.bereidingstijd),
-    totalTime: isoDuur(totaleTijd),
-    recipeYield: `${personen} personen`,
-    recipeCategory: r.gang,
+    name: recipe.title,
+    description: recipe.description,
+    image: absoluteImage,
+    datePublished: new Date(recipe.gepubliceerd).toISOString(),
+    prepTime: isoDuration(recipe.voorbereidingstijd),
+    cookTime: isoDuration(recipe.bereidingstijd),
+    totalTime: isoDuration(totalMinutes),
+    recipeYield: `${servings} personen`,
+    recipeCategory: recipe.gang,
     recipeCuisine: 'Italiaans',
-    keywords: [r.zoekwoorden.primair, ...(r.zoekwoorden.secundair ?? [])],
-    recipeIngredient: ingredientRegels,
-    recipeInstructions: r.stappen.map(s => defineHowToStep({
-      name: s.titel,
-      text: s.tekst
-    })),
-    ...(voeding ? { nutrition: voeding } : {})
+    keywords: [recipe.zoekwoorden.primair, ...(recipe.zoekwoorden.secundair ?? [])],
+    recipeIngredient: ingredientLines,
+    recipeInstructions: recipe.stappen.map(s => defineHowToStep({ name: s.titel, text: s.tekst })),
+    ...(nutritionNode ? { nutrition: nutritionNode } : {})
   }),
   defineBreadcrumb({
     itemListElement: [
       { name: 'Home', item: '/' },
       { name: 'Recepten', item: '/recepten' },
-      { name: r.title }
+      { name: recipe.title }
     ]
   })
 ])
-
-const kruimels = [
-  { label: 'Home', to: '/' },
-  { label: 'Recepten', to: '/recepten' },
-  { label: r.title }
-]
 </script>
 
 <template>
   <UContainer class="py-8 lg:py-12">
     <UBreadcrumb
-      :items="kruimels"
-      class="mb-6"
+      :items="[{ label: 'Home', to: '/' }, { label: 'Recepten', to: '/recepten' }, { label: recipe.title }]"
+      class="print-hide mb-6"
     />
 
     <header class="mx-auto max-w-3xl text-center">
-      <div class="flex flex-wrap items-center justify-center gap-2">
+      <div class="print-hide flex flex-wrap items-center justify-center gap-2">
         <UBadge
-          :label="r.gang"
+          :label="recipe.gang"
           color="primary"
           variant="subtle"
           class="capitalize"
         />
         <UBadge
-          v-if="r.regio"
-          :label="r.regio"
-          color="neutral"
-          variant="subtle"
-        />
-        <UBadge
-          v-for="d in dieet"
+          v-for="d in diets"
           :key="d"
           :label="d"
           color="secondary"
@@ -136,65 +119,153 @@ const kruimels = [
         />
       </div>
 
-      <h1 class="mt-4 text-3xl font-bold sm:text-4xl lg:text-5xl">
-        {{ r.title }}
+      <h1 class="mt-4 text-3xl sm:text-4xl lg:text-5xl">
+        {{ recipe.title }}
       </h1>
-      <p class="mt-4 text-lg text-muted">
-        {{ r.description }}
+      <p class="print-hide mt-4 text-lg text-muted">
+        {{ recipe.description }}
+      </p>
+
+      <RecipeActions
+        :title="recipe.title"
+        :url="pageUrl"
+        :image="absoluteImage"
+        class="mt-6 justify-center"
+      />
+
+      <!-- Paper needs the address; a printed sheet has no back button. -->
+      <p class="hidden text-sm print:block">
+        {{ pageUrl }}
       </p>
     </header>
 
     <NuxtImg
-      :src="r.afbeelding"
-      :alt="r.afbeeldingAlt"
+      :src="recipe.afbeelding"
+      :alt="recipe.afbeeldingAlt"
       width="1200"
       height="675"
       sizes="100vw md:768px lg:1024px"
       format="webp"
       preload
-      class="mx-auto mt-8 aspect-video w-full max-w-4xl rounded-2xl object-cover"
+      class="print-hide mx-auto mt-8 aspect-video w-full max-w-4xl rounded-2xl object-cover"
     />
 
     <div class="mx-auto mt-8 max-w-4xl">
-      <ReceptMeta
-        :voorbereidingstijd="r.voorbereidingstijd"
-        :bereidingstijd="r.bereidingstijd"
-        :personen="personen"
-        :moeilijkheid="moeilijkheid"
+      <RecipeMeta
+        :prep-minutes="recipe.voorbereidingstijd"
+        :cook-minutes="recipe.bereidingstijd"
+        :servings="servings"
+        :difficulty="difficulty"
       />
     </div>
 
-    <!-- De markdown-body: het verhaal, de context en de achtergrond bij het
-         recept. Dit is waar de meeste SEO-waarde zit. -->
-    <div class="prose dark:prose-invert mx-auto mt-10 max-w-3xl">
-      <ContentRenderer :value="r" />
-    </div>
+    <!-- Recipe before story: someone standing in the kitchen should not have to
+         scroll past 500 words of background first. -->
+    <div class="mx-auto mt-10 max-w-4xl">
+      <div
+        v-if="wakeLock.supported.value"
+        class="print-hide mb-6 flex items-center justify-between gap-3 rounded-lg border border-default bg-elevated/50 px-4 py-2.5"
+      >
+        <span class="flex items-center gap-2 text-sm">
+          <UIcon
+            name="i-lucide-lightbulb"
+            class="size-4 text-secondary"
+          />
+          Scherm aan houden tijdens het koken
+        </span>
+        <USwitch
+          :model-value="wakeLock.active.value"
+          aria-label="Scherm aan houden tijdens het koken"
+          @update:model-value="wakeLock.toggle()"
+        />
+      </div>
 
-    <div class="mx-auto mt-12 grid max-w-4xl gap-10 lg:grid-cols-[320px_1fr] lg:gap-12">
-      <ReceptIngredienten
-        :groepen="r.ingredienten"
-        :personen="personen"
+      <!--
+        Block flow on mobile, grid from lg. Both give the sticky ingredient
+        panel a container taller than itself, which is what lets it travel:
+        on mobile the steps are siblings in the same block, on desktop the grid
+        items stretch to the row height. An items-start here would pin the
+        panel to its own cell and sticky would do nothing.
+      -->
+      <div class="print-stack lg:grid lg:grid-cols-[320px_1fr] lg:gap-12">
+        <!--
+          display:contents on mobile so the panel's containing block is the
+          whole column and it can travel past the steps; a real block from lg,
+          where it becomes the grid cell that stretches to the row height and
+          gives the sticky panel inside it room to move.
+        -->
+        <div class="contents lg:block">
+          <RecipeIngredients
+            :groups="recipe.ingredienten"
+            :servings="servings"
+          />
+        </div>
+        <!-- Spacing goes on the steps, not on the ingredients: that component's
+             root is display:contents, which generates no box and drops margins. -->
+        <RecipeSteps
+          :steps="recipe.stappen"
+          class="mt-10 lg:mt-0"
+        />
+      </div>
+
+      <!-- Also here, after the recipe: by now you know whether it is worth
+           keeping or passing on. -->
+      <RecipeActions
+        :title="recipe.title"
+        :url="pageUrl"
+        :image="absoluteImage"
+        class="mt-10 border-t border-default pt-6"
       />
-      <ReceptStappen :stappen="r.stappen" />
     </div>
 
-    <div class="mx-auto mt-12 max-w-4xl">
-      <ProductLijst :producten="producten" />
+    <div class="print-hide mx-auto mt-12 max-w-4xl">
+      <ProductList :products="products" />
     </div>
 
     <section
-      v-if="gerelateerd?.length"
-      class="mx-auto mt-16 max-w-6xl"
+      v-if="recipe.body"
+      class="print-hide mx-auto mt-12 max-w-3xl"
+      aria-labelledby="achtergrond"
     >
-      <h2 class="text-2xl font-bold">
-        Meer <span class="capitalize">{{ r.gang }}</span>
+      <h2
+        id="achtergrond"
+        class="text-xl"
+      >
+        Over dit recept
+      </h2>
+      <div class="prose dark:prose-invert mt-4">
+        <ContentRenderer :value="recipe" />
+      </div>
+    </section>
+
+    <section
+      v-if="related?.length"
+      class="print-hide mx-auto mt-16 max-w-6xl"
+    >
+      <h2 class="text-2xl">
+        Meer <span class="capitalize">{{ recipe.gang }}</span>
       </h2>
       <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <ReceptKaart
-          v-for="item in gerelateerd"
+        <MediaCard
+          v-for="item in related"
           :key="item.path"
-          :recept="item"
-        />
+          :to="item.path"
+          :image="item.afbeelding"
+          :alt="item.afbeeldingAlt"
+          :title="item.title"
+          :description="item.description"
+        >
+          <template #meta>
+            <UBadge
+              :label="item.gang"
+              color="primary"
+              variant="subtle"
+              size="sm"
+              class="capitalize"
+            />
+            <span>{{ readableDuration(item.voorbereidingstijd + item.bereidingstijd) }}</span>
+          </template>
+        </MediaCard>
       </div>
     </section>
   </UContainer>

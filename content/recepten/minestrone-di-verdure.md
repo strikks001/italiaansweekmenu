@@ -5,7 +5,6 @@ gepubliceerd: 2026-08-27
 afbeelding: /images/minestrone-di-verdure.png
 afbeeldingAlt: "Diepe kom minestrone met courgette, wortel, bonen en pasta, afgemaakt met olijfolie en Parmigiano"
 gang: primo
-regio: Lombardije
 seizoen:
   - herfst
   - winter
@@ -43,6 +42,7 @@ ingredienten:
       - hoeveelheid: "400"
         eenheid: g
         naam: borlottibonen uit blik
+        productUrl: https://www.spesadaantonio.nl
       - hoeveelheid: "400"
         eenheid: g
         naam: gepelde tomaten
@@ -56,6 +56,7 @@ ingredienten:
       - hoeveelheid: "150"
         eenheid: g
         naam: ditalini of gebroken spaghetti
+        productUrl: https://www.spesadaantonio.nl
       - naam: extra vergine olijfolie om af te maken
 stappen:
   - titel: Soffritto

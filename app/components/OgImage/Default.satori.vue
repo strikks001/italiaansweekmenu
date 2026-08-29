@@ -1,7 +1,6 @@
 <script setup lang="ts">
-// Dit component wordt door Satori omgezet naar een 1200x630 PNG: de afbeelding
-// die verschijnt als iemand een pagina deelt op WhatsApp, LinkedIn of X.
-// Let op: Satori ondersteunt alleen flexbox, geen grid. Houd het simpel.
+// Rendered by Satori into a 1200x630 PNG: the preview shown when someone
+// shares a page. Satori supports flexbox only, no grid.
 withDefaults(defineProps<{
   title?: string
   description?: string
