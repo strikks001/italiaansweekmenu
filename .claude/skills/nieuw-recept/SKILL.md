@@ -31,20 +31,44 @@ breiden.
 
 Doe dit vóór je een letter schrijft; de uitkomst bepaalt de titel en de kopjes.
 
-1. Zoek met WebSearch op het Nederlandse gerecht plus "recept". Noteer wat er
-   in de top 10 staat: welke sites, welke invalshoek, hoe lang.
-2. Zoek de varianten die mensen echt intypen. Denk aan `<gerecht> recept`,
-   `<gerecht> origineel`, `authentieke <gerecht>`, `<gerecht> zonder <x>`,
-   `hoe maak je <gerecht>`. Dit zijn je secundaire termen.
-3. Bepaal de **zoekintentie**. Bij recepten is dat vrijwel altijd
-   `informationeel`: mensen willen koken, niet kopen. Schrijf daarnaar.
-4. Zoek een **hoek die de top 10 niet heeft**. Meestal is dat de authentieke
-   Italiaanse versie tegenover de vernederlandste. Dat is het bestaansrecht van
-   de pagina; zonder eigen hoek publiceer je niet.
+### 2a. Haal de echte zoekopdrachten op
 
-Is de Ahrefs-connector geautoriseerd, gebruik die dan voor echt zoekvolume en
-vul `maandelijksVolume` en `moeilijkheid` in. Zo niet: **laat die velden leeg**.
-Verzin nooit cijfers.
+```
+node scripts/zoekwoorden.mjs "<gerecht>"
+```
+
+Dit bevraagt Google Autocomplete voor Nederland en levert enkele honderden
+varianten die mensen daadwerkelijk intypen — geen schattingen, maar echte
+formuleringen. De uitvoer is gesplitst in Nederlands en overig; werk met het
+Nederlandse deel.
+
+Staan `DATAFORSEO_LOGIN` en `DATAFORSEO_PASSWORD` in `.env`, dan staat er ook
+maandelijks zoekvolume bij. Zo niet: **laat `maandelijksVolume` en
+`moeilijkheid` leeg.** Verzin nooit cijfers.
+
+### 2b. Lees de lijst als een SEO'er
+
+Zoek in de uitvoer naar drie dingen:
+
+1. **Het hoofdzoekwoord.** Meestal `<gerecht> recept` of `<gerecht>` zelf.
+   Kies de kortste variant die nog steeds koopintentie-vrij en specifiek is.
+2. **Secundaire termen.** Varianten met `origineel`, `authentiek`, `zonder <x>`,
+   `met <x>`. Neem er vier die je natuurlijk in de tekst kwijt kunt.
+3. **FAQ-vragen.** Alles wat begint met `hoe`, `kan je`, `hoeveel`, `waarom`.
+   Dit zijn letterlijk de drie vragen voor je FAQ-sectie. Neem de vraag over in
+   de bewoording van de gebruiker, niet in je eigen woorden.
+
+### 2c. Controleer de concurrentie
+
+Zoek met WebSearch op het gekozen hoofdzoekwoord. Noteer wie er in de top 10
+staat en welke invalshoek ze hebben. Zoek een **hoek die zij niet hebben** —
+meestal is dat de authentieke Italiaanse versie tegenover de vernederlandste.
+Dat is het bestaansrecht van de pagina; zonder eigen hoek publiceer je niet.
+
+### 2d. Zoekintentie
+
+Bij recepten is dat vrijwel altijd `informationeel`: mensen willen koken, niet
+kopen. Schrijf daarnaar, en houd de productverwijzingen daarom terughoudend.
 
 ## Stap 3 — Zoekwoorden verwerken
 

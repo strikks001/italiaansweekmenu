@@ -5,7 +5,8 @@ export default defineNuxtConfig({
     '@nuxt/image', // automatische image-optimalisatie (webp/avif, responsive srcset)
     '@nuxt/ui', // componentbibliotheek bovenop Tailwind 4
     '@nuxt/eslint',
-    '@nuxtjs/seo' // bundel: sitemap, robots, schema.org, og-image, link-checker
+    '@nuxtjs/seo', // bundel: sitemap, robots, schema.org, og-image, link-checker
+    'nuxt-studio' // visuele editor voor de content/-map
   ],
 
   devtools: { enabled: true },
@@ -22,10 +23,6 @@ export default defineNuxtConfig({
   },
 
   content: {
-    // Zet Nuxt Studio aan: de visuele editor praat via deze API met je repo.
-    preview: {
-      api: 'https://api.nuxt.studio'
-    },
     build: {
       markdown: {
         // Inhoudsopgave op basis van h2/h3 - goed voor SEO (jump links in Google)
@@ -57,6 +54,32 @@ export default defineNuxtConfig({
         commaDangle: 'never',
         braceStyle: '1tbs'
       }
+    }
+  },
+
+  // Nuxt Studio is sinds versie 1 een gratis open-source module die je zelf
+  // host, niet meer het betaalde platform op nuxt.studio.
+  //
+  // We gebruiken hem alleen lokaal: `pnpm dev` toont linksonder een bewerkknop
+  // waarmee je content/ visueel bewerkt op de echte bestanden. Committen en
+  // pushen doe je daarna zelf.
+  //
+  // `repository` is verplicht - zonder owner en repo weigert de module te
+  // bouwen. Hij wordt pas echt gebruikt zodra Studio in productie draait, en
+  // dat vereist server-routes voor OAuth en dus `nuxt build` in plaats van
+  // `nuxt generate`. Zie de README voor die omschakeling.
+  //
+  // De build meldt daarom elke keer dat authenticatie nog niet is ingesteld.
+  // Dat klopt en is voor onze opzet onschadelijk.
+  //
+  // De AI-assistent is uit en blijft dat zolang AI_GATEWAY_API_KEY leeg is.
+  studio: {
+    route: '/_studio',
+    repository: {
+      provider: 'github',
+      owner: 'strikks001',
+      repo: 'italiaansweekmenu',
+      branch: 'main'
     }
   }
 })

@@ -59,6 +59,20 @@ gegenereerde placeholders; vervang ze door echte foto's met dezelfde naam.
 > onaangehaalde zin breekt de frontmatter stil en zet alle velden erna op
 > `null`. Zie `.claude/skills/nieuw-recept/references/frontmatter.md`.
 
+### Zoekwoordonderzoek
+
+```bash
+node scripts/zoekwoorden.mjs "pasta alla norma"
+```
+
+Bevraagt Google Autocomplete voor Nederland en levert honderden varianten die
+mensen echt intypen, gesplitst in Nederlandse en overige resultaten. Gratis en
+zonder account.
+
+Wil je er maandelijks zoekvolume bij, zet dan DataForSEO-credentials in `.env`
+(zie `.env.example`). Dat werkt met vooruitbetaald tegoed — $50 minimum,
+$0,0001 per zoekwoord — in plaats van een maandabonnement.
+
 ### Met Claude Code
 
 ```
@@ -85,6 +99,46 @@ Elke push naar `main` triggert een nieuwe build. Cloudflare herkent
 
 ## Nuxt Studio
 
-`nuxt.config.ts` heeft `content.preview.api` aanstaan, dus de repo is klaar
-voor Studio. Koppel het project op [nuxt.studio](https://nuxt.studio) aan deze
-GitHub-repo; Studio commit rechtstreeks naar `main` en Cloudflare bouwt opnieuw.
+Studio is sinds versie 1 een **gratis, open-source Nuxt-module** die je zelf
+host — niet meer het betaalde platform op nuxt.studio. Hij zit al geïnstalleerd.
+
+### Lokaal gebruiken (huidige opzet)
+
+```bash
+pnpm dev
+```
+
+Linksonder verschijnt een bewerkknop. Daarmee krijg je een visuele editor op je
+echte bestanden in `content/`: een WYSIWYG-editor voor de markdown-body,
+automatisch gegenereerde formulieren voor de frontmatter op basis van het
+Zod-schema, en een mediabibliotheek. Wijzigingen gaan direct naar je
+bestandssysteem; committen en pushen doe je zelf.
+
+Dat formulier voor de frontmatter is meteen je beste bescherming tegen de
+YAML-valkuil hierboven: Studio quote strings correct voor je.
+
+### Waarom niet op de live site
+
+Studio in productie vereist server-routes voor OAuth-authenticatie, en dus
+`nuxt build` in plaats van `nuxt generate`. Deze site is bewust volledig
+statisch. Wil je later tóch op italiaansweekmenu.nl/_studio kunnen bewerken:
+
+1. Maak een GitHub OAuth-app aan met callback op je productiedomein.
+2. Zet `STUDIO_GITHUB_CLIENT_ID` en `STUDIO_GITHUB_CLIENT_SECRET` als secrets
+   in Cloudflare.
+3. Wissel Cloudflare Pages om naar Workers met SSR: build command `pnpm build`,
+   en verhuis de contentdatabase naar D1.
+
+`studio.repository` staat al goed in `nuxt.config.ts` — die is sowieso verplicht,
+anders weigert de module te bouwen. Daardoor meldt elke build dat authenticatie
+nog niet is ingesteld; dat is verwacht en onschadelijk zolang je statisch blijft.
+
+Punt 3 is het echte werk; de rest is een middag. Zolang jij de enige redacteur
+bent, is lokaal bewerken sneller.
+
+### AI-assistent
+
+Studio kan contentsuggesties doen via de Vercel AI Gateway. Die staat **uit** en
+blijft uit zolang `AI_GATEWAY_API_KEY` niet gezet is. Bewust: het schrijven
+gebeurt via Claude Code met de vaste schrijfstijlgids, en een tweede AI met een
+eigen stem werkt die consistentie tegen.

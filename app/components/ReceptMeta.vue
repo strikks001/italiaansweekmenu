@@ -9,7 +9,7 @@ const props = defineProps<{
 const totaal = computed(() => props.voorbereidingstijd + props.bereidingstijd)
 
 const items = computed(() => [
-  { icon: 'i-lucide-knife', label: 'Voorbereiden', waarde: leesbareDuur(props.voorbereidingstijd) },
+  { icon: 'i-lucide-chef-hat', label: 'Voorbereiden', waarde: leesbareDuur(props.voorbereidingstijd) },
   { icon: 'i-lucide-flame', label: 'Bereiden', waarde: leesbareDuur(props.bereidingstijd) },
   { icon: 'i-lucide-clock', label: 'Totaal', waarde: leesbareDuur(totaal.value) },
   { icon: 'i-lucide-users', label: 'Personen', waarde: String(props.personen) },

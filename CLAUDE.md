@@ -31,6 +31,13 @@ Standaard Nuxt UI 4 met de standaardkleuren, -fonts en -groottes. `app.config.ts
 en `app/assets/css/main.css` zijn bewust leeg gehouden — de eigenaar bepaalt de
 huisstijl zelf. Introduceer geen eigen paletten of fonts zonder overleg.
 
+## Nuxt Studio
+
+De `nuxt-studio`-module draait **alleen lokaal** (`pnpm dev`, knop linksonder).
+Productie-Studio vereist SSR; deze site is bewust statisch. De build meldt elke
+keer `In order to use Studio in production mode, you need to setup
+authentication` — dat is verwacht en onschadelijk, niet iets om op te lossen.
+
 ## SEO
 
 Elke pagina hoort `useSeoMeta` te zetten. Receptpagina's gebruiken
