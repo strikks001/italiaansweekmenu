@@ -1,0 +1,62 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default defineNuxtConfig({
+  modules: [
+    '@nuxt/content', // markdown -> SQLite -> typeveilige queries
+    '@nuxt/image', // automatische image-optimalisatie (webp/avif, responsive srcset)
+    '@nuxt/ui', // componentbibliotheek bovenop Tailwind 4
+    '@nuxt/eslint',
+    '@nuxtjs/seo' // bundel: sitemap, robots, schema.org, og-image, link-checker
+  ],
+
+  devtools: { enabled: true },
+
+  css: ['~/assets/css/main.css'],
+
+  // Eén bron van waarheid voor de site-identiteit. @nuxtjs/seo leest dit uit
+  // voor de sitemap, canonical URLs, robots.txt en Open Graph-tags.
+  site: {
+    url: 'https://www.italiaansweekmenu.nl',
+    name: 'Italiaans Weekmenu',
+    description: 'Elke week een nieuw Italiaans weekmenu met authentieke recepten, boodschappenlijst en de juiste Italiaanse producten.',
+    defaultLocale: 'nl'
+  },
+
+  content: {
+    // Zet Nuxt Studio aan: de visuele editor praat via deze API met je repo.
+    preview: {
+      api: 'https://api.nuxt.studio'
+    },
+    build: {
+      markdown: {
+        // Inhoudsopgave op basis van h2/h3 - goed voor SEO (jump links in Google)
+        toc: { depth: 3, searchDepth: 3 }
+      }
+    }
+  },
+
+  routeRules: {
+    // 404-pagina hoeft niet in de sitemap
+    '/404': { robots: false }
+  },
+
+  compatibilityDate: '2026-06-30',
+
+  // Alle pagina's vooraf renderen naar statische HTML. crawlLinks volgt elke
+  // <NuxtLink> vanaf de startpagina, zodat ook recepten meegenomen worden.
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/', '/sitemap.xml'],
+      failOnError: false
+    }
+  },
+
+  eslint: {
+    config: {
+      stylistic: {
+        commaDangle: 'never',
+        braceStyle: '1tbs'
+      }
+    }
+  }
+})
