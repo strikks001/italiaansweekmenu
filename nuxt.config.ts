@@ -22,15 +22,6 @@ export default defineNuxtConfig({
     defaultLocale: 'nl'
   },
 
-  content: {
-    build: {
-      markdown: {
-        // Inhoudsopgave op basis van h2/h3 - goed voor SEO (jump links in Google)
-        toc: { depth: 3, searchDepth: 3 }
-      }
-    }
-  },
-
   routeRules: {
     // 404-pagina hoeft niet in de sitemap
     '/404': { robots: false }

@@ -5,13 +5,9 @@
  *   node scripts/zoekwoorden.mjs "pasta alla norma"
  *   node scripts/zoekwoorden.mjs "pasta alla norma" --json
  *
- * Bron 1 (gratis, altijd): Google Autocomplete. Dit zijn geen geschatte maar
- * daadwerkelijk door mensen ingetypte zoekopdrachten, gefilterd op Nederland
- * en Nederlands. Zonder volume, maar met perfecte formulering.
- *
- * Bron 2 (optioneel, betaald): DataForSEO voor echt maandelijks zoekvolume.
- * Wordt alleen gebruikt als DATAFORSEO_LOGIN en DATAFORSEO_PASSWORD in de
- * omgeving staan. Zie .env.example.
+ * Bevraagt Google Autocomplete voor Nederland. Dit zijn geen schattingen maar
+ * daadwerkelijk door mensen ingetypte zoekopdrachten. Geen volumecijfers -
+ * die haal je uit Google Search Console zodra de site geindexeerd is.
  */
 
 const term = process.argv.slice(2).filter(a => !a.startsWith('--')).join(' ').trim()
@@ -28,7 +24,7 @@ const VOEGWOORDEN = ['met', 'zonder', 'voor', 'in de', 'op de']
 const LETTERS = 'abcdefghijklmnopqrstuvwxyz'.split('')
 
 async function suggesties(query) {
-  const url = `https://suggestqueries.google.com/complete/search`
+  const url = 'https://suggestqueries.google.com/complete/search'
     + `?client=firefox&hl=nl&gl=nl&q=${encodeURIComponent(query)}`
   try {
     const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } })
@@ -40,7 +36,7 @@ async function suggesties(query) {
   }
 }
 
-/** Verwerkt de queue met een beperkte gelijktijdigheid, zodat we Google niet overvragen. */
+/** Verwerkt de queue met beperkte gelijktijdigheid, zodat we Google niet overvragen. */
 async function inBatches(items, grootte, fn) {
   const uit = []
   for (let i = 0; i < items.length; i += grootte) {
@@ -48,32 +44,6 @@ async function inBatches(items, grootte, fn) {
     await new Promise(r => setTimeout(r, 120))
   }
   return uit.flat()
-}
-
-async function volumes(keywords) {
-  const login = process.env.DATAFORSEO_LOGIN
-  const wachtwoord = process.env.DATAFORSEO_PASSWORD
-  if (!login || !wachtwoord) return null
-
-  const auth = Buffer.from(`${login}:${wachtwoord}`).toString('base64')
-  const res = await fetch('https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/live', {
-    method: 'POST',
-    headers: { 'Authorization': `Basic ${auth}`, 'Content-Type': 'application/json' },
-    // 2528 = Nederland (Google geo target id). Controleer desgewenst via
-    // https://api.dataforseo.com/v3/keywords_data/google_ads/locations
-    body: JSON.stringify([{ keywords: keywords.slice(0, 1000), location_code: 2528, language_code: 'nl' }])
-  })
-  if (!res.ok) {
-    console.error(`  DataForSEO gaf ${res.status}; verder zonder volumedata.`)
-    return null
-  }
-  const data = await res.json()
-  const rijen = data?.tasks?.[0]?.result ?? []
-  return new Map(rijen.map(r => [r.keyword, {
-    volume: r.search_volume,
-    concurrentie: r.competition,
-    cpc: r.cpc
-  }]))
 }
 
 const basis = await suggesties(term)
@@ -100,30 +70,13 @@ const alles = [...new Set([...basis, ...rest].map(s => s.toLowerCase().trim()))]
 const nederlands = alles.filter(k => !NIET_NL.test(k))
 const overig = alles.filter(k => NIET_NL.test(k))
 
-const volumeMap = await volumes(alles)
-
-const verrijk = k => ({ zoekwoord: k, ...(volumeMap?.get(k) ?? {}) })
-
 if (alsJson) {
-  console.log(JSON.stringify({
-    term,
-    bron: volumeMap ? 'autocomplete + dataforseo' : 'autocomplete',
-    nederlands: nederlands.map(verrijk),
-    overig: overig.map(verrijk)
-  }, null, 2))
+  console.log(JSON.stringify({ term, nederlands, overig }, null, 2))
 } else {
-  const regel = (k) => {
-    const v = volumeMap?.get(k)
-    return v?.volume != null ? `${String(v.volume).padStart(7)}  ${k}` : `         ${k}`
-  }
-  console.log(`\n"${term}" - ${nederlands.length} Nederlandse varianten, ${overig.length} overige`)
-  console.log(volumeMap
-    ? '(volume uit DataForSEO, Nederland/Nederlands)'
-    : '(alleen autocomplete - geen volumedata, laat maandelijksVolume leeg)')
-
-  console.log('\n--- NEDERLANDS ---')
-  nederlands.forEach(k => console.log(regel(k)))
-  console.log('\n--- OVERIG (Engels/Italiaans, ter oriëntatie) ---')
-  overig.forEach(k => console.log(regel(k)))
+  console.log(`\n"${term}" - ${nederlands.length} Nederlandse varianten, ${overig.length} overige\n`)
+  console.log('--- NEDERLANDS ---')
+  nederlands.forEach(k => console.log('  ' + k))
+  console.log('\n--- OVERIG (Engels/Italiaans, ter orientatie) ---')
+  overig.forEach(k => console.log('  ' + k))
   console.log()
 }

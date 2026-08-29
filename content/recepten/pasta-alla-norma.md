@@ -1,20 +1,14 @@
 ---
-title: "Pasta alla Norma"
-description: "Het Siciliaanse pastagerecht met gefrituurde aubergine, tomatensaus en ricotta salata. Klaar in 45 minuten en al generaties lang een klassieker uit Catania."
-gepubliceerd: 2026-08-24
+title: Pasta alla Norma
 afbeelding: /images/pasta-alla-norma.png
-afbeeldingAlt: "Bord pasta alla Norma met tomatensaus, gebakken aubergine, geraspte ricotta salata en verse basilicum"
-gang: primo
-regio: Sicilië
-seizoen:
-  - zomer
-  - herfst
+afbeeldingAlt: Bord pasta alla Norma met tomatensaus, gebakken aubergine, geraspte ricotta salata en verse basilicum
+bereidingstijd: 25
+concept: false
+description: Het Siciliaanse pastagerecht met gefrituurde aubergine, tomatensaus en ricotta salata. Klaar in 45 minuten en al generaties lang een klassieker uit Catania.
 dieet:
   - vegetarisch
-voorbereidingstijd: 20
-bereidingstijd: 25
-personen: 4
-moeilijkheid: makkelijk
+gang: primo
+gepubliceerd: 2026-08-24
 ingredienten:
   - groep: Voor de saus
     items:
@@ -42,6 +36,19 @@ ingredienten:
         eenheid: g
         naam: ricotta salata
         opmerking: of pecorino als alternatief
+moeilijkheid: makkelijk
+personen: 4
+producten:
+  - naam: Rigatoni di Gragnano IGP
+    url: https://www.spesadaantonio.nl
+    waarom: De ruwe, bronsgetrokken buitenkant houdt de tomatensaus vast in plaats van hem te laten afglijden.
+  - naam: San Marzano DOP tomaten
+    url: https://www.spesadaantonio.nl
+    waarom: Minder zuur en vleziger dan gewone tomaten, waardoor de saus zoeter wordt zonder suiker.
+regio: Sicilië
+seizoen:
+  - zomer
+  - herfst
 stappen:
   - titel: Aubergine ontvochten
     tekst: Snijd de aubergines in blokjes van ongeveer twee centimeter. Bestrooi ze royaal met zout, doe ze in een vergiet en laat dertig minuten uitlekken. Dep ze daarna goed droog.
@@ -62,13 +69,7 @@ voedingswaarde:
   eiwitten: 19
   koolhydraten: 82
   vetten: 23
-producten:
-  - naam: Rigatoni di Gragnano IGP
-    url: https://www.spesadaantonio.nl
-    waarom: De ruwe, bronsgetrokken buitenkant houdt de tomatensaus vast in plaats van hem te laten afglijden.
-  - naam: San Marzano DOP tomaten
-    url: https://www.spesadaantonio.nl
-    waarom: Minder zuur en vleziger dan gewone tomaten, waardoor de saus zoeter wordt zonder suiker.
+voorbereidingstijd: 20
 zoekwoorden:
   primair: pasta alla norma recept
   secundair:

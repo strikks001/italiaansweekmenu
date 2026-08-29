@@ -1,6 +1,6 @@
 # italiaansweekmenu
 
-Statische Nuxt 4-site: elk week een Italiaans weekmenu met recepten, die
+Statische Nuxt 4-site: elke week een Italiaans weekmenu met recepten, die
 verwijst naar de webshop spesadaantonio.nl.
 
 ## Werkafspraken
@@ -43,3 +43,18 @@ authentication` — dat is verwacht en onschadelijk, niet iets om op te lossen.
 Elke pagina hoort `useSeoMeta` te zetten. Receptpagina's gebruiken
 `defineRecipe` uit nuxt-schema-org; dat blok bepaalt of Google een rich result
 toont. Tijden gaan als ISO 8601 (`isoDuur()` in `app/utils/duur.ts`).
+
+Zoekwoordonderzoek gaat via `node scripts/zoekwoorden.mjs "<gerecht>"`
+(Google Autocomplete, gratis). Er zijn geen volumecijfers: die komen uit Google
+Search Console zodra de site geïndexeerd is. Verzin ze nooit.
+
+## Deploy
+
+Cloudflare Pages, gekoppeld aan `main` op github.com/strikks001/italiaansweekmenu.
+Build command `pnpm generate`, output directory `dist`, Node 22 via `.nvmrc`.
+
+Bouwwaarschuwingen die verwacht zijn en geen actie vragen:
+- og-image kan "Segoe UI", "Helvetica Neue" en "Arial" niet ophalen. Dat zijn
+  systeemfonts, geen webfonts; Satori valt terug op Inter.
+- eslint meldt dat `/over` niet in de sitemap staat. Dat klopt niet — de regel
+  kan de catch-all route niet resolven.

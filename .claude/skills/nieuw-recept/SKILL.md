@@ -42,9 +42,13 @@ varianten die mensen daadwerkelijk intypen — geen schattingen, maar echte
 formuleringen. De uitvoer is gesplitst in Nederlands en overig; werk met het
 Nederlandse deel.
 
-Staan `DATAFORSEO_LOGIN` en `DATAFORSEO_PASSWORD` in `.env`, dan staat er ook
-maandelijks zoekvolume bij. Zo niet: **laat `maandelijksVolume` en
-`moeilijkheid` leeg.** Verzin nooit cijfers.
+Er zitten bewust geen volumecijfers bij. **Laat `maandelijksVolume` en
+`moeilijkheid` dus leeg** — verzin nooit cijfers.
+
+Zodra de site geïndexeerd is, is Google Search Console de betrouwbare bron:
+daar staan de echte vertoningen, klikken en posities van deze site. Vraag de
+gebruiker om een export als je wilt weten waar al ranking op zit, en gebruik
+dat om te kiezen tussen uitbreiden van een bestaande pagina of een nieuwe.
 
 ### 2b. Lees de lijst als een SEO'er
 

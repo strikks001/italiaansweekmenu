@@ -1,7 +1,6 @@
 # Nuxt Content compileert content naar een lokale SQLite-database (better-sqlite3),
 # de overige pakketten halen tijdens installatie hun native binary op.
 allowBuilds:
-  '@parcel/watcher': true
   better-sqlite3: true
   esbuild: true
   sharp: true
