@@ -1,0 +1,17 @@
+{
+  // Losse Worker met alleen een wachtscherm, apart van de site zelf. Zo staan
+  // de echte pagina's niet op het domein terwijl een regel ze verbergt - ze
+  // staan er domweg niet. Verwijderen zodra de site live gaat:
+  //   pnpm exec wrangler delete -c coming-soon/wrangler.jsonc
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "italiaansweekmenu-soon",
+  "compatibility_date": "2026-08-30",
+
+  "assets": {
+    "directory": "./public",
+
+    // Elk pad toont het wachtscherm. Er is nog niets anders te halen, dus een
+    // 404 op /recepten zou alleen maar verwarren.
+    "not_found_handling": "single-page-application"
+  }
+}

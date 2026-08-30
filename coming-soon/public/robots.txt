@@ -1,0 +1,4 @@
+# Tijdelijk wachtscherm. Niets hier hoort in de index: als Google dit als de
+# homepage oppikt, moet die indruk later weer ongedaan gemaakt worden.
+User-agent: *
+Disallow: /

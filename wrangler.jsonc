@@ -6,6 +6,10 @@
   "name": "italiaansweekmenu",
   "compatibility_date": "2026-08-30",
 
+  // Zet de preview-URL aan: italiaansweekmenu.sanne-strikkers.workers.dev.
+  // Handig om te controleren voordat het echte domein overgezet wordt.
+  "workers_dev": true,
+
   "assets": {
     // `nuxt generate` schrijft hierheen. De dist/-symlink in de repo wijst naar
     // een absoluut pad op één machine en bestaat niet op de builder.
