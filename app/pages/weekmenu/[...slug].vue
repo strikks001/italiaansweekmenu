@@ -92,10 +92,10 @@ useSchemaOrg([
   <UContainer class="py-8 lg:py-12">
     <UBreadcrumb
       :items="[{ label: 'Home', to: '/' }, { label: 'Weekmenu', to: '/weekmenu' }, { label: menu.title }]"
-      class="print-hide mb-6"
+      class="print-hide mx-auto mb-6 max-w-4xl"
     />
 
-    <header class="mx-auto max-w-3xl text-center">
+    <header class="mx-auto max-w-4xl text-center">
       <p class="text-sm font-medium uppercase tracking-widest text-secondary">
         Week {{ menu.week }} · {{ period }}
       </p>
@@ -121,7 +121,7 @@ useSchemaOrg([
 
     <!-- The agenda sits up top: this is what people open the page for. -->
     <section
-      class="mx-auto mt-10 max-w-3xl"
+      class="mx-auto mt-10 max-w-4xl"
       aria-labelledby="menu"
     >
       <h2
@@ -141,11 +141,11 @@ useSchemaOrg([
     </section>
 
     <!-- The point of planning a week: one list to shop from. -->
-    <div class="mx-auto mt-12 max-w-3xl">
+    <div class="mx-auto mt-12 max-w-4xl">
       <WeekShoppingList :items="shoppingList" />
     </div>
 
-    <div class="print-hide prose dark:prose-invert mx-auto mt-12 max-w-3xl">
+    <div class="print-hide prose dark:prose-invert mx-auto mt-12 max-w-4xl">
       <ContentRenderer :value="menu" />
     </div>
 
@@ -155,7 +155,7 @@ useSchemaOrg([
          go back to the archive for every step. -->
     <nav
       v-if="previousWeek || nextWeek"
-      class="print-hide mx-auto mt-16 grid max-w-3xl gap-3 sm:grid-cols-2"
+      class="print-hide mx-auto mt-16 grid max-w-4xl gap-3 sm:grid-cols-2"
       aria-label="Andere weken"
     >
       <NuxtLink
@@ -191,7 +191,7 @@ useSchemaOrg([
 
     <section
       v-if="related.length"
-      class="print-hide mx-auto mt-16 max-w-6xl"
+      class="print-hide mx-auto mt-16 max-w-4xl"
     >
       <h2 class="text-2xl">
         Meer weekmenu's

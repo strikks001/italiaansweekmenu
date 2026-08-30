@@ -40,7 +40,7 @@ const cartUrl = computed(() =>
   <section
     v-if="products?.length"
     aria-labelledby="producten"
-    class="print-hide mx-auto mt-12 max-w-3xl"
+    class="print-hide mx-auto mt-12 max-w-4xl"
   >
     <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
       <h2

@@ -118,10 +118,10 @@ useSchemaOrg([
   <UContainer class="py-8 lg:py-12">
     <UBreadcrumb
       :items="[{ label: 'Home', to: '/' }, { label: 'Recepten', to: '/recepten' }, { label: recipe.title }]"
-      class="print-hide mb-6"
+      class="print-hide mx-auto mb-6 max-w-4xl"
     />
 
-    <header class="mx-auto max-w-3xl text-center">
+    <header class="mx-auto max-w-4xl text-center">
       <div class="print-hide flex flex-wrap items-center justify-center gap-2">
         <UBadge
           :label="recipe.gang"
@@ -242,7 +242,7 @@ useSchemaOrg([
          gemarkeerde inhoud op de pagina te vinden is. -->
     <div
       v-if="nutrition"
-      class="print-hide mx-auto mt-12 max-w-3xl"
+      class="print-hide mx-auto mt-12 max-w-4xl"
     >
       <RecipeNutrition :nutrition="nutrition" />
     </div>
@@ -251,7 +251,7 @@ useSchemaOrg([
 
     <section
       v-if="recipe.body"
-      class="print-hide mx-auto mt-12 max-w-3xl"
+      class="print-hide mx-auto mt-12 max-w-4xl"
       aria-labelledby="achtergrond"
     >
       <h2
@@ -267,7 +267,7 @@ useSchemaOrg([
 
     <section
       v-if="related?.length"
-      class="print-hide mx-auto mt-16 max-w-6xl"
+      class="print-hide mx-auto mt-16 max-w-4xl"
     >
       <h2 class="text-2xl">
         Meer <span class="capitalize">{{ recipe.gang }}</span>
