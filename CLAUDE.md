@@ -28,8 +28,13 @@ en moet over alle recepten consistent blijven.
 ## Styling
 
 Standaard Nuxt UI 4 met de standaardkleuren, -fonts en -groottes. `app.config.ts`
-en `app/assets/css/main.css` zijn bewust leeg gehouden — de eigenaar bepaalt de
-huisstijl zelf. Introduceer geen eigen paletten of fonts zonder overleg.
+is bewust leeg en `app/assets/css/main.css` bevat alleen de twee imports plus één
+cursor-regel — de eigenaar bepaalt de huisstijl zelf. Introduceer geen eigen
+paletten of fonts zonder overleg.
+
+Die cursor-regel is geen stijlkeuze: Tailwind 4 haalde `cursor: pointer` van
+buttons af, waardoor elke knop een pijltje kreeg terwijl links een handje
+houden. Niet weghalen.
 
 ## Nuxt Studio
 
@@ -50,8 +55,21 @@ Search Console zodra de site geïndexeerd is. Verzin ze nooit.
 
 ## Deploy
 
-Cloudflare Pages, gekoppeld aan `main` op github.com/strikks001/italiaansweekmenu.
-Build command `pnpm generate`, output directory `dist`, Node 22 via `.nvmrc`.
+Cloudflare **Workers** (Pages is daarin opgegaan), service `italiaansweekmenu`,
+gekoppeld aan `main` op github.com/strikks001/italiaansweekmenu.
+
+De deploy leest `wrangler.jsonc`, niet een formulier in het dashboard. Er staat
+bewust geen `main` in: zonder worker-script serveert Cloudflare alleen de
+bestanden uit `.output/public`. Gebruik dat pad, nooit `dist` — die symlink
+wijst naar een absoluut pad op één machine en bestaat niet op de builder.
+
+In het dashboard staat alleen: build command `pnpm generate`, deploy command
+`pnpm exec wrangler deploy`. Node 22 via `.nvmrc`, pnpm via `packageManager` in
+package.json (zonder die pin pakt de builder npm, en npm crasht op dit project).
+
+Nuxt Studio wordt alleen in `NODE_ENV=development` als module geladen. Dat
+scheelt 28 MB aan editor-assets per deploy en is de reden dat de build niet meer
+klaagt over Studio-authenticatie.
 
 Bouwwaarschuwingen die verwacht zijn en geen actie vragen:
 - og-image kan "Segoe UI", "Helvetica Neue" en "Arial" niet ophalen. Dat zijn

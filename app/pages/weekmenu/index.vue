@@ -19,12 +19,7 @@ const SORTS = [
   { value: 'oudste', label: 'Oudste eerst' }
 ]
 
-// Frozen at build time on a static site, corrected after hydration.
-const today = ref(todayISO())
-onMounted(() => {
-  const now = todayISO()
-  if (now !== today.value) today.value = now
-})
+const today = useToday()
 
 const current = computed(() =>
   menus.value?.find(m => weekContains(m.jaar, m.week, today.value))

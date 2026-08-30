@@ -1,6 +1,7 @@
 {
   "name": "italiaansweekmenu",
   "private": true,
+  "packageManager": "pnpm@11.24.0",
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
@@ -29,6 +30,7 @@
     "eslint": "^10.9.0",
     "satori": "^0.33.4",
     "typescript": "^6.0.3",
-    "vue-tsc": "^3.3.11"
+    "vue-tsc": "^3.3.11",
+    "wrangler": "^4.127.1"
   }
 }

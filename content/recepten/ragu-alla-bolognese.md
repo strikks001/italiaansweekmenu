@@ -37,7 +37,6 @@ ingredienten:
       - hoeveelheid: "150"
         eenheid: g
         naam: pancetta
-        productUrl: https://www.spesadaantonio.nl
         opmerking: in kleine blokjes
       - hoeveelheid: "150"
         eenheid: ml
@@ -48,6 +47,7 @@ ingredienten:
       - hoeveelheid: "400"
         eenheid: g
         naam: gepelde tomaten
+        productUrl: https://spesadaantonio.nl/products/la-torrente-pelati
       - hoeveelheid: "300"
         eenheid: ml
         naam: runderbouillon
@@ -82,12 +82,12 @@ voedingswaarde:
   koolhydraten: 68
   vetten: 31
 producten:
-  - naam: Parmigiano Reggiano 24 maanden
-    url: https://www.spesadaantonio.nl
-    waarom: Na twee jaar rijping is de kaas korrelig en nootachtig, precies de tegenhanger die een vette ragù nodig heeft.
-  - naam: Tagliatelle all'uovo
-    url: https://www.spesadaantonio.nl
-    waarom: Eierpasta is poreus en breed genoeg om een zware vleessaus te dragen zonder te breken.
+  - naam: "La Torrente Pelati 400 g"
+    url: https://spesadaantonio.nl/products/la-torrente-pelati
+    variantId: "51553045709127"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/La-Torrente-Pelati-400-gr-La-Torrente-47914532.webp?v=1777834305
+    prijs: "€ 1,35"
+    waarom: "Deze ragù vraagt om weinig tomaat, dus één blik van goede kwaliteit is genoeg."
 zoekwoorden:
   primair: ragu alla bolognese origineel recept
   secundair:

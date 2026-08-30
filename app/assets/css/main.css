@@ -1,2 +1,15 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+/*
+ * Tailwind 4 dropped the cursor:pointer that Preflight used to put on buttons,
+ * so they fall back to the browser's arrow while links keep their hand. Not a
+ * style choice: without this a button reads as dead on hover. Disabled controls
+ * are excluded so Nuxt UI's not-allowed cursor survives.
+ */
+@layer base {
+  button:not(:disabled):not([aria-disabled="true"]),
+  [role="button"]:not(:disabled):not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+}

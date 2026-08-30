@@ -1,0 +1,18 @@
+{
+  // Statische site op Cloudflare Workers. Er is bewust geen "main": zonder
+  // worker-script serveert Cloudflare alleen de bestanden uit "directory".
+  // Pages is opgegaan in Workers, vandaar dat dit een Worker-service is.
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "italiaansweekmenu",
+  "compatibility_date": "2026-08-30",
+
+  "assets": {
+    // `nuxt generate` schrijft hierheen. De dist/-symlink in de repo wijst naar
+    // een absoluut pad op één machine en bestaat niet op de builder.
+    "directory": "./.output/public",
+
+    // Elke pagina is vooraf gerenderd, dus een onbekend pad is echt een 404.
+    // Serveert .output/public/404.html met de juiste statuscode.
+    "not_found_handling": "404-page"
+  }
+}

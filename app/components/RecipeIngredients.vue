@@ -58,11 +58,11 @@ onMounted(() => {
   // "4rem", and parseInt would read it as 4.
   const headerHeight = document.querySelector('header')?.getBoundingClientRect().height ?? 64
 
-  // Fold only after scrolling a bit beyond the header, so the full list stays
-  // readable for a moment instead of snapping shut the instant it pins. The
-  // 80px between the two lines is the hysteresis that stops flickering.
-  const foldBelow = headerHeight - 140
-  const unfoldAbove = headerHeight - 60
+  // Fold shortly after the panel pins: any later and a full-height list keeps
+  // travelling over most of the screen. The 80px between the two lines is the
+  // hysteresis that stops flickering.
+  const foldBelow = headerHeight - 60
+  const unfoldAbove = headerHeight + 20
 
   /*
    * Folding changes the page height, and the browser answers that by nudging

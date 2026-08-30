@@ -42,7 +42,7 @@ ingredienten:
       - hoeveelheid: "400"
         eenheid: g
         naam: borlottibonen uit blik
-        productUrl: https://www.spesadaantonio.nl
+        productUrl: https://spesadaantonio.nl/products/cirio-fagioli-borlotti-370gr
       - hoeveelheid: "400"
         eenheid: g
         naam: gepelde tomaten
@@ -56,7 +56,6 @@ ingredienten:
       - hoeveelheid: "150"
         eenheid: g
         naam: ditalini of gebroken spaghetti
-        productUrl: https://www.spesadaantonio.nl
       - naam: extra vergine olijfolie om af te maken
 stappen:
   - titel: Soffritto
@@ -77,12 +76,18 @@ voedingswaarde:
   koolhydraten: 52
   vetten: 10
 producten:
-  - naam: Borlottibonen uit Lamon
-    url: https://www.spesadaantonio.nl
-    waarom: Dunnere schil en romiger binnenkant dan standaard blikbonen, waardoor ze de soep mee binden.
-  - naam: Ditalini pasta
-    url: https://www.spesadaantonio.nl
-    waarom: Klein en hol, precies de vorm die op een lepel past naast een blokje groente.
+  - naam: "Cirio Fagioli Borlotti 370 g"
+    url: https://spesadaantonio.nl/products/cirio-fagioli-borlotti-370gr
+    variantId: "51553102299463"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Cirio-Fagioli-Borlotti-Cirio-47926595.png?v=1777824227
+    prijs: "€ 1,99"
+    waarom: "Al gaar in het glas, dus ze vallen in het laatste kwartier precies genoeg uiteen om de soep te binden."
+  - naam: "La Torrente Pelati 400 g"
+    url: https://spesadaantonio.nl/products/la-torrente-pelati
+    variantId: "51553045709127"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/La-Torrente-Pelati-400-gr-La-Torrente-47914532.webp?v=1777834305
+    prijs: "€ 1,35"
+    waarom: "Twee eetlepels tomaat geven de soep kleur en diepte zonder er tomatensoep van te maken."
 zoekwoorden:
   primair: minestrone recept origineel
   secundair:

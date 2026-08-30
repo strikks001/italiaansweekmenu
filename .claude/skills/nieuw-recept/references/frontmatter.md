@@ -42,7 +42,7 @@ Getallen (`voorbereidingstijd`, `personen`, `calorieen`) en datums
 | `stappen` | lijst | 5-7 stappen |
 | `zoekwoorden` | object | `primair` verplicht |
 
-Optioneel: `regio`, `seizoen`, `dieet`, `voedingswaarde`, `producten`,
+Optioneel: `seizoen`, `dieet`, `voedingswaarde`, `producten`,
 `gewijzigd`, `concept`.
 
 ## Structuur van ingrediënten
@@ -60,6 +60,28 @@ ingredienten:
 
 `hoeveelheid` is een string omdat "een snuf", "1,5" en "2-3" allemaal moeten
 kunnen. Laat `hoeveelheid` en `eenheid` weg bij zout en peper.
+
+## Structuur van producten
+
+```yaml
+producten:
+  - naam: "La Torrente Pelati 400 g"
+    url: https://spesadaantonio.nl/products/la-torrente-pelati
+    afbeelding: https://cdn.shopify.com/...   # optioneel
+    prijs: "€ 1,35"                           # optioneel
+    variantId: "51553045709127"               # optioneel, altijd string
+    waarom: "Eén blik van goede kwaliteit is genoeg."
+```
+
+`variantId` is het Shopify-variant-ID zonder het `gid://shopify/ProductVariant/`
+voorvoegsel. Zonder dat ID valt het product buiten de knop "alles in
+winkelmand", die een cart-permalink bouwt van `variantId:1` per product. Op te
+vragen via de Shopify-connector:
+
+```graphql
+{ products(first: 1, query: "handle:la-torrente-pelati") {
+    nodes { variants(first: 1) { nodes { id } } } } }
+```
 
 ## Controle achteraf
 

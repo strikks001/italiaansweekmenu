@@ -22,6 +22,7 @@ const product = z.object({
   url: z.string().describe('Volledige URL naar het product op spesadaantonio.nl'),
   afbeelding: z.string().optional(),
   prijs: z.string().optional(),
+  variantId: z.string().optional().describe('Shopify variant-ID (alleen cijfers) — nodig om alles in één keer in de winkelmand te leggen'),
   waarom: z.string().optional().describe('Eén zin: waarom juist dit product voor dit recept')
 })
 

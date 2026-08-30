@@ -36,11 +36,11 @@ ingredienten:
       - hoeveelheid: "100"
         eenheid: g
         naam: zwarte olijven
-        productUrl: https://www.spesadaantonio.nl
         opmerking: bij voorkeur Taggiasca, met pit
       - hoeveelheid: "3"
         eenheid: el
         naam: extra vergine olijfolie
+        productUrl: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
       - naam: zout en zwarte peper
 stappen:
   - titel: Kip aanbraden
@@ -61,12 +61,12 @@ voedingswaarde:
   koolhydraten: 11
   vetten: 28
 producten:
-  - naam: Taggiasca olijven in olijfolie
-    url: https://www.spesadaantonio.nl
-    waarom: Kleiner en zoeter dan Kalamata, waardoor ze de saus niet overheersen maar er in oplossen.
-  - naam: Extra vergine olijfolie Toscana IGP
-    url: https://www.spesadaantonio.nl
-    waarom: De peperige afdronk van Toscaanse olie past bij rozemarijn en gestoofd vlees.
+  - naam: "Farchioni Olio Extra Vergine di Oliva 1 L"
+    url: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
+    variantId: "51553065599303"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Farchioni-Olio-Extra-Vergine-D_Oliva-1L-Farchioni-47922386.webp?v=1777832911
+    prijs: "€ 11,90"
+    waarom: "Je braadt de kip erin én maakt de saus ermee af, dus dit is de smaak van het gerecht."
 zoekwoorden:
   primair: pollo alla cacciatora recept
   secundair:

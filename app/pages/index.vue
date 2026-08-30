@@ -27,18 +27,7 @@ const weeks = computed(() =>
   }))
 )
 
-/*
- * "Today" on a statically generated site: nuxt generate renders this page once,
- * so the date freezes at build time. We correct after hydration, which keeps
- * the first render identical to the server (no mismatch) and still shows the
- * right day on a day-old build. A daily rebuild keeps the HTML Google sees
- * correct too.
- */
-const today = ref(todayISO())
-onMounted(() => {
-  const now = todayISO()
-  if (now !== today.value) today.value = now
-})
+const today = useToday()
 
 const currentWeek = computed(() =>
   weeks.value.find(w => w.days.some(d => d.dateISO >= today.value && d.courses.length))
@@ -50,26 +39,20 @@ const nextWeek = computed(() => {
   return i >= 0 ? weeks.value[i + 1] : undefined
 })
 
-// Today if it is on the menu, otherwise the next filled day, so the section is
-// never empty.
+// Today first. Only when a day has no dish yet do we fall forward, so the
+// section is never empty while the archive is still filling up.
 const featured = computed(() =>
   currentWeek.value?.days.find(d => d.dateISO >= today.value && d.courses.length)
 )
 
 const isToday = computed(() => featured.value?.dateISO === today.value)
 
-const heading = computed(() =>
-  isToday.value
-    ? 'Wat eten we vandaag?'
-    : `Wat eten we ${featured.value?.weekday ?? 'deze week'}?`
+// Cards are lg:basis-1/3, so three fit from 1024px.
+const { fits: fitsOnDesktop, breakpoints: carouselBreakpoints } = useCarouselFit(
+  () => featured.value?.courses.length ?? 0,
+  3,
+  1024
 )
-
-// Cards are lg:basis-1/3, so three fit from 1024px. Only then may Embla stop;
-// with more courses it stays swipeable.
-const fitsOnDesktop = computed(() => (featured.value?.courses.length ?? 0) <= 3)
-const carouselBreakpoints = computed(() => ({
-  '(min-width: 1024px)': { active: !fitsOnDesktop.value }
-}))
 
 const restOfWeek = computed(() =>
   currentWeek.value?.days.filter(
@@ -95,12 +78,15 @@ useSchemaOrg([
       <UContainer class="py-10 lg:py-14">
         <div class="mx-auto max-w-4xl">
           <h1 class="text-3xl sm:text-4xl">
-            {{ heading }}
+            Wat eten we vandaag?
           </h1>
 
           <template v-if="featured">
             <p class="mt-2 text-muted">
-              <span class="capitalize">{{ featured.weekday }}</span>
+              <template v-if="!isToday">
+                Vandaag staat er niets gepland. Het eerstvolgende is
+              </template>
+              <span :class="isToday ? 'capitalize' : ''">{{ featured.weekday }}</span>
               {{ featured.dayNumber }} {{ featured.month }}
               <template v-if="featured.courses.length > 1">
                 · {{ featured.courses.length }} gangen

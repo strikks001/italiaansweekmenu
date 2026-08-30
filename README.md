@@ -24,7 +24,7 @@ gaan, staat erbij waarom.
 | UI | [@nuxt/ui 4](https://ui.nuxt.com) op Tailwind 4 |
 | SEO | [@nuxtjs/seo](https://nuxtseo.com) — sitemap, schema.org, og-image |
 | Redactie | [Nuxt Studio](https://nuxt.studio) (lokaal) |
-| Hosting | Cloudflare Pages, volledig statisch |
+| Hosting | Cloudflare Workers, volledig statisch |
 
 Elk recept levert een compleet [schema.org Recipe](https://schema.org/Recipe)-blok
 met kooktijden, ingrediënten en bereidingsstappen, zodat Google er een rich

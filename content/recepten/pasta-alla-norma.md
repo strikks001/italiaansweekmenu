@@ -18,7 +18,7 @@ ingredienten:
       - hoeveelheid: "800"
         eenheid: g
         naam: San Marzano tomaten uit blik
-        productUrl: https://www.spesadaantonio.nl
+        productUrl: https://spesadaantonio.nl/products/la-torrente-pelati
       - hoeveelheid: "3"
         naam: tenen knoflook
         opmerking: geplet, niet gesnipperd
@@ -33,21 +33,26 @@ ingredienten:
       - hoeveelheid: "400"
         eenheid: g
         naam: rigatoni of maccheroni
-        productUrl: https://www.spesadaantonio.nl
+        productUrl: https://spesadaantonio.nl/products/la-molisana-rigatoni
       - hoeveelheid: "100"
         eenheid: g
         naam: ricotta salata
-        productUrl: https://www.spesadaantonio.nl
         opmerking: of pecorino als alternatief
 moeilijkheid: makkelijk
 personen: 4
 producten:
-  - naam: Rigatoni di Gragnano IGP
-    url: https://www.spesadaantonio.nl
-    waarom: De ruwe, bronsgetrokken buitenkant houdt de tomatensaus vast in plaats van hem te laten afglijden.
-  - naam: San Marzano DOP tomaten
-    url: https://www.spesadaantonio.nl
-    waarom: Minder zuur en vleziger dan gewone tomaten, waardoor de saus zoeter wordt zonder suiker.
+  - naam: "La Molisana Rigatoni N°31 500 g"
+    url: https://spesadaantonio.nl/products/la-molisana-rigatoni
+    variantId: "51552966574407"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/La-Molisana-Rigatoni-500-gr-La-Molisana-47900079.webp?v=1760352210
+    prijs: "€ 1,79"
+    waarom: "De diepe ribbels houden de tomatensaus vast in plaats van hem te laten afglijden."
+  - naam: "La Torrente Pelati 400 g"
+    url: https://spesadaantonio.nl/products/la-torrente-pelati
+    variantId: "51553045709127"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/La-Torrente-Pelati-400-gr-La-Torrente-47914532.webp?v=1777834305
+    prijs: "€ 1,35"
+    waarom: "Hele pelati knijp je zelf stuk, waardoor de saus stukjes houdt in plaats van glad te worden."
 seizoen:
   - zomer
   - herfst

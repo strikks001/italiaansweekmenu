@@ -18,7 +18,6 @@ ingredienten:
         opmerking: "ongeveer 60 g per stuk, plat geslagen"
       - hoeveelheid: "8"
         naam: "plakken prosciutto di Parma"
-        productUrl: https://www.spesadaantonio.nl
       - hoeveelheid: "16"
         naam: "salieblaadjes"
         opmerking: "vers, niet gedroogd"
@@ -50,10 +49,7 @@ voedingswaarde:
   eiwitten: 36
   koolhydraten: 2
   vetten: 24
-producten:
-  - naam: "Prosciutto di Parma"
-    url: https://www.spesadaantonio.nl
-    waarom: "Achttien maanden gerijpt en dun genoeg gesneden om aan het vlees te hechten in plaats van eraf te krullen."
+producten: []
 zoekwoorden:
   primair: "saltimbocca alla romana recept"
   secundair:

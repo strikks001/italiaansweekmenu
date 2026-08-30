@@ -28,7 +28,6 @@ ingredienten:
       - hoeveelheid: "500"
         eenheid: g
         naam: mascarpone
-        productUrl: https://www.spesadaantonio.nl
         opmerking: koud uit de koelkast
       - naam: snuf zout
   - groep: Om op te bouwen
@@ -40,7 +39,7 @@ ingredienten:
       - hoeveelheid: "300"
         eenheid: g
         naam: savoiardi
-        productUrl: https://www.spesadaantonio.nl
+        productUrl: https://spesadaantonio.nl/products/matilde-vicenzi-vicenzovo-savoiardi-300-gr
         opmerking: harde Italiaanse lange vingers
       - hoeveelheid: "20"
         eenheid: g
@@ -67,12 +66,12 @@ voedingswaarde:
   koolhydraten: 34
   vetten: 28
 producten:
-  - naam: Savoiardi lange vingers
-    url: https://www.spesadaantonio.nl
-    waarom: Italiaanse savoiardi zijn harder en droger dan Nederlandse lange vingers en vallen daardoor niet uit elkaar in de koffie.
-  - naam: Mascarpone
-    url: https://www.spesadaantonio.nl
-    waarom: Met een vetgehalte van veertig procent blijft de crème stevig zonder gelatine of slagroom.
+  - naam: "Matilde Vicenzi Vicenzovo Savoiardi 300 g"
+    url: https://spesadaantonio.nl/products/matilde-vicenzi-vicenzovo-savoiardi-300-gr
+    variantId: "52858307379527"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Matilde-Vicenzi-Vicenzovo-Savoiardi-300gr.png?v=1777834550
+    prijs: "€ 2,99"
+    waarom: "Italiaanse savoiardi zijn harder en droger dan Nederlandse lange vingers en vallen niet uit elkaar in de koffie."
 zoekwoorden:
   primair: tiramisu recept origineel
   secundair:

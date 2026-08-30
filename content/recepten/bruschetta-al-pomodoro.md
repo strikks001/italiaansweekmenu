@@ -29,7 +29,7 @@ ingredienten:
       - hoeveelheid: "4"
         eenheid: el
         naam: "extra vergine olijfolie"
-        productUrl: https://www.spesadaantonio.nl
+        productUrl: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
       - naam: "grof zeezout"
 stappen:
   - titel: "Tomaten laten uitlekken"
@@ -50,8 +50,11 @@ voedingswaarde:
   koolhydraten: 34
   vetten: 13
 producten:
-  - naam: "Extra vergine olijfolie"
-    url: https://www.spesadaantonio.nl
+  - naam: "Farchioni Olio Extra Vergine di Oliva 1 L"
+    url: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
+    variantId: "51553065599303"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Farchioni-Olio-Extra-Vergine-D_Oliva-1L-Farchioni-47922386.webp?v=1777832911
+    prijs: "€ 11,90"
     waarom: "Bij vijf ingrediënten proef je de olie letterlijk; een neutrale supermarktolie maakt het gerecht vlak."
 zoekwoorden:
   primair: "bruschetta met tomaat"

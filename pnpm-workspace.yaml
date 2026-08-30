@@ -6,3 +6,4 @@ allowBuilds:
   sharp: true
   unrs-resolver: true
   vue-demi: true
+  workerd: true          # runtime voor `wrangler dev`

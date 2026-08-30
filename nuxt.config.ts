@@ -6,7 +6,11 @@ export default defineNuxtConfig({
     '@nuxt/ui', // componentbibliotheek bovenop Tailwind 4
     '@nuxt/eslint',
     '@nuxtjs/seo', // bundel: sitemap, robots, schema.org, og-image, link-checker
-    'nuxt-studio' // visuele editor voor de content/-map
+
+    // Studio is de visuele editor voor content/, en draait alleen lokaal.
+    // Meebouwen in productie zou 28 MB aan editor-assets deployen die daar
+    // toch niet werken - dat is meer dan de rest van de site bij elkaar.
+    ...(process.env.NODE_ENV === 'development' ? ['nuxt-studio'] : [])
   ],
 
   devtools: { enabled: true },
@@ -60,17 +64,21 @@ export default defineNuxtConfig({
   // dat vereist server-routes voor OAuth en dus `nuxt build` in plaats van
   // `nuxt generate`. Zie de README voor die omschakeling.
   //
-  // De build meldt daarom elke keer dat authenticatie nog niet is ingesteld.
-  // Dat klopt en is voor onze opzet onschadelijk.
+  // Dezelfde voorwaarde als bij de module hierboven: buiten dev bestaat het
+  // veld `studio` niet in het configtype, en dan breekt `pnpm typecheck` erop.
   //
   // De AI-assistent is uit en blijft dat zolang AI_GATEWAY_API_KEY leeg is.
-  studio: {
-    route: '/_studio',
-    repository: {
-      provider: 'github',
-      owner: 'strikks001',
-      repo: 'italiaansweekmenu',
-      branch: 'main'
-    }
-  }
+  ...(process.env.NODE_ENV === 'development'
+    ? {
+        studio: {
+          route: '/_studio',
+          repository: {
+            provider: 'github',
+            owner: 'strikks001',
+            repo: 'italiaansweekmenu',
+            branch: 'main'
+          }
+        }
+      }
+    : {})
 })
