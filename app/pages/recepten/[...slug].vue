@@ -126,7 +126,7 @@ useSchemaOrg([
         {{ recipe.description }}
       </p>
 
-      <RecipeActions
+      <PageActions
         :title="recipe.title"
         :url="pageUrl"
         :image="absoluteImage"
@@ -210,7 +210,7 @@ useSchemaOrg([
 
       <!-- Also here, after the recipe: by now you know whether it is worth
            keeping or passing on. -->
-      <RecipeActions
+      <PageActions
         :title="recipe.title"
         :url="pageUrl"
         :image="absoluteImage"
@@ -218,9 +218,7 @@ useSchemaOrg([
       />
     </div>
 
-    <div class="print-hide mx-auto mt-12 max-w-4xl">
-      <ProductList :products="products" />
-    </div>
+    <ProductList :products="products" />
 
     <section
       v-if="recipe.body"

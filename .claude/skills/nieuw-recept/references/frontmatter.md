@@ -59,7 +59,16 @@ ingredienten:
 ```
 
 `hoeveelheid` is een string omdat "een snuf", "1,5" en "2-3" allemaal moeten
-kunnen. Laat `hoeveelheid` en `eenheid` weg bij zout en peper.
+kunnen.
+
+**Schrijf kruiderij altijd hetzelfde en apart.** Gebruik `zout` en `peper` als
+losse items zonder `hoeveelheid` en `eenheid` - dus niet "snuf zout", "grof
+zeezout" of "zout en zwarte peper" op één regel. De boodschappenlijst van het
+weekmenu voegt ze samen tot één regel zonder hoeveelheid, want snufjes optellen
+levert geen getal op waar je boodschappen mee doet.
+
+Zet de eenheid in `eenheid`, niet in `naam`. "bosje basilicum" als naam sorteert
+onder de B; `eenheid: bosje` met `naam: basilicum` sorteert waar je het zoekt.
 
 ## Structuur van producten
 

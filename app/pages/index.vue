@@ -60,6 +60,13 @@ const restOfWeek = computed(() =>
   ) ?? []
 )
 
+// The archive already knows how to search; this is just the way in.
+const query = ref('')
+
+function search() {
+  navigateTo({ path: '/recepten', query: query.value ? { q: query.value } : {} })
+}
+
 const title = 'Italiaans weekmenu — elke week een nieuw menu vol inspiratie'
 const description = site.description
 
@@ -100,18 +107,22 @@ useSchemaOrg([
               v-if="featured.courses.length > 1"
               v-slot="{ item, index }"
               :items="featured.courses"
-              dots
+              arrows
               :breakpoints="carouselBreakpoints"
               :ui="{
                 // The viewport clips with overflow-hidden, which cut off the
                 // cards' hover shadow. Padding gives it room inside the clip;
                 // the negative margin keeps the layout where it was.
                 viewport: '-m-4 p-4',
-                item: 'basis-full sm:basis-1/2 lg:basis-1/3',
-                dots: fitsOnDesktop ? 'lg:hidden' : ''
+                // Stretch, so a card with a longer title stays as tall as the rest.
+                container: 'items-stretch',
+                // Just under full width on mobile: the sliver of the next card
+                // is what tells you there is more than one.
+                item: 'basis-[86%] sm:basis-1/2 lg:basis-1/3',
+                prev: fitsOnDesktop ? 'lg:hidden' : '',
+                next: fitsOnDesktop ? 'lg:hidden' : ''
               }"
-              class="mt-6 pb-10"
-              :class="fitsOnDesktop ? 'lg:pb-0' : ''"
+              class="mt-6"
             >
               <CourseCard
                 :course="item"
@@ -197,6 +208,39 @@ useSchemaOrg([
         </section>
       </div>
     </UContainer>
+
+    <section class="border-t border-default">
+      <UContainer class="py-12 lg:py-16">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 class="text-2xl sm:text-3xl">
+            Zoek je iets anders?
+          </h2>
+          <p class="mt-2 text-muted">
+            Doorzoek het hele archief op gerecht, gang of ingrediënt.
+          </p>
+
+          <form
+            class="mt-6 flex flex-col gap-2 sm:flex-row"
+            @submit.prevent="search"
+          >
+            <UInput
+              v-model="query"
+              type="search"
+              placeholder="Bijvoorbeeld: pasta, risotto, dolce"
+              icon="i-lucide-search"
+              size="lg"
+              class="flex-1"
+            />
+            <UButton
+              type="submit"
+              label="Zoeken"
+              color="primary"
+              size="lg"
+            />
+          </form>
+        </div>
+      </UContainer>
+    </section>
 
     <section class="border-t border-default bg-elevated/40">
       <UContainer class="py-12 text-center lg:py-16">

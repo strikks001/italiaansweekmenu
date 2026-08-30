@@ -11,24 +11,25 @@ export function scaleQuantity(quantity: string | undefined, factor: number): str
 
   const range = text.match(/^(\d+(?:[.,]\d+)?)\s*-\s*(\d+(?:[.,]\d+)?)$/)
   if (range) {
-    return `${format(parse(range[1]!) * factor)}-${format(parse(range[2]!) * factor)}`
+    return `${formatQuantity(parseQuantity(range[1]!) * factor)}-${formatQuantity(parseQuantity(range[2]!) * factor)}`
   }
 
   // Single number, optionally followed by a suffix we keep intact.
   const single = text.match(/^(\d+(?:[.,]\d+)?)(.*)$/)
   if (single) {
-    return `${format(parse(single[1]!) * factor)}${single[2]}`
+    return `${formatQuantity(parseQuantity(single[1]!) * factor)}${single[2]}`
   }
 
   return quantity
 }
 
-function parse(value: string): number {
+/** Parses a Dutch quantity string; NaN when it is not a number. */
+export function parseQuantity(value: string): number {
   return Number.parseFloat(value.replace(',', '.'))
 }
 
 /** Rounds to something measurable in a kitchen, with a Dutch decimal comma. */
-function format(value: number): string {
+export function formatQuantity(value: number): string {
   if (!Number.isFinite(value)) return ''
 
   let rounded: number

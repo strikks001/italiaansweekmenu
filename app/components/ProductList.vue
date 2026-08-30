@@ -3,7 +3,6 @@ import type { ReceptenCollectionItem } from '@nuxt/content'
 
 const props = defineProps<{
   products: ReceptenCollectionItem['producten']
-  title?: string
 }>()
 
 /**
@@ -36,16 +35,19 @@ const cartUrl = computed(() =>
 </script>
 
 <template>
+  <!-- Carries its own placement: the block sat inside an identical wrapper on
+       both pages, and the wrapper's margin showed even without products. -->
   <section
     v-if="products?.length"
     aria-labelledby="producten"
+    class="print-hide mx-auto mt-12 max-w-3xl"
   >
     <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
       <h2
         id="producten"
         class="text-xl"
       >
-        {{ title ?? 'Bestel de ingrediënten' }}
+        Bestel de ingrediënten
       </h2>
       <!-- Doubles as the shop link: without variant IDs it just points at the
            shop, with them it fills the basket in one go. -->
@@ -77,20 +79,23 @@ const cartUrl = computed(() =>
     <UCarousel
       v-slot="{ item }"
       :items="products"
-      :dots="multiple"
+      :arrows="multiple"
       :breakpoints="breakpoints"
       :ui="{
         // The viewport clips with overflow-hidden, which would cut off the
         // cards' hover shadow. Padding gives it room inside the clip; the
         // negative margin keeps the layout where it was.
         viewport: '-m-4 p-4',
-        item: 'basis-full sm:basis-1/2',
-        // One card per screen on mobile, so dots are needed there even when
-        // everything fits from sm onwards.
-        dots: fits ? 'sm:hidden' : ''
+        // Stretch, so a product with a longer reason stays as tall as the rest.
+        container: 'items-stretch',
+        // Just under full width on mobile: the sliver of the next card is what
+        // tells you there is more than one.
+        item: 'basis-[88%] sm:basis-1/2',
+        // From sm two fit, so the arrows have nothing left to do.
+        prev: fits ? 'sm:hidden' : '',
+        next: fits ? 'sm:hidden' : ''
       }"
       class="mt-4"
-      :class="multiple ? (fits ? 'pb-10 sm:pb-0' : 'pb-10') : ''"
     >
       <NuxtLink
         :to="item.url"

@@ -69,11 +69,19 @@ secundaire termen wel met het thema van de week.
 `title` volgt het patroon `"Weekmenu <nr>: <thema>"`. De dubbele punt maakt de
 aanhalingstekens verplicht.
 
-## Stap 6 — Boodschappenlijst
+## Stap 6 — Producten uit de webshop
 
 Vul `producten` met drie tot vijf items die over meerdere gerechten van de week
 gebruikt worden. Het veld `waarom` verwijst hier naar de dag, niet naar
 productkenmerken: "Je hebt ze deze week drie keer nodig. Koop een tray."
+
+Zelfde velden als bij een recept, `variantId` incluis - zie
+`.claude/skills/nieuw-recept/references/frontmatter.md`. Zonder dat ID valt het
+product buiten de knop "alles in winkelmand" en toont de sectie op het weekmenu
+iets anders dan op een recept.
+
+De boodschappenlijst met alle ingrediënten van de week wordt automatisch
+opgebouwd uit de recepten; die schrijf je niet zelf.
 
 ## Stap 7 — Verifiëren
 

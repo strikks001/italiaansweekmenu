@@ -8,7 +8,7 @@ defineProps<{
 }>()
 
 /** Opens the browser's print dialog, where "Save as PDF" is one of the targets. */
-function printRecipe() {
+function print() {
   window.print()
 }
 </script>
@@ -25,7 +25,7 @@ function printRecipe() {
       color="neutral"
       variant="outline"
       size="sm"
-      @click="printRecipe"
+      @click="print"
     >
       Print
     </UButton>
