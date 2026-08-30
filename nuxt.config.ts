@@ -47,7 +47,7 @@ export default defineNuxtConfig({
 
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/sitemap.xml'],
+      routes: ['/', '/sitemap.xml', '/feed.xml'],
       failOnError: false
     }
   },

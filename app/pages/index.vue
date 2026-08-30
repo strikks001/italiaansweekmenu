@@ -72,11 +72,6 @@ const description = site.description
 
 useSeoMeta({ title, description, ogTitle: title, ogDescription: description })
 defineOgImage('Default', { title: 'Italiaansweekmenu', description })
-
-useSchemaOrg([
-  defineWebSite({ name: site.name, description: site.description, inLanguage: 'nl-NL' }),
-  defineOrganization({ name: 'Italiaansweekmenu', url: site.url })
-])
 </script>
 
 <template>

@@ -135,6 +135,8 @@ useSeoMeta({ title, description, ogTitle: title, ogDescription: description })
 defineOgImage('Default', { title, description })
 
 useSchemaOrg([
+  // CollectionPage zegt Google dat dit een archief is, geen los artikel.
+  defineWebPage({ '@type': 'CollectionPage', 'name': title, 'description': description }),
   defineBreadcrumb({ itemListElement: [{ name: 'Home', item: '/' }, { name: 'Weekmenu' }] })
 ])
 </script>

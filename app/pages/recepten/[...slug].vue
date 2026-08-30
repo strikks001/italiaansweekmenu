@@ -43,6 +43,20 @@ const ingredientLines = recipe.ingredienten.flatMap(group =>
   group.items.map(i => [i.hoeveelheid, i.eenheid, i.naam].filter(Boolean).join(' '))
 )
 
+// schema.org kent een vaste lijst dieetwaarden; onze eigen labels zeggen Google niets.
+const DIETS: Record<string, string> = {
+  vegetarisch: 'https://schema.org/VegetarianDiet',
+  veganistisch: 'https://schema.org/VeganDiet',
+  glutenvrij: 'https://schema.org/GlutenFreeDiet',
+  lactosevrij: 'https://schema.org/LowLactoseDiet'
+}
+
+const dietUrls = diets.map(d => DIETS[d]).filter(Boolean) as string[]
+
+// Via URL(), want de organisatie in app.vue krijgt een genormaliseerde @id met
+// slash: een handmatig samengeplakte verwijzing mist hem net.
+const identity = new URL('#identity', site.url).toString()
+
 const nutrition = recipe.voedingswaarde
 const nutritionNode = nutrition
   ? {
@@ -82,7 +96,13 @@ useSchemaOrg([
     keywords: [recipe.zoekwoorden.primair, ...(recipe.zoekwoorden.secundair ?? [])],
     recipeIngredient: ingredientLines,
     recipeInstructions: recipe.stappen.map(s => defineHowToStep({ name: s.titel, text: s.tekst })),
-    ...(nutritionNode ? { nutrition: nutritionNode } : {})
+    ...(nutritionNode ? { nutrition: nutritionNode } : {}),
+    // schema.org staat deze toe op Recipe, maar de typedefinities van de module
+    // kennen alleen een handvol velden. De resolver geeft ze wel door.
+    ...({
+      author: { '@id': identity },
+      ...(dietUrls.length ? { suitableForDiet: dietUrls } : {})
+    } as object)
   }),
   defineBreadcrumb({
     itemListElement: [
@@ -216,6 +236,15 @@ useSchemaOrg([
         :image="absoluteImage"
         class="mt-10 border-t border-default pt-6"
       />
+    </div>
+
+    <!-- Zichtbaar omdat het ook in de structured data staat: Google wil dat
+         gemarkeerde inhoud op de pagina te vinden is. -->
+    <div
+      v-if="nutrition"
+      class="print-hide mx-auto mt-12 max-w-3xl"
+    >
+      <RecipeNutrition :nutrition="nutrition" />
     </div>
 
     <ProductList :products="products" />
