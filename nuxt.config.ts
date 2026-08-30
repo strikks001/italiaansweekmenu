@@ -61,22 +61,10 @@ export default defineNuxtConfig({
     }
   },
 
-  // Nuxt Studio is sinds versie 1 een gratis open-source module die je zelf
-  // host, niet meer het betaalde platform op nuxt.studio.
-  //
-  // We gebruiken hem alleen lokaal: `pnpm dev` toont linksonder een bewerkknop
-  // waarmee je content/ visueel bewerkt op de echte bestanden. Committen en
-  // pushen doe je daarna zelf.
-  //
-  // `repository` is verplicht - zonder owner en repo weigert de module te
-  // bouwen. Hij wordt pas echt gebruikt zodra Studio in productie draait, en
-  // dat vereist server-routes voor OAuth en dus `nuxt build` in plaats van
-  // `nuxt generate`. Zie de README voor die omschakeling.
-  //
-  // Dezelfde voorwaarde als bij de module hierboven: buiten dev bestaat het
-  // veld `studio` niet in het configtype, en dan breekt `pnpm typecheck` erop.
-  //
-  // De AI-assistent is uit en blijft dat zolang AI_GATEWAY_API_KEY leeg is.
+  // Studio bewerkt content/ visueel en draait alleen lokaal; productie zou SSR
+  // vereisen. Daarom staat de config hier ook achter dezelfde voorwaarde als de
+  // module: buiten dev kent het configtype `studio` niet en breekt de typecheck.
+  // `repository` is verplicht, ook al gebruikt Studio het pas in productie.
   ...(process.env.NODE_ENV === 'development'
     ? {
         studio: {

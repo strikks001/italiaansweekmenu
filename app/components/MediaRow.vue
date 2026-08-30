@@ -5,6 +5,8 @@ defineProps<{
   alt: string
   title: string
   description?: string
+  /** Loads the image eagerly. Use for the first rows above the fold. */
+  priority?: boolean
 }>()
 </script>
 
@@ -17,7 +19,7 @@ defineProps<{
       height="180"
       sizes="80px sm:112px"
       format="webp"
-      loading="lazy"
+      :loading="priority ? 'eager' : 'lazy'"
       class="size-16 shrink-0 rounded-lg object-cover sm:size-24"
     />
 

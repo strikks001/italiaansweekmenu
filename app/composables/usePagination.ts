@@ -1,13 +1,8 @@
 import type { Ref } from 'vue'
 
 /**
- * Client-side pagination for an overview list.
- *
- * The win is in the DOM: only one page of cards is rendered, so a growing
- * archive does not keep adding images and nodes to the page.
- *
- * The page number lives in the URL, so a link keeps its place. Pages own their
- * query sync, so they add `pagina` to it themselves.
+ * Renders one page of cards at a time, so a growing archive does not keep
+ * adding images and nodes. Pages own their query sync and add `pagina` there.
  */
 export function usePagination<T>(items: Ref<T[]>, perPage: number) {
   const route = useRoute()

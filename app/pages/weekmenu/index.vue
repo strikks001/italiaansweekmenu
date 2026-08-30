@@ -1,6 +1,5 @@
 <script setup lang="ts">
-const route = useRoute()
-const router = useRouter()
+import type { ActiveFilter } from '~/components/ActiveFilters.vue'
 
 const { data: menus } = await useAsyncData('weekmenus:all', () =>
   queryCollection('weekmenus')
@@ -19,21 +18,18 @@ const SORTS = [
   { value: 'oudste', label: 'Oudste eerst' }
 ]
 
+const PER_PAGE = 12
+
 const today = useToday()
 
 const current = computed(() =>
   menus.value?.find(m => weekContains(m.jaar, m.week, today.value))
 )
 
-const sort = ref(String(route.query.sorteer ?? 'nieuwste'))
-const selection = ref<Record<string, string | string[]>>({
-  year: String(route.query.jaar ?? 'alle'),
-  season: String(route.query.seizoen ?? '').split(',').filter(Boolean)
-})
+const sort = ref('nieuwste')
+const selection = ref<Record<string, string | string[]>>({ year: 'alle', season: [] })
 const view = useViewMode()
 const filtersOpen = ref(false)
-
-const PER_PAGE = 12
 
 const year = computed(() => selection.value.year as string)
 const season = computed(() => selection.value.season as string[])
@@ -43,59 +39,11 @@ const rest = computed(() => {
   let list = (menus.value ?? []).filter(m => m !== current.value)
 
   if (year.value !== 'alle') list = list.filter(m => String(m.jaar) === year.value)
-  if (season.value.length) {
-    list = list.filter(m => season.value.includes(seasonOfWeek(m.jaar, m.week)))
-  }
+  if (season.value.length) list = list.filter(m => season.value.includes(seasonOfWeek(m.jaar, m.week)))
 
   return [...list].sort((a, b) => sort.value === 'oudste'
     ? (a.jaar - b.jaar) || (a.week - b.week)
     : (b.jaar - a.jaar) || (b.week - a.week))
-})
-
-const { page, paged } = usePagination(rest, PER_PAGE)
-
-const results = ref<HTMLElement | null>(null)
-
-/** Jump back to the top of the list, otherwise page 2 starts mid-scroll. */
-function scrollToResults() {
-  results.value?.scrollIntoView({ block: 'start', behavior: 'smooth' })
-}
-
-// A new filter should start at the first page again.
-watch([year, season, sort], () => {
-  page.value = 1
-})
-
-/*
- * A statically generated page hydrates with the server's route, whose query is
- * empty. Reading the filters during setup would therefore miss them, and the
- * sync below would immediately rewrite the URL without them - a shared link
- * with filters lost its filters. So: re-read once the client router has the
- * real URL, and only start writing after that.
- */
-const hydrated = ref(false)
-
-onMounted(() => {
-  const q = route.query
-  sort.value = String(q.sorteer ?? 'nieuwste')
-  selection.value = {
-    year: String(q.jaar ?? 'alle'),
-    season: String(q.seizoen ?? '').split(',').filter(Boolean)
-  }
-  page.value = Math.max(1, Number(q.pagina) || 1)
-  hydrated.value = true
-})
-
-watchEffect(() => {
-  if (!hydrated.value) return
-  router.replace({
-    query: {
-      ...(year.value !== 'alle' ? { jaar: year.value } : {}),
-      ...(season.value.length ? { seizoen: season.value.join(',') } : {}),
-      ...(sort.value !== 'nieuwste' ? { sorteer: sort.value } : {}),
-      ...(page.value > 1 ? { pagina: String(page.value) } : {})
-    }
-  })
 })
 
 const counts = computed(() => {
@@ -110,31 +58,36 @@ const counts = computed(() => {
   return { byYear, bySeason }
 })
 
-const yearOptions = computed(() => [
-  { value: 'alle', label: 'Alle jaren' },
-  ...[...new Set((menus.value ?? []).map(m => m.jaar))]
-    .sort((a, b) => b - a)
-    .map(y => ({ value: String(y), label: String(y) }))
-])
-
 const filterGroups = computed(() => [
-  { key: 'year', title: 'Jaar', options: yearOptions.value, counts: counts.value.byYear },
+  {
+    key: 'year',
+    title: 'Jaar',
+    counts: counts.value.byYear,
+    options: [
+      { value: 'alle', label: 'Alle jaren' },
+      ...[...new Set((menus.value ?? []).map(m => m.jaar))]
+        .sort((a, b) => b - a)
+        .map(y => ({ value: String(y), label: String(y) }))
+    ]
+  },
   {
     key: 'season',
     title: 'Seizoen',
-    options: SEASONS.map(s => ({ value: s, label: SEASON_LABELS[s]! })),
+    multiple: true,
     counts: counts.value.bySeason,
-    multiple: true
+    options: SEASONS.map(s => ({ value: s, label: SEASON_LABELS[s]! }))
   }
 ])
 
-const activeFilters = computed(() => {
-  const chips: { id: string, label: string, clear: () => void }[] = []
+const activeFilters = computed<ActiveFilter[]>(() => {
+  const chips: ActiveFilter[] = []
   if (year.value !== 'alle') {
     chips.push({
       id: 'year',
       label: year.value,
-      clear: () => { selection.value.year = 'alle' }
+      clear: () => {
+        selection.value.year = 'alle'
+      }
     })
   }
   for (const s of season.value) {
@@ -151,6 +104,29 @@ function clearFilters() {
   sort.value = 'nieuwste'
   selection.value = { year: 'alle', season: [] }
 }
+
+const { page, paged } = usePagination(rest, PER_PAGE)
+
+watch([year, season, sort], () => {
+  page.value = 1
+})
+
+useQuerySync(
+  (q) => {
+    sort.value = q.sorteer || 'nieuwste'
+    selection.value = {
+      year: q.jaar || 'alle',
+      season: (q.seizoen ?? '').split(',').filter(Boolean)
+    }
+    page.value = Math.max(1, Number(q.pagina) || 1)
+  },
+  () => ({
+    ...(year.value !== 'alle' ? { jaar: year.value } : {}),
+    ...(season.value.length ? { seizoen: season.value.join(',') } : {}),
+    ...(sort.value !== 'nieuwste' ? { sorteer: sort.value } : {}),
+    ...(page.value > 1 ? { pagina: String(page.value) } : {})
+  })
+)
 
 const title = 'Alle Italiaanse weekmenu\'s'
 const description = 'Elke week stellen we een compleet Italiaans weekmenu samen. Blader door het archief voor inspiratie voor elke dag van de week.'
@@ -238,144 +214,38 @@ useSchemaOrg([
       @open-filters="filtersOpen = true"
     />
 
-    <USlideover
-      v-model:open="filtersOpen"
-      title="Filters"
-      side="left"
-    >
-      <template #body>
-        <FilterPanel
-          v-model="selection"
-          :groups="filterGroups"
-        />
-      </template>
-      <template #footer>
-        <div class="flex w-full gap-2">
-          <UButton
-            v-if="activeFilters.length"
-            label="Wis filters"
-            color="neutral"
-            variant="outline"
-            block
-            class="flex-1"
-            @click="clearFilters"
-          />
-          <UButton
-            :label="`Toon ${rest.length} ${rest.length === 1 ? 'weekmenu' : `weekmenu's`}`"
-            color="primary"
-            block
-            class="flex-1"
-            @click="filtersOpen = false"
-          />
-        </div>
-      </template>
-    </USlideover>
-
     <UContainer class="pb-12 lg:pb-16">
       <div class="mt-6 grid gap-8 lg:grid-cols-[14rem_minmax(0,1fr)]">
-        <aside class="hidden lg:block">
-          <FilterPanel
-            v-model="selection"
-            :groups="filterGroups"
-          />
-        </aside>
+        <OverviewFilters
+          v-model="selection"
+          v-model:open="filtersOpen"
+          :groups="filterGroups"
+          :count="rest.length"
+          :has-filters="activeFilters.length > 0"
+          noun="weekmenu"
+          plural="weekmenu's"
+          @clear="clearFilters"
+        />
 
-        <div ref="results">
-          <ActiveFilters
-            :filters="activeFilters"
-            :count="rest.length"
-            noun="weekmenu"
-            plural="weekmenu's"
-            @clear-all="clearFilters"
-          />
-
-          <TransitionGroup
-            v-if="paged.length && view === 'cards'"
-            :key="view"
-            name="flip"
-            tag="div"
-            class="flip-list flip-list-grid mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3"
-          >
-            <MediaCard
-              v-for="(menu, i) in paged"
-              :key="menu.path"
-              :to="menu.path"
-              :image="menu.afbeelding"
-              :alt="menu.afbeeldingAlt"
-              :title="menu.title"
-              :description="menu.description"
-              :priority="i < 3"
-              :style="{ '--i': i }"
-            >
-              <template #meta>
-                <span class="font-medium uppercase tracking-widest">
-                  Week {{ menu.week }} · {{ menu.jaar }}
-                </span>
-              </template>
-            </MediaCard>
-          </TransitionGroup>
-
-          <TransitionGroup
-            v-else-if="paged.length"
-            :key="view"
-            name="flip"
-            tag="div"
-            class="flip-list mt-6 flex flex-col gap-2"
-          >
-            <MediaRow
-              v-for="(menu, i) in paged"
-              :key="menu.path"
-              :to="menu.path"
-              :image="menu.afbeelding"
-              :alt="menu.afbeeldingAlt"
-              :title="menu.title"
-              :description="menu.description"
-              :style="{ '--i': i }"
-            >
-              <template #meta>
-                <span class="font-medium uppercase tracking-widest">
-                  Week {{ menu.week }} · {{ menu.jaar }}
-                </span>
-              </template>
-            </MediaRow>
-          </TransitionGroup>
-
-          <!-- Always visible while there are results, also on a single
-               page: it keeps the bottom of the list predictable. -->
-          <div
-            v-if="rest.length"
-            class="mt-10 flex justify-center"
-          >
-            <UPagination
-              v-model:page="page"
-              :items-per-page="PER_PAGE"
-              :total="rest.length"
-              @update:page="scrollToResults"
-            />
-          </div>
-
-          <div
-            v-if="!paged.length"
-            class="mt-16 text-center"
-          >
-            <UIcon
-              name="i-lucide-calendar-x"
-              class="size-8 text-dimmed"
-            />
-            <p class="mt-3 text-muted">
-              Geen weekmenu's gevonden voor deze combinatie.
-            </p>
-            <UButton
-              v-if="activeFilters.length"
-              label="Wis filters"
-              color="neutral"
-              variant="outline"
-              size="sm"
-              class="mt-4"
-              @click="clearFilters"
-            />
-          </div>
-        </div>
+        <OverviewResults
+          v-model:page="page"
+          :items="paged"
+          :view="view"
+          :total="rest.length"
+          :per-page="PER_PAGE"
+          :filters="activeFilters"
+          noun="weekmenu"
+          plural="weekmenu's"
+          empty-icon="i-lucide-calendar-x"
+          empty-text="Geen weekmenu's gevonden voor deze combinatie."
+          @clear="clearFilters"
+        >
+          <template #meta="{ item }">
+            <span class="font-medium uppercase tracking-widest">
+              Week {{ item.week }} · {{ item.jaar }}
+            </span>
+          </template>
+        </OverviewResults>
       </div>
     </UContainer>
   </div>

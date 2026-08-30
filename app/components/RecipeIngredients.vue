@@ -19,33 +19,21 @@ function changeServings(step: number) {
 }
 
 /*
- * On mobile the list starts open and folds away once you scroll past it, so
- * what travels along is a slim bar. On desktop the column is always visible,
- * hence every toggle is lg:hidden.
- *
- * We measure a zero-height marker above the panel, never the panel itself: a
- * pinned sticky element sits at exactly the header height, so comparing its
- * own top can only ever collapse, never expand again. The marker keeps moving
- * with the scroll and is unaffected by the panel's height, which also rules
- * out a feedback loop between folding and layout.
+ * Measured against a zero-height marker, never the panel itself: a pinned
+ * sticky element sits at exactly the header height, so its own top could only
+ * ever collapse and never expand again.
  */
 const open = ref(true)
 const marker = ref<HTMLElement | null>(null)
 const panel = ref<HTMLElement | null>(null)
 const stuck = ref(false)
 
-/*
- * On desktop the panel only pins when it fits on screen. A list that is taller
- * than the viewport would otherwise stick with its bottom cut off, and the last
- * ingredients stay unreachable. An inner scrollbar solves that on paper but not
- * for the reader: nobody spots a scroll area inside a panel. So a long list
- * simply scrolls along with the page.
- */
+// Only pin on desktop when the panel fits: a taller list would stick with its
+// bottom cut off and the last ingredients out of reach.
 const fits = ref(true)
 
-// A tap beats the scroll rule: while the panel is pinned the marker sits above
-// the viewport, so without this the next scroll event would fold it straight
-// back shut. Scrolling back up to the panel's own place hands control back.
+// A tap beats the scroll rule; scrolling back to the panel's own place hands
+// control back.
 const tapped = ref(false)
 
 function toggleOpen() {
@@ -64,14 +52,9 @@ onMounted(() => {
   const foldBelow = headerHeight - 60
   const unfoldAbove = headerHeight + 20
 
-  /*
-   * Folding changes the page height, and the browser answers that by nudging
-   * the scroll position to keep the view steady (scroll anchoring). That nudge
-   * moves the marker back across the threshold, which folds it again: a loop
-   * you see as flickering. overflow-anchor:none on the panel stops the nudge;
-   * this cooldown makes sure any remaining scroll jolt cannot flip the state
-   * before the animation has finished.
-   */
+  // Folding changes the page height, and the browser nudges the scroll to
+  // compensate - which flips the state straight back. overflow-anchor:none
+  // stops the nudge, this cooldown catches whatever jolt remains.
   let settleUntil = 0
 
   function onScroll() {

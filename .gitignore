@@ -22,3 +22,6 @@ logs
 .env
 .env.*
 !.env.example
+
+# Wrangler werkmap (lokale state en deploy-cache)
+.wrangler

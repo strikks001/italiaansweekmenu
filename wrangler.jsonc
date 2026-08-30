@@ -15,6 +15,13 @@
     // een absoluut pad op één machine en bestaat niet op de builder.
     "directory": "./.output/public",
 
+    // Zonder dit voegt Cloudflare een slash toe: /recepten/x wordt /recepten/x/.
+    // Nuxt Content slaat paden zonder slash op, dus na die redirect vindt de
+    // client zijn eigen pagina niet meer en valt hij terug op 404. Bovendien
+    // noemen de canonical en de sitemap de vorm zonder slash.
+    "html_handling": "drop-trailing-slash",
+
+
     // Elke pagina is vooraf gerenderd, dus een onbekend pad is echt een 404.
     // Serveert .output/public/404.html met de juiste statuscode.
     "not_found_handling": "404-page"
