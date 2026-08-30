@@ -36,6 +36,15 @@ export default defineNuxtConfig({
   // Alle pagina's vooraf renderen naar statische HTML. crawlLinks volgt elke
   // <NuxtLink> vanaf de startpagina, zodat ook recepten meegenomen worden.
   nitro: {
+    // Vastgezet, want Nitro kijkt naar omgevingsvariabelen. Op de Cloudflare-
+    // builder koos hij daardoor `cloudflare-module`: Nuxt Content schakelde over
+    // op een D1-database die niet bestaat, de `assets` uit wrangler.jsonc werden
+    // genegeerd, en er kwam een `.wrangler/deploy/config.json` die wrangler naar
+    // een server-entry `index.mjs` stuurde die `nuxt generate` nooit maakt.
+    // Daar liep de deploy op stuk. Deze site is statisch; dat hoort niet van de
+    // build-omgeving af te hangen.
+    preset: 'static',
+
     prerender: {
       crawlLinks: true,
       routes: ['/', '/sitemap.xml'],
