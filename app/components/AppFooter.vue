@@ -37,7 +37,7 @@ const linkKlasse = 'underline decoration-white/40 underline-offset-4 transition 
   <UFooter :ui="{ root: 'scallop-top print-hide bg-ceramic-500 pt-8 text-white' }">
     <template #top>
       <UContainer class="py-10">
-        <div class="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+        <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr]">
           <div>
             <p class="font-display text-2xl font-extrabold leading-tight tracking-tight">
               Elke week een compleet Italiaans menu
@@ -98,47 +98,6 @@ const linkKlasse = 'underline decoration-white/40 underline-offset-4 transition 
               </li>
             </ul>
           </nav>
-
-          <div>
-            <p class="font-display text-xs font-bold uppercase tracking-widest text-ceramic-200">
-              Ingrediënten
-            </p>
-            <p class="mt-3 text-sm text-ceramic-100">
-              De Italiaanse producten uit onze recepten komen van Spesa da Antonio.
-            </p>
-            <UButton
-              to="https://www.spesadaantonio.nl"
-              target="_blank"
-              rel="noopener"
-              color="neutral"
-              size="sm"
-              class="mt-3 bg-white text-ceramic-700 hover:bg-butter-200"
-              trailing-icon="i-lucide-arrow-up-right"
-              label="Naar de winkel"
-            />
-
-            <ul
-              v-if="footer.social.length"
-              class="mt-5 flex flex-wrap gap-2"
-            >
-              <li
-                v-for="kanaal in footer.social"
-                :key="kanaal.label"
-              >
-                <UButton
-                  :to="kanaal.to"
-                  target="_blank"
-                  rel="noopener"
-                  :icon="kanaal.icon"
-                  :aria-label="kanaal.label"
-                  color="neutral"
-                  variant="ghost"
-                  size="sm"
-                  class="text-white hover:bg-white/10"
-                />
-              </li>
-            </ul>
-          </div>
         </div>
       </UContainer>
     </template>
@@ -153,7 +112,20 @@ const linkKlasse = 'underline decoration-white/40 underline-offset-4 transition 
     </template>
 
     <template #right>
-      <div class="flex items-center gap-1">
+      <div class="flex flex-wrap items-center gap-1">
+        <UButton
+          v-for="kanaal in footer.social"
+          :key="kanaal.label"
+          :to="kanaal.to"
+          target="_blank"
+          rel="noopener"
+          :icon="kanaal.icon"
+          :aria-label="kanaal.label"
+          color="neutral"
+          variant="ghost"
+          size="sm"
+          class="text-white hover:bg-white/10"
+        />
         <UButton
           v-if="footer.bedrijf.email"
           :to="`mailto:${footer.bedrijf.email}`"
