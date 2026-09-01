@@ -126,6 +126,8 @@ useSchemaOrg([
     <PageBanner
       breed
       :breadcrumb="[{ label: 'Home', to: '/' }, { label: 'Recepten', to: '/recepten' }, { label: recipe.title }]"
+      jump-to="#recept"
+      jump-label="Naar de ingrediënten en bereiding"
     >
       <div class="print-hide flex flex-wrap items-center justify-center gap-2">
         <PillBadge tone="white">
@@ -210,7 +212,10 @@ useSchemaOrg([
         items stretch to the row height. An items-start here would pin the
         panel to its own cell and sticky would do nothing.
       -->
-        <div class="print-stack lg:grid lg:grid-cols-[320px_1fr] lg:gap-12">
+        <div
+          id="recept"
+          class="print-stack scroll-mt-24 lg:grid lg:grid-cols-[320px_1fr] lg:gap-12"
+        >
           <!--
           display:contents on mobile so the panel's containing block is the
           whole column and it can travel past the steps; a real block from lg,

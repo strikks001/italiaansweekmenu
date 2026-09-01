@@ -90,19 +90,28 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
     <section class="scallop relative overflow-hidden bg-vermilion-500 pb-14 text-vermilion-950">
       <UContainer class="relative py-12 lg:py-20">
         <div class="mx-auto max-w-4xl">
+          <!-- The day sits above the question: it says which day is being
+               answered before the question is asked. -->
+          <p
+            v-if="featured"
+            class="mb-3 flex flex-wrap items-center gap-2 text-xl font-bold sm:text-2xl"
+          >
+            <UIcon
+              name="i-lucide-calendar-days"
+              class="size-6 shrink-0"
+            />
+            <span>
+              <template v-if="!isToday">Eerstvolgende: </template>
+              <span class="capitalize">{{ featured.weekday }}</span>
+              {{ featured.dayNumber }} {{ featured.month }}
+            </span>
+          </p>
+
           <h1 class="poster-question text-white">
             Wat eten we vandaag?
           </h1>
 
           <template v-if="mainCourse">
-            <p class="mt-4 text-sm font-semibold uppercase tracking-widest">
-              <template v-if="!isToday">
-                Nog even wachten — het eerstvolgende is
-              </template>
-              <span>{{ featured!.weekday }}</span>
-              {{ featured!.dayNumber }} {{ featured!.month }}
-            </p>
-
             <!-- One panel: photo and text belong together, so they share a
                  frame. Loose elements on a colour field read as loose. -->
             <NuxtLink
@@ -122,11 +131,16 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
               />
 
               <div class="flex flex-col justify-center gap-3 p-6 sm:p-8">
-                <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-semibold uppercase tracking-widest text-muted">
-                  <span>{{ mainCourse.recipe.gang }}</span>
-                  <span aria-hidden="true">·</span>
-                  <span>{{ readableDuration(mainCourse.minutes) }}</span>
-                </p>
+                <div class="flex flex-wrap items-center gap-2 text-xs text-muted">
+                  <PillBadge>{{ mainCourse.recipe.gang }}</PillBadge>
+                  <span class="flex items-center gap-1">
+                    <UIcon
+                      name="i-lucide-clock"
+                      class="size-3"
+                    />
+                    {{ readableDuration(mainCourse.minutes) }}
+                  </span>
+                </div>
 
                 <h2 class="poster-dish">
                   {{ mainCourse.recipe.title }}

@@ -131,3 +131,24 @@
     rotate: -1.25deg;
   }
 }
+
+/* Anchor jumps glide instead of cutting, so you keep your place on the page. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .jump-nudge {
+    animation: jump-nudge 2.4s ease-in-out infinite;
+  }
+
+  .jump-nudge:hover,
+  .jump-nudge:focus-visible {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes jump-nudge {
+  0%, 70%, 100% { translate: -50% 50%; }
+  80% { translate: -50% 65%; }
+}
