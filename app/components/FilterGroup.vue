@@ -71,6 +71,7 @@ function choose(value: string) {
           :key="option.value"
           :color="isActive(option.value) ? 'primary' : 'neutral'"
           :variant="isActive(option.value) ? 'solid' : 'ghost'"
+          :class="isActive(option.value) ? 'text-vermiljoen-950' : ''"
           :icon="indicator(option.value)"
           size="sm"
           class="w-full"

@@ -245,16 +245,14 @@ useSchemaOrg([
 
 <template>
   <div>
-    <UContainer class="pt-8 lg:pt-12">
-      <header class="mx-auto max-w-2xl text-center">
-        <h1 class="text-3xl sm:text-4xl">
-          {{ title }}
-        </h1>
-        <p class="mt-4 text-muted">
-          {{ description }}
-        </p>
-      </header>
-    </UContainer>
+    <PageBanner>
+      <h1 class="text-4xl text-white sm:text-5xl">
+        {{ title }}
+      </h1>
+      <p class="mt-4 text-lg">
+        {{ description }}
+      </p>
+    </PageBanner>
 
     <OverviewToolbar
       v-model:search="search"
@@ -296,13 +294,7 @@ useSchemaOrg([
           @clear="clearFilters"
         >
           <template #meta="{ item }">
-            <UBadge
-              :label="item.gang"
-              color="primary"
-              variant="subtle"
-              size="sm"
-              class="capitalize"
-            />
+            <GangBadge :gang="item.gang" />
             <span>{{ readableDuration(item.voorbereidingstijd + item.bereidingstijd) }}</span>
           </template>
         </OverviewResults>

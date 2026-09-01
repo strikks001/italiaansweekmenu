@@ -68,10 +68,10 @@ function toggle(index: number) {
           @click="toggle(i)"
         >
           <span
-            class="print-num print-plain relative flex size-8 shrink-0 items-center justify-center rounded-full border text-sm font-semibold transition"
+            class="print-num print-plain font-display relative flex size-9 shrink-0 items-center justify-center rounded-full text-base font-extrabold tabular-nums transition"
             :class="done.has(i)
-              ? 'border-primary bg-primary text-inverted'
-              : 'border-primary/30 bg-primary/10 text-primary'"
+              ? 'bg-keramiek-500 text-white'
+              : 'bg-vermiljoen-500 text-vermiljoen-950'"
           >
             <template v-if="done.has(i)">
               <UIcon

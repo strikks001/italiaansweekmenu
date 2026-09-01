@@ -90,15 +90,15 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
          De schulprand onderaan is het luifelmotief uit de referentie. -->
     <!-- bg-vermiljoen-500 en niet bg-primary: Nuxt UI pakt in donkere modus tint
          400, en dit vlak hoort in beide modi dezelfde merkkleur te houden. -->
-    <section class="schulp relative overflow-hidden bg-vermiljoen-500 pb-14 text-white">
+    <section class="schulp relative overflow-hidden bg-vermiljoen-500 pb-14 text-vermiljoen-950">
       <UContainer class="relative py-12 lg:py-20">
         <div class="mx-auto max-w-4xl">
-          <h1 class="affiche-vraag">
+          <h1 class="affiche-vraag text-white">
             Wat eten we vandaag?
           </h1>
 
           <template v-if="hoofdgerecht">
-            <p class="mt-4 text-sm font-medium uppercase tracking-widest opacity-85">
+            <p class="mt-4 text-sm font-semibold uppercase tracking-widest">
               <template v-if="!isToday">
                 Nog even wachten — het eerstvolgende is
               </template>
@@ -155,7 +155,7 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
 
             <p
               v-else
-              class="mt-8 text-lg opacity-90"
+              class="mt-8 text-lg"
             >
               Voor deze dag staat nog geen recept klaar.
             </p>
@@ -163,7 +163,7 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
 
           <p
             v-else
-            class="mt-4 max-w-xl text-lg opacity-90"
+            class="mt-4 max-w-xl text-lg"
           >
             Het menu van deze week verschijnt binnenkort.
           </p>
@@ -199,62 +199,64 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
       </div>
     </UContainer>
 
-    <UContainer class="py-10 lg:py-14">
-      <div class="mx-auto flex max-w-3xl flex-col gap-12">
-        <section v-if="restOfWeek.length">
-          <div class="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <h2 class="text-2xl sm:text-3xl">
-                Wat eten we verder deze week?
-              </h2>
-              <p class="mt-1 text-muted">
-                Kies een dag om het recept te openen.
-              </p>
+    <section>
+      <UContainer class="py-12 lg:py-16">
+        <div class="mx-auto flex max-w-4xl flex-col gap-12">
+          <section v-if="restOfWeek.length">
+            <div class="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <h2 class="text-2xl sm:text-3xl">
+                  Wat eten we verder deze week?
+                </h2>
+                <p class="mt-1 text-muted">
+                  Kies een dag om het recept te openen.
+                </p>
+              </div>
+              <UButton
+                v-if="currentWeek"
+                :to="currentWeek.menu.path"
+                color="neutral"
+                variant="ghost"
+                trailing-icon="i-lucide-arrow-right"
+              >
+                Hele weekmenu
+              </UButton>
             </div>
-            <UButton
-              v-if="currentWeek"
-              :to="currentWeek.menu.path"
-              color="neutral"
-              variant="ghost"
-              trailing-icon="i-lucide-arrow-right"
-            >
-              Hele weekmenu
-            </UButton>
-          </div>
 
-          <WeekAgenda
-            :days="restOfWeek"
-            class="mt-6"
-          />
-        </section>
+            <WeekAgenda
+              :days="restOfWeek"
+              class="mt-6"
+            />
+          </section>
 
-        <section v-if="nextWeek">
-          <div class="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <h2 class="text-2xl sm:text-3xl">
-                Volgende week op het menu
-              </h2>
-              <p class="mt-1 text-muted">
-                {{ nextWeek.menu.thema }} — alvast om vooruit te plannen.
-              </p>
+          <section v-if="nextWeek">
+            <div class="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <h2 class="text-2xl sm:text-3xl">
+                  Volgende week op het menu
+                </h2>
+                <p class="mt-1 text-muted">
+                  {{ nextWeek.menu.thema }} — alvast om vooruit te plannen.
+                </p>
+              </div>
+              <UButton
+                :to="nextWeek.menu.path"
+                color="neutral"
+                variant="ghost"
+                trailing-icon="i-lucide-arrow-right"
+              >
+                Week {{ nextWeek.menu.week }}
+              </UButton>
             </div>
-            <UButton
-              :to="nextWeek.menu.path"
-              color="neutral"
-              variant="ghost"
-              trailing-icon="i-lucide-arrow-right"
-            >
-              Week {{ nextWeek.menu.week }}
-            </UButton>
-          </div>
 
-          <WeekAgenda
-            :days="nextWeek.days.filter(d => d.courses.length)"
-            class="mt-6"
-          />
-        </section>
-      </div>
-    </UContainer>
+            <WeekAgenda
+              :days="nextWeek.days.filter(d => d.courses.length)"
+              class="mt-6"
+            />
+          </section>
+        </div>
+      </UContainer>
+    </section>
 
     <section class="border-t border-default">
       <UContainer class="py-12 lg:py-16">
@@ -278,10 +280,11 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
               size="lg"
               class="flex-1"
             />
+            <!-- Keramiek en niet vermiljoen: wit op blauw haalt 11,94, op rood 3,57. -->
             <UButton
               type="submit"
               label="Zoeken"
-              color="primary"
+              color="secondary"
               size="lg"
             />
           </form>
@@ -313,24 +316,3 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
     </section>
   </div>
 </template>
-
-<style scoped>
-/* De vraag is het grootste op de pagina: dat is waar iemand voor komt. */
-.affiche-vraag {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.035em;
-  text-wrap: balance;
-}
-
-.affiche-gerecht {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-  text-wrap: balance;
-}
-</style>

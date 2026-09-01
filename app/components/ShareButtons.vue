@@ -61,7 +61,7 @@ async function shareNatively() {
 
 <template>
   <div class="flex flex-wrap items-center gap-2">
-    <span class="text-sm text-muted">Delen</span>
+    <span class="text-sm">Delen</span>
 
     <UButton
       v-if="canShareNatively"

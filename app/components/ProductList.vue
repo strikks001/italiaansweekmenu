@@ -40,12 +40,12 @@ const cartUrl = computed(() =>
   <section
     v-if="products?.length"
     aria-labelledby="producten"
-    class="print-hide mx-auto mt-12 max-w-4xl"
+    class="print-hide mx-auto mt-12 max-w-4xl rounded-2xl bg-keramiek-500 p-6 text-white sm:p-8"
   >
     <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
       <h2
         id="producten"
-        class="text-xl"
+        class="text-2xl sm:text-3xl"
       >
         Bestel de ingrediënten
       </h2>
@@ -56,7 +56,7 @@ const cartUrl = computed(() =>
         target="_blank"
         rel="noopener"
         :title="cartUrl ? 'Openen in de winkelmand van Spesa da Antonio' : undefined"
-        class="flex items-center gap-1.5 text-sm font-medium text-secondary transition hover:underline hover:underline-offset-4"
+        class="flex items-center gap-2 rounded-full bg-boter-300 px-4 py-2 text-sm font-semibold text-boter-950 transition hover:bg-boter-200"
       >
         <UIcon
           :name="cartUrl ? 'i-lucide-shopping-cart' : 'i-lucide-shopping-basket'"
@@ -101,11 +101,11 @@ const cartUrl = computed(() =>
         :to="item.url"
         target="_blank"
         rel="noopener"
-        class="group flex h-full items-center gap-4 rounded-2xl border border-default bg-default p-3 transition hover:border-secondary hover:shadow-md"
+        class="tilt tilt-rij group flex h-full items-center gap-4 rounded-2xl border-b-4 border-b-vermiljoen-500 bg-default p-3 text-default"
       >
         <!-- Tinted square: the shop shoots on white, so a plain photo would
              float without an edge. -->
-        <span class="flex size-20 shrink-0 items-center justify-center rounded-xl bg-elevated p-2">
+        <span class="flex size-20 shrink-0 items-center justify-center rounded-xl bg-perzik-100 p-2">
           <img
             v-if="item.afbeelding"
             :src="shopImage(item.afbeelding, 160)"
@@ -124,7 +124,7 @@ const cartUrl = computed(() =>
         </span>
 
         <span class="flex min-w-0 flex-1 flex-col gap-0.5">
-          <span class="text-sm font-medium leading-snug group-hover:text-secondary">
+          <span class="text-sm font-semibold leading-snug group-hover:text-primary">
             {{ item.naam }}
           </span>
           <span
@@ -139,7 +139,7 @@ const cartUrl = computed(() =>
 
         <UIcon
           name="i-lucide-arrow-up-right"
-          class="size-4 shrink-0 text-muted transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-secondary"
+          class="size-4 shrink-0 text-muted transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
         />
       </NuxtLink>
     </UCarousel>

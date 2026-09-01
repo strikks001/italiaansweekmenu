@@ -17,7 +17,7 @@ defineProps<{
       :alt="alt"
       width="240"
       height="180"
-      sizes="80px sm:112px"
+      sizes="96px"
       format="webp"
       :loading="priority ? 'eager' : 'lazy'"
       class="size-16 shrink-0 rounded-lg object-cover sm:size-24"

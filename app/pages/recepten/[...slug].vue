@@ -31,6 +31,13 @@ const { data: related } = await useAsyncData(`related:${route.path}`, () =>
     .all()
 )
 
+// Drie kaarten passen vanaf 1024px; daaronder blijft het schuiven.
+const { fits: relatedFits, breakpoints: relatedBreakpoints } = useCarouselFit(
+  () => related.value?.length ?? 0,
+  3,
+  1024
+)
+
 const totalMinutes = recipe.voorbereidingstijd + recipe.bereidingstijd
 const absoluteImage = new URL(recipe.afbeelding, site.url).toString()
 const pageUrl = new URL(route.path, site.url).toString()
@@ -116,48 +123,38 @@ useSchemaOrg([
 
 <template>
   <div>
-    <UContainer class="pt-6">
-      <UBreadcrumb
-        :items="[{ label: 'Home', to: '/' }, { label: 'Recepten', to: '/recepten' }, { label: recipe.title }]"
-        class="print-hide mx-auto max-w-4xl"
+    <PageBanner
+      breed
+      :breadcrumb="[{ label: 'Home', to: '/' }, { label: 'Recepten', to: '/recepten' }, { label: recipe.title }]"
+    >
+      <div class="print-hide flex flex-wrap items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest">
+        <span class="rounded-full bg-white px-3 py-1 capitalize">{{ recipe.gang }}</span>
+        <span
+          v-for="d in diets"
+          :key="d"
+          class="rounded-full bg-white px-3 py-1 capitalize"
+        >{{ d }}</span>
+      </div>
+
+      <h1 class="mt-5 text-4xl text-white sm:text-5xl lg:text-6xl">
+        {{ recipe.title }}
+      </h1>
+      <p class="print-hide mx-auto mt-4 max-w-2xl text-lg">
+        {{ recipe.description }}
+      </p>
+
+      <PageActions
+        :title="recipe.title"
+        :url="pageUrl"
+        :image="absoluteImage"
+        class="mt-6 justify-center"
       />
-    </UContainer>
 
-    <!-- Zelfde banier als op de homepage: gekleurd vlak met schulprand. Dat
-         gebaar keert terug, zodat de pagina's als één site lezen. -->
-    <section class="affiche-band schulp relative mt-6 bg-vermiljoen-500 pb-16 text-white">
-      <UContainer class="pt-10 lg:pt-14">
-        <header class="mx-auto max-w-4xl text-center">
-          <div class="print-hide flex flex-wrap items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest">
-            <span class="rounded-full bg-white/20 px-3 py-1 capitalize">{{ recipe.gang }}</span>
-            <span
-              v-for="d in diets"
-              :key="d"
-              class="rounded-full bg-white/20 px-3 py-1 capitalize"
-            >{{ d }}</span>
-          </div>
-
-          <h1 class="mt-5 text-4xl sm:text-5xl lg:text-6xl">
-            {{ recipe.title }}
-          </h1>
-          <p class="print-hide mx-auto mt-4 max-w-2xl text-lg opacity-95">
-            {{ recipe.description }}
-          </p>
-
-          <PageActions
-            :title="recipe.title"
-            :url="pageUrl"
-            :image="absoluteImage"
-            class="mt-6 justify-center"
-          />
-
-          <!-- Paper needs the address; a printed sheet has no back button. -->
-          <p class="hidden text-sm print:block">
-            {{ pageUrl }}
-          </p>
-        </header>
-      </UContainer>
-    </section>
+      <!-- Paper needs the address; a printed sheet has no back button. -->
+      <p class="hidden text-sm print:block">
+        {{ pageUrl }}
+      </p>
+    </PageBanner>
 
     <UContainer class="py-8 lg:py-12">
       <NuxtImg
@@ -273,10 +270,21 @@ useSchemaOrg([
         <h2 class="text-2xl">
           Meer <span class="capitalize">{{ recipe.gang }}</span>
         </h2>
-        <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <UCarousel
+          v-slot="{ item }"
+          :items="related"
+          :arrows="related.length > 1"
+          :breakpoints="relatedBreakpoints"
+          :ui="{
+            viewport: '-m-4 p-4',
+            container: 'items-stretch',
+            item: 'basis-[86%] sm:basis-1/2 lg:basis-1/3',
+            prev: relatedFits ? 'lg:hidden' : '',
+            next: relatedFits ? 'lg:hidden' : ''
+          }"
+          class="mt-6"
+        >
           <MediaCard
-            v-for="item in related"
-            :key="item.path"
             :to="item.path"
             :image="item.afbeelding"
             :alt="item.afbeeldingAlt"
@@ -284,17 +292,11 @@ useSchemaOrg([
             :description="item.description"
           >
             <template #meta>
-              <UBadge
-                :label="item.gang"
-                color="primary"
-                variant="subtle"
-                size="sm"
-                class="capitalize"
-              />
+              <GangBadge :gang="item.gang" />
               <span>{{ readableDuration(item.voorbereidingstijd + item.bereidingstijd) }}</span>
             </template>
           </MediaCard>
-        </div>
+        </UCarousel>
       </section>
     </UContainer>
   </div>

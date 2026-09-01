@@ -34,6 +34,32 @@
   --color-keramiek-900: #141537;
   --color-keramiek-950: #0b0c1f;
 
+  /* Botergeel - de vlaktint voor labels, uit het voorstel. */
+  --color-boter-50: #fffdf3;
+  --color-boter-100: #fff8dc;
+  --color-boter-200: #ffefb4;
+  --color-boter-300: #ffe9a8;
+  --color-boter-400: #f7d472;
+  --color-boter-500: #e8b93d;
+  --color-boter-600: #c2941f;
+  --color-boter-700: #946f18;
+  --color-boter-800: #6b5013;
+  --color-boter-900: #4a370d;
+  --color-boter-950: #2a1f07;
+
+  /* Perzik - de tweede vlaktint, voor rustige secties tussen de witte door. */
+  --color-perzik-50: #fff8f4;
+  --color-perzik-100: #ffeee5;
+  --color-perzik-200: #ffdcc9;
+  --color-perzik-300: #ffc4a6;
+  --color-perzik-400: #ff9f74;
+  --color-perzik-500: #f5754a;
+  --color-perzik-600: #d4552c;
+  --color-perzik-700: #a8401f;
+  --color-perzik-800: #7c3018;
+  --color-perzik-900: #552111;
+  --color-perzik-950: #2e1108;
+
   /* @nuxt/fonts pikt deze namen op en serveert ze lokaal; geen extern verzoek. */
   --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
@@ -47,6 +73,28 @@
    */
   .schulp {
     position: relative;
+  }
+
+
+
+  /* De vraag op de homepage: het grootste op de pagina, want daar komt men voor. */
+  .affiche-vraag {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  /* De titel binnen een paneel op de banier - een maat kleiner dan de vraag. */
+  .affiche-gerecht {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
   }
 
   .schulp::after {
@@ -79,5 +127,28 @@
     letter-spacing: -0.025em;
     line-height: 1.08;
     text-wrap: balance;
+  }
+}
+
+/*
+ * Andersom net zo: vermiljoen als tekstkleur op wit haalt 3,57. Als tekst
+ * pakken we een donkerder tint uit dezelfde familie (6,11). Als vlakkleur
+ * blijft 500 staan, dus de felheid gaat nergens verloren.
+ *
+ * In de utilities-laag, want Tailwinds eigen text-primary staat daar ook en
+ * zou een regel uit de components-laag overrulen.
+ */
+@layer utilities {
+  /*
+   * Wit op vermiljoen haalt 3,57 en zakt door de norm voor gewone tekst.
+   * Bijna-zwart haalt 4,61 en houdt het rood zo fel als bedoeld - dus niet het
+   * rood verdoffen, maar de tekst erop verdonkeren.
+   */
+  .bg-primary.text-inverted {
+    color: var(--color-vermiljoen-950);
+  }
+
+  .text-primary {
+    color: var(--color-vermiljoen-700);
   }
 }

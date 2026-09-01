@@ -23,13 +23,20 @@ defineOgImage('Default', {
 </script>
 
 <template>
-  <UContainer class="py-8 lg:py-12">
-    <article class="prose dark:prose-invert mx-auto max-w-3xl">
-      <h1>{{ page.title }}</h1>
-      <p class="lead">
+  <div>
+    <PageBanner>
+      <h1 class="text-4xl text-white sm:text-5xl">
+        {{ page.title }}
+      </h1>
+      <p class="mt-4 text-lg">
         {{ page.description }}
       </p>
-      <ContentRenderer :value="page" />
-    </article>
-  </UContainer>
+    </PageBanner>
+
+    <UContainer class="py-10 lg:py-14">
+      <article class="prose dark:prose-invert mx-auto max-w-4xl">
+        <ContentRenderer :value="page" />
+      </article>
+    </UContainer>
+  </div>
 </template>

@@ -130,7 +130,7 @@ function reset() {
     <section
       ref="panel"
       aria-labelledby="ingredienten"
-      class="print-flat sticky top-(--ui-header-height) z-20 -mx-4 border-y border-default px-4 transition-shadow duration-300 [overflow-anchor:none] sm:-mx-6 sm:px-6 lg:top-[calc(var(--ui-header-height)+1.5rem)] lg:mx-0 lg:rounded-xl lg:border lg:px-0 lg:shadow-none"
+      class="print-flat sticky top-(--ui-header-height) z-20 -mx-4 border-y border-default px-4 transition-shadow duration-300 [overflow-anchor:none] sm:-mx-6 sm:px-6 lg:top-[calc(var(--ui-header-height)+1.5rem)] lg:mx-0 lg:rounded-xl lg:border lg:border-b-4 lg:border-b-keramiek-500 lg:px-0 lg:shadow-none"
       :class="[
         stuck ? 'bg-default/95 shadow-sm backdrop-blur' : 'bg-default',
         fits ? '' : 'lg:static'

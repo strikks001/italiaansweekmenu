@@ -20,7 +20,7 @@ defineProps<{
         class="flex w-16 shrink-0 flex-col items-center justify-center px-2 py-4 sm:w-20"
         :class="day.courses.length
           ? 'bg-keramiek-500 text-white'
-          : 'bg-elevated text-muted'"
+          : 'bg-elevated text-toned'"
       >
         <span class="text-[0.65rem] font-semibold uppercase tracking-[0.14em] opacity-90">{{ day.short }}</span>
         <span class="font-display text-3xl font-extrabold leading-none tracking-tight tabular-nums">{{ day.dayNumber }}</span>
@@ -29,7 +29,7 @@ defineProps<{
 
       <p
         v-if="!day.courses.length"
-        class="flex flex-1 items-center p-4 text-sm text-dimmed"
+        class="flex flex-1 items-center p-4 text-sm text-muted"
       >
         Nog niets ingepland
       </p>
@@ -58,13 +58,7 @@ defineProps<{
           <div class="min-w-0 flex-1">
             <template v-if="course.recipe">
               <div class="flex flex-wrap items-center gap-2">
-                <UBadge
-                  :label="course.recipe.gang"
-                  color="neutral"
-                  variant="subtle"
-                  size="sm"
-                  class="capitalize"
-                />
+                <GangBadge :gang="course.recipe.gang" />
                 <span class="flex items-center gap-1 text-xs text-muted">
                   <UIcon
                     name="i-lucide-clock"
@@ -97,7 +91,7 @@ defineProps<{
               </p>
               <p
                 v-if="course.note"
-                class="mt-0.5 line-clamp-2 text-sm leading-snug text-dimmed"
+                class="mt-0.5 line-clamp-2 text-sm leading-snug text-muted"
               >
                 {{ course.note }}
               </p>

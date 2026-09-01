@@ -148,59 +148,53 @@ useSchemaOrg([
 
 <template>
   <div>
-    <UContainer class="pt-8 lg:pt-12">
-      <header class="mx-auto max-w-2xl text-center">
-        <h1 class="text-3xl sm:text-4xl">
-          {{ title }}
-        </h1>
-        <p class="mt-4 text-muted">
-          {{ description }}
-        </p>
-      </header>
+    <PageBanner breed>
+      <h1 class="text-4xl text-white sm:text-5xl">
+        {{ title }}
+      </h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg">
+        {{ description }}
+      </p>
 
-      <!-- This week, pulled out of the grid so it reads as the current menu. -->
-      <article
+      <!-- De lopende week krijgt dezelfde behandeling als de hero op de
+           homepage: één paneel op het vlak, scheef in ruststand. -->
+      <NuxtLink
         v-if="current"
-        class="group relative mx-auto mt-10 max-w-5xl overflow-hidden rounded-2xl border-2 border-primary bg-default shadow-lg transition hover:shadow-xl sm:flex sm:items-stretch"
+        :to="current.path"
+        class="tilt-rust group mt-10 grid overflow-hidden rounded-2xl border-b-4 border-b-keramiek-500 bg-default text-left text-default sm:grid-cols-[minmax(0,16rem)_1fr]"
       >
         <NuxtImg
           :src="current.afbeelding"
           :alt="current.afbeeldingAlt"
-          width="800"
-          height="600"
-          sizes="100vw sm:440px"
+          width="640"
+          height="640"
+          sizes="100vw sm:256px"
           format="webp"
           preload
-          class="aspect-[4/3] w-full object-cover sm:aspect-auto sm:w-2/5 sm:shrink-0"
+          class="aspect-[4/3] size-full object-cover sm:aspect-auto"
         />
 
         <div class="flex flex-col justify-center gap-3 p-6 sm:p-8">
-          <div class="flex flex-wrap items-center gap-2">
-            <UBadge
-              label="Deze week"
-              color="primary"
-              variant="solid"
-              size="sm"
-            />
-            <span class="text-xs font-medium uppercase tracking-widest text-muted">
+          <!-- "Deze week" als vlag, niet als bijzin: dit is de reden dat deze
+               kaart apart staat, dus dat moet je in één oogopslag zien. -->
+          <p class="flex flex-wrap items-center gap-x-3 gap-y-2">
+            <span class="rounded-full bg-vermiljoen-500 px-3 py-1 text-xs font-bold uppercase tracking-widest text-vermiljoen-950">
+              Deze week
+            </span>
+            <span class="text-xs font-semibold uppercase tracking-widest text-muted">
               Week {{ current.week }} · {{ weekPeriod(current.jaar, current.week) }}
             </span>
-          </div>
+          </p>
 
-          <h2 class="text-2xl leading-tight sm:text-3xl">
-            <NuxtLink
-              :to="current.path"
-              class="after:absolute after:inset-0 group-hover:text-primary"
-            >
-              {{ current.title }}
-            </NuxtLink>
+          <h2 class="affiche-gerecht">
+            {{ current.title }}
           </h2>
 
           <p class="text-muted">
             {{ current.description }}
           </p>
 
-          <span class="mt-1 flex items-center gap-1 text-sm font-medium text-primary">
+          <span class="mt-1 flex items-center gap-1.5 text-sm font-semibold text-secondary">
             Bekijk het weekmenu
             <UIcon
               name="i-lucide-arrow-right"
@@ -208,8 +202,8 @@ useSchemaOrg([
             />
           </span>
         </div>
-      </article>
-    </UContainer>
+      </NuxtLink>
+    </PageBanner>
 
     <OverviewToolbar
       v-model:sort="sort"
