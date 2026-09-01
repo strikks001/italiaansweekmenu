@@ -32,7 +32,7 @@ const { data: related } = await useAsyncData(`related:${route.path}`, () =>
 )
 
 // Three cards fit from 1024px; below that it keeps sliding.
-const { fits: relatedFits, breakpoints: relatedBreakpoints } = useCarouselFit(
+const { breakpoints: relatedBreakpoints, ui: relatedUi } = useCarouselFit(
   () => related.value?.length ?? 0,
   3,
   1024
@@ -151,6 +151,7 @@ useSchemaOrg([
         :title="recipe.title"
         :url="pageUrl"
         :image="absoluteImage"
+        tone="banner"
         class="mt-6 justify-center"
       />
 
@@ -279,13 +280,7 @@ useSchemaOrg([
           :items="related"
           :arrows="related.length > 1"
           :breakpoints="relatedBreakpoints"
-          :ui="{
-            viewport: '-m-4 p-4',
-            container: 'items-stretch',
-            item: 'basis-[86%] sm:basis-1/2 lg:basis-1/3',
-            prev: relatedFits ? 'lg:hidden' : '',
-            next: relatedFits ? 'lg:hidden' : ''
-          }"
+          :ui="relatedUi"
           class="mt-6"
         >
           <MediaCard

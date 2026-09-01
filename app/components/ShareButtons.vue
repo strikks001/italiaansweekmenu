@@ -1,11 +1,17 @@
 <script setup lang="ts">
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   title: string
   /** Absolute URL of the page being shared. */
   url: string
   /** Absolute image URL, used by Pinterest. */
   image?: string
-}>()
+  /** 'banner' sits on a colour field and needs solid white buttons. */
+  tone?: 'default' | 'banner'
+}>(), { image: undefined, tone: 'default' })
+
+const knopStijl = computed(() => props.tone === 'banner'
+  ? 'bg-white text-vermilion-950 hover:bg-butter-200'
+  : '')
 
 const encodedUrl = computed(() => encodeURIComponent(props.url))
 const encodedTitle = computed(() => encodeURIComponent(props.title))
@@ -67,10 +73,11 @@ async function shareNatively() {
       v-if="canShareNatively"
       icon="i-lucide-share-2"
       color="neutral"
-      variant="outline"
+      :variant="tone === 'banner' ? 'solid' : 'outline'"
       size="sm"
       aria-label="Deel dit recept"
       class="sm:hidden"
+      :class="knopStijl"
       @click="shareNatively"
     />
 
@@ -83,15 +90,17 @@ async function shareNatively() {
       :icon="link.icon"
       :aria-label="link.label"
       color="neutral"
-      variant="outline"
+      :variant="tone === 'banner' ? 'solid' : 'outline'"
       size="sm"
+      :class="knopStijl"
     />
 
     <UButton
       :icon="copied ? 'i-lucide-check' : 'i-lucide-link'"
-      :color="copied ? 'primary' : 'neutral'"
-      variant="outline"
+      color="neutral"
+      :variant="tone === 'banner' ? 'solid' : 'outline'"
       size="sm"
+      :class="copied ? 'bg-ceramic-500 text-white' : knopStijl"
       :aria-label="copied ? 'Link gekopieerd' : 'Kopieer link'"
       @click="copyLink"
     />

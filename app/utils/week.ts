@@ -7,10 +7,7 @@ export type Weekday = typeof WEEKDAYS[number]
 export const SEASONS = ['winter', 'lente', 'zomer', 'herfst'] as const
 export type Season = typeof SEASONS[number]
 
-/**
- * Date of a weekday in an ISO week. ISO 8601: January 4th always falls in
- * week 1. UTC throughout so daylight saving cannot shift a day.
- */
+/** ISO 8601: Jan 4 always falls in week 1. UTC, so DST cannot shift a day. */
 export function dateInWeek(year: number, week: number, weekday: string): Date | null {
   const index = WEEKDAYS.indexOf(weekday as Weekday)
   if (index < 0) return null
@@ -80,13 +77,7 @@ function mondayOf(dateISO: string): Date {
   return date
 }
 
-/**
- * May this week menu be shown today?
- *
- * The running week always, and past weeks stay in the archive. The week after
- * it opens up on Friday, when planning the next shop begins - not earlier, so
- * a menu written weeks ahead does not spoil itself.
- */
+/** Running week and archive always; the next week only from Friday. */
 export function menuVisibleOn(year: number, week: number, todayISO: string): boolean {
   const { start } = weekRange(year, week)
   if (!start) return false
@@ -98,16 +89,14 @@ export function menuVisibleOn(year: number, week: number, todayISO: string): boo
   monday.setUTCDate(monday.getUTCDate() + 7)
   const nextWeek = monday.toISOString().slice(0, 10)
 
-  // 0 = maandag, 4 = vrijdag.
+  // 0 = Monday, 4 = Friday.
   const weekday = (new Date(`${todayISO}T00:00:00Z`).getUTCDay() + 6) % 7
   return start === nextWeek && weekday >= 4
 }
 
 /**
- * Astronomical season of an ISO week, judged by its Thursday — the day that
- * decides which year (and here: which date) a week belongs to. Equinox and
- * solstice shift a day between years; these fixed boundaries are close enough
- * for seasonal cooking.
+ * Astronomical season, judged by the week's Thursday. Equinox and solstice
+ * shift a day between years; fixed boundaries are close enough here.
  */
 export function seasonOfWeek(year: number, week: number): Season {
   const thursday = dateInWeek(year, week, 'donderdag')

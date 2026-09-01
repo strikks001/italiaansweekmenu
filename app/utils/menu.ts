@@ -1,7 +1,7 @@
 import type { ReceptenCollectionItem, WeekmenusCollectionItem } from '@nuxt/content'
 import { WEEKDAYS, dateInWeek, shortMonth } from './week'
 
-/** Fields a recipe card or row renders, so overviews can use a lean .select(). */
+/** Fields a card or row renders, so overviews can .select() lean. */
 export type RecipeSummary = Pick<
   ReceptenCollectionItem,
   'path' | 'title' | 'description' | 'afbeelding' | 'afbeeldingAlt'
@@ -34,11 +34,7 @@ export interface MenuDay {
   courses: MenuCourse[]
 }
 
-/**
- * Turns week menu frontmatter into a full seven day week. Days without a dish
- * get an empty course list so the agenda always shows the whole week.
- * A day may hold several courses, e.g. an antipasto and a secondo.
- */
+/** Frontmatter to a full seven day week; empty days keep their slot. */
 export function groupByDay(
   menu: WeekmenusCollectionItem,
   recipes: ReceptenCollectionItem[] | null | undefined

@@ -12,11 +12,8 @@ export interface ShoppingItem {
 }
 
 /**
- * Seasoning is written a dozen ways across recipes - "snuf zout", "grof
- * zeezout", "zout en zwarte peper" - and each spelling would otherwise become
- * its own line. These collapse to one entry, without an amount: adding up
- * pinches gives a number nobody shops by. One line can name several, hence
- * every match counts.
+ * Seasoning is written a dozen ways, so each spelling would become its own
+ * line. Collapsed to one entry without an amount; one line can name several.
  */
 const SEASONING = [
   { naam: 'zout', patroon: /zout/ },
@@ -29,11 +26,8 @@ const normalise = (text: string) =>
   text.toLowerCase().trim().normalize('NFD').replace(/[̀-ͯ]/g, '')
 
 /**
- * One shopping list for a whole week.
- *
- * Merged per name *and* unit: 200 g and 2 stuks of the same thing cannot be
- * added up, so they stay separate lines rather than becoming a wrong number.
- * Amounts like "een snuf" have no number to sum and are listed as written.
+ * Merged per name *and* unit: 200 g and 2 stuks cannot be added up, so they
+ * stay separate lines rather than becoming a wrong number.
  */
 export function buildShoppingList(recipes: ReceptenCollectionItem[]): ShoppingItem[] {
   const items = new Map<string, ShoppingItem & { sum: number, loose: string[] }>()

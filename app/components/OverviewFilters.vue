@@ -51,7 +51,7 @@ const open = defineModel<boolean>('open', { required: true })
         />
         <UButton
           :label="`Toon ${count} ${count === 1 ? noun : plural}`"
-          color="primary"
+          color="secondary"
           block
           class="flex-1"
           @click="open = false"

@@ -56,7 +56,7 @@ const mainCourse = computed(() => featured.value?.courses[0])
 const otherCourses = computed(() => featured.value?.courses.slice(1) ?? [])
 
 // Cards are lg:basis-1/3, so three fit from 1024px.
-const { fits: fitsOnDesktop, breakpoints: carouselBreakpoints } = useCarouselFit(
+const { breakpoints: carouselBreakpoints, ui: carouselUi } = useCarouselFit(
   () => otherCourses.value.length,
   3,
   1024
@@ -178,13 +178,7 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
           :items="otherCourses"
           arrows
           :breakpoints="carouselBreakpoints"
-          :ui="{
-            viewport: '-m-4 p-4',
-            container: 'items-stretch',
-            item: 'basis-[86%] sm:basis-1/2 lg:basis-1/3',
-            prev: fitsOnDesktop ? 'lg:hidden' : '',
-            next: fitsOnDesktop ? 'lg:hidden' : ''
-          }"
+          :ui="carouselUi"
           class="mt-5"
         >
           <CourseCard

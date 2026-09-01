@@ -1,6 +1,5 @@
 <script setup lang="ts">
-// UApp levert de globale context voor toasts, tooltips en modals van Nuxt UI.
-// NuxtLayout kiest de layout, NuxtPage rendert de huidige route.
+// UApp provides Nuxt UI's global context for toasts, tooltips and modals.
 const site = useSiteConfig()
 
 // Site-wide, not just the homepage: recipes reference this as their author,

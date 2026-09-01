@@ -18,22 +18,17 @@ function changeServings(step: number) {
   chosen.value = Math.min(MAX, Math.max(MIN, chosen.value + step))
 }
 
-/*
- * Measured against a zero-height marker, never the panel itself: a pinned
- * sticky element sits at exactly the header height, so its own top could only
- * ever collapse and never expand again.
- */
+// Measured against a zero-height marker: a pinned panel sits at exactly the
+// header height, so its own top could only ever collapse, never expand.
 const open = ref(true)
 const marker = ref<HTMLElement | null>(null)
 const panel = ref<HTMLElement | null>(null)
 const stuck = ref(false)
 
-// Only pin on desktop when the panel fits: a taller list would stick with its
-// bottom cut off and the last ingredients out of reach.
+// Only pin when the panel fits; a taller list would stick with its bottom cut off.
 const fits = ref(true)
 
-// A tap beats the scroll rule; scrolling back to the panel's own place hands
-// control back.
+// A tap beats the scroll rule until you scroll back to the panel's own place.
 const tapped = ref(false)
 
 function toggleOpen() {
@@ -46,15 +41,12 @@ onMounted(() => {
   // "4rem", and parseInt would read it as 4.
   const headerHeight = document.querySelector('header')?.getBoundingClientRect().height ?? 64
 
-  // Fold shortly after the panel pins: any later and a full-height list keeps
-  // travelling over most of the screen. The 80px between the two lines is the
-  // hysteresis that stops flickering.
+  // 80px of hysteresis between the two lines stops flickering.
   const foldBelow = headerHeight - 60
   const unfoldAbove = headerHeight + 20
 
-  // Folding changes the page height, and the browser nudges the scroll to
-  // compensate - which flips the state straight back. overflow-anchor:none
-  // stops the nudge, this cooldown catches whatever jolt remains.
+  // Folding changes page height; the browser's scroll anchoring would flip the
+  // state straight back. overflow-anchor:none plus this cooldown stop that.
   let settleUntil = 0
 
   function onScroll() {
@@ -79,8 +71,7 @@ onMounted(() => {
   function measure() {
     const el = panel.value
     if (!el) return
-    // Sticky offset on desktop is the header plus 1.5rem, and we leave a little
-    // room below so the panel does not touch the bottom edge.
+    // Header + 1.5rem sticky offset, plus room below the panel.
     fits.value = el.scrollHeight + headerHeight + 24 + 24 <= window.innerHeight
   }
 
@@ -95,8 +86,7 @@ onMounted(() => {
   })
 })
 
-// Ticking off while shopping or cooking. Session only: a stale checklist from
-// last week would confuse more than it helps.
+// Session only: a stale checklist from last week would confuse.
 const ticked = ref(new Set<string>())
 
 function toggle(key: string) {
@@ -122,11 +112,8 @@ function reset() {
       class="h-0"
     />
 
-    <!--
-      Sticks under the header at every size: while cooking you keep looking back
-      at the list. On mobile it runs full width with a rule above and below, like
-      the toolbar on the overview pages; from lg it becomes a card in the sidebar.
-    -->
+    <!-- Sticks under the header at every size: while cooking you keep looking
+         back at the list. -->
     <section
       ref="panel"
       aria-labelledby="ingredienten"
@@ -170,8 +157,6 @@ function reset() {
       >
         <div class="overflow-hidden">
           <div class="print-flat print-cols max-h-[60vh] overflow-y-auto pb-4 lg:max-h-none lg:overflow-visible lg:px-3 lg:pb-3">
-            <!-- Servings sits with the list, not above it: it adjusts the list,
-                 it is not the headline of this panel. -->
             <div class="print-hide flex items-center justify-between gap-2 border-b-2 border-butter-300 pb-2 text-sm">
               <span class="text-muted">Voor {{ chosen }} {{ chosen === 1 ? 'persoon' : 'personen' }}</span>
               <div class="print-hide flex items-center gap-1">
@@ -220,9 +205,7 @@ function reset() {
                   :key="ii"
                   class="py-1.5"
                 >
-                  <!-- The whole row is the checkbox: while cooking you tap, you
-                       do not aim. The shop link sits outside it, so tapping to
-                       buy does not tick the ingredient off. -->
+                  <!-- The whole row ticks off; the shop link sits outside it. -->
                   <button
                     type="button"
                     class="print-check flex w-full items-start gap-2 text-left text-sm transition"
@@ -250,8 +233,7 @@ function reset() {
                     </span>
                   </button>
 
-                  <!-- ms-20 lines the link up with the ingredient name: icon
-                       (1rem) plus gap (0.5rem) plus quantity column (3rem). -->
+                  <!-- ms-20 lines up with the ingredient name. -->
                   <NuxtLink
                     v-if="item.productUrl"
                     :to="item.productUrl"

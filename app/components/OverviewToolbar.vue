@@ -69,7 +69,7 @@ const view = defineModel<string>('view', { required: true })
           <UBadge
             v-if="filterCount"
             :label="String(filterCount)"
-            color="primary"
+            color="secondary"
             size="sm"
           />
         </UButton>

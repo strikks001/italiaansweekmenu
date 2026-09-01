@@ -1,5 +1,5 @@
 export default defineAppConfig({
-  // De paletten staan in app/assets/css/main.css; hier krijgen ze hun rol.
+  // Palettes live in app/assets/css/main.css; here they get their role.
   ui: {
     colors: {
       primary: 'vermilion',

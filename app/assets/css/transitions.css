@@ -30,11 +30,8 @@
 }
 
 /*
- * Leaving cards must drop out of flow, otherwise they hold their space and the
- * others only jump once the animation ends. But absolute positioning also drops
- * them out of their grid column, which made them balloon to the full container
- * width. So we hand the column width back, using the same breakpoints and gap
- * (gap-6 = 1.5rem) as the grid itself.
+ * Leaving cards drop out of flow, but absolute positioning also drops them out
+ * of their grid column and they balloon. So hand the column width back.
  */
 .flip-leave-active {
   transition:
@@ -72,11 +69,8 @@
 }
 
 /*
- * Cards tilt with a spring. Deliberately the standalone `rotate` property, not
- * `transform: rotate()`: the FLIP animation above already owns `transform`, so
- * this way they compose instead of overwriting each other.
- *
- * The shadow is hard and unblurred - the flat, printed look of the house style.
+ * Standalone `rotate`, not `transform: rotate()`: the FLIP animation above
+ * already owns `transform`, so this way they compose.
  */
 .tilt {
   rotate: 0deg;

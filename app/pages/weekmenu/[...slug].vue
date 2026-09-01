@@ -108,6 +108,7 @@ useSchemaOrg([
         :title="menu.title"
         :url="pageUrl"
         :image="absoluteImage"
+        tone="banner"
         class="mt-6 justify-center"
       />
 
@@ -160,7 +161,7 @@ useSchemaOrg([
         <NuxtLink
           v-if="previousWeek"
           :to="previousWeek.path"
-          class="group flex flex-col gap-1 rounded-2xl border border-default p-4 transition hover:border-primary/50 hover:shadow-sm"
+          class="group flex flex-col gap-1 rounded-2xl border border-default p-4 transition hover:border-ceramic-500 hover:shadow-sm"
         >
           <span class="flex items-center gap-1 text-xs uppercase tracking-widest text-muted">
             <UIcon
@@ -175,7 +176,7 @@ useSchemaOrg([
         <NuxtLink
           v-if="nextWeek"
           :to="nextWeek.path"
-          class="group flex flex-col gap-1 rounded-2xl border border-default p-4 text-right transition hover:border-primary/50 hover:shadow-sm sm:col-start-2"
+          class="group flex flex-col gap-1 rounded-2xl border border-default p-4 text-right transition hover:border-ceramic-500 hover:shadow-sm sm:col-start-2"
         >
           <span class="flex items-center justify-end gap-1 text-xs uppercase tracking-widest text-muted">
             Week {{ nextWeek.week }}

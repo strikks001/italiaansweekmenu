@@ -3,12 +3,8 @@ const jaar = new Date().getFullYear()
 </script>
 
 <template>
-  <!--
-    De voettekst sluit de pagina af zoals de banier hem opent, maar in de
-    tweede kleur en met de scalloprand naar boven happend. Die hapt in de
-    paginakleur, dus het vlak erboven moet licht blijven. Op ceramicblauw mag
-    wit wel: dat haalt 11,94 tegen 3,57 op vermilion.
-  -->
+  <!-- Closes the page as the banner opens it, in the second colour. The
+       scallop bites in the page colour, so the block above must stay light. -->
   <UFooter :ui="{ root: 'scallop-top print-hide bg-ceramic-500 pt-10 text-white' }">
     <template #top>
       <UContainer class="grid gap-8 py-10 sm:grid-cols-3">

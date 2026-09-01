@@ -1,11 +1,8 @@
 import { queryCollection } from '@nuxt/content/nitro'
 
-/**
- * RSS voor lezers die de weekmenu's willen volgen zonder de site te bezoeken.
- * Prerendered bij `nuxt generate`; de route staat in nuxt.config.
- */
+/** RSS feed. Prerendered by `nuxt generate`; the route is in nuxt.config. */
 export default defineEventHandler(async (event) => {
-  // In nitro heet hij getSiteConfig; useSiteConfig bestaat alleen in de app.
+  // In nitro it is getSiteConfig; useSiteConfig only exists in the app.
   const site = getSiteConfig(event)
 
   const recipes = await queryCollection(event, 'recepten')

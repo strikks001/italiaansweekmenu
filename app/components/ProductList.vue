@@ -5,26 +5,19 @@ const props = defineProps<{
   products: ReceptenCollectionItem['producten']
 }>()
 
-/**
- * Shopify's CDN resizes on request, so we ask it for the size we render.
- * A plain <img> rather than NuxtImg: on a statically generated site the build
- * cannot optimise a remote image, and the shop's CDN already does it better.
- */
+/** Plain <img>: a static build cannot optimise a remote image, the CDN can. */
 function shopImage(url: string, width: number): string {
   return `${url}${url.includes('?') ? '&' : '?'}width=${width}`
 }
 
-// Cards are sm:basis-1/2, so two fit from 640px. Mobile shows one at a time,
-// so a second product already needs dots there.
-const { fits, breakpoints } = useCarouselFit(() => props.products?.length ?? 0, 2, 640)
+// Two cards fit from 640px.
+const { breakpoints, ui: carouselUi } = useCarouselFit(
+  () => props.products?.length ?? 0, 2, 640, 'basis-[88%] sm:basis-1/2'
+)
 const multiple = computed(() => (props.products?.length ?? 0) > 1)
 
-/*
- * Shopify cart permalink: /cart/<variant>:<qty>,<variant>:<qty>. Without
- * storefront=true it drops you straight into checkout, which is too abrupt
- * halfway through reading a recipe — this lands in the cart, where you can
- * keep shopping.
- */
+// Cart permalink. Without storefront=true this drops you straight into
+// checkout, which is too abrupt halfway through a recipe.
 const inStock = computed(() => props.products?.filter(p => p.variantId) ?? [])
 
 const cartUrl = computed(() =>
@@ -35,8 +28,7 @@ const cartUrl = computed(() =>
 </script>
 
 <template>
-  <!-- Carries its own placement: the block sat inside an identical wrapper on
-       both pages, and the wrapper's margin showed even without products. -->
+  <!-- Carries its own placement; both pages had an identical wrapper. -->
   <section
     v-if="products?.length"
     aria-labelledby="producten"
@@ -49,9 +41,8 @@ const cartUrl = computed(() =>
       >
         Bestel de ingrediënten
       </h2>
-      <!-- Doubles as the shop link: without variant IDs it just points at the
-           shop, with them it fills the basket in one go. Een UButton, zodat hij
-           dezelfde vorm heeft als elke andere knop op de site. -->
+      <!-- Doubles as the shop link: without variant IDs it just points at
+           the shop, with them it fills the basket in one go. -->
       <UButton
         :to="cartUrl ?? 'https://spesadaantonio.nl'"
         target="_blank"
@@ -66,27 +57,14 @@ const cartUrl = computed(() =>
       />
     </div>
 
-    <!-- One code path for one product or ten: Embla simply stays inactive once
-         every card is visible. -->
+    <!-- One code path for one product or ten: Embla goes inactive once all
+         cards are visible. -->
     <UCarousel
       v-slot="{ item }"
       :items="products"
       :arrows="multiple"
       :breakpoints="breakpoints"
-      :ui="{
-        // The viewport clips with overflow-hidden, which would cut off the
-        // cards' hover shadow. Padding gives it room inside the clip; the
-        // negative margin keeps the layout where it was.
-        viewport: '-m-4 p-4',
-        // Stretch, so a product with a longer reason stays as tall as the rest.
-        container: 'items-stretch',
-        // Just under full width on mobile: the sliver of the next card is what
-        // tells you there is more than one.
-        item: 'basis-[88%] sm:basis-1/2',
-        // From sm two fit, so the arrows have nothing left to do.
-        prev: fits ? 'sm:hidden' : '',
-        next: fits ? 'sm:hidden' : ''
-      }"
+      :ui="carouselUi"
       class="mt-4"
     >
       <NuxtLink
@@ -95,8 +73,7 @@ const cartUrl = computed(() =>
         rel="noopener"
         class="tilt tilt-row group flex h-full items-center gap-4 rounded-xl border-b-4 border-b-vermilion-500 bg-default p-3 text-default"
       >
-        <!-- Tinted square: the shop shoots on white, so a plain photo would
-             float without an edge. -->
+        <!-- Tinted square: the shop shoots on white. -->
         <span class="flex size-20 shrink-0 items-center justify-center rounded-xl bg-peach-100 p-2">
           <img
             v-if="item.afbeelding"
