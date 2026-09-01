@@ -27,8 +27,10 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    // 404-pagina hoeft niet in de sitemap
-    '/404': { robots: false }
+    // Neither belongs in the sitemap: one is an error page, the other an
+    // internal reference for whoever maintains the design.
+    '/404': { robots: false },
+    '/styleguide': { robots: false }
   },
 
   compatibilityDate: '2026-06-30',
