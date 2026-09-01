@@ -21,7 +21,7 @@ const view = defineModel<string>('view', { required: true })
 <template>
   <!-- Sticks right under the site header: --ui-header-height is the height
        Nuxt UI uses for it. z-30 stays below the header's z-50. -->
-  <div class="sticky top-(--ui-header-height) z-30 border-y border-default bg-default/85 backdrop-blur">
+  <div class="sticky top-(--ui-header-height) z-30 border-y-2 border-default bg-default/90 backdrop-blur">
     <UContainer class="flex flex-col gap-3 py-3 sm:flex-row sm:items-center">
       <h2
         v-if="heading"

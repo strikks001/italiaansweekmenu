@@ -15,7 +15,7 @@ withDefaults(defineProps<{
     >
       <UBreadcrumb
         :items="breadcrumb"
-        class="print-hide mx-auto max-w-4xl"
+        class="kruimelpad print-hide mx-auto max-w-4xl"
       />
     </UContainer>
 

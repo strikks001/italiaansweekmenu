@@ -182,12 +182,12 @@ useSchemaOrg([
       <div class="mx-auto mt-10 max-w-4xl">
         <div
           v-if="wakeLock.supported.value"
-          class="print-hide mb-6 flex items-center justify-between gap-3 rounded-lg border border-default bg-elevated/50 px-4 py-2.5"
+          class="print-hide mb-6 flex items-center justify-between gap-3 rounded-lg border-s-2 border-keramiek-500 bg-keramiek-50 px-4 py-2.5 dark:bg-keramiek-950"
         >
           <span class="flex items-center gap-2 text-sm">
             <UIcon
               name="i-lucide-lightbulb"
-              class="size-4 text-secondary"
+              class="size-4 text-keramiek-600 dark:text-keramiek-300"
             />
             Scherm aan houden tijdens het koken
           </span>

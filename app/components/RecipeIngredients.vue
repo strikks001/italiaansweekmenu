@@ -172,7 +172,7 @@ function reset() {
           <div class="print-flat print-cols max-h-[60vh] overflow-y-auto pb-4 lg:max-h-none lg:overflow-visible lg:px-3 lg:pb-3">
             <!-- Servings sits with the list, not above it: it adjusts the list,
                  it is not the headline of this panel. -->
-            <div class="print-hide flex items-center justify-between gap-2 border-b border-default pb-2 text-sm">
+            <div class="print-hide flex items-center justify-between gap-2 border-b-2 border-boter-300 pb-2 text-sm">
               <span class="text-muted">Voor {{ chosen }} {{ chosen === 1 ? 'persoon' : 'personen' }}</span>
               <div class="print-hide flex items-center gap-1">
                 <UButton

@@ -97,6 +97,23 @@
     text-wrap: balance;
   }
 
+  /* Dezelfde schulp, maar hij hapt uit de bovenrand - voor de voettekst. */
+  .schulp-boven {
+    position: relative;
+  }
+
+  .schulp-boven::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: -1px;
+    height: 1.75rem;
+    background:
+      radial-gradient(circle at 50% 0, var(--ui-bg) 0.875rem, transparent 0.875rem)
+      0 0 / 2.25rem 1.75rem repeat-x;
+    pointer-events: none;
+  }
+
   .schulp::after {
     content: "";
     position: absolute;
@@ -131,12 +148,8 @@
 }
 
 /*
- * Andersom net zo: vermiljoen als tekstkleur op wit haalt 3,57. Als tekst
- * pakken we een donkerder tint uit dezelfde familie (6,11). Als vlakkleur
- * blijft 500 staan, dus de felheid gaat nergens verloren.
- *
- * In de utilities-laag, want Tailwinds eigen text-primary staat daar ook en
- * zou een regel uit de components-laag overrulen.
+ * In de utilities-laag, want vanuit de components-laag verliezen deze regels
+ * het van Tailwinds eigen klassen.
  */
 @layer utilities {
   /*
@@ -148,7 +161,15 @@
     color: var(--color-vermiljoen-950);
   }
 
-  .text-primary {
-    color: var(--color-vermiljoen-700);
+  /*
+   * De huidige pagina in het kruimelpad stond in vermiljoen, en dat haalt als
+   * kleine tekst op wit maar 3,57. Nuxt UI zet daar geen aria-current op, dus
+   * we mikken op het laatste item. De logotekst mag wel rood blijven: WCAG
+   * stelt geen contrasteis aan tekst die deel is van een merknaam.
+   */
+  .kruimelpad li:last-child *,
+  header a[aria-current="page"] {
+    color: var(--ui-text-highlighted);
   }
+
 }

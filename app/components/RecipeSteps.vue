@@ -100,11 +100,11 @@ function toggle(index: number) {
 
         <p
           v-if="step.tip"
-          class="print-tip ms-15 mt-1 flex gap-2 rounded-md bg-elevated px-3 py-2 text-sm text-muted"
+          class="print-tip ms-15 mt-1 flex gap-2 border-s-2 border-boter-400 py-1 ps-3 text-sm text-muted"
         >
           <UIcon
             name="i-lucide-lightbulb"
-            class="mt-0.5 size-4 shrink-0 text-secondary"
+            class="mt-0.5 size-4 shrink-0 text-boter-600"
           />
           <span>{{ step.tip }}</span>
         </p>
