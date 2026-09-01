@@ -80,7 +80,10 @@ useSeoMeta({ title: 'Styleguide', robots: 'noindex, nofollow' })
 
 <template>
   <div>
-    <PageBanner breed>
+    <PageBanner
+      breed
+      :breadcrumb="[{ label: 'Home', to: '/' }, { label: 'Styleguide' }]"
+    >
       <h1 class="text-4xl text-white sm:text-5xl">
         Styleguide
       </h1>

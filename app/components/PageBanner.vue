@@ -9,16 +9,6 @@ withDefaults(defineProps<{
 
 <template>
   <div>
-    <UContainer
-      v-if="breadcrumb"
-      class="pt-6"
-    >
-      <UBreadcrumb
-        :items="breadcrumb"
-        class="breadcrumb-trail print-hide mx-auto max-w-4xl"
-      />
-    </UContainer>
-
     <!--
       The house banner: vermilion field with a scalloped edge below it.
 
@@ -26,11 +16,18 @@ withDefaults(defineProps<{
       of the 4.5 small text needs. Headings opt into `text-white` - large text
       only needs 3, and there white reads better.
     -->
-    <section
-      class="poster-band scallop relative bg-vermilion-500 pb-16 text-vermilion-950"
-      :class="breadcrumb ? 'mt-6' : ''"
-    >
-      <UContainer class="pt-10 lg:pt-14">
+    <section class="poster-band scallop relative bg-vermilion-500 pb-16 text-vermilion-950">
+      <UContainer
+        v-if="breadcrumb"
+        class="pt-5"
+      >
+        <UBreadcrumb
+          :items="breadcrumb"
+          class="breadcrumb-banner print-hide mx-auto max-w-4xl"
+        />
+      </UContainer>
+
+      <UContainer :class="breadcrumb ? 'pt-6 lg:pt-8' : 'pt-10 lg:pt-14'">
         <div
           class="mx-auto text-center"
           :class="breed ? 'max-w-4xl' : 'max-w-2xl'"

@@ -156,4 +156,11 @@
     color: var(--ui-text-highlighted);
   }
 
+  /* Inside the banner every crumb sits on vermilion, where only near-black
+     clears 4.5. The separators inherit it too. */
+  .breadcrumb-banner,
+  .breadcrumb-banner * {
+    color: var(--color-vermilion-950);
+  }
+
 }

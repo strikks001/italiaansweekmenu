@@ -25,7 +25,8 @@ const GANGEN = ['antipasto', 'primo', 'secondo', 'dolce']
 const LINKS = [
   { label: 'Alle weekmenu\'s', to: '/weekmenu' },
   { label: 'Alle recepten', to: '/recepten' },
-  { label: 'Over dit project', to: '/over' }
+  { label: 'Over dit project', to: '/over' },
+  { label: 'Contact', to: '/contact' }
 ]
 
 const linkKlasse = 'underline decoration-white/40 underline-offset-4 transition hover:decoration-white'

@@ -20,11 +20,15 @@ defineOgImage('Default', {
   title: page.title,
   description: page.description
 })
+
+useSchemaOrg([
+  defineBreadcrumb({ itemListElement: [{ name: 'Home', item: '/' }, { name: page.title }] })
+])
 </script>
 
 <template>
   <div>
-    <PageBanner>
+    <PageBanner :breadcrumb="[{ label: 'Home', to: '/' }, { label: page.title }]">
       <h1 class="text-4xl text-white sm:text-5xl">
         {{ page.title }}
       </h1>

@@ -245,7 +245,7 @@ useSchemaOrg([
 
 <template>
   <div>
-    <PageBanner>
+    <PageBanner :breadcrumb="[{ label: 'Home', to: '/' }, { label: 'Recepten' }]">
       <h1 class="text-4xl text-white sm:text-5xl">
         {{ title }}
       </h1>
