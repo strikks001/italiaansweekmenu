@@ -97,7 +97,12 @@
     text-wrap: balance;
   }
 
-  /* Dezelfde schulp, maar hij hapt uit de bovenrand - voor de voettekst. */
+  /*
+   * Dezelfde schulp, maar hij hapt uit de bovenrand. De kleur van de happen is
+   * instelbaar via --schulp-kleur: de cirkels moeten de kleur hebben van het
+   * vlak erboven, anders zie je een vreemde witte kartelrand tussen twee
+   * gekleurde blokken.
+   */
   .schulp-boven {
     position: relative;
   }
@@ -109,7 +114,7 @@
     top: -1px;
     height: 1.75rem;
     background:
-      radial-gradient(circle at 50% 0, var(--ui-bg) 0.875rem, transparent 0.875rem)
+      radial-gradient(circle at 50% 0, var(--schulp-kleur, var(--ui-bg)) 0.875rem, transparent 0.875rem)
       0 0 / 2.25rem 1.75rem repeat-x;
     pointer-events: none;
   }
@@ -121,7 +126,7 @@
     bottom: -1px;
     height: 1.75rem;
     background:
-      radial-gradient(circle at 50% 100%, var(--ui-bg) 0.875rem, transparent 0.875rem)
+      radial-gradient(circle at 50% 100%, var(--schulp-kleur, var(--ui-bg)) 0.875rem, transparent 0.875rem)
       0 0 / 2.25rem 1.75rem repeat-x;
     pointer-events: none;
   }

@@ -302,12 +302,12 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
       </UContainer>
     </section>
 
-    <section class="bg-keramiek-500 text-white">
+    <section>
       <UContainer class="py-14 text-center lg:py-20">
         <h2 class="text-3xl sm:text-4xl">
           De juiste ingrediënten maken het verschil
         </h2>
-        <p class="mx-auto mt-4 max-w-xl">
+        <p class="mx-auto mt-4 max-w-xl text-muted">
           Echte Italiaanse pasta, olijfolie, kaas en salumi bestel je rechtstreeks
           bij Spesa da Antonio — geselecteerd bij kleine producenten in Italië.
         </p>
@@ -315,9 +315,9 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
           to="https://www.spesadaantonio.nl"
           target="_blank"
           rel="noopener"
-          color="neutral"
+          color="secondary"
           size="lg"
-          class="mt-7 bg-white text-keramiek-700 hover:bg-boter-200"
+          class="mt-7"
           trailing-icon="i-lucide-arrow-up-right"
         >
           Naar Spesa da Antonio
