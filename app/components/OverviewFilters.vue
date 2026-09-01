@@ -26,37 +26,33 @@ const open = defineModel<boolean>('open', { required: true })
     />
   </aside>
 
-  <!-- No room for a sidebar on mobile, so the same panel opens in a slideover. -->
-  <USlideover
+  <!-- No room for a sidebar on mobile, so the same panel opens in a sheet. -->
+  <SideSheet
     v-model:open="open"
     title="Filters"
-    side="left"
   >
-    <template #body>
-      <FilterPanel
-        v-model="selection"
-        :groups="groups"
+    <FilterPanel
+      v-model="selection"
+      :groups="groups"
+    />
+
+    <template #footer>
+      <UButton
+        v-if="hasFilters"
+        label="Wis filters"
+        color="neutral"
+        variant="outline"
+        block
+        class="flex-1"
+        @click="emit('clear')"
+      />
+      <UButton
+        :label="`Toon ${count} ${count === 1 ? noun : plural}`"
+        color="secondary"
+        block
+        class="flex-1"
+        @click="open = false"
       />
     </template>
-    <template #footer>
-      <div class="flex w-full gap-2">
-        <UButton
-          v-if="hasFilters"
-          label="Wis filters"
-          color="neutral"
-          variant="outline"
-          block
-          class="flex-1"
-          @click="emit('clear')"
-        />
-        <UButton
-          :label="`Toon ${count} ${count === 1 ? noun : plural}`"
-          color="secondary"
-          block
-          class="flex-1"
-          @click="open = false"
-        />
-      </div>
-    </template>
-  </USlideover>
+  </SideSheet>
 </template>

@@ -7,10 +7,22 @@ const items: NavigationMenuItem[] = [
   { label: 'Over', to: '/over', icon: 'i-lucide-info' },
   { label: 'Contact', to: '/contact', icon: 'i-lucide-mail' }
 ]
+
+// UHeader's own menu is a fullscreen modal with no footer; the filters use a
+// SideSheet. One pattern for both, so its toggle is ours to drive.
+const open = ref(false)
+const route = useRoute()
+
+watch(() => route.fullPath, () => {
+  open.value = false
+})
 </script>
 
 <template>
-  <UHeader :ui="{ root: 'print-hide border-b-2 border-default bg-default/90 backdrop-blur' }">
+  <UHeader
+    :toggle="false"
+    :ui="{ root: 'print-hide border-b-2 border-default bg-default/90 backdrop-blur' }"
+  >
     <template #title>
       <NuxtLink
         to="/"
@@ -34,13 +46,41 @@ const items: NavigationMenuItem[] = [
       >
         Naar de winkel
       </UButton>
-    </template>
 
-    <template #body>
-      <UNavigationMenu
-        :items="items"
-        orientation="vertical"
+      <UButton
+        icon="i-lucide-menu"
+        color="neutral"
+        variant="ghost"
+        size="lg"
+        aria-label="Menu openen"
+        :aria-expanded="open"
+        class="lg:hidden"
+        @click="open = true"
       />
     </template>
   </UHeader>
+
+  <SideSheet
+    v-model:open="open"
+    title="Menu"
+  >
+    <UNavigationMenu
+      :items="items"
+      orientation="vertical"
+    />
+
+    <!-- The shop button is hidden on small screens; here it has the room. -->
+    <template #footer>
+      <UButton
+        to="https://www.spesadaantonio.nl"
+        target="_blank"
+        rel="noopener"
+        color="secondary"
+        icon="i-lucide-shopping-basket"
+        label="Naar de winkel"
+        block
+        class="flex-1"
+      />
+    </template>
+  </SideSheet>
 </template>
