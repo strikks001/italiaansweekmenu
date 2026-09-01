@@ -205,10 +205,15 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
           <section v-if="restOfWeek.length">
             <div class="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <h2 class="text-2xl sm:text-3xl">
+                <p>
+                  <span class="inline-block rounded-full bg-boter-300 px-2.5 py-0.5 text-xs font-bold uppercase tracking-widest text-boter-950">
+                    Deze week
+                  </span>
+                </p>
+                <h2 class="mt-2 text-3xl sm:text-4xl">
                   Wat eten we verder deze week?
                 </h2>
-                <p class="mt-1 text-muted">
+                <p class="mt-2 text-muted">
                   Kies een dag om het recept te openen.
                 </p>
               </div>
@@ -232,10 +237,15 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
           <section v-if="nextWeek">
             <div class="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <h2 class="text-2xl sm:text-3xl">
+                <p>
+                  <span class="inline-block rounded-full bg-keramiek-100 px-2.5 py-0.5 text-xs font-bold uppercase tracking-widest text-keramiek-900">
+                    Volgende week
+                  </span>
+                </p>
+                <h2 class="mt-2 text-3xl sm:text-4xl">
                   Volgende week op het menu
                 </h2>
-                <p class="mt-1 text-muted">
+                <p class="mt-2 text-muted">
                   {{ nextWeek.menu.thema }} — alvast om vooruit te plannen.
                 </p>
               </div>
@@ -258,13 +268,13 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
       </UContainer>
     </section>
 
-    <section class="border-t border-default">
-      <UContainer class="py-12 lg:py-16">
+    <section class="bg-boter-100 dark:bg-boter-950">
+      <UContainer class="py-14 lg:py-20">
         <div class="mx-auto max-w-2xl text-center">
-          <h2 class="text-2xl sm:text-3xl">
+          <h2 class="text-3xl sm:text-4xl">
             Zoek je iets anders?
           </h2>
-          <p class="mt-2 text-muted">
+          <p class="mt-3 text-boter-900 dark:text-boter-200">
             Doorzoek het hele archief op gerecht, gang of ingrediënt.
           </p>
 
@@ -292,12 +302,12 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
       </UContainer>
     </section>
 
-    <section class="border-t border-default bg-elevated/40">
-      <UContainer class="py-12 text-center lg:py-16">
-        <h2 class="text-2xl sm:text-3xl">
+    <section class="bg-keramiek-500 text-white">
+      <UContainer class="py-14 text-center lg:py-20">
+        <h2 class="text-3xl sm:text-4xl">
           De juiste ingrediënten maken het verschil
         </h2>
-        <p class="mx-auto mt-3 max-w-xl text-muted">
+        <p class="mx-auto mt-4 max-w-xl">
           Echte Italiaanse pasta, olijfolie, kaas en salumi bestel je rechtstreeks
           bij Spesa da Antonio — geselecteerd bij kleine producenten in Italië.
         </p>
@@ -305,9 +315,9 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
           to="https://www.spesadaantonio.nl"
           target="_blank"
           rel="noopener"
-          color="secondary"
+          color="neutral"
           size="lg"
-          class="mt-6"
+          class="mt-7 bg-white text-keramiek-700 hover:bg-boter-200"
           trailing-icon="i-lucide-arrow-up-right"
         >
           Naar Spesa da Antonio

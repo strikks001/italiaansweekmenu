@@ -47,8 +47,8 @@ function scrollToTop() {
       name="flip"
       tag="div"
       :class="view === 'cards'
-        ? 'flip-list flip-list-grid mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3'
-        : 'flip-list mt-6 flex flex-col gap-2'"
+        ? 'flip-list flip-list-grid mt-8 grid gap-8 sm:grid-cols-2 xl:grid-cols-3'
+        : 'flip-list mt-8 flex flex-col gap-4'"
     >
       <component
         :is="view === 'cards' ? MediaCard : MediaRow"
