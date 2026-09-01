@@ -114,3 +114,32 @@
     rotate: 0deg;
   }
 }
+
+/*
+ * De receptkaart in de hero staat al scheef met schaduw: daar is dat de
+ * ruststand en niet het effect. Bij hover komt hij recht en trekt de schaduw
+ * strak, alsof je hem oppakt om te lezen.
+ */
+.tilt-rust {
+  rotate: -1.25deg;
+  box-shadow: 12px 12px 0 0 var(--ui-secondary);
+  transition:
+    rotate 0.35s cubic-bezier(0.34, 1.57, 0.64, 1),
+    box-shadow 0.35s cubic-bezier(0.34, 1.57, 0.64, 1);
+}
+
+@media (hover: hover) {
+  .tilt-rust:hover {
+    rotate: 0deg;
+    box-shadow: 4px 4px 0 0 var(--ui-secondary);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tilt-rust {
+    transition: box-shadow 0.2s ease;
+  }
+  .tilt-rust:hover {
+    rotate: -1.25deg;
+  }
+}

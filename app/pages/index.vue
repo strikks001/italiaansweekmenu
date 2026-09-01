@@ -112,7 +112,7 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
             <NuxtLink
               v-if="hoofdgerecht.recipe"
               :to="hoofdgerecht.path"
-              class="tilt tilt-blauw group mt-8 grid overflow-hidden rounded-2xl border-b-4 border-b-keramiek-500 bg-default text-default sm:grid-cols-[minmax(0,16rem)_1fr]"
+              class="tilt-rust group mt-8 grid overflow-hidden rounded-2xl border-b-4 border-b-keramiek-500 bg-default text-default sm:grid-cols-[minmax(0,16rem)_1fr]"
             >
               <NuxtImg
                 :src="hoofdgerecht.recipe.afbeelding"
