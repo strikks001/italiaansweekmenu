@@ -39,6 +39,29 @@
   --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
 }
 
+@layer components {
+  /*
+   * Schulprand: halve cirkels in de paginakleur happen uit de onderrand van een
+   * gekleurd vlak. Het luifelmotief uit de referentie, en het terugkerende
+   * gebaar van de huisstijl - vandaar een klasse en geen los stukje CSS.
+   */
+  .schulp {
+    position: relative;
+  }
+
+  .schulp::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: -1px;
+    height: 1.75rem;
+    background:
+      radial-gradient(circle at 50% 100%, var(--ui-bg) 0.875rem, transparent 0.875rem)
+      0 0 / 2.25rem 1.75rem repeat-x;
+    pointer-events: none;
+  }
+}
+
 @layer base {
   /*
    * Tailwind 4 haalde de cursor:pointer van buttons af, waardoor elke knop een

@@ -90,20 +90,15 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
          De schulprand onderaan is het luifelmotief uit de referentie. -->
     <!-- bg-vermiljoen-500 en niet bg-primary: Nuxt UI pakt in donkere modus tint
          400, en dit vlak hoort in beide modi dezelfde merkkleur te houden. -->
-    <section class="affiche relative overflow-hidden bg-vermiljoen-500 text-white">
-      <div
-        class="dambord"
-        aria-hidden="true"
-      />
-
+    <section class="schulp relative overflow-hidden bg-vermiljoen-500 pb-14 text-white">
       <UContainer class="relative py-12 lg:py-20">
         <div class="mx-auto max-w-4xl">
-          <h1 class="text-sm font-semibold uppercase tracking-[0.18em] opacity-90">
+          <h1 class="affiche-vraag">
             Wat eten we vandaag?
           </h1>
 
           <template v-if="hoofdgerecht">
-            <p class="mt-3 text-sm font-medium uppercase tracking-widest opacity-85">
+            <p class="mt-4 text-sm font-medium uppercase tracking-widest opacity-85">
               <template v-if="!isToday">
                 Nog even wachten — het eerstvolgende is
               </template>
@@ -111,57 +106,59 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
               {{ featured!.dayNumber }} {{ featured!.month }}
             </p>
 
-            <div class="mt-6 grid items-center gap-8 sm:grid-cols-[1fr_auto] sm:gap-10">
-              <div>
-                <p
-                  v-if="hoofdgerecht.recipe"
-                  class="affiche-titel"
-                >
-                  <NuxtLink
-                    :to="hoofdgerecht.path"
-                    class="after:absolute after:inset-0"
-                  >
-                    {{ hoofdgerecht.recipe.title }}
-                  </NuxtLink>
-                </p>
-                <p
-                  v-else
-                  class="affiche-titel opacity-60"
-                >
-                  Nog niet ingevuld
-                </p>
+            <!-- Het recept als één paneel op het vlak: foto en tekst horen bij
+                 elkaar, dus zitten ze in hetzelfde kader. Losse elementen op een
+                 gekleurd vlak lezen als losse elementen. -->
+            <NuxtLink
+              v-if="hoofdgerecht.recipe"
+              :to="hoofdgerecht.path"
+              class="tilt tilt-blauw group mt-8 grid overflow-hidden rounded-2xl border-b-4 border-b-keramiek-500 bg-default text-default sm:grid-cols-[minmax(0,16rem)_1fr]"
+            >
+              <NuxtImg
+                :src="hoofdgerecht.recipe.afbeelding"
+                :alt="hoofdgerecht.recipe.afbeeldingAlt"
+                width="640"
+                height="640"
+                sizes="100vw sm:256px"
+                format="webp"
+                preload
+                class="aspect-[4/3] size-full object-cover sm:aspect-auto"
+              />
 
-                <p
-                  v-if="hoofdgerecht.recipe"
-                  class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-medium uppercase tracking-widest opacity-90"
-                >
+              <div class="flex flex-col justify-center gap-3 p-6 sm:p-8">
+                <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-semibold uppercase tracking-widest text-muted">
                   <span>{{ hoofdgerecht.recipe.gang }}</span>
                   <span aria-hidden="true">·</span>
                   <span>{{ readableDuration(hoofdgerecht.minutes) }}</span>
                 </p>
 
+                <h2 class="affiche-gerecht">
+                  {{ hoofdgerecht.recipe.title }}
+                </h2>
+
                 <p
                   v-if="hoofdgerecht.note"
-                  class="mt-4 max-w-md text-lg leading-snug opacity-95"
+                  class="text-muted"
                 >
                   {{ hoofdgerecht.note }}
                 </p>
-              </div>
 
-              <!-- Boog: de klassieke poortvorm, en meteen de rustigste manier om
-                   een foto in een gekleurd vlak te zetten. -->
-              <NuxtImg
-                v-if="hoofdgerecht.recipe"
-                :src="hoofdgerecht.recipe.afbeelding"
-                :alt="hoofdgerecht.recipe.afbeeldingAlt"
-                width="600"
-                height="800"
-                sizes="240px sm:280px"
-                format="webp"
-                preload
-                class="boog mx-auto w-56 sm:w-64 lg:w-72"
-              />
-            </div>
+                <span class="mt-1 flex items-center gap-1.5 text-sm font-semibold text-secondary">
+                  Naar het recept
+                  <UIcon
+                    name="i-lucide-arrow-right"
+                    class="size-4 transition group-hover:translate-x-0.5"
+                  />
+                </span>
+              </div>
+            </NuxtLink>
+
+            <p
+              v-else
+              class="mt-8 text-lg opacity-90"
+            >
+              Voor deze dag staat nog geen recept klaar.
+            </p>
           </template>
 
           <p
@@ -318,57 +315,22 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
 </template>
 
 <style scoped>
-/*
- * De affiche leunt op drie vormen uit de referentie: een schulprand als luifel,
- * een dambordhoek en een boog om de foto. Alle drie met CSS-verlopen, zodat er
- * geen extra afbeeldingen bij komen.
- */
-
-/* Halve cirkels in de paginakleur happen uit de onderrand van het vlak. */
-.affiche::after {
-  content: "";
-  position: absolute;
-  inset-inline: 0;
-  bottom: -1px;
-  height: 1.75rem;
-  background:
-    radial-gradient(circle at 50% 100%, var(--ui-bg) 0.875rem, transparent 0.875rem)
-    0 0 / 2.25rem 1.75rem repeat-x;
-}
-
-.dambord {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 4.5rem;
-  height: 4.5rem;
-  background: repeating-conic-gradient(#12100f 0% 25%, #faf7f5 0% 50%) 0 0 / 1.125rem 1.125rem;
-  /* Vervaagt naar de hoek, zodat het een accent blijft en geen tweede blikvanger. */
-  mask-image: linear-gradient(215deg, #000 10%, transparent 70%);
-}
-
-@media (min-width: 640px) {
-  .dambord {
-    width: 9rem;
-    height: 9rem;
-    background-size: 1.625rem 1.625rem;
-  }
-}
-
-.affiche-titel {
-  margin-top: 0.5rem;
+/* De vraag is het grootste op de pagina: dat is waar iemand voor komt. */
+.affiche-vraag {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.75rem, 9vw, 5rem);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
   line-height: 0.95;
   letter-spacing: -0.035em;
   text-wrap: balance;
 }
 
-.boog {
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  border-radius: 999px 999px 0.75rem 0.75rem;
-  border: 3px solid #faf7f5;
+.affiche-gerecht {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
 }
 </style>

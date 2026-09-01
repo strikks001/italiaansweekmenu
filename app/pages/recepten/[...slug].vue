@@ -115,185 +115,187 @@ useSchemaOrg([
 </script>
 
 <template>
-  <UContainer class="py-8 lg:py-12">
-    <UBreadcrumb
-      :items="[{ label: 'Home', to: '/' }, { label: 'Recepten', to: '/recepten' }, { label: recipe.title }]"
-      class="print-hide mx-auto mb-6 max-w-4xl"
-    />
-
-    <header class="mx-auto max-w-4xl text-center">
-      <div class="print-hide flex flex-wrap items-center justify-center gap-2">
-        <UBadge
-          :label="recipe.gang"
-          color="primary"
-          variant="subtle"
-          class="capitalize"
-        />
-        <UBadge
-          v-for="d in diets"
-          :key="d"
-          :label="d"
-          color="secondary"
-          variant="subtle"
-          class="capitalize"
-        />
-      </div>
-
-      <h1 class="mt-4 text-3xl sm:text-4xl lg:text-5xl">
-        {{ recipe.title }}
-      </h1>
-      <p class="print-hide mt-4 text-lg text-muted">
-        {{ recipe.description }}
-      </p>
-
-      <PageActions
-        :title="recipe.title"
-        :url="pageUrl"
-        :image="absoluteImage"
-        class="mt-6 justify-center"
+  <div>
+    <UContainer class="pt-6">
+      <UBreadcrumb
+        :items="[{ label: 'Home', to: '/' }, { label: 'Recepten', to: '/recepten' }, { label: recipe.title }]"
+        class="print-hide mx-auto max-w-4xl"
       />
+    </UContainer>
 
-      <!-- Paper needs the address; a printed sheet has no back button. -->
-      <p class="hidden text-sm print:block">
-        {{ pageUrl }}
-      </p>
-    </header>
+    <!-- Zelfde banier als op de homepage: gekleurd vlak met schulprand. Dat
+         gebaar keert terug, zodat de pagina's als één site lezen. -->
+    <section class="affiche-band schulp relative mt-6 bg-vermiljoen-500 pb-16 text-white">
+      <UContainer class="pt-10 lg:pt-14">
+        <header class="mx-auto max-w-4xl text-center">
+          <div class="print-hide flex flex-wrap items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest">
+            <span class="rounded-full bg-white/20 px-3 py-1 capitalize">{{ recipe.gang }}</span>
+            <span
+              v-for="d in diets"
+              :key="d"
+              class="rounded-full bg-white/20 px-3 py-1 capitalize"
+            >{{ d }}</span>
+          </div>
 
-    <NuxtImg
-      :src="recipe.afbeelding"
-      :alt="recipe.afbeeldingAlt"
-      width="1200"
-      height="675"
-      sizes="100vw md:768px lg:1024px"
-      format="webp"
-      preload
-      class="print-hide mx-auto mt-8 aspect-video w-full max-w-4xl rounded-2xl object-cover"
-    />
+          <h1 class="mt-5 text-4xl sm:text-5xl lg:text-6xl">
+            {{ recipe.title }}
+          </h1>
+          <p class="print-hide mx-auto mt-4 max-w-2xl text-lg opacity-95">
+            {{ recipe.description }}
+          </p>
 
-    <div class="mx-auto mt-8 max-w-4xl">
-      <RecipeMeta
-        :prep-minutes="recipe.voorbereidingstijd"
-        :cook-minutes="recipe.bereidingstijd"
-        :servings="servings"
-        :difficulty="difficulty"
-      />
-    </div>
-
-    <!-- Recipe before story: someone standing in the kitchen should not have to
-         scroll past 500 words of background first. -->
-    <div class="mx-auto mt-10 max-w-4xl">
-      <div
-        v-if="wakeLock.supported.value"
-        class="print-hide mb-6 flex items-center justify-between gap-3 rounded-lg border border-default bg-elevated/50 px-4 py-2.5"
-      >
-        <span class="flex items-center gap-2 text-sm">
-          <UIcon
-            name="i-lucide-lightbulb"
-            class="size-4 text-secondary"
+          <PageActions
+            :title="recipe.title"
+            :url="pageUrl"
+            :image="absoluteImage"
+            class="mt-6 justify-center"
           />
-          Scherm aan houden tijdens het koken
-        </span>
-        <USwitch
-          :model-value="wakeLock.active.value"
-          aria-label="Scherm aan houden tijdens het koken"
-          @update:model-value="wakeLock.toggle()"
+
+          <!-- Paper needs the address; a printed sheet has no back button. -->
+          <p class="hidden text-sm print:block">
+            {{ pageUrl }}
+          </p>
+        </header>
+      </UContainer>
+    </section>
+
+    <UContainer class="py-8 lg:py-12">
+      <NuxtImg
+        :src="recipe.afbeelding"
+        :alt="recipe.afbeeldingAlt"
+        width="1200"
+        height="675"
+        sizes="100vw md:768px lg:1024px"
+        format="webp"
+        preload
+        class="print-hide mx-auto mt-8 aspect-video w-full max-w-4xl rounded-2xl object-cover"
+      />
+
+      <div class="mx-auto mt-8 max-w-4xl">
+        <RecipeMeta
+          :prep-minutes="recipe.voorbereidingstijd"
+          :cook-minutes="recipe.bereidingstijd"
+          :servings="servings"
+          :difficulty="difficulty"
         />
       </div>
 
-      <!--
+      <!-- Recipe before story: someone standing in the kitchen should not have to
+         scroll past 500 words of background first. -->
+      <div class="mx-auto mt-10 max-w-4xl">
+        <div
+          v-if="wakeLock.supported.value"
+          class="print-hide mb-6 flex items-center justify-between gap-3 rounded-lg border border-default bg-elevated/50 px-4 py-2.5"
+        >
+          <span class="flex items-center gap-2 text-sm">
+            <UIcon
+              name="i-lucide-lightbulb"
+              class="size-4 text-secondary"
+            />
+            Scherm aan houden tijdens het koken
+          </span>
+          <USwitch
+            :model-value="wakeLock.active.value"
+            aria-label="Scherm aan houden tijdens het koken"
+            @update:model-value="wakeLock.toggle()"
+          />
+        </div>
+
+        <!--
         Block flow on mobile, grid from lg. Both give the sticky ingredient
         panel a container taller than itself, which is what lets it travel:
         on mobile the steps are siblings in the same block, on desktop the grid
         items stretch to the row height. An items-start here would pin the
         panel to its own cell and sticky would do nothing.
       -->
-      <div class="print-stack lg:grid lg:grid-cols-[320px_1fr] lg:gap-12">
-        <!--
+        <div class="print-stack lg:grid lg:grid-cols-[320px_1fr] lg:gap-12">
+          <!--
           display:contents on mobile so the panel's containing block is the
           whole column and it can travel past the steps; a real block from lg,
           where it becomes the grid cell that stretches to the row height and
           gives the sticky panel inside it room to move.
         -->
-        <div class="contents lg:block">
-          <RecipeIngredients
-            :groups="recipe.ingredienten"
-            :servings="servings"
+          <div class="contents lg:block">
+            <RecipeIngredients
+              :groups="recipe.ingredienten"
+              :servings="servings"
+            />
+          </div>
+          <!-- Spacing goes on the steps, not on the ingredients: that component's
+             root is display:contents, which generates no box and drops margins. -->
+          <RecipeSteps
+            :steps="recipe.stappen"
+            class="mt-10 lg:mt-0"
           />
         </div>
-        <!-- Spacing goes on the steps, not on the ingredients: that component's
-             root is display:contents, which generates no box and drops margins. -->
-        <RecipeSteps
-          :steps="recipe.stappen"
-          class="mt-10 lg:mt-0"
+
+        <!-- Also here, after the recipe: by now you know whether it is worth
+           keeping or passing on. -->
+        <PageActions
+          :title="recipe.title"
+          :url="pageUrl"
+          :image="absoluteImage"
+          class="mt-10 border-t border-default pt-6"
         />
       </div>
 
-      <!-- Also here, after the recipe: by now you know whether it is worth
-           keeping or passing on. -->
-      <PageActions
-        :title="recipe.title"
-        :url="pageUrl"
-        :image="absoluteImage"
-        class="mt-10 border-t border-default pt-6"
-      />
-    </div>
-
-    <!-- Zichtbaar omdat het ook in de structured data staat: Google wil dat
+      <!-- Zichtbaar omdat het ook in de structured data staat: Google wil dat
          gemarkeerde inhoud op de pagina te vinden is. -->
-    <div
-      v-if="nutrition"
-      class="print-hide mx-auto mt-12 max-w-4xl"
-    >
-      <RecipeNutrition :nutrition="nutrition" />
-    </div>
-
-    <ProductList :products="products" />
-
-    <section
-      v-if="recipe.body"
-      class="print-hide mx-auto mt-12 max-w-4xl"
-      aria-labelledby="achtergrond"
-    >
-      <h2
-        id="achtergrond"
-        class="text-xl"
+      <div
+        v-if="nutrition"
+        class="print-hide mx-auto mt-12 max-w-4xl"
       >
-        Over dit recept
-      </h2>
-      <div class="prose dark:prose-invert mt-4">
-        <ContentRenderer :value="recipe" />
+        <RecipeNutrition :nutrition="nutrition" />
       </div>
-    </section>
 
-    <section
-      v-if="related?.length"
-      class="print-hide mx-auto mt-16 max-w-4xl"
-    >
-      <h2 class="text-2xl">
-        Meer <span class="capitalize">{{ recipe.gang }}</span>
-      </h2>
-      <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <MediaCard
-          v-for="item in related"
-          :key="item.path"
-          :to="item.path"
-          :image="item.afbeelding"
-          :alt="item.afbeeldingAlt"
-          :title="item.title"
-          :description="item.description"
+      <ProductList :products="products" />
+
+      <section
+        v-if="recipe.body"
+        class="print-hide mx-auto mt-12 max-w-4xl"
+        aria-labelledby="achtergrond"
+      >
+        <h2
+          id="achtergrond"
+          class="text-xl"
         >
-          <template #meta>
-            <UBadge
-              :label="item.gang"
-              color="primary"
-              variant="subtle"
-              size="sm"
-              class="capitalize"
-            />
-            <span>{{ readableDuration(item.voorbereidingstijd + item.bereidingstijd) }}</span>
-          </template>
-        </MediaCard>
-      </div>
-    </section>
-  </UContainer>
+          Over dit recept
+        </h2>
+        <div class="prose dark:prose-invert mt-4">
+          <ContentRenderer :value="recipe" />
+        </div>
+      </section>
+
+      <section
+        v-if="related?.length"
+        class="print-hide mx-auto mt-16 max-w-4xl"
+      >
+        <h2 class="text-2xl">
+          Meer <span class="capitalize">{{ recipe.gang }}</span>
+        </h2>
+        <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <MediaCard
+            v-for="item in related"
+            :key="item.path"
+            :to="item.path"
+            :image="item.afbeelding"
+            :alt="item.afbeeldingAlt"
+            :title="item.title"
+            :description="item.description"
+          >
+            <template #meta>
+              <UBadge
+                :label="item.gang"
+                color="primary"
+                variant="subtle"
+                size="sm"
+                class="capitalize"
+              />
+              <span>{{ readableDuration(item.voorbereidingstijd + item.bereidingstijd) }}</span>
+            </template>
+          </MediaCard>
+        </div>
+      </section>
+    </UContainer>
+  </div>
 </template>

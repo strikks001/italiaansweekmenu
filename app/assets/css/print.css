@@ -212,3 +212,18 @@
     margin-top: 0.05cm !important;
   }
 }
+
+/* De gekleurde banier is beeldscherm-decoratie. Browsers drukken achtergronden
+   standaard niet af, dus witte tekst zou onzichtbaar worden op papier. */
+@media print {
+  .affiche-band {
+    background: none !important;
+    color: #000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .affiche-band::after {
+    display: none !important;
+  }
+}
