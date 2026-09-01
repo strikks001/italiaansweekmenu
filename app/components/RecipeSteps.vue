@@ -62,7 +62,7 @@ function toggle(index: number) {
       >
         <button
           type="button"
-          class="print-check group flex w-full gap-4 rounded-lg border border-transparent p-3 text-left transition hover:border-default hover:bg-elevated/60"
+          class="print-check group flex w-full gap-4 rounded-xl border border-transparent p-3 text-left transition hover:border-default hover:bg-elevated/60"
           :class="done.has(i) ? 'opacity-55' : ''"
           :aria-pressed="done.has(i)"
           @click="toggle(i)"
@@ -70,8 +70,8 @@ function toggle(index: number) {
           <span
             class="print-num print-plain font-display relative flex size-9 shrink-0 items-center justify-center rounded-full text-base font-extrabold tabular-nums transition"
             :class="done.has(i)
-              ? 'bg-keramiek-500 text-white'
-              : 'bg-vermiljoen-500 text-vermiljoen-950'"
+              ? 'bg-ceramic-500 text-white'
+              : 'bg-vermilion-500 text-vermilion-950'"
           >
             <template v-if="done.has(i)">
               <UIcon
@@ -100,11 +100,11 @@ function toggle(index: number) {
 
         <p
           v-if="step.tip"
-          class="print-tip ms-15 mt-1 flex gap-2 border-s-2 border-boter-400 py-1 ps-3 text-sm text-muted"
+          class="print-tip ms-15 mt-1 flex gap-2 border-s-2 border-butter-400 py-1 ps-3 text-sm text-muted"
         >
           <UIcon
             name="i-lucide-lightbulb"
-            class="mt-0.5 size-4 shrink-0 text-boter-600"
+            class="mt-0.5 size-4 shrink-0 text-butter-600"
           />
           <span>{{ step.tip }}</span>
         </p>

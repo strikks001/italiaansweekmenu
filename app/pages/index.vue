@@ -22,9 +22,8 @@ const { data } = await useAsyncData('home', async () => {
 
 const today = useToday()
 
-// Alleen wat vandaag getoond mag worden: de lopende week, en vanaf vrijdag de
-// week erna. Filteren gebeurt hier, zodat geen enkele sectie eronder per
-// ongeluk een menu toont dat nog niet aan de beurt is.
+// Filtered here, not per section, so nothing below can leak a menu that is
+// not due yet.
 const weeks = computed(() =>
   (data.value?.menus ?? [])
     .filter(menu => menuVisibleOn(menu.jaar, menu.week, today.value))
@@ -52,14 +51,13 @@ const featured = computed(() =>
 
 const isToday = computed(() => featured.value?.dateISO === today.value)
 
-// Het eerste gerecht draagt de affiche; wat er die dag nog meer op tafel komt
-// staat eronder.
-const hoofdgerecht = computed(() => featured.value?.courses[0])
-const overigeGerechten = computed(() => featured.value?.courses.slice(1) ?? [])
+// The first course carries the poster; the rest of that day sits below.
+const mainCourse = computed(() => featured.value?.courses[0])
+const otherCourses = computed(() => featured.value?.courses.slice(1) ?? [])
 
 // Cards are lg:basis-1/3, so three fit from 1024px.
 const { fits: fitsOnDesktop, breakpoints: carouselBreakpoints } = useCarouselFit(
-  () => overigeGerechten.value.length,
+  () => otherCourses.value.length,
   3,
   1024
 )
@@ -86,18 +84,17 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
 
 <template>
   <div>
-    <!-- Affiche: één vlak vermiljoen met de schotel van vandaag als blikvanger.
-         De schulprand onderaan is het luifelmotief uit de referentie. -->
-    <!-- bg-vermiljoen-500 en niet bg-primary: Nuxt UI pakt in donkere modus tint
-         400, en dit vlak hoort in beide modi dezelfde merkkleur te houden. -->
-    <section class="schulp relative overflow-hidden bg-vermiljoen-500 pb-14 text-vermiljoen-950">
+    <!-- Poster: one vermilion field with today's dish as the draw. -->
+    <!-- bg-vermilion-500 rather than bg-primary: Nuxt UI drops to shade 400
+         in dark mode, and this field must keep one brand colour in both. -->
+    <section class="scallop relative overflow-hidden bg-vermilion-500 pb-14 text-vermilion-950">
       <UContainer class="relative py-12 lg:py-20">
         <div class="mx-auto max-w-4xl">
-          <h1 class="affiche-vraag text-white">
+          <h1 class="poster-question text-white">
             Wat eten we vandaag?
           </h1>
 
-          <template v-if="hoofdgerecht">
+          <template v-if="mainCourse">
             <p class="mt-4 text-sm font-semibold uppercase tracking-widest">
               <template v-if="!isToday">
                 Nog even wachten — het eerstvolgende is
@@ -106,17 +103,16 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
               {{ featured!.dayNumber }} {{ featured!.month }}
             </p>
 
-            <!-- Het recept als één paneel op het vlak: foto en tekst horen bij
-                 elkaar, dus zitten ze in hetzelfde kader. Losse elementen op een
-                 gekleurd vlak lezen als losse elementen. -->
+            <!-- One panel: photo and text belong together, so they share a
+                 frame. Loose elements on a colour field read as loose. -->
             <NuxtLink
-              v-if="hoofdgerecht.recipe"
-              :to="hoofdgerecht.path"
-              class="tilt-rust group mt-8 grid overflow-hidden rounded-2xl border-b-4 border-b-keramiek-500 bg-default text-default sm:grid-cols-[minmax(0,16rem)_1fr]"
+              v-if="mainCourse.recipe"
+              :to="mainCourse.path"
+              class="tilt-resting group mt-8 grid overflow-hidden rounded-2xl border-b-4 border-b-ceramic-500 bg-default text-default sm:grid-cols-[minmax(0,16rem)_1fr]"
             >
               <NuxtImg
-                :src="hoofdgerecht.recipe.afbeelding"
-                :alt="hoofdgerecht.recipe.afbeeldingAlt"
+                :src="mainCourse.recipe.afbeelding"
+                :alt="mainCourse.recipe.afbeeldingAlt"
                 width="640"
                 height="640"
                 sizes="100vw sm:256px"
@@ -127,20 +123,20 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
 
               <div class="flex flex-col justify-center gap-3 p-6 sm:p-8">
                 <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-semibold uppercase tracking-widest text-muted">
-                  <span>{{ hoofdgerecht.recipe.gang }}</span>
+                  <span>{{ mainCourse.recipe.gang }}</span>
                   <span aria-hidden="true">·</span>
-                  <span>{{ readableDuration(hoofdgerecht.minutes) }}</span>
+                  <span>{{ readableDuration(mainCourse.minutes) }}</span>
                 </p>
 
-                <h2 class="affiche-gerecht">
-                  {{ hoofdgerecht.recipe.title }}
+                <h2 class="poster-dish">
+                  {{ mainCourse.recipe.title }}
                 </h2>
 
                 <p
-                  v-if="hoofdgerecht.note"
+                  v-if="mainCourse.note"
                   class="text-muted"
                 >
-                  {{ hoofdgerecht.note }}
+                  {{ mainCourse.note }}
                 </p>
 
                 <span class="mt-1 flex items-center gap-1.5 text-sm font-semibold text-secondary">
@@ -171,7 +167,7 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
       </UContainer>
     </section>
 
-    <UContainer v-if="overigeGerechten.length">
+    <UContainer v-if="otherCourses.length">
       <div class="mx-auto max-w-4xl pt-10">
         <h2 class="text-xl">
           Er komt die dag meer op tafel
@@ -179,7 +175,7 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
 
         <UCarousel
           v-slot="{ item, index }"
-          :items="overigeGerechten"
+          :items="otherCourses"
           arrows
           :breakpoints="carouselBreakpoints"
           :ui="{
@@ -206,9 +202,7 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
             <div class="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <p>
-                  <span class="inline-block rounded-full bg-boter-300 px-2.5 py-0.5 text-xs font-bold uppercase tracking-widest text-boter-950">
-                    Deze week
-                  </span>
+                  <PillBadge>Deze week</PillBadge>
                 </p>
                 <h2 class="mt-2 text-3xl sm:text-4xl">
                   Wat eten we verder deze week?
@@ -238,9 +232,9 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
             <div class="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <p>
-                  <span class="inline-block rounded-full bg-keramiek-100 px-2.5 py-0.5 text-xs font-bold uppercase tracking-widest text-keramiek-900">
+                  <PillBadge tone="ceramic">
                     Volgende week
-                  </span>
+                  </PillBadge>
                 </p>
                 <h2 class="mt-2 text-3xl sm:text-4xl">
                   Volgende week op het menu
@@ -268,13 +262,13 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
       </UContainer>
     </section>
 
-    <section class="bg-boter-100 dark:bg-boter-950">
+    <section class="bg-butter-100 dark:bg-butter-950">
       <UContainer class="py-14 lg:py-20">
         <div class="mx-auto max-w-2xl text-center">
           <h2 class="text-3xl sm:text-4xl">
             Zoek je iets anders?
           </h2>
-          <p class="mt-3 text-boter-900 dark:text-boter-200">
+          <p class="mt-3 text-butter-900 dark:text-butter-200">
             Doorzoek het hele archief op gerecht, gang of ingrediënt.
           </p>
 
@@ -290,7 +284,7 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
               size="lg"
               class="flex-1"
             />
-            <!-- Keramiek en niet vermiljoen: wit op blauw haalt 11,94, op rood 3,57. -->
+            <!-- Ceramic, not vermilion: white scores 11.94 on blue, 3.57 on red. -->
             <UButton
               type="submit"
               label="Zoeken"

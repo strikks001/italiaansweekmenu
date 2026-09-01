@@ -11,7 +11,7 @@ defineProps<{
 </script>
 
 <template>
-  <article class="tilt tilt-rij group relative flex items-center gap-4 rounded-xl border border-default border-b-4 border-b-primary bg-default p-3 hover:border-primary">
+  <article class="tilt tilt-row group relative flex items-center gap-4 rounded-2xl border border-default border-b-4 border-b-primary bg-default p-3 hover:border-primary">
     <NuxtImg
       :src="image"
       :alt="alt"
@@ -20,7 +20,7 @@ defineProps<{
       sizes="96px"
       format="webp"
       :loading="priority ? 'eager' : 'lazy'"
-      class="size-16 shrink-0 rounded-lg object-cover sm:size-24"
+      class="size-16 shrink-0 rounded-xl object-cover sm:size-24"
     />
 
     <div class="min-w-0 flex-1">

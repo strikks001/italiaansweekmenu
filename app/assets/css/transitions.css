@@ -72,13 +72,11 @@
 }
 
 /*
- * Kaarten kantelen met een veertje, zoals bij Aardvark: rotate over 0,35s met
- * een curve die net doorschiet. Bewust de losse `rotate`-eigenschap en niet
- * `transform: rotate()`, want de FLIP-animatie hierboven bezet `transform` al -
- * zo werken ze langs elkaar heen in plaats van elkaar te overschrijven.
+ * Cards tilt with a spring. Deliberately the standalone `rotate` property, not
+ * `transform: rotate()`: the FLIP animation above already owns `transform`, so
+ * this way they compose instead of overwriting each other.
  *
- * De schaduw is hard en zonder vervaging: dat is de platte, gedrukte look van
- * de huisstijl. Een zachte schaduw zou er juist tegenin gaan.
+ * The shadow is hard and unblurred - the flat, printed look of the house style.
  */
 .tilt {
   rotate: 0deg;
@@ -88,19 +86,19 @@
     border-color 0.2s ease;
 }
 
-/* Alleen waar echt gehoverd kan worden; op touch is er geen hover-toestand. */
+/* Only where hover exists; touch has no hover state. */
 @media (hover: hover) {
   .tilt:hover {
     rotate: -1.25deg;
     box-shadow: 10px 10px 0 0 var(--ui-primary);
   }
 
-  .tilt-blauw:hover {
+  .tilt-secondary:hover {
     box-shadow: 10px 10px 0 0 var(--ui-secondary);
   }
 
-  /* Rijen zijn breed en laag; daar valt kantelen te veel op. */
-  .tilt-rij:hover {
+  /* Rows are wide and shallow; tilting reads as a glitch there. */
+  .tilt-row:hover {
     rotate: 0deg;
     box-shadow: 8px 8px 0 0 var(--ui-primary);
   }
@@ -115,12 +113,8 @@
   }
 }
 
-/*
- * De receptkaart in de hero staat al scheef met schaduw: daar is dat de
- * ruststand en niet het effect. Bij hover komt hij recht en trekt de schaduw
- * strak, alsof je hem oppakt om te lezen.
- */
-.tilt-rust {
+/* The hero card rests tilted; hover squares it up, as if picking it up. */
+.tilt-resting {
   rotate: -1.25deg;
   box-shadow: 12px 12px 0 0 var(--ui-secondary);
   transition:
@@ -129,17 +123,17 @@
 }
 
 @media (hover: hover) {
-  .tilt-rust:hover {
+  .tilt-resting:hover {
     rotate: 0deg;
     box-shadow: 4px 4px 0 0 var(--ui-secondary);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tilt-rust {
+  .tilt-resting {
     transition: box-shadow 0.2s ease;
   }
-  .tilt-rust:hover {
+  .tilt-resting:hover {
     rotate: -1.25deg;
   }
 }

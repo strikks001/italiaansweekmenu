@@ -40,7 +40,7 @@ const cartUrl = computed(() =>
   <section
     v-if="products?.length"
     aria-labelledby="producten"
-    class="print-hide mx-auto mt-12 max-w-4xl rounded-2xl bg-keramiek-500 p-6 text-white sm:p-8"
+    class="print-hide mx-auto mt-12 max-w-4xl rounded-2xl bg-ceramic-500 p-6 text-white sm:p-8"
   >
     <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
       <h2
@@ -50,28 +50,20 @@ const cartUrl = computed(() =>
         Bestel de ingrediënten
       </h2>
       <!-- Doubles as the shop link: without variant IDs it just points at the
-           shop, with them it fills the basket in one go. -->
-      <NuxtLink
+           shop, with them it fills the basket in one go. Een UButton, zodat hij
+           dezelfde vorm heeft als elke andere knop op de site. -->
+      <UButton
         :to="cartUrl ?? 'https://spesadaantonio.nl'"
         target="_blank"
         rel="noopener"
         :title="cartUrl ? 'Openen in de winkelmand van Spesa da Antonio' : undefined"
-        class="flex items-center gap-2 rounded-full bg-boter-300 px-4 py-2 text-sm font-semibold text-boter-950 transition hover:bg-boter-200"
-      >
-        <UIcon
-          :name="cartUrl ? 'i-lucide-shopping-cart' : 'i-lucide-shopping-basket'"
-          class="size-4"
-        />
-        <template v-if="inStock.length > 1">
-          Alle {{ inStock.length }} in winkelmand
-        </template>
-        <template v-else-if="cartUrl">
-          In winkelmand
-        </template>
-        <template v-else>
-          Spesa da Antonio
-        </template>
-      </NuxtLink>
+        :icon="cartUrl ? 'i-lucide-shopping-cart' : 'i-lucide-shopping-basket'"
+        color="neutral"
+        class="bg-butter-300 text-butter-950 hover:bg-butter-200"
+        :label="inStock.length > 1
+          ? `Alle ${inStock.length} in winkelmand`
+          : cartUrl ? 'In winkelmand' : 'Spesa da Antonio'"
+      />
     </div>
 
     <!-- One code path for one product or ten: Embla simply stays inactive once
@@ -101,11 +93,11 @@ const cartUrl = computed(() =>
         :to="item.url"
         target="_blank"
         rel="noopener"
-        class="tilt tilt-rij group flex h-full items-center gap-4 rounded-2xl border-b-4 border-b-vermiljoen-500 bg-default p-3 text-default"
+        class="tilt tilt-row group flex h-full items-center gap-4 rounded-xl border-b-4 border-b-vermilion-500 bg-default p-3 text-default"
       >
         <!-- Tinted square: the shop shoots on white, so a plain photo would
              float without an edge. -->
-        <span class="flex size-20 shrink-0 items-center justify-center rounded-xl bg-perzik-100 p-2">
+        <span class="flex size-20 shrink-0 items-center justify-center rounded-xl bg-peach-100 p-2">
           <img
             v-if="item.afbeelding"
             :src="shopImage(item.afbeelding, 160)"

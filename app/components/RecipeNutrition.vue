@@ -28,13 +28,13 @@ const items = computed(() => [
       Per persoon, bij benadering.
     </p>
 
-    <dl class="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-lg bg-boter-400 sm:grid-cols-4">
+    <dl class="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-butter-400 sm:grid-cols-4">
       <div
         v-for="item in items"
         :key="item.label"
-        class="bg-boter-100 p-4 dark:bg-boter-950"
+        class="bg-butter-100 p-4 dark:bg-butter-950"
       >
-        <dt class="text-xs uppercase tracking-wide text-boter-900 dark:text-boter-200">
+        <dt class="text-xs uppercase tracking-wide text-butter-900 dark:text-butter-200">
           {{ item.label }}
         </dt>
         <dd class="font-display mt-1 text-base font-bold tabular-nums">

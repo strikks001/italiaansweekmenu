@@ -130,7 +130,7 @@ function reset() {
     <section
       ref="panel"
       aria-labelledby="ingredienten"
-      class="print-flat sticky top-(--ui-header-height) z-20 -mx-4 border-y border-default px-4 transition-shadow duration-300 [overflow-anchor:none] sm:-mx-6 sm:px-6 lg:top-[calc(var(--ui-header-height)+1.5rem)] lg:mx-0 lg:rounded-xl lg:border lg:border-b-4 lg:border-b-keramiek-500 lg:px-0 lg:shadow-none"
+      class="print-flat sticky top-(--ui-header-height) z-20 -mx-4 border-y border-default px-4 transition-shadow duration-300 [overflow-anchor:none] sm:-mx-6 sm:px-6 lg:top-[calc(var(--ui-header-height)+1.5rem)] lg:mx-0 lg:rounded-2xl lg:border lg:border-b-4 lg:border-b-ceramic-500 lg:px-0 lg:shadow-none"
       :class="[
         stuck ? 'bg-default/95 shadow-sm backdrop-blur' : 'bg-default',
         fits ? '' : 'lg:static'
@@ -172,7 +172,7 @@ function reset() {
           <div class="print-flat print-cols max-h-[60vh] overflow-y-auto pb-4 lg:max-h-none lg:overflow-visible lg:px-3 lg:pb-3">
             <!-- Servings sits with the list, not above it: it adjusts the list,
                  it is not the headline of this panel. -->
-            <div class="print-hide flex items-center justify-between gap-2 border-b-2 border-boter-300 pb-2 text-sm">
+            <div class="print-hide flex items-center justify-between gap-2 border-b-2 border-butter-300 pb-2 text-sm">
               <span class="text-muted">Voor {{ chosen }} {{ chosen === 1 ? 'persoon' : 'personen' }}</span>
               <div class="print-hide flex items-center gap-1">
                 <UButton

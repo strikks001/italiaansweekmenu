@@ -22,7 +22,7 @@ const PER_PAGE = 12
 
 const today = useToday()
 
-// De lopende week en het archief; de week erna pas vanaf vrijdag.
+// The running week plus the archive; the next one only from Friday.
 const visible = computed(() =>
   (menus.value ?? []).filter(m => menuVisibleOn(m.jaar, m.week, today.value))
 )
@@ -156,12 +156,12 @@ useSchemaOrg([
         {{ description }}
       </p>
 
-      <!-- De lopende week krijgt dezelfde behandeling als de hero op de
-           homepage: één paneel op het vlak, scheef in ruststand. -->
+      <!-- Same treatment as the homepage hero: one panel on the field,
+           tilted at rest. -->
       <NuxtLink
         v-if="current"
         :to="current.path"
-        class="tilt-rust group mt-10 grid overflow-hidden rounded-2xl border-b-4 border-b-keramiek-500 bg-default text-left text-default sm:grid-cols-[minmax(0,16rem)_1fr]"
+        class="tilt-resting group mt-10 grid overflow-hidden rounded-2xl border-b-4 border-b-ceramic-500 bg-default text-left text-default sm:grid-cols-[minmax(0,16rem)_1fr]"
       >
         <NuxtImg
           :src="current.afbeelding"
@@ -175,18 +175,16 @@ useSchemaOrg([
         />
 
         <div class="flex flex-col justify-center gap-3 p-6 sm:p-8">
-          <!-- "Deze week" als vlag, niet als bijzin: dit is de reden dat deze
-               kaart apart staat, dus dat moet je in één oogopslag zien. -->
+          <!-- "This week" as a flag, not an aside: it is the reason this card
+               stands apart. -->
           <p class="flex flex-wrap items-center gap-x-3 gap-y-2">
-            <span class="rounded-full bg-vermiljoen-500 px-3 py-1 text-xs font-bold uppercase tracking-widest text-vermiljoen-950">
-              Deze week
-            </span>
+            <PillBadge tone="vermilion">Deze week</PillBadge>
             <span class="text-xs font-semibold uppercase tracking-widest text-muted">
               Week {{ current.week }} · {{ weekPeriod(current.jaar, current.week) }}
             </span>
           </p>
 
-          <h2 class="affiche-gerecht">
+          <h2 class="poster-dish">
             {{ current.title }}
           </h2>
 

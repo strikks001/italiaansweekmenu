@@ -5,11 +5,11 @@ const jaar = new Date().getFullYear()
 <template>
   <!--
     De voettekst sluit de pagina af zoals de banier hem opent, maar in de
-    tweede kleur en met de schulprand naar boven happend. Die hapt in de
-    paginakleur, dus het vlak erboven moet licht blijven. Op keramiekblauw mag
-    wit wel: dat haalt 11,94 tegen 3,57 op vermiljoen.
+    tweede kleur en met de scalloprand naar boven happend. Die hapt in de
+    paginakleur, dus het vlak erboven moet licht blijven. Op ceramicblauw mag
+    wit wel: dat haalt 11,94 tegen 3,57 op vermilion.
   -->
-  <UFooter :ui="{ root: 'schulp-boven print-hide bg-keramiek-500 pt-10 text-white' }">
+  <UFooter :ui="{ root: 'scallop-top print-hide bg-ceramic-500 pt-10 text-white' }">
     <template #top>
       <UContainer class="grid gap-8 py-10 sm:grid-cols-3">
         <div>
@@ -62,7 +62,7 @@ const jaar = new Date().getFullYear()
             color="neutral"
             variant="solid"
             size="sm"
-            class="mt-3 bg-white text-keramiek-700 hover:bg-boter-200"
+            class="mt-3 bg-white text-ceramic-700 hover:bg-butter-200"
             trailing-icon="i-lucide-arrow-up-right"
           >
             spesadaantonio.nl

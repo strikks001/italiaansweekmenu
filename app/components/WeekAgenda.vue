@@ -11,15 +11,15 @@ defineProps<{
     <li
       v-for="day in days"
       :key="day.weekday"
-      class="flex items-stretch overflow-hidden rounded-xl border bg-default"
+      class="flex items-stretch overflow-hidden rounded-2xl border bg-default"
       :class="day.courses.length ? 'border-default' : 'border-dashed border-default'"
     >
-      <!-- Date column in de tweede kleur: dit is wat de rij als agenda laat
-           lezen. Een lege dag blijft gedempt, zodat het oog naar de gevulde gaat. -->
+      <!-- Date column in the second colour: this is what makes the row read
+           as an agenda. Empty days stay muted. -->
       <div
         class="flex w-16 shrink-0 flex-col items-center justify-center px-2 py-4 sm:w-20"
         :class="day.courses.length
-          ? 'bg-keramiek-500 text-white'
+          ? 'bg-ceramic-500 text-white'
           : 'bg-elevated text-toned'"
       >
         <span class="text-[0.65rem] font-semibold uppercase tracking-[0.14em] opacity-90">{{ day.short }}</span>
@@ -52,13 +52,13 @@ defineProps<{
             sizes="80px sm:96px"
             format="webp"
             loading="lazy"
-            class="hidden size-16 shrink-0 rounded-lg object-cover sm:block sm:size-20"
+            class="hidden size-16 shrink-0 rounded-xl object-cover sm:block sm:size-20"
           />
 
           <div class="min-w-0 flex-1">
             <template v-if="course.recipe">
               <div class="flex flex-wrap items-center gap-2">
-                <GangBadge :gang="course.recipe.gang" />
+                <PillBadge>{{ course.recipe.gang }}</PillBadge>
                 <span class="flex items-center gap-1 text-xs text-muted">
                   <UIcon
                     name="i-lucide-clock"

@@ -213,17 +213,17 @@
   }
 }
 
-/* De gekleurde banier is beeldscherm-decoratie. Browsers drukken achtergronden
-   standaard niet af, dus witte tekst zou onzichtbaar worden op papier. */
+/* The colour banner is screen decoration. Browsers skip backgrounds by
+   default, so light text would vanish on paper. */
 @media print {
-  .affiche-band {
+  .poster-band {
     background: none !important;
     color: #000 !important;
     margin: 0 !important;
     padding: 0 !important;
   }
 
-  .affiche-band::after {
+  .poster-band::after {
     display: none !important;
   }
 }

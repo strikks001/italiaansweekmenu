@@ -1,84 +1,78 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
-/*
- * Huisstijl "Affiche": verzadigde kleur in platte vlakken, stevige display-
- * letters, hard contrast. Nuxt UI werkt met semantische kleuren, dus het
- * volstaat om hier de paletten te registreren en ze in app.config.ts aan
- * primary/secondary te koppelen.
- */
+/* House style: saturated colour in flat fields, heavy display type, hard
+   contrast. Palettes are registered here and wired to semantic roles in
+   app.config.ts. */
 @theme static {
-  /* Vermiljoen - de hoofdkleur. 500 is de tint uit het voorstel. */
-  --color-vermiljoen-50: #fff3f0;
-  --color-vermiljoen-100: #ffe3dc;
-  --color-vermiljoen-200: #ffc7b8;
-  --color-vermiljoen-300: #ffa48c;
-  --color-vermiljoen-400: #ff7550;
-  --color-vermiljoen-500: #ff3b14;
-  --color-vermiljoen-600: #e82a05;
-  --color-vermiljoen-700: #c01f04;
-  --color-vermiljoen-800: #991b08;
-  --color-vermiljoen-900: #7a1a0c;
-  --color-vermiljoen-950: #420a03;
+  /* Vermilion - the brand colour. */
+  --color-vermilion-50: #fff3f0;
+  --color-vermilion-100: #ffe3dc;
+  --color-vermilion-200: #ffc7b8;
+  --color-vermilion-300: #ffa48c;
+  --color-vermilion-400: #ff7550;
+  --color-vermilion-500: #ff3b14;
+  --color-vermilion-600: #e82a05;
+  --color-vermilion-700: #c01f04;
+  --color-vermilion-800: #991b08;
+  --color-vermilion-900: #7a1a0c;
+  --color-vermilion-950: #420a03;
 
-  /* Keramiekblauw - de tweede kleur, naar Italiaans aardewerk. */
-  --color-keramiek-50: #f1f1fa;
-  --color-keramiek-100: #e2e3f5;
-  --color-keramiek-200: #c6c7eb;
-  --color-keramiek-300: #9b9dd9;
-  --color-keramiek-400: #5a5db0;
-  --color-keramiek-500: #2b2d7a;
-  --color-keramiek-600: #262869;
-  --color-keramiek-700: #1f2156;
-  --color-keramiek-800: #191a44;
-  --color-keramiek-900: #141537;
-  --color-keramiek-950: #0b0c1f;
+  /* Ceramic blue - the second colour. */
+  --color-ceramic-50: #f1f1fa;
+  --color-ceramic-100: #e2e3f5;
+  --color-ceramic-200: #c6c7eb;
+  --color-ceramic-300: #9b9dd9;
+  --color-ceramic-400: #5a5db0;
+  --color-ceramic-500: #2b2d7a;
+  --color-ceramic-600: #262869;
+  --color-ceramic-700: #1f2156;
+  --color-ceramic-800: #191a44;
+  --color-ceramic-900: #141537;
+  --color-ceramic-950: #0b0c1f;
 
-  /* Botergeel - de vlaktint voor labels, uit het voorstel. */
-  --color-boter-50: #fffdf3;
-  --color-boter-100: #fff8dc;
-  --color-boter-200: #ffefb4;
-  --color-boter-300: #ffe9a8;
-  --color-boter-400: #f7d472;
-  --color-boter-500: #e8b93d;
-  --color-boter-600: #c2941f;
-  --color-boter-700: #946f18;
-  --color-boter-800: #6b5013;
-  --color-boter-900: #4a370d;
-  --color-boter-950: #2a1f07;
+  /* Butter - the label tint. */
+  --color-butter-50: #fffdf3;
+  --color-butter-100: #fff8dc;
+  --color-butter-200: #ffefb4;
+  --color-butter-300: #ffe9a8;
+  --color-butter-400: #f7d472;
+  --color-butter-500: #e8b93d;
+  --color-butter-600: #c2941f;
+  --color-butter-700: #946f18;
+  --color-butter-800: #6b5013;
+  --color-butter-900: #4a370d;
+  --color-butter-950: #2a1f07;
 
-  /* Perzik - de tweede vlaktint, voor rustige secties tussen de witte door. */
-  --color-perzik-50: #fff8f4;
-  --color-perzik-100: #ffeee5;
-  --color-perzik-200: #ffdcc9;
-  --color-perzik-300: #ffc4a6;
-  --color-perzik-400: #ff9f74;
-  --color-perzik-500: #f5754a;
-  --color-perzik-600: #d4552c;
-  --color-perzik-700: #a8401f;
-  --color-perzik-800: #7c3018;
-  --color-perzik-900: #552111;
-  --color-perzik-950: #2e1108;
+  /* Peach - the second surface tint. */
+  --color-peach-50: #fff8f4;
+  --color-peach-100: #ffeee5;
+  --color-peach-200: #ffdcc9;
+  --color-peach-300: #ffc4a6;
+  --color-peach-400: #ff9f74;
+  --color-peach-500: #f5754a;
+  --color-peach-600: #d4552c;
+  --color-peach-700: #a8401f;
+  --color-peach-800: #7c3018;
+  --color-peach-900: #552111;
+  --color-peach-950: #2e1108;
 
-  /* @nuxt/fonts pikt deze namen op en serveert ze lokaal; geen extern verzoek. */
+  /* @nuxt/fonts picks these up and self-hosts them; no external request. */
   --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer components {
-  /*
-   * Schulprand: halve cirkels in de paginakleur happen uit de onderrand van een
-   * gekleurd vlak. Het luifelmotief uit de referentie, en het terugkerende
-   * gebaar van de huisstijl - vandaar een klasse en geen los stukje CSS.
-   */
-  .schulp {
+  /* Scallop: half circles bitten out of a colour field's bottom edge. The
+     recurring gesture of the house style, hence a class. */
+  .scallop {
     position: relative;
   }
 
 
 
-  /* De vraag op de homepage: het grootste op de pagina, want daar komt men voor. */
-  .affiche-vraag {
+  /* The homepage question: the largest thing on the page. */
+  .poster-question {
     font-family: var(--font-display);
     font-weight: 800;
     font-size: clamp(2.5rem, 8vw, 4.5rem);
@@ -87,8 +81,8 @@
     text-wrap: balance;
   }
 
-  /* De titel binnen een paneel op de banier - een maat kleiner dan de vraag. */
-  .affiche-gerecht {
+  /* Title inside a panel on the banner - one step below the question. */
+  .poster-dish {
     font-family: var(--font-display);
     font-weight: 700;
     font-size: clamp(1.75rem, 4vw, 2.5rem);
@@ -97,52 +91,46 @@
     text-wrap: balance;
   }
 
-  /*
-   * Dezelfde schulp, maar hij hapt uit de bovenrand. De kleur van de happen is
-   * instelbaar via --schulp-kleur: de cirkels moeten de kleur hebben van het
-   * vlak erboven, anders zie je een vreemde witte kartelrand tussen twee
-   * gekleurde blokken.
-   */
-  .schulp-boven {
+  /* Same scallop, biting out of the top edge. --scallop-color must match the
+     block above, or a stray light band appears between two colour fields. */
+  .scallop-top {
     position: relative;
   }
 
-  .schulp-boven::before {
+  .scallop-top::before {
     content: "";
     position: absolute;
     inset-inline: 0;
     top: -1px;
     height: 1.75rem;
     background:
-      radial-gradient(circle at 50% 0, var(--schulp-kleur, var(--ui-bg)) 0.875rem, transparent 0.875rem)
+      radial-gradient(circle at 50% 0, var(--scallop-color, var(--ui-bg)) 0.875rem, transparent 0.875rem)
       0 0 / 2.25rem 1.75rem repeat-x;
     pointer-events: none;
   }
 
-  .schulp::after {
+  .scallop::after {
     content: "";
     position: absolute;
     inset-inline: 0;
     bottom: -1px;
     height: 1.75rem;
     background:
-      radial-gradient(circle at 50% 100%, var(--schulp-kleur, var(--ui-bg)) 0.875rem, transparent 0.875rem)
+      radial-gradient(circle at 50% 100%, var(--scallop-color, var(--ui-bg)) 0.875rem, transparent 0.875rem)
       0 0 / 2.25rem 1.75rem repeat-x;
     pointer-events: none;
   }
 }
 
 @layer base {
-  /*
-   * Tailwind 4 haalde de cursor:pointer van buttons af, waardoor elke knop een
-   * pijltje kreeg terwijl links een handje houden. Geen stijlkeuze.
-   */
+  /* Tailwind 4 dropped cursor:pointer on buttons, leaving them with an arrow
+     while links keep the hand. Not a style choice. */
   button:not(:disabled):not([aria-disabled="true"]),
   [role="button"]:not(:disabled):not([aria-disabled="true"]) {
     cursor: pointer;
   }
 
-  /* Koppen dragen de huisstijl; lopende tekst blijft rustig. */
+  /* Headings carry the house style; body text stays quiet. */
   h1, h2, h3 {
     font-family: var(--font-display);
     font-weight: 800;
@@ -152,27 +140,18 @@
   }
 }
 
-/*
- * In de utilities-laag, want vanuit de components-laag verliezen deze regels
- * het van Tailwinds eigen klassen.
- */
+/* In the utilities layer: from components these would lose to Tailwind's own
+   classes. */
 @layer utilities {
-  /*
-   * Wit op vermiljoen haalt 3,57 en zakt door de norm voor gewone tekst.
-   * Bijna-zwart haalt 4,61 en houdt het rood zo fel als bedoeld - dus niet het
-   * rood verdoffen, maar de tekst erop verdonkeren.
-   */
+  /* White on vermilion scores 3.57, short of 4.5 for small text. Near-black
+     scores 4.61 and keeps the red as vivid as intended. */
   .bg-primary.text-inverted {
-    color: var(--color-vermiljoen-950);
+    color: var(--color-vermilion-950);
   }
 
-  /*
-   * De huidige pagina in het kruimelpad stond in vermiljoen, en dat haalt als
-   * kleine tekst op wit maar 3,57. Nuxt UI zet daar geen aria-current op, dus
-   * we mikken op het laatste item. De logotekst mag wel rood blijven: WCAG
-   * stelt geen contrasteis aan tekst die deel is van een merknaam.
-   */
-  .kruimelpad li:last-child *,
+  /* Current page in breadcrumb and nav: vermilion as small text on white only
+     scores 3.57. The logo may stay red - WCAG exempts brand names. */
+  .breadcrumb-trail li:last-child *,
   header a[aria-current="page"] {
     color: var(--ui-text-highlighted);
   }

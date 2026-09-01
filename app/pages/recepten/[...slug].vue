@@ -31,7 +31,7 @@ const { data: related } = await useAsyncData(`related:${route.path}`, () =>
     .all()
 )
 
-// Drie kaarten passen vanaf 1024px; daaronder blijft het schuiven.
+// Three cards fit from 1024px; below that it keeps sliding.
 const { fits: relatedFits, breakpoints: relatedBreakpoints } = useCarouselFit(
   () => related.value?.length ?? 0,
   3,
@@ -50,7 +50,7 @@ const ingredientLines = recipe.ingredienten.flatMap(group =>
   group.items.map(i => [i.hoeveelheid, i.eenheid, i.naam].filter(Boolean).join(' '))
 )
 
-// schema.org kent een vaste lijst dieetwaarden; onze eigen labels zeggen Google niets.
+// schema.org has a fixed diet vocabulary; our own labels mean nothing to it.
 const DIETS: Record<string, string> = {
   vegetarisch: 'https://schema.org/VegetarianDiet',
   veganistisch: 'https://schema.org/VeganDiet',
@@ -60,8 +60,8 @@ const DIETS: Record<string, string> = {
 
 const dietUrls = diets.map(d => DIETS[d]).filter(Boolean) as string[]
 
-// Via URL(), want de organisatie in app.vue krijgt een genormaliseerde @id met
-// slash: een handmatig samengeplakte verwijzing mist hem net.
+// Via URL(): the organisation in app.vue gets a normalised @id with a slash,
+// which a hand-built reference would miss.
 const identity = new URL('#identity', site.url).toString()
 
 const nutrition = recipe.voedingswaarde
@@ -104,8 +104,8 @@ useSchemaOrg([
     recipeIngredient: ingredientLines,
     recipeInstructions: recipe.stappen.map(s => defineHowToStep({ name: s.titel, text: s.tekst })),
     ...(nutritionNode ? { nutrition: nutritionNode } : {}),
-    // schema.org staat deze toe op Recipe, maar de typedefinities van de module
-    // kennen alleen een handvol velden. De resolver geeft ze wel door.
+    // schema.org allows these on Recipe, but the module's types cover only a
+    // handful of fields. The resolver passes them through regardless.
     ...({
       author: { '@id': identity },
       ...(dietUrls.length ? { suitableForDiet: dietUrls } : {})
@@ -127,13 +127,17 @@ useSchemaOrg([
       breed
       :breadcrumb="[{ label: 'Home', to: '/' }, { label: 'Recepten', to: '/recepten' }, { label: recipe.title }]"
     >
-      <div class="print-hide flex flex-wrap items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest">
-        <span class="rounded-full bg-white px-3 py-1 capitalize">{{ recipe.gang }}</span>
-        <span
+      <div class="print-hide flex flex-wrap items-center justify-center gap-2">
+        <PillBadge tone="white">
+          {{ recipe.gang }}
+        </PillBadge>
+        <PillBadge
           v-for="d in diets"
           :key="d"
-          class="rounded-full bg-white px-3 py-1 capitalize"
-        >{{ d }}</span>
+          tone="white"
+        >
+          {{ d }}
+        </PillBadge>
       </div>
 
       <h1 class="mt-5 text-4xl text-white sm:text-5xl lg:text-6xl">
@@ -156,7 +160,7 @@ useSchemaOrg([
       </p>
     </PageBanner>
 
-    <UContainer class="py-8 lg:py-12">
+    <UContainer class="py-10 lg:py-14">
       <NuxtImg
         :src="recipe.afbeelding"
         :alt="recipe.afbeeldingAlt"
@@ -182,12 +186,12 @@ useSchemaOrg([
       <div class="mx-auto mt-10 max-w-4xl">
         <div
           v-if="wakeLock.supported.value"
-          class="print-hide mb-6 flex items-center justify-between gap-3 rounded-lg border-s-2 border-keramiek-500 bg-keramiek-50 px-4 py-2.5 dark:bg-keramiek-950"
+          class="print-hide mb-6 flex items-center justify-between gap-3 rounded-2xl border-s-2 border-ceramic-500 bg-ceramic-50 px-4 py-2.5 dark:bg-ceramic-950"
         >
           <span class="flex items-center gap-2 text-sm">
             <UIcon
               name="i-lucide-lightbulb"
-              class="size-4 text-keramiek-600 dark:text-keramiek-300"
+              class="size-4 text-ceramic-600 dark:text-ceramic-300"
             />
             Scherm aan houden tijdens het koken
           </span>
@@ -236,8 +240,8 @@ useSchemaOrg([
         />
       </div>
 
-      <!-- Zichtbaar omdat het ook in de structured data staat: Google wil dat
-         gemarkeerde inhoud op de pagina te vinden is. -->
+      <!-- Visible because it is also in the structured data: Google requires
+         marked-up content to appear on the page. -->
       <div
         v-if="nutrition"
         class="print-hide mx-auto mt-12 max-w-4xl"
@@ -292,7 +296,7 @@ useSchemaOrg([
             :description="item.description"
           >
             <template #meta>
-              <GangBadge :gang="item.gang" />
+              <PillBadge>{{ item.gang }}</PillBadge>
               <span>{{ readableDuration(item.voorbereidingstijd + item.bereidingstijd) }}</span>
             </template>
           </MediaCard>

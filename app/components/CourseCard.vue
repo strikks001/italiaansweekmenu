@@ -11,7 +11,7 @@ withDefaults(defineProps<{
 
 <template>
   <article
-    class="tilt tilt-blauw group relative h-full overflow-hidden rounded-2xl border border-default bg-default hover:border-secondary"
+    class="tilt tilt-secondary group relative h-full overflow-hidden rounded-2xl border border-default bg-default hover:border-secondary"
     :class="wide ? 'sm:flex sm:items-stretch' : 'flex flex-col'"
   >
     <template v-if="course.recipe">
@@ -30,7 +30,7 @@ withDefaults(defineProps<{
 
       <div class="flex flex-1 flex-col justify-center gap-2 p-5">
         <div class="flex flex-wrap items-center gap-2">
-          <GangBadge :gang="course.recipe.gang" />
+          <PillBadge>{{ course.recipe.gang }}</PillBadge>
           <span class="flex items-center gap-1 text-xs text-muted">
             <UIcon
               name="i-lucide-clock"

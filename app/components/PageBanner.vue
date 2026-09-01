@@ -1,8 +1,8 @@
 <script setup lang="ts">
 withDefaults(defineProps<{
-  /** Kruimelpad hoort boven de banier, op de paginakleur. */
+  /** Breadcrumb sits above the banner, on the page background. */
   breadcrumb?: { label: string, to?: string }[]
-  /** Smaller op overzichten, breder waar een lange titel staat. */
+  /** Narrow on overviews, wide where a long title needs the room. */
   breed?: boolean
 }>(), { breadcrumb: undefined, breed: false })
 </script>
@@ -15,21 +15,19 @@ withDefaults(defineProps<{
     >
       <UBreadcrumb
         :items="breadcrumb"
-        class="kruimelpad print-hide mx-auto max-w-4xl"
+        class="breadcrumb-trail print-hide mx-auto max-w-4xl"
       />
     </UContainer>
 
     <!--
-      De banier van de huisstijl: vermiljoen vlak met een schulprand eronder.
-      Eén component, zodat elke pagina hem op dezelfde hoogte en met dezelfde
-      marges draagt.
+      The house banner: vermilion field with a scalloped edge below it.
 
-      De basiskleur is bijna-zwart en niet wit: wit op vermiljoen haalt 3,57 en
-      dat is te weinig voor gewone tekst. Koppen krijgen los `text-white` - voor
-      grote tekst volstaat 3 en daar wint wit het visueel.
+      Body text is near-black, not white: white on vermilion scores 3.57, short
+      of the 4.5 small text needs. Headings opt into `text-white` - large text
+      only needs 3, and there white reads better.
     -->
     <section
-      class="affiche-band schulp relative bg-vermiljoen-500 pb-16 text-vermiljoen-950"
+      class="poster-band scallop relative bg-vermilion-500 pb-16 text-vermilion-950"
       :class="breadcrumb ? 'mt-6' : ''"
     >
       <UContainer class="pt-10 lg:pt-14">

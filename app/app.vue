@@ -3,8 +3,8 @@
 // NuxtLayout kiest de layout, NuxtPage rendert de huidige route.
 const site = useSiteConfig()
 
-// Site-breed, niet alleen op de homepage: recepten verwijzen hiernaar als
-// auteur en uitgever, en zo'n verwijzing moet op dezelfde pagina staan.
+// Site-wide, not just the homepage: recipes reference this as their author,
+// and such a reference has to resolve on the same page.
 useSchemaOrg([
   defineWebSite({ name: site.name, description: site.description, inLanguage: 'nl-NL' }),
   defineOrganization({ name: site.name, url: site.url })

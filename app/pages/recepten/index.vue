@@ -294,7 +294,7 @@ useSchemaOrg([
           @clear="clearFilters"
         >
           <template #meta="{ item }">
-            <GangBadge :gang="item.gang" />
+            <PillBadge>{{ item.gang }}</PillBadge>
             <span>{{ readableDuration(item.voorbereidingstijd + item.bereidingstijd) }}</span>
           </template>
         </OverviewResults>
