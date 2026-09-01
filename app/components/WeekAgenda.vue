@@ -14,14 +14,17 @@ defineProps<{
       class="flex items-stretch overflow-hidden rounded-xl border bg-default"
       :class="day.courses.length ? 'border-default' : 'border-dashed border-default'"
     >
-      <!-- Date column: the element that makes this read as an agenda. -->
+      <!-- Date column in de tweede kleur: dit is wat de rij als agenda laat
+           lezen. Een lege dag blijft gedempt, zodat het oog naar de gevulde gaat. -->
       <div
-        class="flex w-16 shrink-0 flex-col items-center justify-center border-r border-default px-2 py-4 sm:w-20"
-        :class="day.courses.length ? 'bg-elevated' : 'bg-elevated/40'"
+        class="flex w-16 shrink-0 flex-col items-center justify-center px-2 py-4 sm:w-20"
+        :class="day.courses.length
+          ? 'bg-keramiek-500 text-white'
+          : 'bg-elevated text-muted'"
       >
-        <span class="text-xs font-semibold uppercase tracking-wider text-muted">{{ day.short }}</span>
-        <span class="text-2xl font-semibold leading-tight tabular-nums">{{ day.dayNumber }}</span>
-        <span class="text-xs text-muted">{{ day.month }}</span>
+        <span class="text-[0.65rem] font-semibold uppercase tracking-[0.14em] opacity-90">{{ day.short }}</span>
+        <span class="font-display text-3xl font-extrabold leading-none tracking-tight tabular-nums">{{ day.dayNumber }}</span>
+        <span class="text-[0.65rem] uppercase tracking-wider opacity-90">{{ day.month }}</span>
       </div>
 
       <p

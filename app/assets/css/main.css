@@ -2,14 +2,59 @@
 @import "@nuxt/ui";
 
 /*
- * Tailwind 4 dropped the cursor:pointer that Preflight used to put on buttons,
- * so they fall back to the browser's arrow while links keep their hand. Not a
- * style choice: without this a button reads as dead on hover. Disabled controls
- * are excluded so Nuxt UI's not-allowed cursor survives.
+ * Huisstijl "Affiche": verzadigde kleur in platte vlakken, stevige display-
+ * letters, hard contrast. Nuxt UI werkt met semantische kleuren, dus het
+ * volstaat om hier de paletten te registreren en ze in app.config.ts aan
+ * primary/secondary te koppelen.
  */
+@theme static {
+  /* Vermiljoen - de hoofdkleur. 500 is de tint uit het voorstel. */
+  --color-vermiljoen-50: #fff3f0;
+  --color-vermiljoen-100: #ffe3dc;
+  --color-vermiljoen-200: #ffc7b8;
+  --color-vermiljoen-300: #ffa48c;
+  --color-vermiljoen-400: #ff7550;
+  --color-vermiljoen-500: #ff3b14;
+  --color-vermiljoen-600: #e82a05;
+  --color-vermiljoen-700: #c01f04;
+  --color-vermiljoen-800: #991b08;
+  --color-vermiljoen-900: #7a1a0c;
+  --color-vermiljoen-950: #420a03;
+
+  /* Keramiekblauw - de tweede kleur, naar Italiaans aardewerk. */
+  --color-keramiek-50: #f1f1fa;
+  --color-keramiek-100: #e2e3f5;
+  --color-keramiek-200: #c6c7eb;
+  --color-keramiek-300: #9b9dd9;
+  --color-keramiek-400: #5a5db0;
+  --color-keramiek-500: #2b2d7a;
+  --color-keramiek-600: #262869;
+  --color-keramiek-700: #1f2156;
+  --color-keramiek-800: #191a44;
+  --color-keramiek-900: #141537;
+  --color-keramiek-950: #0b0c1f;
+
+  /* @nuxt/fonts pikt deze namen op en serveert ze lokaal; geen extern verzoek. */
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+}
+
 @layer base {
+  /*
+   * Tailwind 4 haalde de cursor:pointer van buttons af, waardoor elke knop een
+   * pijltje kreeg terwijl links een handje houden. Geen stijlkeuze.
+   */
   button:not(:disabled):not([aria-disabled="true"]),
   [role="button"]:not(:disabled):not([aria-disabled="true"]) {
     cursor: pointer;
+  }
+
+  /* Koppen dragen de huisstijl; lopende tekst blijft rustig. */
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    text-wrap: balance;
   }
 }

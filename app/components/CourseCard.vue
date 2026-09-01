@@ -11,7 +11,7 @@ withDefaults(defineProps<{
 
 <template>
   <article
-    class="group relative h-full overflow-hidden rounded-2xl border border-default bg-default transition hover:border-primary hover:shadow-lg"
+    class="tilt tilt-blauw group relative h-full overflow-hidden rounded-2xl border border-default bg-default hover:border-secondary"
     :class="wide ? 'sm:flex sm:items-stretch' : 'flex flex-col'"
   >
     <template v-if="course.recipe">

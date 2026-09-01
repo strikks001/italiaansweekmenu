@@ -11,7 +11,7 @@ defineProps<{
 </script>
 
 <template>
-  <article class="group relative flex items-center gap-4 rounded-xl border border-default bg-default p-3 transition hover:border-primary/50 hover:shadow-sm">
+  <article class="tilt tilt-rij group relative flex items-center gap-4 rounded-xl border border-default bg-default p-3 hover:border-primary">
     <NuxtImg
       :src="image"
       :alt="alt"

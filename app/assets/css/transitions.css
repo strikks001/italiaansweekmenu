@@ -70,3 +70,47 @@
     transition-delay: 0ms;
   }
 }
+
+/*
+ * Kaarten kantelen met een veertje, zoals bij Aardvark: rotate over 0,35s met
+ * een curve die net doorschiet. Bewust de losse `rotate`-eigenschap en niet
+ * `transform: rotate()`, want de FLIP-animatie hierboven bezet `transform` al -
+ * zo werken ze langs elkaar heen in plaats van elkaar te overschrijven.
+ *
+ * De schaduw is hard en zonder vervaging: dat is de platte, gedrukte look van
+ * de huisstijl. Een zachte schaduw zou er juist tegenin gaan.
+ */
+.tilt {
+  rotate: 0deg;
+  transition:
+    rotate 0.35s cubic-bezier(0.34, 1.57, 0.64, 1),
+    box-shadow 0.35s cubic-bezier(0.34, 1.57, 0.64, 1),
+    border-color 0.2s ease;
+}
+
+/* Alleen waar echt gehoverd kan worden; op touch is er geen hover-toestand. */
+@media (hover: hover) {
+  .tilt:hover {
+    rotate: -1.25deg;
+    box-shadow: 10px 10px 0 0 var(--ui-primary);
+  }
+
+  .tilt-blauw:hover {
+    box-shadow: 10px 10px 0 0 var(--ui-secondary);
+  }
+
+  /* Rijen zijn breed en laag; daar valt kantelen te veel op. */
+  .tilt-rij:hover {
+    rotate: 0deg;
+    box-shadow: 8px 8px 0 0 var(--ui-primary);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tilt {
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .tilt:hover {
+    rotate: 0deg;
+  }
+}
