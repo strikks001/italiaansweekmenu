@@ -4,7 +4,8 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 const items: NavigationMenuItem[] = [
   { label: 'Weekmenu', to: '/weekmenu', icon: 'i-lucide-calendar-days' },
   { label: 'Recepten', to: '/recepten', icon: 'i-lucide-utensils-crossed' },
-  { label: 'Over', to: '/over', icon: 'i-lucide-info' }
+  { label: 'Over', to: '/over', icon: 'i-lucide-info' },
+  { label: 'Contact', to: '/contact', icon: 'i-lucide-mail' }
 ]
 </script>
 

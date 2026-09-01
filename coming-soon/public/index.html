@@ -5,9 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Cruciaal: dit is een tijdelijk scherm, geen homepage. Zonder noindex kan
-     Google dit vastleggen als waar italiaansweekmenu.nl over gaat, en dat is
-     later lastig terug te draaien. -->
+  <!-- Temporary screen, not a homepage. Without noindex Google could record
+       this as what italiaansweekmenu.nl is about. -->
   <meta name="robots" content="noindex, nofollow">
 
   <title>Italiaans weekmenu — binnenkort</title>
@@ -15,104 +14,310 @@
     content="Elke week een compleet Italiaans weekmenu met recepten voor elke dag. Binnenkort online.">
 
   <style>
-    /* Bewust terughoudend gehouden: de huisstijl van de site ligt nog niet vast,
-     en dit scherm hoort daar niet op vooruit te lopen. */
+    @font-face {
+      font-family: "Bricolage Grotesque";
+      src: url("/fonts/pGaGH96ip_QIAjRvhichIa5CqXzMCAcwrNQTGwPQLIY-JMRvJW7WDzb4iSYBA9_60_LG9h_OFnLm7cNZndqakw4.woff2") format("woff2");
+      font-weight: 700;
+      font-display: swap;
+      unicode-range: U+102-103,U+110-111,U+128-129,U+168-169,U+1A0-1A1,U+1AF-1B0,U+300-301,U+303-304,U+308-309,U+323,U+329,U+1EA0-1EF9,U+20AB;
+    }
+
+    @font-face {
+      font-family: "Bricolage Grotesque";
+      src: url("/fonts/MhIJBVPYoryghJ-2cwHnc4_FUBlOellXg8XY0nXqPbo-_Akb2rFUTYdO5K23hpyLTc7g97-mNadfX38H9b2cX5U.woff2") format("woff2");
+      font-weight: 700;
+      font-display: swap;
+      unicode-range: U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+    }
+
+    @font-face {
+      font-family: "Bricolage Grotesque";
+      src: url("/fonts/SdliUTh8EOx6g0LkQewgc_bTNzCdvRzVpqpKj9Dy7ek-qQHMcmhpYDDo8Wj4shaVVaGhXdUEJ8kR57I_qYfoxYw.woff2") format("woff2");
+      font-weight: 700;
+      font-display: swap;
+      unicode-range: U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+    }
+
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("/fonts/6TYzzGbH1P4LX1TX8F9DZs0JiSVEPU1Y3mDo-N2X2Fs-XsMXLv40TsxocSg9PhWhwl73ttfC9pyEOp42_jIevR8.woff2") format("woff2");
+      font-weight: 400;
+      font-display: swap;
+      unicode-range: U+460-52F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+    }
+
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("/fonts/TOzhW_Z-d32Q28U0fCoRN8sDKD4TqYT8MMN2pmiCOUg-O8I7jZlK_QNQfLUHn_SxnJUfA42UFSE8T7rop3gyg9k.woff2") format("woff2");
+      font-weight: 400;
+      font-display: swap;
+      unicode-range: U+102-103,U+110-111,U+128-129,U+168-169,U+1A0-1A1,U+1AF-1B0,U+300-301,U+303-304,U+308-309,U+323,U+329,U+1EA0-1EF9,U+20AB;
+    }
+
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("/fonts/wc139k9U2U_1gqX9sEM12oLcrbWvJFgTov6iaIXHmBQ-lMI_PJ7An5GrP4SY_IVftSRNIkZzt9wiYQeWQWkDZeA.woff2") format("woff2");
+      font-weight: 400;
+      font-display: swap;
+      unicode-range: U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+    }
+
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("/fonts/ZdnaAqOFvXLEiWvK-fMDbgsMgyamS2o90Lxg-Yz4Eho-Qtk5GOrHJ50RFPdLgSmf8ZZPcyfO6JXxPPEL_GTDqUI.woff2") format("woff2");
+      font-weight: 400;
+      font-display: swap;
+      unicode-range: U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+    }
+
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("/fonts/6TYzzGbH1P4LX1TX8F9DZs0JiSVEPU1Y3mDo-N2X2Fs-XsMXLv40TsxocSg9PhWhwl73ttfC9pyEOp42_jIevR8.woff2") format("woff2");
+      font-weight: 600;
+      font-display: swap;
+      unicode-range: U+460-52F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+    }
+
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("/fonts/TOzhW_Z-d32Q28U0fCoRN8sDKD4TqYT8MMN2pmiCOUg-O8I7jZlK_QNQfLUHn_SxnJUfA42UFSE8T7rop3gyg9k.woff2") format("woff2");
+      font-weight: 600;
+      font-display: swap;
+      unicode-range: U+102-103,U+110-111,U+128-129,U+168-169,U+1A0-1A1,U+1AF-1B0,U+300-301,U+303-304,U+308-309,U+323,U+329,U+1EA0-1EF9,U+20AB;
+    }
+
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("/fonts/wc139k9U2U_1gqX9sEM12oLcrbWvJFgTov6iaIXHmBQ-lMI_PJ7An5GrP4SY_IVftSRNIkZzt9wiYQeWQWkDZeA.woff2") format("woff2");
+      font-weight: 600;
+      font-display: swap;
+      unicode-range: U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+    }
+
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("/fonts/ZdnaAqOFvXLEiWvK-fMDbgsMgyamS2o90Lxg-Yz4Eho-Qtk5GOrHJ50RFPdLgSmf8ZZPcyfO6JXxPPEL_GTDqUI.woff2") format("woff2");
+      font-weight: 600;
+      font-display: swap;
+      unicode-range: U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+    }
+
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("/fonts/rNzQXxIGf8TWbGcmAAX1xcJUa32rphvk0XcLeBh_nMs-CoDscETdgHrVzpW8jiQQ2pNTfO0o4OWAlGDd6ciHSqU.woff2") format("woff2");
+      font-weight: 400;
+      font-display: swap;
+      unicode-range: U+460-52F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+    }
+
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("/fonts/0ngHZ9gmuON7Z5IIaxDDMu7ii9TGxmiW_DNww1whqYs-zkNEXO8DgXyttxvt3wEDS3sHxtt2tNV07rzE_SzeK4s.woff2") format("woff2");
+      font-weight: 400;
+      font-display: swap;
+      unicode-range: U+102-103,U+110-111,U+128-129,U+168-169,U+1A0-1A1,U+1AF-1B0,U+300-301,U+303-304,U+308-309,U+323,U+329,U+1EA0-1EF9,U+20AB;
+    }
+
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("/fonts/FP9sjd8redz6z5zOCkO-aBMeuUxZ0wOkM8uYgyYFOXk-UkWbQLRZExA5IMsNYsnl069j0HI2L9hf0Fg_bFTzbLI.woff2") format("woff2");
+      font-weight: 400;
+      font-display: swap;
+      unicode-range: U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+    }
+
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("/fonts/egvgceROIOmWiCXj8oL5UJ3ZqMe8Z-C6Nf5n1Y0X7Wc-ufTc4bPpCvTBq9_QPDpWfndbImkhHViclgb0JY2GsME.woff2") format("woff2");
+      font-weight: 400;
+      font-display: swap;
+      unicode-range: U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+    }
+
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("/fonts/rNzQXxIGf8TWbGcmAAX1xcJUa32rphvk0XcLeBh_nMs-CoDscETdgHrVzpW8jiQQ2pNTfO0o4OWAlGDd6ciHSqU.woff2") format("woff2");
+      font-weight: 600;
+      font-display: swap;
+      unicode-range: U+460-52F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+    }
+
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("/fonts/0ngHZ9gmuON7Z5IIaxDDMu7ii9TGxmiW_DNww1whqYs-zkNEXO8DgXyttxvt3wEDS3sHxtt2tNV07rzE_SzeK4s.woff2") format("woff2");
+      font-weight: 600;
+      font-display: swap;
+      unicode-range: U+102-103,U+110-111,U+128-129,U+168-169,U+1A0-1A1,U+1AF-1B0,U+300-301,U+303-304,U+308-309,U+323,U+329,U+1EA0-1EF9,U+20AB;
+    }
+
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("/fonts/FP9sjd8redz6z5zOCkO-aBMeuUxZ0wOkM8uYgyYFOXk-UkWbQLRZExA5IMsNYsnl069j0HI2L9hf0Fg_bFTzbLI.woff2") format("woff2");
+      font-weight: 600;
+      font-display: swap;
+      unicode-range: U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+    }
+
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("/fonts/egvgceROIOmWiCXj8oL5UJ3ZqMe8Z-C6Nf5n1Y0X7Wc-ufTc4bPpCvTBq9_QPDpWfndbImkhHViclgb0JY2GsME.woff2") format("woff2");
+      font-weight: 600;
+      font-display: swap;
+      unicode-range: U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+    }
+
+    /* Same tokens as the site, hand-written because this page runs outside
+       Nuxt as its own Worker. */
     :root {
-      --ground: #fcfcfb;
-      --surface: #ffffff;
-      --line: #e4e4e1;
-      --text: #1c1c1a;
-      --muted: #63635e;
-      --accent: #3f6f4b;
+      --vermilion: #ff3b14;
+      --vermilion-ink: #420a03;
+      --ceramic: #2b2d7a;
+      --butter: #ffe9a8;
+      --butter-ink: #2a1f07;
+      --ground: #ffffff;
+      --ink: #1c1917;
+      --muted: #57534e;
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --ground: #131313;
-        --surface: #1a1a19;
-        --line: #2e2e2c;
-        --text: #f2f2f0;
-        --muted: #a3a39d;
-        --accent: #8fbf9b;
+        --ground: #12100f;
+        --ink: #faf7f5;
+        --muted: #a8a29e;
       }
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
       background: var(--ground);
-      color: var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-        "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      font-family: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
-    main {
-      width: 100%;
-      max-width: 34rem;
+    .band {
+      position: relative;
+      background: var(--vermilion);
+      color: var(--vermilion-ink);
+      padding: 4.5rem 1.5rem 6rem;
       text-align: center;
     }
 
-    .eyebrow {
-      margin: 0 0 1.25rem;
+    /* The scallop: the recurring gesture of the house style. */
+    .band::after {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      bottom: -1px;
+      height: 1.75rem;
+      background:
+        radial-gradient(circle at 50% 100%, var(--ground) 0.875rem, transparent 0.875rem)
+        0 0 / 2.25rem 1.75rem repeat-x;
+    }
+
+    .inner { max-width: 46rem; margin: 0 auto; }
+
+    .pill {
+      display: inline-block;
+      background: var(--butter);
+      color: var(--butter-ink);
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
       font-size: 0.75rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--muted);
     }
 
     h1 {
-      margin: 0;
-      font-size: clamp(2rem, 7vw, 3rem);
-      line-height: 1.15;
-      font-weight: 600;
-      letter-spacing: -0.02em;
+      /* White because it is large: 3.57 clears the bar for large text, not for
+         small. The lead below stays near-black for that reason. */
+      color: #ffffff;
+      font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.035em;
       text-wrap: balance;
+      margin: 1.5rem 0 0;
     }
 
     .lead {
-      margin: 1.25rem auto 0;
-      max-width: 28rem;
-      font-size: 1.0625rem;
-      color: var(--muted);
+      margin: 1.5rem auto 0;
+      max-width: 34rem;
+      font-size: 1.125rem;
       text-wrap: pretty;
     }
 
-    footer {
-      margin-top: 2.5rem;
-      font-size: 0.8125rem;
-      color: var(--muted);
+    .rest {
+      flex: 1;
+      display: grid;
+      place-items: center;
+      padding: 3rem 1.5rem;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        transition: none !important;
-      }
+    .card {
+      background: var(--ceramic);
+      color: #ffffff;
+      border-radius: 1rem;
+      padding: 1.75rem 2rem;
+      text-align: center;
+      max-width: 30rem;
+    }
+
+    .card p { margin: 0; font-size: 0.9375rem; }
+
+    .card a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      background: #ffffff;
+      color: var(--ceramic);
+      border-radius: 0.375rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .card a:hover { background: var(--butter); color: var(--butter-ink); }
+
+    footer {
+      padding: 0 1.5rem 2.5rem;
+      text-align: center;
+      font-size: 0.8125rem;
+      color: var(--muted);
     }
   </style>
 </head>
 
 <body>
-  <main>
-    <p class="eyebrow">Binnenkort online</p>
+  <div class="band">
+    <div class="inner">
+      <p class="pill">Binnenkort online</p>
+      <h1>Elke week een Italiaans weekmenu</h1>
+      <p class="lead">
+        Zeven dagen, meerdere gerechten, en de boodschappenlijst erbij.
+        We zijn de eerste menu&rsquo;s aan het schrijven.
+      </p>
+    </div>
+  </div>
 
-    <h1>Elke week een Italiaans weekmenu</h1>
+  <div class="rest">
+    <div class="card">
+      <p>De Italiaanse producten uit onze recepten vind je nu al in de webshop.</p>
+      <a href="https://www.spesadaantonio.nl" rel="noopener">Naar Spesa da Antonio &rarr;</a>
+    </div>
+  </div>
 
-    <p class="lead">
-      Zeven dagen, meerdere gerechten. We zijn de eerste menu's aan het schrijven.
-    </p>
-
-    <footer>italiaansweekmenu.nl</footer>
-  </main>
+  <footer>italiaansweekmenu.nl</footer>
 </body>
 
 </html>
