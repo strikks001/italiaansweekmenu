@@ -1,0 +1,42 @@
+# De site is statisch, dus "vandaag" ligt vast op het moment van bouwen. Zonder
+# dagelijkse herbouw blijft "Wat eten we vandaag?" in de HTML staan op de dag
+# van de laatste push, en verschijnt het volgende weekmenu niet vanzelf op
+# vrijdag. De browser corrigeert dat wel voor bezoekers, maar Google leest de
+# HTML zoals die gebouwd is.
+#
+# Cloudflare kan dit niet zelf: Workers Builds start alleen bij een git push en
+# kent geen deploy hooks.
+name: Dagelijkse herbouw
+
+on:
+  schedule:
+    # 03:15 UTC. Ruim na middernacht in Nederland, zodat de datum van de runner
+    # (UTC) en die van de bezoeker altijd dezelfde dag zijn.
+    - cron: '15 3 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  herbouwen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm generate
+
+      - run: pnpm exec wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

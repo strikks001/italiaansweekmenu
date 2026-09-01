@@ -73,6 +73,36 @@ export function weekContains(year: number, week: number, dateISO: string): boole
   return Boolean(start) && dateISO >= start && dateISO <= end
 }
 
+/** Monday of the ISO week containing "YYYY-MM-DD". */
+function mondayOf(dateISO: string): Date {
+  const date = new Date(`${dateISO}T00:00:00Z`)
+  date.setUTCDate(date.getUTCDate() - ((date.getUTCDay() + 6) % 7))
+  return date
+}
+
+/**
+ * May this week menu be shown today?
+ *
+ * The running week always, and past weeks stay in the archive. The week after
+ * it opens up on Friday, when planning the next shop begins - not earlier, so
+ * a menu written weeks ahead does not spoil itself.
+ */
+export function menuVisibleOn(year: number, week: number, todayISO: string): boolean {
+  const { start } = weekRange(year, week)
+  if (!start) return false
+
+  const monday = mondayOf(todayISO)
+  const thisWeek = monday.toISOString().slice(0, 10)
+  if (start <= thisWeek) return true
+
+  monday.setUTCDate(monday.getUTCDate() + 7)
+  const nextWeek = monday.toISOString().slice(0, 10)
+
+  // 0 = maandag, 4 = vrijdag.
+  const weekday = (new Date(`${todayISO}T00:00:00Z`).getUTCDay() + 6) % 7
+  return start === nextWeek && weekday >= 4
+}
+
 /**
  * Astronomical season of an ISO week, judged by its Thursday — the day that
  * decides which year (and here: which date) a week belongs to. Equinox and

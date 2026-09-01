@@ -3,7 +3,7 @@ const jaar = new Date().getFullYear()
 </script>
 
 <template>
-  <UFooter :ui="{ root: 'print-hide border-t border-default mt-16' }">
+  <UFooter :ui="{ root: 'print-hide border-t border-default' }">
     <template #top>
       <UContainer class="grid gap-8 py-10 sm:grid-cols-3">
         <div>

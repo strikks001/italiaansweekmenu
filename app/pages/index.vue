@@ -20,14 +20,19 @@ const { data } = await useAsyncData('home', async () => {
   return { menus, recipes }
 })
 
-const weeks = computed(() =>
-  (data.value?.menus ?? []).map(menu => ({
-    menu,
-    days: groupByDay(menu, data.value?.recipes)
-  }))
-)
-
 const today = useToday()
+
+// Alleen wat vandaag getoond mag worden: de lopende week, en vanaf vrijdag de
+// week erna. Filteren gebeurt hier, zodat geen enkele sectie eronder per
+// ongeluk een menu toont dat nog niet aan de beurt is.
+const weeks = computed(() =>
+  (data.value?.menus ?? [])
+    .filter(menu => menuVisibleOn(menu.jaar, menu.week, today.value))
+    .map(menu => ({
+      menu,
+      days: groupByDay(menu, data.value?.recipes)
+    }))
+)
 
 const currentWeek = computed(() =>
   weeks.value.find(w => w.days.some(d => d.dateISO >= today.value && d.courses.length))

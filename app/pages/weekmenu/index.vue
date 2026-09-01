@@ -22,8 +22,13 @@ const PER_PAGE = 12
 
 const today = useToday()
 
+// De lopende week en het archief; de week erna pas vanaf vrijdag.
+const visible = computed(() =>
+  (menus.value ?? []).filter(m => menuVisibleOn(m.jaar, m.week, today.value))
+)
+
 const current = computed(() =>
-  menus.value?.find(m => weekContains(m.jaar, m.week, today.value))
+  visible.value.find(m => weekContains(m.jaar, m.week, today.value))
 )
 
 const sort = ref('nieuwste')
@@ -36,7 +41,7 @@ const season = computed(() => selection.value.season as string[])
 
 // The highlighted week already sits on top; this is everything else.
 const rest = computed(() => {
-  let list = (menus.value ?? []).filter(m => m !== current.value)
+  let list = visible.value.filter(m => m !== current.value)
 
   if (year.value !== 'alle') list = list.filter(m => String(m.jaar) === year.value)
   if (season.value.length) list = list.filter(m => season.value.includes(seasonOfWeek(m.jaar, m.week)))
@@ -47,7 +52,7 @@ const rest = computed(() => {
 })
 
 const counts = computed(() => {
-  const base = (menus.value ?? []).filter(m => m !== current.value)
+  const base = visible.value.filter(m => m !== current.value)
   const byYear: Record<string, number> = { alle: base.length }
   const bySeason: Record<string, number> = {}
   for (const m of base) {
@@ -65,7 +70,7 @@ const filterGroups = computed(() => [
     counts: counts.value.byYear,
     options: [
       { value: 'alle', label: 'Alle jaren' },
-      ...[...new Set((menus.value ?? []).map(m => m.jaar))]
+      ...[...new Set(visible.value.map(m => m.jaar))]
         .sort((a, b) => b - a)
         .map(y => ({ value: String(y), label: String(y) }))
     ]
