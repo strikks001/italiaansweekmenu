@@ -17,17 +17,20 @@ ingredienten:
         opmerking: stevig en glanzend
       - hoeveelheid: "800"
         eenheid: g
-        naam: San Marzano tomaten uit blik
+        naam: "gepelde tomaten"
+        opmerking: "bij voorkeur San Marzano"
         productUrl: https://spesadaantonio.nl/products/la-torrente-pelati
       - hoeveelheid: "3"
         naam: tenen knoflook
         opmerking: geplet, niet gesnipperd
       - hoeveelheid: "1"
-        naam: bosje basilicum
+        eenheid: bosje
+        naam: "basilicum"
       - hoeveelheid: "4"
         eenheid: el
         naam: extra vergine olijfolie
-      - naam: zout en zwarte peper
+      - naam: "zout"
+      - naam: "zwarte peper"
   - groep: Om af te maken
     items:
       - hoeveelheid: "400"

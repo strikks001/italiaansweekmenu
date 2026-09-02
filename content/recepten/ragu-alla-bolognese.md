@@ -27,7 +27,7 @@ ingredienten:
         naam: extra vergine olijfolie
       - hoeveelheid: "30"
         eenheid: g
-        naam: boter
+        naam: "roomboter"
   - groep: Voor de ragù
     items:
       - hoeveelheid: "500"
@@ -51,7 +51,10 @@ ingredienten:
       - hoeveelheid: "300"
         eenheid: ml
         naam: runderbouillon
-      - naam: zout, peper en een snuf nootmuskaat
+      - naam: "zout"
+      - naam: "zwarte peper"
+      - naam: "nootmuskaat"
+        opmerking: "een snuf"
   - groep: Om te serveren
     items:
       - hoeveelheid: "600"

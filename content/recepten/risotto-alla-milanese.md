@@ -22,8 +22,8 @@ ingredienten:
         naam: "carnaroli of arborio rijst"
         productUrl: https://spesadaantonio.nl/products/gallo-riso-carnaroli-1kg
       - hoeveelheid: "1"
-        naam: "kleine ui"
-        opmerking: "zeer fijn gesnipperd"
+        naam: "gele ui"
+        opmerking: "klein, zeer fijn gesnipperd"
       - hoeveelheid: "1,2"
         eenheid: l
         naam: "kippen- of groentebouillon"
@@ -32,11 +32,13 @@ ingredienten:
         eenheid: ml
         naam: "droge witte wijn"
       - hoeveelheid: "1"
-        naam: "zakje saffraandraadjes"
+        eenheid: zakje
+        naam: "saffraandraadjes"
         opmerking: "ongeveer 0,2 g"
       - hoeveelheid: "80"
         eenheid: g
-        naam: "koude roomboter"
+        naam: "roomboter"
+        opmerking: "koud uit de koelkast"
       - hoeveelheid: "80"
         eenheid: g
         naam: "Parmigiano Reggiano"

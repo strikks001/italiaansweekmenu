@@ -25,7 +25,8 @@ ingredienten:
       - hoeveelheid: "2"
         naam: "tenen knoflook"
       - hoeveelheid: "1"
-        naam: "handvol basilicum"
+        eenheid: handvol
+        naam: "basilicum"
       - hoeveelheid: "4"
         eenheid: el
         naam: "extra vergine olijfolie"

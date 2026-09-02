@@ -29,7 +29,8 @@ ingredienten:
         eenheid: g
         naam: mascarpone
         opmerking: koud uit de koelkast
-      - naam: snuf zout
+      - naam: "zout"
+        opmerking: "een snuf"
   - groep: Om op te bouwen
     items:
       - hoeveelheid: "300"

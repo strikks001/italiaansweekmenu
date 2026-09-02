@@ -132,12 +132,10 @@
   }
 }
 
-/* Anchor jumps glide instead of cutting, so you keep your place on the page. */
+/* No scroll-behavior on html: that would also animate the jump to the top on
+   every route change, which reads as the page scrolling itself. The jump
+   button asks for a smooth scroll on its own. */
 @media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-
   .jump-nudge {
     animation: jump-nudge 2.4s ease-in-out infinite;
   }

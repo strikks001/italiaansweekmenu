@@ -38,17 +38,6 @@ watch(() => route.fullPath, () => {
       <SearchDialog />
       <UColorModeButton />
       <UButton
-        to="https://www.spesadaantonio.nl"
-        target="_blank"
-        rel="noopener"
-        color="secondary"
-        icon="i-lucide-shopping-basket"
-        class="hidden sm:inline-flex"
-      >
-        Naar de winkel
-      </UButton>
-
-      <UButton
         icon="i-lucide-menu"
         color="neutral"
         variant="ghost"
@@ -69,19 +58,5 @@ watch(() => route.fullPath, () => {
       :items="items"
       orientation="vertical"
     />
-
-    <!-- The shop button is hidden on small screens; here it has the room. -->
-    <template #footer>
-      <UButton
-        to="https://www.spesadaantonio.nl"
-        target="_blank"
-        rel="noopener"
-        color="secondary"
-        icon="i-lucide-shopping-basket"
-        label="Naar de winkel"
-        block
-        class="flex-1"
-      />
-    </template>
   </SideSheet>
 </template>

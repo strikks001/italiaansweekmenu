@@ -18,7 +18,7 @@ ingredienten:
   - groep: Basis
     items:
       - hoeveelheid: "1"
-        naam: ui
+        naam: "gele ui"
       - hoeveelheid: "2"
         naam: winterwortels
       - hoeveelheid: "2"
@@ -52,11 +52,13 @@ ingredienten:
         eenheid: l
         naam: groentebouillon
       - hoeveelheid: "1"
-        naam: korst Parmigiano Reggiano
+        eenheid: korst
+        naam: "Parmigiano Reggiano"
       - hoeveelheid: "150"
         eenheid: g
         naam: ditalini of gebroken spaghetti
-      - naam: extra vergine olijfolie om af te maken
+      - naam: "extra vergine olijfolie"
+        opmerking: "om af te maken"
 stappen:
   - titel: Soffritto
     tekst: Snijd ui, wortel en bleekselderij fijn en stoof ze in de olijfolie tien minuten op laag vuur tot ze zacht zijn.

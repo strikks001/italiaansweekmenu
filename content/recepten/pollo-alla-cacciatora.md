@@ -41,7 +41,8 @@ ingredienten:
         eenheid: el
         naam: extra vergine olijfolie
         productUrl: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
-      - naam: zout en zwarte peper
+      - naam: "zout"
+      - naam: "zwarte peper"
 stappen:
   - titel: Kip aanbraden
     tekst: Dep de kippendijen droog en bestrooi ze met zout. Verhit de olie in een brede pan en braad ze met het vel naar beneden acht minuten tot het vel diep goudbruin en knapperig is. Draai om, bak twee minuten en haal uit de pan.
