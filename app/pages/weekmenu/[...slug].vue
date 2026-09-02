@@ -6,7 +6,11 @@ const { data } = await useAsyncData(`weekmenu:${route.path}`, () =>
   queryCollection('weekmenus').path(route.path).first()
 )
 
-if (!data.value || data.value.concept) {
+// The same rule the overview uses, but here it has to close the door: without
+// it a future week keeps its own page, its sitemap entry and its search hit,
+// and the menu is public before anyone should know it. The daily rebuild opens
+// it on the Friday before its week.
+if (!data.value || data.value.concept || !menuVisibleOn(data.value.jaar, data.value.week, todayISO())) {
   throw createError({ statusCode: 404, statusMessage: 'Weekmenu niet gevonden', fatal: true })
 }
 
@@ -29,8 +33,14 @@ const { data: siblings } = await useAsyncData(`weekmenu-siblings:${route.path}`,
     .all()
 )
 
+const today = useToday()
+
+// Neighbours are filtered too: a link to a week that is not open yet would
+// both leak it and lead to a 404.
 const ordered = computed(() =>
-  [...(siblings.value ?? [])].sort((a, b) => (a.jaar - b.jaar) || (a.week - b.week))
+  (siblings.value ?? [])
+    .filter(m => menuVisibleOn(m.jaar, m.week, today.value))
+    .sort((a, b) => (a.jaar - b.jaar) || (a.week - b.week))
 )
 
 const position = computed(() => ordered.value.findIndex(m => m.path === menu.path))

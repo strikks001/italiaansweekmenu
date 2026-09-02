@@ -5,9 +5,6 @@ gepubliceerd: 2026-08-25
 afbeelding: /images/ragu-alla-bolognese.png
 afbeeldingAlt: "Pan met langzaam gestoofde ragù alla bolognese, geserveerd op verse tagliatelle met parmezaan"
 gang: primo
-seizoen:
-  - herfst
-  - winter
 dieet: []
 voorbereidingstijd: 25
 bereidingstijd: 180

@@ -67,6 +67,12 @@ export default defineNuxtConfig({
     }
   },
 
+  // The prerendered routes give the sitemap its URLs but no dates; this source
+  // adds lastmod for everything that comes out of content/.
+  sitemap: {
+    sources: ['/api/__sitemap__/urls']
+  },
+
   // Studio bewerkt content/ visueel en draait alleen lokaal; productie zou SSR
   // vereisen. Daarom staat de config hier ook achter dezelfde voorwaarde als de
   // module: buiten dev kent het configtype `studio` niet en breekt de typecheck.

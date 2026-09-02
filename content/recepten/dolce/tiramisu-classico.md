@@ -5,11 +5,6 @@ gepubliceerd: 2026-08-28
 afbeelding: /images/tiramisu-classico.png
 afbeeldingAlt: "Vierkante schaal tiramisù met laagjes lange vingers en mascarponecrème, bestoven met cacaopoeder"
 gang: dolce
-seizoen:
-  - lente
-  - zomer
-  - herfst
-  - winter
 dieet:
   - vegetarisch
 voorbereidingstijd: 30

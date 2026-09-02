@@ -5,9 +5,6 @@ gepubliceerd: 2026-08-30
 afbeelding: /images/risotto-alla-milanese.png
 afbeeldingAlt: "Diep bord met goudgele saffraanrisotto, afgemaakt met geraspte Parmigiano en een klontje boter"
 gang: primo
-seizoen:
-  - herfst
-  - winter
 dieet:
   - vegetarisch
   - glutenvrij

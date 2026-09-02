@@ -1,4 +1,5 @@
 import { queryCollection } from '@nuxt/content/nitro'
+import { menuVisibleOn, todayISO } from '~/utils/week'
 
 /**
  * Everything the search dialog needs, and nothing else. A separate route so
@@ -29,15 +30,18 @@ export default defineEventHandler(async (event) => {
       termen: [r.zoekwoorden?.primair, ...(r.zoekwoorden?.secundair ?? [])]
         .filter(Boolean).join(' ')
     })),
-    // Not filtered on visibility here: that depends on the day of the week,
-    // and this file is written at build time. The dialog applies the rule.
-    weekmenus: menus.map(m => ({
-      path: m.path,
-      title: m.title,
-      description: m.description,
-      jaar: m.jaar,
-      week: m.week,
-      thema: m.thema
-    }))
+    // Filtered on the build date: a week that is not open yet has no page
+    // either, so a hit would lead nowhere. The dialog checks again with the
+    // visitor's own date, in case this file is a day behind.
+    weekmenus: menus
+      .filter(m => menuVisibleOn(m.jaar, m.week, todayISO()))
+      .map(m => ({
+        path: m.path,
+        title: m.title,
+        description: m.description,
+        jaar: m.jaar,
+        week: m.week,
+        thema: m.thema
+      }))
   }
 })

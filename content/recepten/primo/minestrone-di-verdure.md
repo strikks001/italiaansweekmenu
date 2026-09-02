@@ -5,9 +5,6 @@ gepubliceerd: 2026-08-27
 afbeelding: /images/minestrone-di-verdure.png
 afbeeldingAlt: "Diepe kom minestrone met courgette, wortel, bonen en pasta, afgemaakt met olijfolie en Parmigiano"
 gang: primo
-seizoen:
-  - herfst
-  - winter
 dieet:
   - vegetarisch
 voorbereidingstijd: 20

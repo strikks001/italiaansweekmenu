@@ -56,9 +56,6 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/La-Torrente-Pelati-400-gr-La-Torrente-47914532.webp?v=1777834305
     prijs: "€ 1,35"
     waarom: "Hele pelati knijp je zelf stuk, waardoor de saus stukjes houdt in plaats van glad te worden."
-seizoen:
-  - zomer
-  - herfst
 stappen:
   - titel: Aubergine ontvochten
     tekst: Snijd de aubergines in blokjes van ongeveer twee centimeter. Bestrooi ze royaal met zout, doe ze in een vergiet en laat dertig minuten uitlekken. Dep ze daarna goed droog.

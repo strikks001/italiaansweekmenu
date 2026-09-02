@@ -19,6 +19,25 @@ const difficulty = recipe.moeilijkheid ?? 'makkelijk'
 const products = recipe.producten ?? []
 const diets = recipe.dieet ?? []
 
+// Which week this dish was on the menu. LIKE against the stored JSON, so the
+// whole archive does not have to travel along in the payload.
+const { data: weeks } = await useAsyncData(`recipe-weeks:${route.path}`, () =>
+  queryCollection('weekmenus')
+    .where('concept', '=', false)
+    .where('recepten', 'LIKE', `%"${route.path}"%`)
+    .select('path', 'title', 'jaar', 'week')
+    .all()
+)
+
+const today = useToday()
+
+// A week that is not open yet must not be named here either.
+const weekMenus = computed(() =>
+  (weeks.value ?? [])
+    .filter(m => menuVisibleOn(m.jaar, m.week, today.value))
+    .sort((a, b) => (b.jaar - a.jaar) || (b.week - a.week))
+)
+
 const { data: related } = await useAsyncData(`related:${route.path}`, () =>
   queryCollection('recepten')
     .where('gang', '=', recipe.gang)
@@ -94,6 +113,7 @@ useSchemaOrg([
     description: recipe.description,
     image: absoluteImage,
     datePublished: new Date(recipe.gepubliceerd).toISOString(),
+    ...(recipe.gewijzigd ? { dateModified: new Date(recipe.gewijzigd).toISOString() } : {}),
     prepTime: isoDuration(recipe.voorbereidingstijd),
     cookTime: isoDuration(recipe.bereidingstijd),
     totalTime: isoDuration(totalMinutes),
@@ -194,6 +214,25 @@ useSchemaOrg([
           :difficulty="difficulty"
         />
       </div>
+
+      <!-- The week menu links to its recipes; without this the way back runs
+           through the archive. -->
+      <p
+        v-if="weekMenus.length"
+        class="print-hide mx-auto mt-4 flex max-w-4xl flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted"
+      >
+        <UIcon
+          name="i-lucide-calendar-days"
+          class="size-4 shrink-0"
+        />
+        <span>Stond op het menu in</span>
+        <NuxtLink
+          v-for="(m, i) in weekMenus"
+          :key="m.path"
+          :to="m.path"
+          class="font-semibold text-ceramic-700 underline decoration-dotted underline-offset-4 hover:decoration-solid dark:text-ceramic-300"
+        >{{ i ? '· ' : '' }}week {{ m.week }}</NuxtLink>
+      </p>
 
       <!-- Recipe before story: someone standing in the kitchen should not have to
          scroll past 500 words of background first. -->

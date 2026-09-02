@@ -87,99 +87,112 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
     <!-- Poster: one vermilion field with today's dish as the draw. -->
     <!-- bg-vermilion-500 rather than bg-primary: Nuxt UI drops to shade 400
          in dark mode, and this field must keep one brand colour in both. -->
-    <section class="scallop relative overflow-hidden bg-vermilion-500 pb-14 text-vermilion-950">
-      <UContainer class="relative py-12 lg:py-20">
-        <div class="mx-auto max-w-4xl">
-          <!-- The day sits above the question: it says which day is being
+    <!-- The wrapper carries the jump link: the band itself clips its overflow
+         for the tilted card, which would cut the button in half. -->
+    <div class="relative">
+      <section class="scallop relative overflow-hidden bg-vermilion-500 pb-24 text-vermilion-950">
+        <UContainer class="relative py-12 lg:py-20">
+          <div class="mx-auto max-w-4xl">
+            <!-- The day sits above the question: it says which day is being
                answered before the question is asked. -->
-          <p
-            v-if="featured"
-            class="mb-3 flex flex-wrap items-center gap-2 text-xl font-bold sm:text-2xl"
-          >
-            <UIcon
-              name="i-lucide-calendar-days"
-              class="size-6 shrink-0"
-            />
-            <span>
-              <template v-if="!isToday">Eerstvolgende: </template>
-              <span class="capitalize">{{ featured.weekday }}</span>
-              {{ featured.dayNumber }} {{ featured.month }}
-            </span>
-          </p>
-
-          <h1 class="poster-question text-white">
-            Wat eten we vandaag?
-          </h1>
-
-          <template v-if="mainCourse">
-            <!-- One panel: photo and text belong together, so they share a
-                 frame. Loose elements on a colour field read as loose. -->
-            <NuxtLink
-              v-if="mainCourse.recipe"
-              :to="mainCourse.path"
-              class="tilt-resting group mt-8 grid overflow-hidden rounded-2xl border-b-4 border-b-ceramic-500 bg-default text-default sm:grid-cols-[minmax(0,16rem)_1fr]"
+            <p
+              v-if="featured"
+              class="mb-3 flex flex-wrap items-center gap-2 text-xl font-bold sm:text-2xl"
             >
-              <NuxtImg
-                :src="mainCourse.recipe.afbeelding"
-                :alt="mainCourse.recipe.afbeeldingAlt"
-                width="640"
-                height="640"
-                sizes="100vw sm:256px"
-                format="webp"
-                preload
-                class="aspect-[4/3] size-full object-cover sm:aspect-auto"
+              <UIcon
+                name="i-lucide-calendar-days"
+                class="size-6 shrink-0"
               />
+              <span>
+                <template v-if="!isToday">Eerstvolgende: </template>
+                <span class="capitalize">{{ featured.weekday }}</span>
+                {{ featured.dayNumber }} {{ featured.month }}
+              </span>
+            </p>
 
-              <div class="flex flex-col justify-center gap-3 p-6 sm:p-8">
-                <div class="flex flex-wrap items-center gap-2 text-xs text-muted">
-                  <PillBadge>{{ gangLabel(mainCourse.recipe.gang) }}</PillBadge>
-                  <span class="flex items-center gap-1">
+            <h1 class="poster-question text-white">
+              Wat eten we vandaag?
+            </h1>
+
+            <template v-if="mainCourse">
+              <!-- One panel: photo and text belong together, so they share a
+                 frame. Loose elements on a colour field read as loose. -->
+              <NuxtLink
+                v-if="mainCourse.recipe"
+                :to="mainCourse.path"
+                class="tilt-resting group mt-8 grid overflow-hidden rounded-2xl border-b-4 border-b-ceramic-500 bg-default text-default sm:grid-cols-[minmax(0,16rem)_1fr]"
+              >
+                <NuxtImg
+                  :src="mainCourse.recipe.afbeelding"
+                  :alt="mainCourse.recipe.afbeeldingAlt"
+                  width="640"
+                  height="640"
+                  sizes="100vw sm:256px"
+                  format="webp"
+                  preload
+                  class="aspect-[4/3] size-full object-cover sm:aspect-auto"
+                />
+
+                <div class="flex flex-col justify-center gap-3 p-6 sm:p-8">
+                  <div class="flex flex-wrap items-center gap-2 text-xs text-muted">
+                    <PillBadge>{{ gangLabel(mainCourse.recipe.gang) }}</PillBadge>
+                    <span class="flex items-center gap-1">
+                      <UIcon
+                        name="i-lucide-clock"
+                        class="size-3"
+                      />
+                      {{ readableDuration(mainCourse.minutes) }}
+                    </span>
+                  </div>
+
+                  <h2 class="poster-dish">
+                    {{ mainCourse.recipe.title }}
+                  </h2>
+
+                  <p
+                    v-if="mainCourse.note"
+                    class="text-muted"
+                  >
+                    {{ mainCourse.note }}
+                  </p>
+
+                  <span class="mt-1 flex items-center gap-1.5 text-sm font-semibold text-secondary">
+                    Naar het recept
                     <UIcon
-                      name="i-lucide-clock"
-                      class="size-3"
+                      name="i-lucide-arrow-right"
+                      class="size-4 transition group-hover:translate-x-0.5"
                     />
-                    {{ readableDuration(mainCourse.minutes) }}
                   </span>
                 </div>
+              </NuxtLink>
 
-                <h2 class="poster-dish">
-                  {{ mainCourse.recipe.title }}
-                </h2>
-
-                <p
-                  v-if="mainCourse.note"
-                  class="text-muted"
-                >
-                  {{ mainCourse.note }}
-                </p>
-
-                <span class="mt-1 flex items-center gap-1.5 text-sm font-semibold text-secondary">
-                  Naar het recept
-                  <UIcon
-                    name="i-lucide-arrow-right"
-                    class="size-4 transition group-hover:translate-x-0.5"
-                  />
-                </span>
-              </div>
-            </NuxtLink>
+              <p
+                v-else
+                class="mt-8 text-lg"
+              >
+                Voor deze dag staat nog geen recept klaar.
+              </p>
+            </template>
 
             <p
               v-else
-              class="mt-8 text-lg"
+              class="mt-4 max-w-xl text-lg"
             >
-              Voor deze dag staat nog geen recept klaar.
+              Het menu van deze week verschijnt binnenkort.
             </p>
-          </template>
+          </div>
+        </UContainer>
+      </section>
 
-          <p
-            v-else
-            class="mt-4 max-w-xl text-lg"
-          >
-            Het menu van deze week verschijnt binnenkort.
-          </p>
-        </div>
-      </UContainer>
-    </section>
+      <!-- The hero answers one day; this says the rest is right below. -->
+      <JumpLink
+        v-if="restOfWeek.length"
+        to="#deze-week"
+        label="Naar de recepten van de rest van deze week"
+        text="Bekijk de recepten van de rest van de week"
+        edge
+      />
+    </div>
 
     <PageSection
       v-if="otherCourses.length"
@@ -208,6 +221,8 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
         <div class="mx-auto flex max-w-4xl flex-col gap-12">
           <PageSection
             v-if="restOfWeek.length"
+            id="deze-week"
+            class="scroll-mt-24"
             eyebrow="Deze week"
             title="Wat eten we verder deze week?"
             lead="Kies een dag om het recept te openen."

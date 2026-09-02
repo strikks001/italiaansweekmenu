@@ -77,7 +77,6 @@ export default defineContentConfig({
         afbeeldingAlt: z.string().describe('Beschrijf wat je ziet - voor toegankelijkheid én afbeeldingszoekresultaten'),
 
         gang: z.enum(GANGEN),
-        seizoen: z.array(z.enum(['lente', 'zomer', 'herfst', 'winter'])).default([]),
         dieet: z.array(z.enum(['vegetarisch', 'veganistisch', 'glutenvrij', 'lactosevrij'])).default([]),
 
         voorbereidingstijd: z.number().describe('Minuten voorbereiden'),

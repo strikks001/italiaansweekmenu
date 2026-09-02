@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
   /** Breadcrumb sits above the banner, on the page background. */
   breadcrumb?: { label: string, to?: string }[]
   /** Narrow on overviews, wide where a long title needs the room. */
@@ -14,20 +14,6 @@ const props = withDefaults(defineProps<{
   jumpTo: undefined,
   jumpLabel: 'Verder lezen'
 })
-
-// The router turns the hash into a pushState, and that leaves the browser's
-// focus point behind: Tab would resume at the top. So scroll and focus by hand.
-function jump(event: MouseEvent) {
-  const target = props.jumpTo && document.querySelector<HTMLElement>(props.jumpTo)
-  if (!target) return
-
-  event.preventDefault()
-  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  target.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'start' })
-
-  target.tabIndex = -1
-  target.focus({ preventScroll: true })
-}
 </script>
 
 <template>
@@ -61,18 +47,12 @@ function jump(event: MouseEvent) {
 
       <!-- Straddles the scalloped edge, so it reads as the way out of the
            banner rather than one more control inside it. -->
-      <NuxtLink
+      <JumpLink
         v-if="jumpTo"
         :to="jumpTo"
-        :aria-label="jumpLabel"
-        class="jump-nudge print-hide absolute bottom-0 left-1/2 z-10 flex size-12 -translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full bg-white text-vermilion-500 shadow-md ring-1 ring-vermilion-950/10 transition hover:bg-butter-100"
-        @click="jump"
-      >
-        <UIcon
-          name="i-lucide-arrow-down"
-          class="size-5"
-        />
-      </NuxtLink>
+        :label="jumpLabel"
+        edge
+      />
     </section>
   </div>
 </template>

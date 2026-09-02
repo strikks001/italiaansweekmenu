@@ -140,13 +140,15 @@
     animation: jump-nudge 2.4s ease-in-out infinite;
   }
 
-  .jump-nudge:hover,
-  .jump-nudge:focus-visible {
+  a:hover .jump-nudge,
+  a:focus-visible .jump-nudge {
     animation-play-state: paused;
   }
 }
 
+/* On the icon, not the button: the edge variant is already positioned with a
+   translate, and a second one would fight it. */
 @keyframes jump-nudge {
-  0%, 70%, 100% { translate: -50% 50%; }
-  80% { translate: -50% 65%; }
+  0%, 70%, 100% { translate: 0 0; }
+  80% { translate: 0 3px; }
 }

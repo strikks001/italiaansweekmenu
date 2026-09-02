@@ -5,8 +5,6 @@ gepubliceerd: 2026-08-29
 afbeelding: /images/bruschetta-al-pomodoro.png
 afbeeldingAlt: "Sneden geroosterd landbrood belegd met blokjes tomaat, basilicum en olijfolie op een houten plank"
 gang: antipasto
-seizoen:
-  - zomer
 dieet:
   - vegetarisch
   - veganistisch
