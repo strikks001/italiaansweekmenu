@@ -56,6 +56,13 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Farchioni-Olio-Extra-Vergine-D_Oliva-1L-Farchioni-47922386.webp?v=1777832911
     prijs: "€ 11,90"
     waarom: "Bij vijf ingrediënten proef je de olie letterlijk; een neutrale supermarktolie maakt het gerecht vlak."
+vragen:
+  - vraag: "Hoe spreek je bruschetta uit?"
+    antwoord: "Broe-**skè**-ta. De combinatie *ch* klinkt in het Italiaans als een k, nooit als *sj*. Dezelfde regel geldt voor chianti en gnocchi."
+  - vraag: "Kan ik dit vooraf klaarmaken?"
+    antwoord: "De tomaten wel, tot twee uur van tevoren — ze worden er zelfs beter van. Rooster het brood pas op het laatste moment en beleg direct voor het serveren."
+  - vraag: "Welke tomaten kan ik het beste gebruiken?"
+    antwoord: "Rijpe trostomaten op kamertemperatuur. Koelkasttomaten hebben nauwelijks smaak en een melige textuur. In de winter werken San Marzano-tomaten uit blik, uitgelekt en fijngesneden, beter dan bleke verse tomaten."
 zoekwoorden:
   primair: "bruschetta met tomaat"
   secundair:
@@ -81,14 +88,3 @@ Doe je die stappen in een andere volgorde, dan krijg je hetzelfde bord met dezel
 ## De meest gemaakte fout
 
 Zacht brood gebruiken. Casinobrood of een luchtige ciabatta zakt in zodra de tomaat erop ligt. Je hebt een stevig, grofporig landbrood nodig met een dichte kruim, gesneden op minstens anderhalve centimeter. In Italië gebruikt men daar oud brood voor, en dat is geen bezuiniging maar de bedoeling.
-
-## Veelgestelde vragen
-
-**Hoe spreek je bruschetta uit?**
-Broe-**skè**-ta. De combinatie *ch* klinkt in het Italiaans als een k, nooit als *sj*. Dezelfde regel geldt voor chianti en gnocchi.
-
-**Kan ik dit vooraf klaarmaken?**
-De tomaten wel, tot twee uur van tevoren — ze worden er zelfs beter van. Rooster het brood pas op het laatste moment en beleg direct voor het serveren.
-
-**Welke tomaten kan ik het beste gebruiken?**
-Rijpe trostomaten op kamertemperatuur. Koelkasttomaten hebben nauwelijks smaak en een melige textuur. In de winter werken San Marzano-tomaten uit blik, uitgelekt en fijngesneden, beter dan bleke verse tomaten.

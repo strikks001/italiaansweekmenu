@@ -88,6 +88,13 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/La-Torrente-Pelati-400-gr-La-Torrente-47914532.webp?v=1777834305
     prijs: "€ 1,35"
     waarom: "Twee eetlepels tomaat geven de soep kleur en diepte zonder er tomatensoep van te maken."
+vragen:
+  - vraag: "Kan ik hem veganistisch maken?"
+    antwoord: "Laat de kaaskorst weg en voeg een eetlepel witte misopasta toe aan het einde. Niet Italiaans, wel effectief voor dezelfde hartige diepte."
+  - vraag: "Kan ik hem invriezen?"
+    antwoord: "Ja, maar zonder de pasta. Die wordt papperig bij ontdooien. Kook de pasta apart en voeg hem toe bij het opwarmen."
+  - vraag: "Welke groenten kan ik nog meer gebruiken?"
+    antwoord: "Alles wat stevig is. Pompoen, snijbiet, prei, venkel, boerenkool. Houd alleen de volgorde aan: hard eerst, zacht laatst."
 zoekwoorden:
   primair: minestrone recept origineel
   secundair:
@@ -111,14 +118,3 @@ Bewaar de korsten van je Parmigiano in de vriezer. Ze zijn te hard om te eten ma
 ## De dag erna
 
 Minestrone hoort lauw of op kamertemperatuur gegeten te worden, niet kokendheet — zeker in de zomer. En hij is de volgende dag beter. In Toscane gaan de restjes met oud brood de oven in als ribollita, letterlijk "opnieuw gekookt".
-
-## Veelgestelde vragen
-
-**Kan ik hem veganistisch maken?**
-Laat de kaaskorst weg en voeg een eetlepel witte misopasta toe aan het einde. Niet Italiaans, wel effectief voor dezelfde hartige diepte.
-
-**Kan ik hem invriezen?**
-Ja, maar zonder de pasta. Die wordt papperig bij ontdooien. Kook de pasta apart en voeg hem toe bij het opwarmen.
-
-**Welke groenten kan ik nog meer gebruiken?**
-Alles wat stevig is. Pompoen, snijbiet, prei, venkel, boerenkool. Houd alleen de volgorde aan: hard eerst, zacht laatst.

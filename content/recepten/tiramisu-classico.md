@@ -72,6 +72,13 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Matilde-Vicenzi-Vicenzovo-Savoiardi-300gr.png?v=1777834550
     prijs: "€ 2,99"
     waarom: "Italiaanse savoiardi zijn harder en droger dan Nederlandse lange vingers en vallen niet uit elkaar in de koffie."
+vragen:
+  - vraag: "Hoe lang blijft tiramisù goed?"
+    antwoord: "Drie dagen in de koelkast, afgedekt. Met rauw ei niet langer. Bestuif pas met cacao vlak voor het serveren, anders wordt het een vochtige laag."
+  - vraag: "Kan ik hem invriezen?"
+    antwoord: "Ja, tot een maand. Laat hem een nacht in de koelkast ontdooien, niet op het aanrecht."
+  - vraag: "Mijn crème is dun geworden. Wat nu?"
+    antwoord: "Meestal is de mascarpone te warm geweest of te lang geroerd. Zet de kom twintig minuten in de koelkast en spatel er voorzichtig een extra stijfgeklopt eiwit door."
 zoekwoorden:
   primair: tiramisu recept origineel
   secundair:
@@ -95,14 +102,3 @@ Gebruik verse eieren en houd ze gekoeld tot vlak voor gebruik. Wie liever geen r
 ## Alcohol of niet
 
 In Treviso gaat er niets in. Marsala, amaretto of rum zijn latere toevoegingen — lekker, maar ze maken er een ander dessert van. Wil je toch: twee eetlepels marsala door de espresso, niet meer.
-
-## Veelgestelde vragen
-
-**Hoe lang blijft tiramisù goed?**
-Drie dagen in de koelkast, afgedekt. Met rauw ei niet langer. Bestuif pas met cacao vlak voor het serveren, anders wordt het een vochtige laag.
-
-**Kan ik hem invriezen?**
-Ja, tot een maand. Laat hem een nacht in de koelkast ontdooien, niet op het aanrecht.
-
-**Mijn crème is dun geworden. Wat nu?**
-Meestal is de mascarpone te warm geweest of te lang geroerd. Zet de kom twintig minuten in de koelkast en spatel er voorzichtig een extra stijfgeklopt eiwit door.

@@ -77,6 +77,13 @@ voedingswaarde:
   koolhydraten: 82
   vetten: 23
 voorbereidingstijd: 20
+vragen:
+  - vraag: "Kan ik de aubergine in de oven doen?"
+    antwoord: "Ja. Meng de blokjes met twee eetlepels olie en rooster ze twintig minuten op 220 °C. Je verliest wat van de gefrituurde textuur, maar het scheelt aanzienlijk in vet."
+  - vraag: "Welke pasta werkt het best?"
+    antwoord: "Kort en hol, zodat de aubergineblokjes zich erin nestelen. Rigatoni, maccheroni of sedanini. In Catania zie je ook vaak casarecce."
+  - vraag: "Kan ik dit van tevoren maken?"
+    antwoord: "De saus wel, tot twee dagen vooruit. Bak de aubergine pas vlak voor het serveren, anders wordt hij zacht."
 zoekwoorden:
   primair: pasta alla norma recept
   secundair:
@@ -100,14 +107,3 @@ Ricotta salata is geperste, gezouten en gerijpte ricotta: droog, kruimelig en be
 ## De meest gemaakte fout
 
 Aubergine bakken zonder hem eerst te ontvochten. Het resultaat is vet in plaats van romig, en de saus wordt zwaar. Die dertig minuten zouten zijn het enige wat dit recept van je vraagt.
-
-## Veelgestelde vragen
-
-**Kan ik de aubergine in de oven doen?**
-Ja. Meng de blokjes met twee eetlepels olie en rooster ze twintig minuten op 220 °C. Je verliest wat van de gefrituurde textuur, maar het scheelt aanzienlijk in vet.
-
-**Welke pasta werkt het best?**
-Kort en hol, zodat de aubergineblokjes zich erin nestelen. Rigatoni, maccheroni of sedanini. In Catania zie je ook vaak casarecce.
-
-**Kan ik dit van tevoren maken?**
-De saus wel, tot twee dagen vooruit. Bak de aubergine pas vlak voor het serveren, anders wordt hij zacht.

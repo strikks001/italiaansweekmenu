@@ -67,6 +67,13 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Farchioni-Olio-Extra-Vergine-D_Oliva-1L-Farchioni-47922386.webp?v=1777832911
     prijs: "€ 11,90"
     waarom: "Je braadt de kip erin én maakt de saus ermee af, dus dit is de smaak van het gerecht."
+vragen:
+  - vraag: "Kan ik dit een dag van tevoren maken?"
+    antwoord: "Ja, en het wordt er beter van. Warm zachtjes op en zet de pan de laatste vijf minuten onder de grill om het vel weer knapperig te krijgen."
+  - vraag: "Kan ik de wijn weglaten?"
+    antwoord: "Vervang hem door bouillon met een eetlepel rodewijnazijn. Je mist wat diepte, maar het gerecht blijft overeind."
+  - vraag: "Zijn ontpitte olijven ook goed?"
+    antwoord: "Ze werken, maar olijven met pit hebben meer smaak en worden minder papperig tijdens het stoven. Waarschuw je gasten wel even."
 zoekwoorden:
   primair: pollo alla cacciatora recept
   secundair:
@@ -90,14 +97,3 @@ Kipfilet droogt uit in vijfendertig minuten stoven. Dijen niet: het bindweefsel 
 ## Wat erbij past
 
 Geen pasta. In Toscane eet je hier grof brood bij om de saus mee op te vegen, of polenta. Wil je toch iets groens, dan werkt geroosterde venkel of een simpele salade van bittere blaadjes.
-
-## Veelgestelde vragen
-
-**Kan ik dit een dag van tevoren maken?**
-Ja, en het wordt er beter van. Warm zachtjes op en zet de pan de laatste vijf minuten onder de grill om het vel weer knapperig te krijgen.
-
-**Kan ik de wijn weglaten?**
-Vervang hem door bouillon met een eetlepel rodewijnazijn. Je mist wat diepte, maar het gerecht blijft overeind.
-
-**Zijn ontpitte olijven ook goed?**
-Ze werken, maar olijven met pit hebben meer smaak en worden minder papperig tijdens het stoven. Waarschuw je gasten wel even.

@@ -39,6 +39,16 @@ const ingredientGroep = z.object({
   items: z.array(ingredient)
 })
 
+/**
+ * Veelgestelde vragen bij een recept. Als aparte velden, niet als kopjes in
+ * de body: zo blijft de accordion één component en kan Google de vragen ook
+ * los van de tekst lezen.
+ */
+const vraag = z.object({
+  vraag: z.string(),
+  antwoord: z.string().describe('Mag inline markdown bevatten, bijv. *cursief*')
+})
+
 const stap = z.object({
   titel: z.string().optional().describe('Korte kop, verschijnt in Google als HowTo-stap'),
   tekst: z.string(),
@@ -79,6 +89,7 @@ export default defineContentConfig({
         }).optional(),
 
         producten: z.array(product).default([]).describe('Producten uit de webshop die bij dit recept horen'),
+        vragen: z.array(vraag).default([]).describe('Veelgestelde vragen, getoond als accordion'),
         zoekwoorden: zoekwoorden
       })
     }),

@@ -50,6 +50,13 @@ voedingswaarde:
   koolhydraten: 2
   vetten: 24
 producten: []
+vragen:
+  - vraag: "Kan ik kip of varkensvlees gebruiken?"
+    antwoord: "Ja, en in Italië zie je dat ook. Dunne kipfilets of varkensschnitzels werken goed, maar bak kip een minuut langer en controleer of hij helemaal gaar is."
+  - vraag: "Kan ik het zonder wijn maken?"
+    antwoord: "Vervang de wijn door bouillon met een theelepel citroensap. Je hebt het zuur nodig om het vet in de saus te doorbreken; alleen bouillon maakt het gerecht zwaar."
+  - vraag: "Wat serveer ik erbij?"
+    antwoord: "In Rome krijg je er niets bij, of hooguit gestoofde spinazie of geroosterde aardappels. Geen pasta: die vecht met de botersaus. Brood om de saus mee op te vegen is wel toegestaan."
 zoekwoorden:
   primair: "saltimbocca alla romana recept"
   secundair:
@@ -75,14 +82,3 @@ Leg de blaadjes daarom bovenop, niet ertussen. Ze moeten direct contact maken me
 ## De meest gemaakte fout
 
 Te lang bakken. Een kalfsoester van een halve centimeter is na drie minuten totaal gaar. Veel mensen bakken door tot de prosciutto helemaal krokant is, en hebben dan schoenzool. Het vlees moet vanbinnen nog net roze zijn; het gaart na terwijl je de saus maakt.
-
-## Veelgestelde vragen
-
-**Kan ik kip of varkensvlees gebruiken?**
-Ja, en in Italië zie je dat ook. Dunne kipfilets of varkensschnitzels werken goed, maar bak kip een minuut langer en controleer of hij helemaal gaar is.
-
-**Kan ik het zonder wijn maken?**
-Vervang de wijn door bouillon met een theelepel citroensap. Je hebt het zuur nodig om het vet in de saus te doorbreken; alleen bouillon maakt het gerecht zwaar.
-
-**Wat serveer ik erbij?**
-In Rome krijg je er niets bij, of hooguit gestoofde spinazie of geroosterde aardappels. Geen pasta: die vecht met de botersaus. Brood om de saus mee op te vegen is wel toegestaan.

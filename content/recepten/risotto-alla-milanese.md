@@ -70,6 +70,13 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Gallo-Riso-Carnaroli-1kg-Gallo-48122318.webp?v=1777833366
     prijs: "€ 6,49"
     waarom: "Carnaroli houdt meer zetmeel vast dan arborio en blijft beetgaar terwijl de saus al romig is."
+vragen:
+  - vraag: "Kan ik risotto een dag van tevoren maken?"
+    antwoord: "Niet echt. Je kunt hem tot stap vier voorbereiden en de rijst uitgespreid laten afkoelen, maar de laatste tien minuten doe je vlak voor het serveren."
+  - vraag: "Kan ik hem zonder wijn maken?"
+    antwoord: "Ja. Vervang de wijn door bouillon met een eetlepel citroensap; je hebt dat zuur nodig om het vet van de boter en de kaas te doorbreken."
+  - vraag: "Hoeveel moet ik roeren?"
+    antwoord: "Minder dan je denkt. Elke minuut een paar slagen is genoeg. Onophoudelijk roeren breekt de korrels stuk en maakt de risotto plakkerig in plaats van romig."
 zoekwoorden:
   primair: "risotto alla milanese recept"
   secundair:
@@ -95,14 +102,3 @@ Spoel de rijst nooit af. Dat zetmeel is precies wat je nodig hebt.
 ## De meest gemaakte fout
 
 Doorkoken tot het gerecht op tafel staat. Een risotto gaart na, dus haal hem van het vuur als de korrel nog een kern heeft. En serveer hem meteen: hij wacht niet. In Milaan zegt men dat de gasten op de risotto wachten, nooit andersom.
-
-## Veelgestelde vragen
-
-**Kan ik risotto een dag van tevoren maken?**
-Niet echt. Je kunt hem tot stap vier voorbereiden en de rijst uitgespreid laten afkoelen, maar de laatste tien minuten doe je vlak voor het serveren.
-
-**Kan ik hem zonder wijn maken?**
-Ja. Vervang de wijn door bouillon met een eetlepel citroensap; je hebt dat zuur nodig om het vet van de boter en de kaas te doorbreken.
-
-**Hoeveel moet ik roeren?**
-Minder dan je denkt. Elke minuut een paar slagen is genoeg. Onophoudelijk roeren breekt de korrels stuk en maakt de risotto plakkerig in plaats van romig.

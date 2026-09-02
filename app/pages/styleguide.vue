@@ -69,6 +69,11 @@ const TYPE_SCALE = [
   { label: 'Bijschrift', class: 'text-sm text-muted' }
 ]
 
+const FAQ = [
+  { vraag: 'Waarvoor gebruik je dit?', antwoord: 'Voor vragen en antwoorden die niet allemaal tegelijk hoeven te tonen. De antwoorden staan wel in de HTML.' },
+  { vraag: 'Mag er opmaak in?', antwoord: 'Ja, inline markdown werkt: *cursief* en **vet**.' }
+]
+
 const RADII = [
   { label: 'Blok', class: 'rounded-2xl' },
   { label: 'Genest', class: 'rounded-xl' },
@@ -217,6 +222,13 @@ useSeoMeta({ title: 'Styleguide', robots: 'noindex, nofollow' })
               variant="ghost"
             />
           </div>
+        </section>
+
+        <section>
+          <FaqAccordion
+            :items="FAQ"
+            title="Uitklapper"
+          />
         </section>
 
         <section>

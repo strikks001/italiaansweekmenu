@@ -88,6 +88,13 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/La-Torrente-Pelati-400-gr-La-Torrente-47914532.webp?v=1777834305
     prijs: "€ 1,35"
     waarom: "Deze ragù vraagt om weinig tomaat, dus één blik van goede kwaliteit is genoeg."
+vragen:
+  - vraag: "Kan ik het in een slowcooker maken?"
+    antwoord: "Ja, maar bak het soffritto en het vlees eerst in een pan. De bruining die daar ontstaat krijg je in een slowcooker nooit, en die is de helft van de smaak."
+  - vraag: "Kan ik het invriezen?"
+    antwoord: "Uitstekend, tot drie maanden. Ragù wordt er zelfs beter van. Vries in porties van twee personen in."
+  - vraag: "Welke wijn gebruik ik?"
+    antwoord: "Droge witte wijn, geen rode. Dat verrast veel mensen, maar het staat zo in het officiële recept: wit houdt de saus lichter en laat het vlees spreken."
 zoekwoorden:
   primair: ragu alla bolognese origineel recept
   secundair:
@@ -113,14 +120,3 @@ Kijk nog eens naar de verhoudingen: 650 gram vlees tegenover 400 gram tomaat. Di
 ## Tijd is het echte ingrediënt
 
 Drie uur is een minimum. Vier is beter. Het collageen in het vlees moet de tijd krijgen om af te breken tot gelatine — dat is wat de saus die zijdezachte, aan de pasta klevende textuur geeft die je in Bologna proeft en thuis meestal niet.
-
-## Veelgestelde vragen
-
-**Kan ik het in een slowcooker maken?**
-Ja, maar bak het soffritto en het vlees eerst in een pan. De bruining die daar ontstaat krijg je in een slowcooker nooit, en die is de helft van de smaak.
-
-**Kan ik het invriezen?**
-Uitstekend, tot drie maanden. Ragù wordt er zelfs beter van. Vries in porties van twee personen in.
-
-**Welke wijn gebruik ik?**
-Droge witte wijn, geen rode. Dat verrast veel mensen, maar het staat zo in het officiële recept: wit houdt de saus lichter en laat het vlees spreken.

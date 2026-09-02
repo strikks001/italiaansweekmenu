@@ -273,6 +273,11 @@ useSchemaOrg([
         </div>
       </section>
 
+      <FaqAccordion
+        :items="recipe.vragen"
+        class="print-hide mx-auto mt-12 max-w-4xl"
+      />
+
       <section
         v-if="related?.length"
         class="print-hide mx-auto mt-16 max-w-4xl"
