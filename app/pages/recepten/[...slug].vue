@@ -117,7 +117,18 @@ useSchemaOrg([
       { name: 'Recepten', item: '/recepten' },
       { name: recipe.title }
     ]
-  })
+  }),
+  // The questions only attach to the page once it is typed FAQPage; the
+  // resolver checks for that before filling mainEntity.
+  ...(recipe.vragen.length
+    ? [
+        defineWebPage({ '@type': ['WebPage', 'FAQPage'] }),
+        ...recipe.vragen.map(item => defineQuestion({
+          name: item.vraag,
+          acceptedAnswer: plainText(item.antwoord)
+        }))
+      ]
+    : [])
 ])
 </script>
 
