@@ -132,7 +132,7 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
 
               <div class="flex flex-col justify-center gap-3 p-6 sm:p-8">
                 <div class="flex flex-wrap items-center gap-2 text-xs text-muted">
-                  <PillBadge>{{ mainCourse.recipe.gang }}</PillBadge>
+                  <PillBadge>{{ gangLabel(mainCourse.recipe.gang) }}</PillBadge>
                   <span class="flex items-center gap-1">
                     <UIcon
                       name="i-lucide-clock"
@@ -181,44 +181,41 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
       </UContainer>
     </section>
 
-    <UContainer v-if="otherCourses.length">
-      <div class="mx-auto max-w-4xl pt-10">
-        <h2 class="text-xl">
-          Er komt die dag meer op tafel
-        </h2>
-
-        <UCarousel
-          v-slot="{ item, index }"
-          :items="otherCourses"
-          arrows
-          :breakpoints="carouselBreakpoints"
-          :ui="carouselUi"
-          class="mt-5"
-        >
-          <CourseCard
-            :course="item"
-            :priority="index === 0"
-          />
-        </UCarousel>
-      </div>
-    </UContainer>
+    <PageSection
+      v-if="otherCourses.length"
+      title="Er komt die dag meer op tafel"
+      heading-size="sm"
+      spacing="none"
+      class="pt-10"
+    >
+      <UCarousel
+        v-slot="{ item, index }"
+        :items="otherCourses"
+        arrows
+        :breakpoints="carouselBreakpoints"
+        :ui="carouselUi"
+        class="mt-5"
+      >
+        <CourseCard
+          :course="item"
+          :priority="index === 0"
+        />
+      </UCarousel>
+    </PageSection>
 
     <section>
       <UContainer class="py-12 lg:py-16">
         <div class="mx-auto flex max-w-4xl flex-col gap-12">
-          <section v-if="restOfWeek.length">
-            <div class="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p>
-                  <PillBadge>Deze week</PillBadge>
-                </p>
-                <h2 class="mt-2 text-3xl sm:text-4xl">
-                  Wat eten we verder deze week?
-                </h2>
-                <p class="mt-2 text-muted">
-                  Kies een dag om het recept te openen.
-                </p>
-              </div>
+          <PageSection
+            v-if="restOfWeek.length"
+            eyebrow="Deze week"
+            title="Wat eten we verder deze week?"
+            lead="Kies een dag om het recept te openen."
+            heading-size="lg"
+            :contained="false"
+            spacing="none"
+          >
+            <template #actions>
               <UButton
                 v-if="currentWeek"
                 :to="currentWeek.menu.path"
@@ -228,29 +225,22 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
               >
                 Hele weekmenu
               </UButton>
-            </div>
+            </template>
 
-            <WeekAgenda
-              :days="restOfWeek"
-              class="mt-6"
-            />
-          </section>
+            <WeekAgenda :days="restOfWeek" />
+          </PageSection>
 
-          <section v-if="nextWeek">
-            <div class="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p>
-                  <PillBadge tone="ceramic">
-                    Volgende week
-                  </PillBadge>
-                </p>
-                <h2 class="mt-2 text-3xl sm:text-4xl">
-                  Volgende week op het menu
-                </h2>
-                <p class="mt-2 text-muted">
-                  {{ nextWeek.menu.thema }} — alvast om vooruit te plannen.
-                </p>
-              </div>
+          <PageSection
+            v-if="nextWeek"
+            eyebrow="Volgende week"
+            eyebrow-tone="ceramic"
+            title="Volgende week op het menu"
+            :lead="`${nextWeek.menu.thema} — alvast om vooruit te plannen.`"
+            heading-size="lg"
+            :contained="false"
+            spacing="none"
+          >
+            <template #actions>
               <UButton
                 :to="nextWeek.menu.path"
                 color="neutral"
@@ -259,72 +249,61 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
               >
                 Week {{ nextWeek.menu.week }}
               </UButton>
-            </div>
+            </template>
 
-            <WeekAgenda
-              :days="nextWeek.days.filter(d => d.courses.length)"
-              class="mt-6"
-            />
-          </section>
+            <WeekAgenda :days="nextWeek.days.filter(d => d.courses.length)" />
+          </PageSection>
         </div>
       </UContainer>
     </section>
 
-    <section class="bg-butter-100 dark:bg-butter-950">
-      <UContainer class="py-14 lg:py-20">
-        <div class="mx-auto max-w-2xl text-center">
-          <h2 class="text-3xl sm:text-4xl">
-            Zoek je iets anders?
-          </h2>
-          <p class="mt-3 text-butter-900 dark:text-butter-200">
-            Doorzoek het hele archief op gerecht, gang of ingrediënt.
-          </p>
-
-          <form
-            class="mt-6 flex flex-col gap-2 sm:flex-row"
-            @submit.prevent="search"
-          >
-            <UInput
-              v-model="query"
-              type="search"
-              placeholder="Bijvoorbeeld: pasta, risotto, dolce"
-              icon="i-lucide-search"
-              size="lg"
-              class="flex-1"
-            />
-            <!-- Ceramic, not vermilion: white scores 11.94 on blue, 3.57 on red. -->
-            <UButton
-              type="submit"
-              label="Zoeken"
-              color="secondary"
-              size="lg"
-            />
-          </form>
-        </div>
-      </UContainer>
-    </section>
-
-    <section>
-      <UContainer class="py-14 text-center lg:py-20">
-        <h2 class="text-3xl sm:text-4xl">
-          De juiste ingrediënten maken het verschil
-        </h2>
-        <p class="mx-auto mt-4 max-w-xl text-muted">
-          Echte Italiaanse pasta, olijfolie, kaas en salumi bestel je rechtstreeks
-          bij Spesa da Antonio — geselecteerd bij kleine producenten in Italië.
-        </p>
+    <PageSection
+      title="Zoek je iets anders?"
+      lead="Doorzoek het hele archief op gerecht, gang of ingrediënt."
+      heading-size="lg"
+      tone="butter"
+      lead-class="text-butter-900 dark:text-butter-200"
+      spacing="band"
+      width="prose"
+      center
+    >
+      <form
+        class="flex flex-col gap-2 sm:flex-row"
+        @submit.prevent="search"
+      >
+        <UInput
+          v-model="query"
+          type="search"
+          placeholder="Bijvoorbeeld: pasta, risotto, dolce"
+          icon="i-lucide-search"
+          size="lg"
+          class="flex-1"
+        />
+        <!-- Ceramic, not vermilion: white scores 11.94 on blue, 3.57 on red. -->
         <UButton
-          to="https://www.spesadaantonio.nl"
-          target="_blank"
-          rel="noopener"
+          type="submit"
+          label="Zoeken"
           color="secondary"
           size="lg"
-          class="mt-7"
-          trailing-icon="i-lucide-arrow-up-right"
-        >
-          Naar Spesa da Antonio
-        </UButton>
-      </UContainer>
-    </section>
+        />
+      </form>
+    </PageSection>
+
+    <CtaSection
+      title="De juiste ingrediënten maken het verschil"
+      text="Echte Italiaanse pasta, olijfolie, kaas en salumi bestel je rechtstreeks
+            bij Spesa da Antonio — geselecteerd bij kleine producenten in Italië."
+    >
+      <UButton
+        to="https://www.spesadaantonio.nl"
+        target="_blank"
+        rel="noopener"
+        color="secondary"
+        size="lg"
+        trailing-icon="i-lucide-arrow-up-right"
+      >
+        Naar Spesa da Antonio
+      </UButton>
+    </CtaSection>
   </div>
 </template>

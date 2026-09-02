@@ -33,7 +33,7 @@ Getallen (`voorbereidingstijd`, `personen`, `calorieen`) en datums
 | `gepubliceerd` | datum | `JJJJ-MM-DD`, onaangehaald |
 | `afbeelding` | pad | `/images/<slug>.jpg` |
 | `afbeeldingAlt` | string | Beschrijf wat er te zien is, geen zoekwoorden stapelen |
-| `gang` | enum | `antipasto` `primo` `secondo` `contorno` `dolce` `basis` |
+| `gang` | enum | `antipasto` `primo` `secondo` `contorno` `piatto-unico` `dolce` `basis` — bepaalt ook de map: `content/recepten/<gang>/` |
 | `voorbereidingstijd` | getal | minuten |
 | `bereidingstijd` | getal | minuten, `0` bij ongekookte gerechten |
 | `personen` | getal | standaard 4 |

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ActiveFilter } from '~/components/ActiveFilters.vue'
+import type { ActiveFilter } from '~/components/overview/ActiveFilters.vue'
 
 // .select() fetches only what the cards and filters need; without it every
 // recipe travels with its ingredients and steps in the payload.
@@ -18,13 +18,14 @@ const { data: recipes } = await useAsyncData('recipes:all', () =>
 type Recipe = NonNullable<typeof recipes.value>[number]
 type Criteria = { search: string, course: string, diet: string[], time: string[], level: string[] }
 
+// Built from the course list, so a new course cannot be forgotten here.
+// `basis` is left out: those are building blocks, not something to browse.
 const COURSES = [
   { value: 'alle', label: 'Alles' },
-  { value: 'antipasto', label: 'Antipasto' },
-  { value: 'primo', label: 'Primo' },
-  { value: 'secondo', label: 'Secondo' },
-  { value: 'contorno', label: 'Contorno' },
-  { value: 'dolce', label: 'Dolce' }
+  ...GANGEN.filter(g => g !== 'basis').map(g => ({
+    value: g,
+    label: gangLabel(g).replace(/^./, c => c.toUpperCase())
+  }))
 ]
 
 const DIETS = [
@@ -294,7 +295,7 @@ useSchemaOrg([
           @clear="clearFilters"
         >
           <template #meta="{ item }">
-            <PillBadge>{{ item.gang }}</PillBadge>
+            <PillBadge>{{ gangLabel(item.gang) }}</PillBadge>
             <span>{{ readableDuration(item.voorbereidingstijd + item.bereidingstijd) }}</span>
           </template>
         </OverviewResults>

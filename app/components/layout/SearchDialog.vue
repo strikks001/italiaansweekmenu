@@ -32,7 +32,7 @@ const recipes = computed<CommandPaletteItem[]>(() =>
     description: r.description,
     // Not `suffix`: that renders as grey text beside the title. The gang goes
     // into the pill, and into the search terms so it stays findable.
-    badge: r.gang,
+    badge: gangLabel(r.gang),
     badgeTone: 'butter',
     termen: `${r.termen} ${r.gang}`,
     icon: 'i-lucide-utensils-crossed',

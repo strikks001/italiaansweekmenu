@@ -37,10 +37,10 @@ useSchemaOrg([
       </p>
     </PageBanner>
 
-    <UContainer class="py-10 lg:py-14">
-      <article class="prose dark:prose-invert mx-auto max-w-4xl">
+    <PageSection>
+      <ProseSection>
         <ContentRenderer :value="page" />
-      </article>
-    </UContainer>
+      </ProseSection>
+    </PageSection>
   </div>
 </template>

@@ -1,4 +1,5 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content'
+import { GANGEN } from './app/utils/gang'
 
 /**
  * Zoekwoordonderzoek per recept. Dit staat bewust IN de content, zodat je
@@ -60,7 +61,13 @@ export default defineContentConfig({
     // ---------------------------------------------------------------- recepten
     recepten: defineCollection({
       type: 'page',
-      source: 'recepten/**/*.md',
+      // A folder per course, purely so content/ stays readable. `prefix` keeps
+      // the URL flat: /recepten/pasta-alla-norma, not /recepten/primo/...
+      // Without it the folder would land in every link and in every `pad`.
+      source: GANGEN.map(gang => ({
+        include: `recepten/${gang}/*.md`,
+        prefix: '/recepten'
+      })),
       schema: z.object({
         gepubliceerd: z.date().describe('Publicatiedatum, wordt datePublished in schema.org'),
         gewijzigd: z.date().optional(),
@@ -69,7 +76,7 @@ export default defineContentConfig({
         afbeelding: z.string().editor({ input: 'media' }),
         afbeeldingAlt: z.string().describe('Beschrijf wat je ziet - voor toegankelijkheid én afbeeldingszoekresultaten'),
 
-        gang: z.enum(['antipasto', 'primo', 'secondo', 'contorno', 'dolce', 'basis']),
+        gang: z.enum(GANGEN),
         seizoen: z.array(z.enum(['lente', 'zomer', 'herfst', 'winter'])).default([]),
         dieet: z.array(z.enum(['vegetarisch', 'veganistisch', 'glutenvrij', 'lactosevrij'])).default([]),
 

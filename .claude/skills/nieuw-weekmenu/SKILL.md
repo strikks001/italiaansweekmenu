@@ -11,7 +11,7 @@ dekt en de bestaande receptenbibliotheek zo goed mogelijk benut.
 ## Stap 1 — Inventariseren
 
 ```
-grep -h -E "^title:|^gang:|^regio:|^gepubliceerd:" content/recepten/*.md
+grep -rh -E "^title:|^gang:|^regio:|^gepubliceerd:" content/recepten/
 grep -l "" content/weekmenu/*.md
 ```
 
@@ -56,7 +56,7 @@ Controleer alle paden:
 
 ```
 grep "pad:" content/weekmenu/<bestand>.md
-ls content/recepten/
+ls content/recepten/*/
 ```
 
 ## Stap 5 — Zoekwoorden

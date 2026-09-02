@@ -5,7 +5,7 @@ description: Schrijf een nieuw Italiaans recept voor italiaansweekmenu, inclusie
 
 # Nieuw recept schrijven
 
-Doel: één publicatieklaar receptbestand in `content/recepten/<slug>.md` dat
+Doel: één publicatieklaar receptbestand in `content/recepten/<gang>/<slug>.md` dat
 voldoet aan het schema, in de huisstijl geschreven is en op een reëel
 zoekwoord mikt.
 
@@ -19,7 +19,7 @@ Lees **altijd eerst** beide referenties:
 Voordat je iets onderzoekt, controleer wat er al is:
 
 ```
-grep -h "primair:" content/recepten/*.md
+grep -rh "primair:" content/recepten/
 ```
 
 Mikt een bestaand recept al op hetzelfde hoofdzoekwoord, dan schrijf je geen
@@ -99,7 +99,7 @@ Volg `references/schrijfstijl.md` op de letter. Vul de frontmatter volgens
 Voor de producten: kijk eerst welke er al gebruikt worden.
 
 ```
-grep -h -A 2 "naam:" content/recepten/*.md | grep -B 1 spesadaantonio
+grep -rh -A 2 "naam:" content/recepten/ | grep -B 1 spesadaantonio
 ```
 
 Ken je de precieze product-URL niet, gebruik dan `https://www.spesadaantonio.nl`

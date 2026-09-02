@@ -98,7 +98,7 @@ useSchemaOrg([
     cookTime: isoDuration(recipe.bereidingstijd),
     totalTime: isoDuration(totalMinutes),
     recipeYield: `${servings} personen`,
-    recipeCategory: recipe.gang,
+    recipeCategory: gangLabel(recipe.gang),
     recipeCuisine: 'Italiaans',
     keywords: [recipe.zoekwoorden.primair, ...(recipe.zoekwoorden.secundair ?? [])],
     recipeIngredient: ingredientLines,
@@ -142,7 +142,7 @@ useSchemaOrg([
     >
       <div class="print-hide flex flex-wrap items-center justify-center gap-2">
         <PillBadge tone="white">
-          {{ recipe.gang }}
+          {{ gangLabel(recipe.gang) }}
         </PillBadge>
         <PillBadge
           v-for="d in diets"
@@ -294,7 +294,7 @@ useSchemaOrg([
         class="print-hide mx-auto mt-16 max-w-4xl"
       >
         <h2 class="text-2xl">
-          Meer <span class="capitalize">{{ recipe.gang }}</span>
+          Meer <span class="first-letter:uppercase">{{ gangLabel(recipe.gang) }}</span>
         </h2>
         <UCarousel
           v-slot="{ item }"
@@ -312,7 +312,7 @@ useSchemaOrg([
             :description="item.description"
           >
             <template #meta>
-              <PillBadge>{{ item.gang }}</PillBadge>
+              <PillBadge>{{ gangLabel(item.gang) }}</PillBadge>
               <span>{{ readableDuration(item.voorbereidingstijd + item.bereidingstijd) }}</span>
             </template>
           </MediaCard>

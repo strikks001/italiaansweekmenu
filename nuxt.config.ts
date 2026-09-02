@@ -13,6 +13,10 @@ export default defineNuxtConfig({
     ...(process.env.NODE_ENV === 'development' ? ['nuxt-studio'] : [])
   ],
 
+  // Folders group the components; they must not end up in the tag name.
+  // Without this, components/card/MediaCard.vue becomes <CardMediaCard>.
+  components: [{ path: '~/components', pathPrefix: false }],
+
   devtools: { enabled: true },
 
   css: ['~/assets/css/main.css', '~/assets/css/transitions.css', '~/assets/css/print.css'],

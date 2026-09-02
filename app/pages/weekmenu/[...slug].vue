@@ -120,33 +120,24 @@ useSchemaOrg([
 
     <UContainer class="py-10 lg:py-14">
       <!-- The agenda sits up top: this is what people open the page for. -->
-      <section
-        class="mx-auto mt-10 max-w-4xl"
-        aria-labelledby="menu"
+      <PageSection
+        :title="`${filledDays} avonden, ${recipeCount} recepten`"
+        lead="Kies een dag om het recept te openen."
+        :contained="false"
+        class="mt-10"
       >
-        <h2
-          id="menu"
-          class="text-2xl"
-        >
-          {{ filledDays }} avonden, {{ recipeCount }} recepten
-        </h2>
-        <p class="mt-1 text-muted">
-          Kies een dag om het recept te openen.
-        </p>
-
-        <WeekAgenda
-          :days="days"
-          class="mt-5"
-        />
-      </section>
+        <WeekAgenda :days="days" />
+      </PageSection>
 
       <!-- The point of planning a week: one list to shop from. -->
       <div class="mx-auto mt-12 max-w-4xl">
         <WeekShoppingList :items="shoppingList" />
       </div>
 
-      <div class="print-hide prose dark:prose-invert mx-auto mt-12 max-w-4xl">
-        <ContentRenderer :value="menu" />
+      <div class="print-hide mx-auto mt-12 max-w-4xl">
+        <ProseSection as="div">
+          <ContentRenderer :value="menu" />
+        </ProseSection>
       </div>
 
       <ProductList :products="products" />
@@ -189,14 +180,13 @@ useSchemaOrg([
         </NuxtLink>
       </nav>
 
-      <section
+      <PageSection
         v-if="related.length"
-        class="print-hide mx-auto mt-16 max-w-4xl"
+        title="Meer weekmenu's"
+        :contained="false"
+        class="print-hide mt-16"
       >
-        <h2 class="text-2xl">
-          Meer weekmenu's
-        </h2>
-        <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <CardGrid>
           <MediaCard
             v-for="item in related"
             :key="item.path"
@@ -212,8 +202,8 @@ useSchemaOrg([
               </span>
             </template>
           </MediaCard>
-        </div>
-      </section>
+        </CardGrid>
+      </PageSection>
     </UContainer>
   </div>
 </template>

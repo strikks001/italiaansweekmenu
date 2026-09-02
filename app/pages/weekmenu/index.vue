@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ActiveFilter } from '~/components/ActiveFilters.vue'
+import type { ActiveFilter } from '~/components/overview/ActiveFilters.vue'
 
 const { data: menus } = await useAsyncData('weekmenus:all', () =>
   queryCollection('weekmenus')

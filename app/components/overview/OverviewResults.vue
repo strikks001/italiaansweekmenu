@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends { path: string, title: string, description?: string, afbeelding: string, afbeeldingAlt: string }">
 import type { ActiveFilter } from './ActiveFilters.vue'
 // Imported rather than auto-imported: `is` resolves at compile time.
-import MediaCard from './MediaCard.vue'
-import MediaRow from './MediaRow.vue'
+import MediaCard from '../card/MediaCard.vue'
+import MediaRow from '../card/MediaRow.vue'
 
 defineProps<{
   /** The current page of items. */

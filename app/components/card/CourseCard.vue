@@ -30,7 +30,7 @@ withDefaults(defineProps<{
 
       <div class="flex flex-1 flex-col justify-center gap-2 p-5">
         <div class="flex flex-wrap items-center gap-2">
-          <PillBadge>{{ course.recipe.gang }}</PillBadge>
+          <PillBadge>{{ gangLabel(course.recipe.gang) }}</PillBadge>
           <span class="flex items-center gap-1 text-xs text-muted">
             <UIcon
               name="i-lucide-clock"

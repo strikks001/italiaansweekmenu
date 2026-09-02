@@ -58,7 +58,7 @@ defineProps<{
           <div class="min-w-0 flex-1">
             <template v-if="course.recipe">
               <div class="flex flex-wrap items-center gap-2">
-                <PillBadge>{{ course.recipe.gang }}</PillBadge>
+                <PillBadge>{{ gangLabel(course.recipe.gang) }}</PillBadge>
                 <span class="flex items-center gap-1 text-xs text-muted">
                   <UIcon
                     name="i-lucide-clock"

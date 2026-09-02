@@ -21,6 +21,20 @@ build.
 `: ` in een onaangehaalde zin leest YAML als een geneste sleutel; alles onder
 die regel gaat verloren. Dit is de meest voorkomende bouwfout in dit project.
 
+**Een recept hoort in `content/recepten/<gang>/`,** en die map moet in `GANGEN`
+in `app/utils/gang.ts` staan. Staat hij daar niet, dan valt het recept buiten de
+collectie: het verdwijnt van de site zonder dat de build klaagt. De URL blijft
+plat (`/recepten/<slug>`, zonder de gang) doordat elke bron in
+`content.config.ts` `prefix: '/recepten'` meekrijgt.
+
+`app/utils/gang.ts` is de enige lijst van gangen: het schema, de mapnamen, de
+filters op /recepten en de labels komen daar vandaan.
+
+**Ingrediëntnamen zijn de naam van het product, verder niets.** De hoeveelheid
+hoort in `hoeveelheid` en `eenheid` ("2" + "tenen" + "knoflook"), de bereiding
+in `opmerking`. Eén ingrediënt per regel. De boodschappenlijst voegt samen op
+naam plus eenheid, dus "boter" naast "koude roomboter" wordt twee regels.
+
 Recepten en weekmenu's schrijf je via de skills in `.claude/skills/`. De
 schrijfstijl ligt vast in `.claude/skills/nieuw-recept/references/schrijfstijl.md`
 en moet over alle recepten consistent blijven.
