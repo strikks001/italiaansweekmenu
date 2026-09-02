@@ -35,6 +35,7 @@ watch(() => route.fullPath, () => {
     <UNavigationMenu :items="items" />
 
     <template #right>
+      <SearchDialog />
       <UColorModeButton />
       <UButton
         to="https://www.spesadaantonio.nl"
