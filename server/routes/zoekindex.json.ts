@@ -1,11 +1,8 @@
 import { queryCollection } from '@nuxt/content/nitro'
 import { menuVisibleOn, todayISO } from '~/utils/week'
 
-/**
- * Everything the search dialog needs, and nothing else. A separate route so
- * the index is fetched once on demand, instead of riding along in the payload
- * of every page. Prerendered by `nuxt generate`; the route is in nuxt.config.
- */
+/** The search index, fetched on demand so it stays out of every page payload.
+ *  Prerendered; the route is listed in nuxt.config. */
 export default defineEventHandler(async (event) => {
   const [recipes, menus] = await Promise.all([
     queryCollection(event, 'recepten')
@@ -26,13 +23,10 @@ export default defineEventHandler(async (event) => {
       title: r.title,
       description: r.description,
       gang: r.gang,
-      // Search terms people actually type, folded into one matchable string.
       termen: [r.zoekwoorden?.primair, ...(r.zoekwoorden?.secundair ?? [])]
         .filter(Boolean).join(' ')
     })),
-    // Filtered on the build date: a week that is not open yet has no page
-    // either, so a hit would lead nowhere. The dialog checks again with the
-    // visitor's own date, in case this file is a day behind.
+    // A week that is not open yet has no page, so a hit would lead nowhere.
     weekmenus: menus
       .filter(m => menuVisibleOn(m.jaar, m.week, todayISO()))
       .map(m => ({

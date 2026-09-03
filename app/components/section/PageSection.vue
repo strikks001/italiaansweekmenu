@@ -1,7 +1,6 @@
 <script setup lang="ts">
-// Imported, not named as a string in `:is`: a string only resolves when
-// something else on the page already pulled UContainer into the bundle, so
-// /over silently lost its container.
+// Imported, not named as a string in `:is`: a string only resolves when the
+// page already pulled UContainer in elsewhere, and /over lost its container.
 import { UContainer } from '#components'
 
 withDefaults(defineProps<{
@@ -10,9 +9,7 @@ withDefaults(defineProps<{
   eyebrowTone?: 'butter' | 'ceramic' | 'white' | 'vermilion'
   lead?: string
   headingSize?: 'sm' | 'md' | 'lg'
-  /** Background band. Omit on a section that sits on the page colour. */
   tone?: 'butter' | 'ceramic'
-  /** Own container, or a block inside one the page already opened. */
   contained?: boolean
   spacing?: 'page' | 'band' | 'compact' | 'none'
   width?: 'prose' | 'wide'
@@ -34,7 +31,6 @@ withDefaults(defineProps<{
 
 const slots = useSlots()
 
-// Labelled by its own heading, so screen readers can list the sections.
 const headingId = useId()
 
 const TONES = {
@@ -74,8 +70,6 @@ const SPACING = {
           :center="center"
           :lead-class="leadClass"
         >
-          <!-- Forwarded only when the page actually passes actions: an empty
-               template would still turn the heading into a two-column row. -->
           <template
             v-if="slots.actions"
             #actions

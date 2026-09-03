@@ -14,7 +14,6 @@ export function scaleQuantity(quantity: string | undefined, factor: number): str
     return `${formatQuantity(parseQuantity(range[1]!) * factor)}-${formatQuantity(parseQuantity(range[2]!) * factor)}`
   }
 
-  // Single number, optionally followed by a suffix we keep intact.
   const single = text.match(/^(\d+(?:[.,]\d+)?)(.*)$/)
   if (single) {
     return `${formatQuantity(parseQuantity(single[1]!) * factor)}${single[2]}`
@@ -37,5 +36,14 @@ export function formatQuantity(value: number): string {
   else if (value >= 10) rounded = Math.round(value)
   else rounded = Math.round(value * 2) / 2
 
+  return String(rounded).replace('.', ',')
+}
+
+/** Rounds up: formatQuantity rounds to the nearest half, which on a sum turned
+ *  1,5 l + 1,2 l into 2,5 l and left you short. */
+export function formatTotal(value: number): string {
+  if (!Number.isFinite(value)) return ''
+
+  const rounded = Math.ceil(value * 10 - 1e-9) / 10
   return String(rounded).replace('.', ',')
 }

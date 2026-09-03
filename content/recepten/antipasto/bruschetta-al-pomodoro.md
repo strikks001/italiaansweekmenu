@@ -22,9 +22,8 @@ ingredienten:
         naam: "rijpe trostomaten"
       - hoeveelheid: "2"
         naam: "tenen knoflook"
-      - hoeveelheid: "1"
-        eenheid: handvol
-        naam: "basilicum"
+      - naam: "basilicum"
+        opmerking: "een handvol blaadjes"
       - hoeveelheid: "4"
         eenheid: el
         naam: "extra vergine olijfolie"

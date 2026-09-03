@@ -1,7 +1,6 @@
 <script setup lang="ts">
-// Rendered by Satori into a 1200x630 PNG: the preview shown when someone
-// shares a page. Satori does flexbox only, and does not know our theme, so
-// every colour is written out here.
+// Satori renders this to the 1200x630 share image. Flexbox only, and it does
+// not know our theme, hence the literal colours.
 const props = withDefaults(defineProps<{
   title?: string
   description?: string
@@ -10,7 +9,6 @@ const props = withDefaults(defineProps<{
   description: ''
 })
 
-// Two lines fit; cut on a word so it does not end mid-sentence.
 const MAX = 150
 
 const lead = computed(() => {
@@ -24,8 +22,7 @@ const INKT = '#420a03'
 const BOTER = '#ffefb4'
 const KERAMIEK = '#2b2d7a'
 
-// The scalloped edge of the site: white circles rising into the red. Drawn as
-// circles in a clipped row, because Satori has no radial gradients.
+// Circles in a clipped row: Satori has no radial gradients.
 const BOLLEN = 24
 </script>
 
@@ -35,7 +32,6 @@ const BOLLEN = 24
     :style="{ backgroundColor: VERMILJOEN }"
   >
     <div style="display: flex; flex-direction: column; flex: 1; justify-content: center; padding: 0 80px;">
-      <!-- The wordmark, as in the header: one half carries the accent. -->
       <div style="display: flex; font-family: 'Bricolage Grotesque'; font-size: 32px; font-weight: 800; margin-bottom: 40px;">
         <div style="display: flex; color: white;">
           Italiaans
@@ -61,7 +57,6 @@ const BOLLEN = 24
       </div>
     </div>
 
-    <!-- Clipped to half the circle, so only the bumps show. -->
     <div style="display: flex; height: 25px; overflow: hidden;">
       <div
         v-for="n in BOLLEN"

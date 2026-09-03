@@ -7,7 +7,6 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-  <!-- Closing block of a page: one sentence and one way onward. -->
   <PageSection
     :title="title"
     :lead="text"

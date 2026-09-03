@@ -23,8 +23,8 @@ ingredienten:
         opmerking: "klein, zeer fijn gesnipperd"
       - hoeveelheid: "1,2"
         eenheid: l
-        naam: "kippen- of groentebouillon"
-        opmerking: "heet gehouden"
+        naam: "groentebouillon"
+        opmerking: "of kippenbouillon, heet gehouden"
       - hoeveelheid: "150"
         eenheid: ml
         naam: "droge witte wijn"

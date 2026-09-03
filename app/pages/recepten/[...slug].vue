@@ -19,8 +19,7 @@ const difficulty = recipe.moeilijkheid ?? 'makkelijk'
 const products = recipe.producten ?? []
 const diets = recipe.dieet ?? []
 
-// Which week this dish was on the menu. LIKE against the stored JSON, so the
-// whole archive does not have to travel along in the payload.
+// LIKE against the stored JSON, so the archive stays out of the payload.
 const { data: weeks } = await useAsyncData(`recipe-weeks:${route.path}`, () =>
   queryCollection('weekmenus')
     .where('concept', '=', false)
@@ -31,7 +30,6 @@ const { data: weeks } = await useAsyncData(`recipe-weeks:${route.path}`, () =>
 
 const today = useToday()
 
-// A week that is not open yet must not be named here either.
 const weekMenus = computed(() =>
   (weeks.value ?? [])
     .filter(m => menuVisibleOn(m.jaar, m.week, today.value))
@@ -122,7 +120,11 @@ useSchemaOrg([
     recipeCuisine: 'Italiaans',
     keywords: [recipe.zoekwoorden.primair, ...(recipe.zoekwoorden.secundair ?? [])],
     recipeIngredient: ingredientLines,
-    recipeInstructions: recipe.stappen.map(s => defineHowToStep({ name: s.titel, text: s.tekst })),
+    recipeInstructions: recipe.stappen.map(s => defineHowToStep({
+      name: s.titel,
+      text: s.tekst,
+      ...(s.afbeelding ? { image: new URL(s.afbeelding.src, site.url).toString() } : {})
+    })),
     ...(nutritionNode ? { nutrition: nutritionNode } : {}),
     // schema.org allows these on Recipe, but the module's types cover only a
     // handful of fields. The resolver passes them through regardless.
@@ -215,8 +217,6 @@ useSchemaOrg([
         />
       </div>
 
-      <!-- The week menu links to its recipes; without this the way back runs
-           through the archive. -->
       <p
         v-if="weekMenus.length"
         class="print-hide mx-auto mt-4 flex max-w-4xl flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted"

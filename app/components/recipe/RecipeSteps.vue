@@ -55,7 +55,7 @@ function toggle(index: number) {
       Tik een stap aan als je hem gedaan hebt.
     </p>
 
-    <ol class="print-steps mt-5 space-y-2">
+    <ol class="print-steps mt-5 space-y-4">
       <li
         v-for="(step, i) in steps"
         :key="i"
@@ -98,9 +98,22 @@ function toggle(index: number) {
           </span>
         </button>
 
+        <!-- Outside the button: tapping the photo must not tick the step off. -->
+        <NuxtImg
+          v-if="step.afbeelding"
+          :src="step.afbeelding.src"
+          :alt="step.afbeelding.alt"
+          width="640"
+          height="360"
+          sizes="100vw sm:320px"
+          format="webp"
+          loading="lazy"
+          class="print-hide ms-16 my-3 aspect-video w-full max-w-xs rounded-2xl object-cover"
+        />
+
         <p
           v-if="step.tip"
-          class="print-tip ms-15 mt-1 flex gap-2 border-s-2 border-butter-400 py-1 ps-3 text-sm text-muted"
+          class="print-tip ms-16 mt-1 flex gap-2 border-s-2 border-butter-400 py-1 ps-3 text-sm text-muted"
         >
           <UIcon
             name="i-lucide-lightbulb"

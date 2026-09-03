@@ -1,17 +1,15 @@
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
-  /** Selector of the element to jump to. */
   to: string
   /** Accessible name: the button itself carries no text. */
   label: string
-  /** Optional line above the arrow. */
   text?: string
   /** Straddle the bottom edge of a coloured band instead of sitting in flow. */
   edge?: boolean
 }>(), { text: undefined, edge: false })
 
-// The router turns the hash into a pushState, and that leaves the browser's
-// focus point behind: Tab would resume at the top. So scroll and focus by hand.
+// The router's pushState leaves the focus point behind, so Tab would resume at
+// the top. Hence scrolling and focusing by hand.
 function jump(event: MouseEvent) {
   const target = document.querySelector<HTMLElement>(props.to)
   if (!target) return
@@ -26,8 +24,6 @@ function jump(event: MouseEvent) {
 </script>
 
 <template>
-  <!-- On the edge the block is pinned to the bottom and only the button is
-       pushed half out, so the line above it stays on the coloured field. -->
   <div
     class="print-hide flex flex-col items-center gap-3 text-center"
     :class="edge ? 'absolute inset-x-0 bottom-0 z-10' : ''"

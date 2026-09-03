@@ -40,11 +40,7 @@ const ingredientGroep = z.object({
   items: z.array(ingredient)
 })
 
-/**
- * Veelgestelde vragen bij een recept. Als aparte velden, niet als kopjes in
- * de body: zo blijft de accordion één component en kan Google de vragen ook
- * los van de tekst lezen.
- */
+/** Als velden, niet als kopjes in de body: zo leest Google ze los van de tekst. */
 const vraag = z.object({
   vraag: z.string(),
   antwoord: z.string().describe('Mag inline markdown bevatten, bijv. *cursief*')
@@ -53,7 +49,12 @@ const vraag = z.object({
 const stap = z.object({
   titel: z.string().optional().describe('Korte kop, verschijnt in Google als HowTo-stap'),
   tekst: z.string(),
-  tip: z.string().optional()
+  tip: z.string().optional(),
+  /** Genest: een optionele foto zonder alt-tekst moet onmogelijk zijn. */
+  afbeelding: z.object({
+    src: z.string().editor({ input: 'media' }),
+    alt: z.string().describe('Beschrijf wat je ziet - voor toegankelijkheid én afbeeldingszoekresultaten')
+  }).optional().describe('Eigen foto van deze stap')
 })
 
 export default defineContentConfig({
@@ -61,9 +62,7 @@ export default defineContentConfig({
     // ---------------------------------------------------------------- recepten
     recepten: defineCollection({
       type: 'page',
-      // A folder per course, purely so content/ stays readable. `prefix` keeps
-      // the URL flat: /recepten/pasta-alla-norma, not /recepten/primo/...
-      // Without it the folder would land in every link and in every `pad`.
+      // `prefix` houdt de URL plat: de mapnaam hoort er niet in.
       source: GANGEN.map(gang => ({
         include: `recepten/${gang}/*.md`,
         prefix: '/recepten'

@@ -1,16 +1,13 @@
 <script setup lang="ts">
 withDefaults(defineProps<{
   title: string
-  /** Rendered as a pill above the title. */
   eyebrow?: string
   eyebrowTone?: 'butter' | 'ceramic' | 'white' | 'vermilion'
   lead?: string
-  /** Links the surrounding section to this heading. */
   id?: string
   as?: 'h1' | 'h2' | 'h3'
   size?: 'sm' | 'md' | 'lg'
   center?: boolean
-  /** Text colour for the lead; the default reads on the page background. */
   leadClass?: string
 }>(), {
   eyebrow: undefined,
@@ -31,7 +28,6 @@ const SIZES = {
   lg: 'text-3xl sm:text-4xl'
 }
 
-// A bigger heading carries more air beneath it.
 const LEAD_SPACING = {
   sm: 'mt-2',
   md: 'mt-2',
@@ -40,8 +36,7 @@ const LEAD_SPACING = {
 </script>
 
 <template>
-  <!-- The row only becomes a row when there is something to put beside the
-       heading; otherwise justify-between pulls a centred block apart. -->
+  <!-- A row only when there is something beside the heading. -->
   <div :class="slots.actions ? 'flex flex-wrap items-end justify-between gap-4' : ''">
     <div :class="center ? 'text-center' : ''">
       <p v-if="eyebrow">
