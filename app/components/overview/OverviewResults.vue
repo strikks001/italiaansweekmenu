@@ -30,7 +30,9 @@ function scrollToTop() {
 </script>
 
 <template>
-  <div ref="top">
+  <div
+    ref="top"
+  >
     <ActiveFilters
       :filters="filters"
       :count="total"

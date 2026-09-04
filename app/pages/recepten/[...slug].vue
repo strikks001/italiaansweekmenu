@@ -203,7 +203,9 @@ useSchemaOrg([
         class="print-hide mx-auto mt-8 aspect-video w-full max-w-4xl rounded-2xl object-cover"
       />
 
-      <div class="print-tight mx-auto mt-8 max-w-4xl">
+      <div
+        class="print-tight mx-auto mt-8 max-w-4xl"
+      >
         <RecipeMeta
           :prep-minutes="recipe.voorbereidingstijd"
           :cook-minutes="recipe.bereidingstijd"
@@ -231,7 +233,9 @@ useSchemaOrg([
 
       <!-- Recipe before story: someone standing in the kitchen should not have to
          scroll past 500 words of background first. -->
-      <div class="print-tight mx-auto mt-10 max-w-4xl">
+      <div
+        class="print-tight mx-auto mt-10 max-w-4xl"
+      >
         <div
           v-if="wakeLock.supported.value"
           class="print-hide mb-6 flex items-center justify-between gap-3 rounded-2xl border-s-2 border-ceramic-500 bg-ceramic-50 px-4 py-2.5 dark:bg-ceramic-950"

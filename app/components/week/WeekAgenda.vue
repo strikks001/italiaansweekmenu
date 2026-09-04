@@ -7,7 +7,9 @@ defineProps<{
 </script>
 
 <template>
-  <ol class="print-agenda flex flex-col gap-2">
+  <ol
+    class="print-agenda flex flex-col gap-2"
+  >
     <li
       v-for="day in days"
       :key="day.weekday"

@@ -92,7 +92,9 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
     <div class="relative">
       <section class="scallop relative overflow-hidden bg-vermilion-500 pb-24 text-vermilion-950">
         <UContainer class="relative py-12 lg:py-20">
-          <div class="mx-auto max-w-4xl">
+          <div
+            class="mx-auto max-w-4xl"
+          >
             <!-- The day sits above the question: it says which day is being
                answered before the question is asked. -->
             <p

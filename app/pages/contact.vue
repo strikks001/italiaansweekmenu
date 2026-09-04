@@ -55,7 +55,9 @@ useSchemaOrg([
 
     <UContainer class="py-10 lg:py-14">
       <div class="mx-auto max-w-4xl">
-        <div class="grid gap-8 sm:grid-cols-3">
+        <div
+          class="grid gap-8 sm:grid-cols-3"
+        >
           <article
             v-for="kanaal in KANALEN"
             :key="kanaal.titel"
