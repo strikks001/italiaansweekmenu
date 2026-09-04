@@ -15,7 +15,7 @@ const TONES = {
 
 <template>
   <span
-    class="inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
+    class="pill inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
     :class="TONES[tone]"
   >
     <slot />

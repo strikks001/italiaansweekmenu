@@ -1,0 +1,11 @@
+{
+  "name": "Italiaansweekmenu",
+  "short_name": "Weekmenu",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#ff3b14",
+  "background_color": "#fffdf3",
+  "display": "browser"
+}

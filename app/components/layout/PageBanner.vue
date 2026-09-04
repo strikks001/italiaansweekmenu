@@ -41,6 +41,9 @@ withDefaults(defineProps<{
           class="mx-auto text-center"
           :class="breed ? 'max-w-4xl' : 'max-w-2xl'"
         >
+          <p class="print-mark hidden">
+            Italiaans<span>weekmenu</span>
+          </p>
           <slot />
         </div>
       </UContainer>

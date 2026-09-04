@@ -1,52 +1,202 @@
 /*
- * Print / save-as-PDF layout for a recipe.
- *
- * Goal: one sheet you lay on the counter and tick off with a pen. So: no site
- * chrome, no photos, empty boxes instead of rendered check icons, ingredients
- * in two columns and steps stripped to their text.
+ * Print / save-as-PDF: a recipe card on one sheet, in the house colours.
+ * Backgrounds are forced where they carry identity; the browser would drop
+ * them by default and leave white text on white paper.
  */
 @media print {
   @page {
-    margin: 1cm;
+    margin: 1.2cm 1.4cm 1.1cm;
   }
 
   html,
   body {
     background: #fff !important;
-    color: #000 !important;
-    font-size: 9pt;
-    line-height: 1.28;
+    color: #1a1a1a !important;
+    font-family: var(--font-sans) !important;
+    font-size: 9.5pt;
+    line-height: 1.4;
   }
 
-  /* Interface that means nothing on paper. */
-  .print-hide {
+  .print-hide,
+  img,
+  header,
+  footer,
+  nav {
     display: none !important;
   }
 
-  img {
-    display: none !important;
+  /* The layout claims a full screen height; on paper that is a blank page. */
+  .min-h-screen {
+    min-height: 0 !important;
+  }
+
+  main {
+    flex: 0 0 auto !important;
   }
 
   a {
-    color: #000 !important;
+    color: inherit !important;
     text-decoration: none !important;
   }
 
-  h1 {
-    font-size: 14pt !important;
-    margin: 0 0 0.15cm !important;
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display) !important;
+    break-after: avoid;
+  }
+
+  li,
+  h1,
+  h2,
+  h3 {
+    break-inside: avoid;
+  }
+
+  .print-body {
+    padding: 0 !important;
+  }
+
+  .print-tight {
+    margin-top: 0 !important;
+  }
+
+  /* ---------- head: the vermilion card ---------- */
+
+  .poster-band {
+    background: #ff3b14 !important;
+    color: #420a03 !important;
+    border-radius: 0.45cm;
+    margin: 0 !important;
+    padding: 0.65cm 0.8cm 0.75cm !important;
+    text-align: left !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .poster-band::after {
+    display: none !important;
+  }
+
+  .poster-band > div,
+  .poster-band > div > div {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+  }
+
+  .print-mark {
+    display: block !important;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 9pt;
+    color: #fff;
+    margin-bottom: 0.4cm;
+  }
+
+  .print-mark span {
+    color: #ffefb4;
+  }
+
+  .poster-band h1 {
+    color: #fff !important;
+    font-size: 24pt !important;
+    font-weight: 800 !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.025em !important;
+    margin: 0.25cm 0 0 !important;
+  }
+
+  .poster-band > div > div > p {
+    color: #420a03 !important;
+  }
+
+  .print-lead {
+    display: block !important;
+    max-width: 15cm !important;
+    margin: 0.25cm 0 0 !important;
+    font-size: 10pt !important;
+  }
+
+  .print-pills {
+    display: flex !important;
+    justify-content: flex-start !important;
+    gap: 0.15cm !important;
+  }
+
+  .pill {
+    background: #ffefb4 !important;
+    color: #420a03 !important;
+    border: 0;
+    padding: 0.06cm 0.28cm !important;
+    font-size: 6.5pt !important;
+    letter-spacing: 0.12em !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* ---------- times: the butter strip ---------- */
+
+  .print-inline {
+    display: flex !important;
+    gap: 0.9cm;
+    background: #fff8dc !important;
+    border: 0 !important;
+    border-radius: 0.3cm;
+    padding: 0.3cm 0.55cm !important;
+    margin: 0.45cm 0 0 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .print-inline > div {
+    display: block !important;
+    background: none !important;
+    padding: 0 !important;
+  }
+
+  .print-inline > .print-hide {
+    display: none !important;
+  }
+
+  .print-inline dt {
+    display: block !important;
+    font-size: 6.5pt !important;
+    letter-spacing: 0.12em;
+    color: #2b2d7a !important;
+  }
+
+  .print-inline dd {
+    display: block !important;
+    margin: 0.04cm 0 0 !important;
+    font-family: var(--font-display) !important;
+    font-weight: 700;
+    font-size: 10.5pt !important;
+    color: #1a1a1a !important;
+  }
+
+  .print-inline [class*='iconify'] {
+    display: none !important;
+  }
+
+  /* ---------- body: ingredients beside the steps ---------- */
+
+  .print-stack {
+    display: grid !important;
+    grid-template-columns: 6.2cm minmax(0, 1fr);
+    gap: 0.8cm;
+    align-items: start;
+    margin-top: 0.55cm !important;
   }
 
   h2 {
-    font-size: 10.5pt !important;
-    margin: 0.3cm 0 0.1cm !important;
+    font-size: 12pt !important;
+    font-weight: 700 !important;
+    color: #2b2d7a !important;
+    margin: 0 0 0.2cm !important;
   }
 
-  h3 {
-    font-size: 9.5pt !important;
-  }
-
-  /* Panels lose their pinning, scroll caps and folding on paper. */
   .print-flat {
     position: static !important;
     max-height: none !important;
@@ -63,55 +213,50 @@
     grid-template-rows: 1fr !important;
   }
 
-  /* Times and servings as one line instead of five bordered cells. */
-  .print-inline {
-    display: block !important;
-    background: none !important;
-    border: 0 !important;
-    margin: 0 0 0.25cm !important;
+  .print-panel {
+    background: #fffdf3 !important;
+    border: 0.5pt solid #ecdfc4 !important;
+    border-radius: 0.35cm !important;
+    padding: 0.45cm 0.5cm 0.5cm !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
-  .print-inline > div {
-    display: inline !important;
-    background: none !important;
-    padding: 0 !important;
-  }
-
-  /* Beats the rule above, which is more specific than .print-hide alone. */
-  .print-inline > .print-hide {
-    display: none !important;
-  }
-
-  .print-inline > div + div::before {
-    content: ' · ';
-  }
-
-  .print-inline dt,
-  .print-inline dd {
-    display: inline !important;
-    margin: 0 !important;
-    font-size: 9pt !important;
-  }
-
-  .print-inline dt::after {
-    content: ' ';
-  }
-
-  /* The servings row is dropped on paper, so the count rides along with the
-     heading instead - and it is the scaled number, not the recipe's default. */
   .print-servings {
     display: inline !important;
+    font-family: var(--font-sans) !important;
+    font-weight: 400 !important;
+    font-size: 8.5pt !important;
+    color: #6b5013 !important;
   }
 
-  /* Ingredients side by side: halves the height of the longest block. */
+  h3 {
+    font-size: 6.5pt !important;
+    letter-spacing: 0.12em;
+    color: #946f18 !important;
+    margin: 0.28cm 0 0.05cm !important;
+  }
+
   .print-cols {
     columns: 2;
-    column-gap: 0.8cm;
+    column-gap: 0.9cm;
+  }
+
+  .print-panel .print-cols {
+    columns: 1;
   }
 
   .print-cols > div {
-    break-inside: avoid;
     margin-top: 0 !important;
+  }
+
+  .print-cols ul {
+    margin-top: 0 !important;
+  }
+
+  .print-cols li {
+    padding: 0.07cm 0 !important;
+    border-color: #ecdfc4 !important;
   }
 
   /* An empty box to tick with a pen, instead of the on-screen icon. */
@@ -121,8 +266,10 @@
     width: 0.7em;
     height: 0.7em;
     margin-inline-end: 0.5em;
-    border: 0.7pt solid #000;
+    border: 0.7pt solid #420a03;
+    border-radius: 0.1em;
     vertical-align: baseline;
+    flex-shrink: 0;
   }
 
   .print-check [class*='iconify'],
@@ -130,100 +277,140 @@
     display: none !important;
   }
 
-  /* Steps: no padding, no pill, just a number and the text. */
+  /* ---------- steps ---------- */
+
   .print-steps {
-    margin-top: 0.2cm !important;
+    margin-top: 0 !important;
   }
 
   .print-steps > li {
-    margin: 0 0 0.15cm !important;
+    margin: 0 0 0.32cm !important;
+  }
+
+  .print-steps > li:last-child {
+    break-after: avoid;
   }
 
   .print-steps .print-check {
     padding: 0 !important;
-    gap: 0.4em !important;
+    gap: 0.35cm !important;
     border: 0 !important;
-    align-items: baseline !important;
+    align-items: flex-start !important;
+  }
+
+  .print-steps .print-check::before {
+    display: none;
+  }
+
+  .print-steps .print-check > span > span:first-child {
+    font-size: 10.5pt !important;
   }
 
   .print-num {
-    width: 1.1em !important;
-    height: auto !important;
+    width: 0.6cm !important;
+    height: 0.6cm !important;
     min-height: 0 !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    font-size: 9.5pt !important;
-    justify-content: flex-start !important;
+    border-radius: 999px !important;
+    background: #ff3b14 !important;
+    color: #fff !important;
+    font-size: 9pt !important;
+    font-weight: 800 !important;
+    justify-content: center !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
-  .print-num::after {
-    content: '.';
+  .print-num [class*='iconify'] {
+    display: none !important;
   }
 
   .print-tip {
-    margin: 0 0 0 1.5em !important;
-    padding: 0 !important;
+    margin: 0.08cm 0 0 0.95cm !important;
+    padding: 0 0 0 0.25cm !important;
     background: none !important;
-    font-size: 8pt !important;
-    line-height: 1.25 !important;
+    border-left: 1.2pt solid #f7d472 !important;
+    font-size: 8.5pt !important;
+    line-height: 1.35 !important;
+    color: #2b2d7a !important;
     font-style: italic;
   }
 
-  /* Keep a step, an ingredient or a heading together on one page. */
-  li,
-  h1,
-  h2,
-  h3 {
-    break-inside: avoid;
+  .print-tip [class*='iconify'] {
+    display: none !important;
   }
 
-  h1,
-  h2,
-  h3 {
-    break-after: avoid;
+  /* ---------- week agenda ---------- */
+
+  .print-roomy {
+    margin-top: 0.9cm !important;
   }
 
-  /* Ingredients above the steps rather than beside them. */
-  .print-stack {
-    display: block !important;
-    margin-top: 0.3cm !important;
+  .print-break {
+    break-before: page;
+    margin-top: 0 !important;
   }
 
-  /* The screen's generous rhythm costs centimetres on paper. */
-  .print-tight {
+  .print-agenda {
+    gap: 0.25cm !important;
     margin-top: 0.35cm !important;
   }
 
-  .print-steps > li {
-    margin: 0 0 0.12cm !important;
+  .print-agenda > li {
+    border-radius: 0.25cm !important;
+    border-color: #ecdfc4 !important;
   }
 
-  .print-steps p,
-  .print-steps span {
-    line-height: 1.25 !important;
+  .print-day {
+    width: 1.6cm !important;
+    padding: 0.18cm 0.1cm !important;
+    background: #2b2d7a !important;
+    color: #fff !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
-  /* Ingredient rows: no vertical padding, the rule between them is enough. */
-  .print-cols li {
-    padding: 0 !important;
+  .print-day span:nth-child(2) {
+    font-size: 15pt !important;
   }
 
-  .print-cols ul {
-    margin-top: 0.05cm !important;
-  }
-}
-
-/* The colour banner is screen decoration. Browsers skip backgrounds by
-   default, so light text would vanish on paper. */
-@media print {
-  .poster-band {
-    background: none !important;
-    color: #000 !important;
-    margin: 0 !important;
-    padding: 0 !important;
+  .print-course {
+    padding: 0.22cm 0.4cm !important;
+    gap: 0.3cm !important;
   }
 
-  .poster-band::after {
-    display: none !important;
+  .print-course h3 {
+    font-family: var(--font-sans) !important;
+    font-size: 10pt !important;
+    font-weight: 600 !important;
+    letter-spacing: 0;
+    color: #1a1a1a !important;
+    margin: 0.04cm 0 0 !important;
+  }
+
+  .print-course p {
+    font-size: 8.5pt !important;
+  }
+
+  /* ---------- foot ---------- */
+
+  .print-foot {
+    display: flex !important;
+    justify-content: space-between;
+    margin-top: 0.6cm;
+    padding-top: 0.15cm;
+    border-top: 0.5pt solid #ecdfc4;
+    font-size: 7.5pt;
+    color: #777;
+    break-before: avoid;
+  }
+
+  .print-foot b {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: #1a1a1a;
+  }
+
+  .print-foot b span {
+    color: #ff3b14;
   }
 }

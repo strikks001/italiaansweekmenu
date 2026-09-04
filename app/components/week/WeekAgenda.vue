@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <ol class="flex flex-col gap-2">
+  <ol class="print-agenda flex flex-col gap-2">
     <li
       v-for="day in days"
       :key="day.weekday"
@@ -17,7 +17,7 @@ defineProps<{
       <!-- Date column in the second colour: this is what makes the row read
            as an agenda. Empty days stay muted. -->
       <div
-        class="flex w-16 shrink-0 flex-col items-center justify-center px-2 py-4 sm:w-20"
+        class="print-day flex w-16 shrink-0 flex-col items-center justify-center px-2 py-4 sm:w-20"
         :class="day.courses.length
           ? 'bg-ceramic-500 text-white'
           : 'bg-elevated text-toned'"
@@ -41,7 +41,7 @@ defineProps<{
         <li
           v-for="course in day.courses"
           :key="course.path"
-          class="group relative flex min-w-0 flex-1 items-center gap-3 p-3 transition hover:bg-elevated/50"
+          class="print-course group relative flex min-w-0 flex-1 items-center gap-3 p-3 transition hover:bg-elevated/50"
         >
           <NuxtImg
             v-if="course.recipe"
@@ -101,7 +101,7 @@ defineProps<{
           <UIcon
             v-if="course.recipe"
             name="i-lucide-chevron-right"
-            class="size-5 shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-primary"
+            class="print-hide size-5 shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-primary"
           />
         </li>
       </ul>

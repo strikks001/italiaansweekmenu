@@ -109,7 +109,7 @@ function reset() {
     <div
       ref="marker"
       aria-hidden="true"
-      class="h-0"
+      class="print-hide h-0"
     />
 
     <!-- Sticks under the header at every size: while cooking you keep looking
@@ -117,7 +117,7 @@ function reset() {
     <section
       ref="panel"
       aria-labelledby="ingredienten"
-      class="print-flat sticky top-(--ui-header-height) z-20 -mx-4 border-y border-default px-4 transition-shadow duration-300 [overflow-anchor:none] sm:-mx-6 sm:px-6 lg:top-[calc(var(--ui-header-height)+1.5rem)] lg:mx-0 lg:rounded-2xl lg:border lg:border-b-4 lg:border-b-ceramic-500 lg:px-0 lg:shadow-none"
+      class="print-flat print-panel sticky top-(--ui-header-height) z-20 -mx-4 border-y border-default px-4 transition-shadow duration-300 [overflow-anchor:none] sm:-mx-6 sm:px-6 lg:top-[calc(var(--ui-header-height)+1.5rem)] lg:mx-0 lg:rounded-2xl lg:border lg:border-b-4 lg:border-b-ceramic-500 lg:px-0 lg:shadow-none"
       :class="[
         stuck ? 'bg-default/95 shadow-sm backdrop-blur' : 'bg-default',
         fits ? '' : 'lg:static'
@@ -239,7 +239,7 @@ function reset() {
                     :to="item.productUrl"
                     target="_blank"
                     rel="noopener"
-                    class="ms-20 mt-0.5 inline-flex items-center gap-1 text-xs text-secondary underline decoration-dotted underline-offset-4 hover:decoration-solid"
+                    class="print-hide ms-20 mt-0.5 inline-flex items-center gap-1 text-xs text-secondary underline decoration-dotted underline-offset-4 hover:decoration-solid"
                   >
                     <UIcon
                       name="i-lucide-shopping-basket"

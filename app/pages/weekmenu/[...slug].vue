@@ -110,7 +110,7 @@ useSchemaOrg([
       <h1 class="mt-4 text-4xl text-white sm:text-5xl lg:text-6xl">
         {{ menu.title }}
       </h1>
-      <p class="print-hide mx-auto mt-4 max-w-2xl text-lg">
+      <p class="print-lead mx-auto mt-4 max-w-2xl text-lg">
         {{ menu.description }}
       </p>
 
@@ -121,26 +121,21 @@ useSchemaOrg([
         tone="banner"
         class="mt-6 justify-center"
       />
-
-      <!-- Paper needs the address; a printed sheet has no back button. -->
-      <p class="hidden text-sm print:block">
-        {{ pageUrl }}
-      </p>
     </PageBanner>
 
-    <UContainer class="py-10 lg:py-14">
+    <UContainer class="print-body py-10 lg:py-14">
       <!-- The agenda sits up top: this is what people open the page for. -->
       <PageSection
         :title="`${filledDays} avonden, ${recipeCount} recepten`"
         lead="Kies een dag om het recept te openen."
         :contained="false"
-        class="mt-10"
+        class="print-roomy mt-10"
       >
         <WeekAgenda :days="days" />
       </PageSection>
 
       <!-- The point of planning a week: one list to shop from. -->
-      <div class="mx-auto mt-12 max-w-4xl">
+      <div class="print-break mx-auto mt-12 max-w-4xl">
         <WeekShoppingList :items="shoppingList" />
       </div>
 

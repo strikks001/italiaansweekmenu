@@ -6,7 +6,7 @@ const site = useSiteConfig()
 // and such a reference has to resolve on the same page.
 useSchemaOrg([
   defineWebSite({ name: site.name, description: site.description, inLanguage: 'nl-NL' }),
-  defineOrganization({ name: site.name, url: site.url })
+  defineOrganization({ name: site.name, url: site.url, email: useAppConfig().footer.bedrijf.email })
 ])
 
 useHead({

@@ -114,15 +114,15 @@ useSchemaOrg([
             Rechtstreeks
           </h2>
 
-          <dl class="mt-6 grid gap-6 sm:grid-cols-3">
+          <dl class="mt-6 grid gap-8 sm:grid-cols-[repeat(auto-fit,minmax(14rem,1fr))]">
             <div v-if="footer.bedrijf.email">
               <dt class="font-display text-xs font-bold uppercase tracking-widest text-ceramic-200">
                 E-mail
               </dt>
-              <dd class="mt-2">
+              <dd class="mt-2 text-sm">
                 <NuxtLink
                   :to="`mailto:${footer.bedrijf.email}`"
-                  class="underline decoration-white/40 underline-offset-4 transition hover:decoration-white"
+                  class="break-all underline decoration-white/40 underline-offset-4 transition hover:decoration-white"
                 >{{ footer.bedrijf.email }}</NuxtLink>
               </dd>
             </div>

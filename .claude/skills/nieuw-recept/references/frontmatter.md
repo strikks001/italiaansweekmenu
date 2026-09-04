@@ -42,7 +42,7 @@ Getallen (`voorbereidingstijd`, `personen`, `calorieen`) en datums
 | `stappen` | lijst | 5-7 stappen |
 | `zoekwoorden` | object | `primair` verplicht |
 
-Optioneel: `seizoen`, `dieet`, `voedingswaarde`, `producten`,
+Optioneel: `dieet`, `voedingswaarde`, `producten`, `vragen`,
 `gewijzigd`, `concept`.
 
 ## Structuur van ingrediënten

@@ -1,0 +1,52 @@
+<template>
+  <!-- The plate from public/brand, drawn with theme colours so it follows
+       dark mode; the SVG file itself carries fixed hexes. -->
+  <svg
+    viewBox="0 0 100 100"
+    aria-hidden="true"
+    class="text-secondary dark:text-ceramic-300"
+  >
+    <circle
+      cx="50"
+      cy="50"
+      r="38"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="6"
+    />
+    <circle
+      cx="50"
+      cy="50"
+      r="31"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.5"
+      opacity="0.55"
+    />
+    <g
+      stroke="currentColor"
+      stroke-width="6"
+      stroke-linecap="round"
+    >
+      <line
+        x1="38"
+        y1="41"
+        x2="62"
+        y2="41"
+      />
+      <line
+        x1="41.5"
+        y1="50"
+        x2="58.5"
+        y2="50"
+        class="text-primary"
+      />
+      <line
+        x1="38"
+        y1="59"
+        x2="62"
+        y2="59"
+      />
+    </g>
+  </svg>
+</template>

@@ -26,9 +26,10 @@ watch(() => route.fullPath, () => {
     <template #title>
       <NuxtLink
         to="/"
-        class="text-lg font-bold"
+        class="flex items-center gap-2 text-lg font-bold"
       >
-        Italiaans<span class="text-primary">weekmenu</span>
+        <BrandMark class="size-7 shrink-0" />
+        <span><span class="text-secondary dark:text-ceramic-300">Italiaans</span><span class="text-primary">weekmenu</span></span>
       </NuxtLink>
     </template>
 

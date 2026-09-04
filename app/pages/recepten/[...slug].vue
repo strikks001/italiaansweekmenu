@@ -162,7 +162,7 @@ useSchemaOrg([
       jump-to="#recept"
       jump-label="Naar de ingrediënten en bereiding"
     >
-      <div class="print-hide flex flex-wrap items-center justify-center gap-2">
+      <div class="print-pills flex flex-wrap items-center justify-center gap-2">
         <PillBadge tone="white">
           {{ gangLabel(recipe.gang) }}
         </PillBadge>
@@ -178,7 +178,7 @@ useSchemaOrg([
       <h1 class="mt-5 text-4xl text-white sm:text-5xl lg:text-6xl">
         {{ recipe.title }}
       </h1>
-      <p class="print-hide mx-auto mt-4 max-w-2xl text-lg">
+      <p class="print-lead mx-auto mt-4 max-w-2xl text-lg">
         {{ recipe.description }}
       </p>
 
@@ -189,14 +189,9 @@ useSchemaOrg([
         tone="banner"
         class="mt-6 justify-center"
       />
-
-      <!-- Paper needs the address; a printed sheet has no back button. -->
-      <p class="hidden text-sm print:block">
-        {{ pageUrl }}
-      </p>
     </PageBanner>
 
-    <UContainer class="py-10 lg:py-14">
+    <UContainer class="print-body py-10 lg:py-14">
       <NuxtImg
         :src="recipe.afbeelding"
         :alt="recipe.afbeeldingAlt"
@@ -208,7 +203,7 @@ useSchemaOrg([
         class="print-hide mx-auto mt-8 aspect-video w-full max-w-4xl rounded-2xl object-cover"
       />
 
-      <div class="mx-auto mt-8 max-w-4xl">
+      <div class="print-tight mx-auto mt-8 max-w-4xl">
         <RecipeMeta
           :prep-minutes="recipe.voorbereidingstijd"
           :cook-minutes="recipe.bereidingstijd"
@@ -236,7 +231,7 @@ useSchemaOrg([
 
       <!-- Recipe before story: someone standing in the kitchen should not have to
          scroll past 500 words of background first. -->
-      <div class="mx-auto mt-10 max-w-4xl">
+      <div class="print-tight mx-auto mt-10 max-w-4xl">
         <div
           v-if="wakeLock.supported.value"
           class="print-hide mb-6 flex items-center justify-between gap-3 rounded-2xl border-s-2 border-ceramic-500 bg-ceramic-50 px-4 py-2.5 dark:bg-ceramic-950"

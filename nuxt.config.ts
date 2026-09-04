@@ -19,6 +19,18 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', sizes: '32x32' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' },
+        { rel: 'manifest', href: '/site.webmanifest' }
+      ],
+      meta: [{ name: 'theme-color', content: '#ff3b14' }]
+    }
+  },
+
   css: ['~/assets/css/main.css', '~/assets/css/transitions.css', '~/assets/css/print.css'],
 
   // Eén bron van waarheid voor de site-identiteit. @nuxtjs/seo leest dit uit
