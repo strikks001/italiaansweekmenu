@@ -12,7 +12,7 @@ function shopImage(url: string, width: number): string {
 
 // Two cards fit from 640px.
 const { breakpoints, ui: carouselUi } = useCarouselFit(
-  () => props.products?.length ?? 0, 2, 640, 'basis-[88%] sm:basis-1/2'
+  () => props.products?.length ?? 0, 2, 640, 'basis-[88%] sm:basis-1/2', 'basis-[78%] sm:basis-[42%]'
 )
 const multiple = computed(() => (props.products?.length ?? 0) > 1)
 
@@ -65,6 +65,8 @@ const cartUrl = computed(() =>
       :arrows="multiple"
       :breakpoints="breakpoints"
       :ui="carouselUi"
+      align="start"
+      wheel-gestures
       class="mt-4"
     >
       <NuxtLink

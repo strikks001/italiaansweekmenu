@@ -206,7 +206,36 @@ useSchemaOrg([
       </NuxtLink>
     </PageBanner>
 
+    <!-- Nothing published yet: say what is coming instead of "no results". -->
+    <PageSection
+      v-if="!visible.length"
+      eyebrow="Binnenkort"
+      title="Het eerste weekmenu komt eraan"
+      lead="Vijf avondeten van maandag tot en met vrijdag die bij elkaar passen: licht en snel aan het begin van de week, de oven of de stoofpot als er tijd is, en ingrediënten die in meer dan één gerecht terugkomen. De boodschappenlijst maakt de site zelf. Het menu voor de volgende week staat vanaf vrijdag online."
+      heading-size="lg"
+      width="prose"
+      center
+    >
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <UButton
+          to="/recepten"
+          color="secondary"
+          size="lg"
+          trailing-icon="i-lucide-arrow-right"
+          label="Bekijk de recepten"
+        />
+        <UButton
+          to="/over"
+          color="neutral"
+          variant="outline"
+          size="lg"
+          label="Hoe het werkt"
+        />
+      </div>
+    </PageSection>
+
     <OverviewToolbar
+      v-if="visible.length"
       v-model:sort="sort"
       v-model:view="view"
       :sort-options="SORTS"
@@ -216,7 +245,10 @@ useSchemaOrg([
       @open-filters="filtersOpen = true"
     />
 
-    <UContainer class="pb-12 lg:pb-16">
+    <UContainer
+      v-if="visible.length"
+      class="pb-12 lg:pb-16"
+    >
       <div class="mt-6 grid gap-8 lg:grid-cols-[14rem_minmax(0,1fr)]">
         <OverviewFilters
           v-model="selection"

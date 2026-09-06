@@ -9,10 +9,39 @@ Doel: één publicatieklaar receptbestand in `content/recepten/<gang>/<slug>.md`
 voldoet aan het schema, in de huisstijl geschreven is en op een reëel
 zoekwoord mikt.
 
-Lees **altijd eerst** beide referenties:
+Lees **altijd eerst** deze referenties:
 
-- `references/schrijfstijl.md` — toon, structuur, wat wel en niet
+- `references/schrijfstijl.md` — toon, structuur, uitlegstandaard
 - `references/frontmatter.md` — het veldcontract en de YAML-valkuil
+- `references/checklist.md` — wat je na het schrijven controleert
+- `references/ingredienten.md` — de vaste ingrediëntnamen en eenheden
+
+Schrijf je meer dan één recept, lees dan eerst "In batches werken" onderaan:
+de stappen blijven gelijk, maar de volgorde over de recepten heen verandert.
+
+## Stap 0 — Recept vanaf een eigen foto
+
+Levert de gebruiker een foto van een gerecht dat ze zelf maakte, dan is die
+foto de bron voor de bereiding, niet GialloZafferano of Benedetta. Die twee
+gebruik je dan alleen om verhoudingen en tijden te toetsen. Vraag vóór je
+schrijft, in één bericht, om:
+
+- de naam van het gerecht en voor hoeveel personen het was
+- de ingrediënten met de hoeveelheden die zij gebruikte, ook als het
+  schattingen zijn
+- hoe zij het maakte, in eigen woorden en in volgorde, met wat er tijd kostte
+- wat het verschil maakte of wat ze de volgende keer anders zou doen
+- of ze de stappen ook op foto heeft
+
+Wat de gebruiker vertelt is de waarheid van het recept; jij voegt de
+uitlegstandaard toe (signaal en reden bij elke handeling) en vult alleen aan
+wat zij niet noemt, met de bronnen erbij. Persoonlijke opmerkingen van haar
+mogen in de body, in haar woorden.
+
+De foto wordt de hoofdafbeelding: `public/images/<slug>.jpg`, geoptimaliseerd
+op maximaal 1600 px breed. Stapfoto's, als ze er zijn, liggend als
+`public/images/<slug>-stap-<n>.jpg` en in de frontmatter bij de stap onder
+`afbeelding` met `src` en `alt`. Daarna volg je de gewone stappen vanaf 1.
 
 ## Stap 1 — Kannibalisatie uitsluiten
 
@@ -93,19 +122,55 @@ kopen. Schrijf daarnaar, en houd de productverwijzingen daarom terughoudend.
 
 ## Stap 5 — Schrijven
 
+### 5a. De bereiding afleiden, niet kopiëren
+
+Verzin geen bereiding. Haal verhoudingen, volgorde en tijden uit twee
+bronnen en leg ze naast elkaar:
+
+- GialloZafferano (giallozafferano.it), de Italiaanse standaard
+- Fatto in casa da Benedetta (fattoincasadabenedetta.it), de huiselijke versie
+
+Verschillen ze, kies dan bewust en leg in het recept uit waarom (dat is vaak
+meteen "Het ingrediënt of de techniek die het verschil maakt"). Reken om naar
+4 personen en naar de eenheden uit het lexicon.
+
+Wat je overneemt: de feiten. Verhoudingen, temperaturen, tijden, volgorde.
+Wat je **nooit** overneemt: zinnen, de indeling van de stappen, de
+ingrediëntgroepen, de tips, de titels van de stappen. Het recept wordt in je
+eigen woorden geschreven, met de uitlegstandaard uit `schrijfstijl.md`
+(handeling, signaal, reden), die geen van beide bronnen zo heeft. Controle:
+geen enkele zin uit het recept mag terug te vinden zijn in de bron, ook niet
+vertaald.
+
+Noem beide bronnen in de oplevering, niet in het recept.
+
+### 5b. Het recept
+
 Volg `references/schrijfstijl.md` op de letter. Vul de frontmatter volgens
-`references/frontmatter.md`. Zet `gepubliceerd` op de dag van publicatie.
+`references/frontmatter.md` en gebruik voor elk ingrediënt de naam en eenheid
+uit `references/ingredienten.md`. Staat een ingrediënt daar niet in, voeg het
+dan eerst toe aan het lexicon. Zet `gepubliceerd` op de dag van publicatie.
 
-Voor de producten: kijk eerst welke er al gebruikt worden.
+Voor de producten: loop **elk** ingrediënt na op de webshop. Kijk eerst wat al
+eerder gebruikt is (dat levert meteen `variantId`, prijs en afbeelding op):
 
 ```
-grep -rh -A 2 "naam:" content/recepten/ | grep -B 1 spesadaantonio
+grep -rh -A 5 "^  - naam:" content/recepten/ | grep -B 1 -A 4 spesadaantonio
 ```
 
+Zoek daarna de rest op via de Shopify-connector (`search_products`) of op
+spesadaantonio.nl. Elk gevonden product krijgt een `productUrl` op het
+ingrediënt én een item in `producten`; zie `references/schrijfstijl.md`.
 Ken je de precieze product-URL niet, gebruik dan `https://www.spesadaantonio.nl`
 en meld dat de diepe link nog ingevuld moet worden.
 
-## Stap 6 — Verifiëren
+## Stap 6 — Reviewen
+
+Loop `references/checklist.md` volledig af, punt voor punt, en fix wat niet
+klopt. Draai de grep-controles daadwerkelijk; meld welke punten je aanpaste.
+Bij een batch: eerst alle recepten schrijven, dan alle recepten reviewen.
+
+## Stap 7 — Verifiëren
 
 ```
 pnpm generate
@@ -121,7 +186,7 @@ Controleer drie dingen en meld het resultaat:
 Faalt de build, dan is het vrijwel altijd een onaangehaalde string met een
 dubbele punt in de frontmatter. Zie `references/frontmatter.md`.
 
-## Stap 7 — Opleveren
+## Stap 8 — Opleveren
 
 Rapporteer kort:
 
@@ -130,3 +195,60 @@ Rapporteer kort:
 - wat er nog handmatig moet: de foto, en eventueel de product-URL's
 
 Commit niet zelf. De gebruiker beslist wat er live gaat.
+
+## In batches werken
+
+Eén recept tegelijk van stap 1 tot 8 is goed voor één recept. Voor een
+database van tientallen recepten werk je per **fase** over de hele batch, niet
+per recept over alle fasen. Schakelen tussen onderzoeken, schrijven en
+controleren kost meer dan de stappen zelf.
+
+De planning staat in `planning/recepten.md`. Elke fase werkt die tabel bij.
+
+### Fase A — Plannen (één keer)
+
+Vul de tabel met alle gerechten die je wilt, verdeeld over gangen en
+seizoenen, richting de streefaantallen bovenaan het bestand. Nog geen
+zoekwoorden, nog geen tekst. Controleer wel meteen kannibalisatie voor de hele
+lijst: twee gerechten die op hetzelfde zoekwoord gaan mikken (bijvoorbeeld
+twee ragù's) horen niet allebei op de lijst.
+
+### Fase B — Zoekwoorden in bulk
+
+Draai stap 2a voor een hele reeks achter elkaar en bewaar de uitvoer, zodat je
+tijdens het schrijven niets opnieuw hoeft op te halen:
+
+```
+node scripts/zoekwoorden.mjs "<gerecht>" --json > planning/zoekwoorden/<slug>.json
+```
+
+Lees daarna per gerecht de uitvoer zoals in stap 2b en zet het primaire
+zoekwoord in de tabel. Status: `zoekwoorden`. Controleer de kolom op dubbelen:
+elke regel een ander primair zoekwoord.
+
+### Fase C — Schrijven, vijf per gang
+
+Schrijf vijf recepten van **dezelfde gang** in één sessie: de toon en de
+opbouw blijven dan gelijk, en de gedeelde ingrediënten vallen op. Per recept
+stap 3 tot en met 5, met deze afwijkingen:
+
+- `concept: true` op elk recept. Niets gaat live voordat het gereviewd is.
+- `gepubliceerd` krijgt de datum van vandaag; bij livegang zet je hem op de
+  echte publicatiedatum.
+- Nog niet bouwen en nog niet reviewen. Wel na elk recept
+  `node scripts/ingredienten-check.mjs <pad>` draaien, want een verkeerde
+  ingrediëntnaam fix je het snelst zolang het recept vers is.
+
+Status: `geschreven`.
+
+### Fase D — Reviewen en bouwen, per batch
+
+Pas als de hele batch geschreven is: stap 6 voor elk recept, dan één keer
+`pnpm ingredienten` en één keer `pnpm generate` voor alles tegelijk. Meld per
+recept wat je aanpaste. Status: `gereviewd`.
+
+### Fase E — Live zetten
+
+Gebeurt per weekmenu, niet per batch. Zodra een weekmenu een recept nodig
+heeft: `concept` weg, `gepubliceerd` op de publicatiedatum, en de kolom
+`week` invullen. Status: `live`. De foto moet er op dat moment zijn.

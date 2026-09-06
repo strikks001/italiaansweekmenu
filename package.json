@@ -10,7 +10,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "typecheck": "nuxt typecheck"
+    "typecheck": "nuxt typecheck",
+    "ingredienten": "node scripts/ingredienten-check.mjs"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.126",
@@ -31,6 +32,7 @@
     "satori": "^0.33.4",
     "typescript": "^6.0.3",
     "vue-tsc": "^3.3.11",
-    "wrangler": "^4.127.1"
+    "wrangler": "^4.127.1",
+    "yaml": "^2.9.0"
   }
 }

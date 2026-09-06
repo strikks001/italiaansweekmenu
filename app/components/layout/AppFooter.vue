@@ -20,7 +20,8 @@ const dezeWeek = computed(() =>
   (weken.value ?? []).find(m => weekContains(m.jaar, m.week, today.value))
 )
 
-const GANGEN = ['antipasto', 'primo', 'secondo', 'dolce']
+// Every course from the shared list; base recipes are not a menu course.
+const FOOTER_GANGEN = GANGEN.filter(g => g !== 'basis')
 
 const LINKS = [
   { label: 'Alle weekmenu\'s', to: '/weekmenu' },
@@ -88,14 +89,13 @@ const linkKlasse = 'underline decoration-white/40 underline-offset-4 transition 
             </p>
             <ul class="mt-3 space-y-2 text-sm">
               <li
-                v-for="gang in GANGEN"
+                v-for="gang in FOOTER_GANGEN"
                 :key="gang"
               >
                 <NuxtLink
                   :to="`/recepten?gang=${gang}`"
-                  class="capitalize"
                   :class="linkKlasse"
-                >{{ gang }}</NuxtLink>
+                >{{ gangLabel(gang) }}</NuxtLink>
               </li>
             </ul>
           </nav>

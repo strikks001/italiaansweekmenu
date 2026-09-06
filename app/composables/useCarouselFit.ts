@@ -12,7 +12,10 @@ export function useCarouselFit(
   count: MaybeRefOrGetter<number>,
   perView: number,
   minWidth: number,
-  basis = 'basis-[86%] sm:basis-1/2 lg:basis-1/3'
+  basis = 'basis-[86%] sm:basis-1/2 lg:basis-1/3',
+  // Narrower once there is more to see: the next card peeks in, which says
+  // "slide" better than any arrow.
+  peek = 'basis-[78%] sm:basis-[44%] lg:basis-[30%]'
 ) {
   const fits = computed(() => toValue(count) <= perView)
 
@@ -26,7 +29,7 @@ export function useCarouselFit(
     // Padding gives the hover shadow room inside the overflow-hidden clip.
     viewport: '-m-4 p-4',
     container: '-ms-8 items-stretch',
-    item: `ps-8 ${basis}`,
+    item: `ps-8 ${fits.value ? basis : peek}`,
     prev: fits.value ? hidden : '',
     next: fits.value ? hidden : ''
   }))

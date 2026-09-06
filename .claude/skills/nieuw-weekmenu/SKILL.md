@@ -16,7 +16,9 @@ grep -l "" content/weekmenu/*.md
 ```
 
 Kijk welke recepten er zijn en welke thema's de afgelopen weken al langskwamen.
-Herhaal geen regio of thema binnen zes weken.
+Herhaal geen regio of thema binnen zes weken. `planning/recepten.md` toont ook
+de recepten die al geschreven maar nog `concept` zijn: die kun je in deze week
+live zetten (zie "Fase E" in de skill `nieuw-recept`).
 
 ## Stap 2 — Thema kiezen
 

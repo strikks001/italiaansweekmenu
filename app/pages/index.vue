@@ -20,6 +20,16 @@ const { data } = await useAsyncData('home', async () => {
   return { menus, recipes }
 })
 
+// Until the first menu is live, the newest recipes stand in for it.
+const { data: teaser } = await useAsyncData('home:teaser', () =>
+  queryCollection('recepten')
+    .where('concept', '=', false)
+    .order('gepubliceerd', 'DESC')
+    .select('path', 'title', 'description', 'afbeelding', 'afbeeldingAlt', 'gang', 'voorbereidingstijd', 'bereidingstijd')
+    .limit(3)
+    .all()
+)
+
 const today = useToday()
 
 // Filtered here, not per section, so nothing below can leak a menu that is
@@ -176,12 +186,19 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
               </p>
             </template>
 
-            <p
+            <div
               v-else
-              class="mt-4 max-w-xl text-lg"
+              class="mt-6 max-w-xl"
             >
-              Het menu van deze week verschijnt binnenkort.
-            </p>
+              <PillBadge tone="white">
+                Binnenkort
+              </PillBadge>
+              <p class="mt-3 text-lg">
+                De eerste weekmenu's zijn in de maak: elke week vijf avondeten die
+                bij elkaar passen, met de boodschappenlijst erbij. Tot die tijd
+                staan hier de recepten die al klaar zijn.
+              </p>
+            </div>
           </div>
         </UContainer>
       </section>
@@ -192,6 +209,13 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
         to="#deze-week"
         label="Naar de recepten van de rest van deze week"
         text="Bekijk de recepten van de rest van de week"
+        edge
+      />
+      <JumpLink
+        v-else-if="!weeks.length && teaser?.length"
+        to="#alvast"
+        label="Naar de recepten die al klaar zijn"
+        text="Bekijk de recepten die al klaar zijn"
         edge
       />
     </div>
@@ -209,6 +233,8 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
         arrows
         :breakpoints="carouselBreakpoints"
         :ui="carouselUi"
+        align="start"
+        wheel-gestures
         class="mt-5"
       >
         <CourseCard
@@ -275,6 +301,45 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
     </section>
 
     <PageSection
+      v-if="!weeks.length && teaser?.length"
+      id="alvast"
+      class="scroll-mt-24"
+      eyebrow="Alvast op tafel"
+      title="De recepten die al klaar zijn"
+      lead="Elk recept legt per stap uit wat je doet, waaraan je ziet dat het goed gaat en waarom het ertoe doet."
+      heading-size="lg"
+    >
+      <template #actions>
+        <UButton
+          to="/recepten"
+          color="neutral"
+          variant="ghost"
+          trailing-icon="i-lucide-arrow-right"
+        >
+          Alle recepten
+        </UButton>
+      </template>
+
+      <CardGrid class="mt-6">
+        <MediaCard
+          v-for="(item, index) in teaser"
+          :key="item.path"
+          :to="item.path"
+          :image="item.afbeelding"
+          :alt="item.afbeeldingAlt"
+          :title="item.title"
+          :description="item.description"
+          :priority="index === 0"
+        >
+          <template #meta>
+            <PillBadge>{{ gangLabel(item.gang) }}</PillBadge>
+            <span>{{ readableDuration(item.voorbereidingstijd + item.bereidingstijd) }}</span>
+          </template>
+        </MediaCard>
+      </CardGrid>
+    </PageSection>
+
+    <PageSection
       title="Zoek je iets anders?"
       lead="Doorzoek het hele archief op gerecht, gang of ingrediënt."
       heading-size="lg"
@@ -308,8 +373,8 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
 
     <CtaSection
       title="De juiste ingrediënten maken het verschil"
-      text="Echte Italiaanse pasta, olijfolie, kaas en salumi bestel je rechtstreeks
-            bij Spesa da Antonio — geselecteerd bij kleine producenten in Italië."
+      text="Pasta, tomaten, olijfolie en kaas van dezelfde merken als in een Italiaanse
+            supermarkt, thuisbezorgd in heel Nederland door Spesa da Antonio."
     >
       <UButton
         to="https://www.spesadaantonio.nl"
