@@ -233,13 +233,14 @@ function reset() {
                     </span>
                   </button>
 
-                  <!-- ms-20 lines up with the ingredient name. -->
+                  <!-- ms-20 lines up with the ingredient name. Quiet on purpose;
+                       min-h-6 keeps the tap target at the 24px WCAG minimum. -->
                   <NuxtLink
                     v-if="item.productUrl"
                     :to="item.productUrl"
                     target="_blank"
                     rel="noopener"
-                    class="print-hide ms-20 mt-0.5 inline-flex items-center gap-1 text-xs text-secondary underline decoration-dotted underline-offset-4 hover:decoration-solid"
+                    class="print-hide ms-20 inline-flex min-h-6 items-center gap-1 text-xs text-muted hover:text-secondary hover:underline"
                   >
                     <UIcon
                       name="i-lucide-shopping-basket"

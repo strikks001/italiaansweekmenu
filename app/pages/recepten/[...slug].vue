@@ -202,6 +202,7 @@ useSchemaOrg([
         sizes="100vw md:768px lg:1024px"
         format="webp"
         preload
+        fetchpriority="high"
         class="print-hide mx-auto mt-8 aspect-video w-full max-w-4xl rounded-2xl object-cover"
       />
 
