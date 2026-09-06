@@ -211,7 +211,7 @@ useSchemaOrg([
       v-if="!visible.length"
       eyebrow="Binnenkort"
       title="Het eerste weekmenu komt eraan"
-      lead="Vijf avondeten van maandag tot en met vrijdag die bij elkaar passen: licht en snel aan het begin van de week, de oven of de stoofpot als er tijd is, en ingrediënten die in meer dan één gerecht terugkomen. De boodschappenlijst maakt de site zelf. Het menu voor de volgende week staat vanaf vrijdag online."
+      lead="Zeven dagen Italiaans eten dat bij elkaar past: licht en snel op doordeweekse dagen, de oven of de stoofpot in het weekend, en ingrediënten die in meer dan één gerecht terugkomen. De boodschappenlijst maakt de site zelf. Het menu voor de volgende week staat vanaf vrijdag online."
       heading-size="lg"
       width="prose"
       center

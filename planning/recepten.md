@@ -6,9 +6,9 @@ ziet hoe ver de database is.
 
 Status: `idee` → `zoekwoorden` → `geschreven` → `gereviewd` → `live`.
 
-Streefaantal voor drie maanden weekmenu's (recepten mogen in meerdere weken
-terugkomen): antipasto 8, primo 15, secondo 12, contorno 8, piatto-unico 6,
-dolce 8.
+Een weekmenu beslaat zeven dagen en telt minimaal zeven gerechten. Streefaantal
+voor drie maanden (recepten mogen in meerdere weken terugkomen): antipasto 8,
+primo 15, secondo 12, contorno 8, piatto-unico 6, dolce 8.
 
 | gerecht | gang | seizoen | primair zoekwoord | status | week |
 |---|---|---|---|---|---|

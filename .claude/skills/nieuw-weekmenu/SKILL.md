@@ -1,12 +1,13 @@
 ---
 name: nieuw-weekmenu
-description: Stel een nieuw wekelijks Italiaans menu samen voor italiaansweekmenu, met een thema, vijf gerechten, een gedeelde boodschappenlijst en SEO-metadata. Gebruik dit aan het begin van een nieuwe week of wanneer er een weekmenu vooruit gepland moet worden.
+description: Stel een nieuw wekelijks Italiaans menu samen voor italiaansweekmenu, met een thema, minimaal zeven gerechten voor zeven dagen, een gedeelde boodschappenlijst en SEO-metadata. Gebruik dit aan het begin van een nieuwe week of wanneer er een weekmenu vooruit gepland moet worden.
 ---
 
 # Nieuw weekmenu samenstellen
 
-Doel: één bestand in `content/weekmenu/<jaar>-week-<nr>.md` dat vijf avonden
-dekt en de bestaande receptenbibliotheek zo goed mogelijk benut.
+Doel: één bestand in `content/weekmenu/<jaar>-week-<nr>.md` dat alle zeven
+dagen dekt, met minimaal zeven gerechten, en de bestaande receptenbibliotheek
+zo goed mogelijk benut.
 
 ## Stap 1 — Inventariseren
 
@@ -33,14 +34,22 @@ Controleer dat het thema past bij het seizoen op de publicatiedatum.
 
 ## Stap 3 — De week opbouwen
 
-Vijf gerechten, maandag tot en met vrijdag. Houd je aan deze regels:
+Zeven dagen, maandag tot en met zondag, elke dag minstens één gerecht. Houd
+je aan deze regels:
 
 - **Maandag en dinsdag licht en snel.** Maximaal 45 minuten totaal.
 - **Woensdag mag de oven aan.** Weinig handelingen, lange wachttijd.
-- **Donderdag is de bewerkelijke dag.** Hier hoort de stoofpot of de ragù.
-- **Vrijdag is het dessert** of een gerecht dat je donderdag al voorbereidde.
-- Nooit twee keer pasta als hoofdcomponent in één week.
-- Minstens één vegetarisch gerecht.
+- **Donderdag is de bewerkelijke doordeweekse dag.** Een primo met een saus
+  die je vooruit kunt maken.
+- **Vrijdag is een piatto unico**: pizza, focaccia, een frittata, iets wat je
+  aan tafel deelt.
+- **Zaterdag is de dag om uit te pakken.** De stoofpot of de ragù die uren
+  suddert, en een dolce erbij mag.
+- **Zondag is het familiemaal**: antipasto, primo of secondo met contorno,
+  zoals de Italiaanse zondag. Meer dan één gerecht op een dag telt mee voor
+  het minimum van zeven.
+- Nooit twee keer pasta als hoofdcomponent op opeenvolgende dagen.
+- Minstens twee vegetarische dagen.
 - Laat minstens twee gerechten een ingrediënt delen, en benoem dat in de body.
   Dat is de belofte van een weekmenu: je koopt minder en gooit niets weg.
 

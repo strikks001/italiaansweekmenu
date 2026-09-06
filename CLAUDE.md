@@ -78,7 +78,10 @@ bestanden uit `.output/public`. Gebruik dat pad, nooit `dist` — die symlink
 wijst naar een absoluut pad op één machine en bestaat niet op de builder.
 
 In het dashboard staat alleen: build command `pnpm generate`, deploy command
-`pnpm exec wrangler deploy`. Node 22 via `.nvmrc`, pnpm via `packageManager` in
+`pnpm exec wrangler deploy`. Het GA4-meet-ID staat in `nuxt.config.ts`
+(`gtag.id`); de build-variabele `NUXT_PUBLIC_GTAG_ID` overschrijft het, en
+leeg betekent geen analytics. GA laadt nooit vóór een "Accepteren" in de
+cookiebanner (`useConsent`). Node 22 via `.nvmrc`, pnpm via `packageManager` in
 package.json (zonder die pin pakt de builder npm, en npm crasht op dit project).
 
 Nuxt Studio wordt alleen in `NODE_ENV=development` als module geladen. Dat

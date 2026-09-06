@@ -25,3 +25,4 @@ logs
 
 # Wrangler werkmap (lokale state en deploy-cache)
 .wrangler
+!.env.example

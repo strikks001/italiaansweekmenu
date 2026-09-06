@@ -27,8 +27,11 @@ const LINKS = [
   { label: 'Alle weekmenu\'s', to: '/weekmenu' },
   { label: 'Alle recepten', to: '/recepten' },
   { label: 'Over dit project', to: '/over' },
-  { label: 'Contact', to: '/contact' }
+  { label: 'Contact', to: '/contact' },
+  { label: 'Privacy en cookies', to: '/privacy' }
 ]
+
+const { reopen } = useConsent()
 
 const linkKlasse = 'underline decoration-white/40 underline-offset-4 transition hover:decoration-white'
 </script>
@@ -136,6 +139,15 @@ const linkKlasse = 'underline decoration-white/40 underline-offset-4 transition 
           icon="i-lucide-mail"
           :label="footer.bedrijf.email"
           class="text-white hover:bg-white/10"
+        />
+        <UButton
+          color="neutral"
+          variant="ghost"
+          size="sm"
+          icon="i-lucide-cookie"
+          label="Cookievoorkeuren"
+          class="text-white hover:bg-white/10"
+          @click="reopen"
         />
         <UButton
           to="/feed.xml"

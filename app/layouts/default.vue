@@ -11,6 +11,7 @@ const pageUrl = computed(() => new URL(route.path, site.url).toString())
       <slot />
     </UMain>
     <AppFooter />
+    <CookieBanner />
 
     <!-- Paper has no back button. -->
     <div class="print-foot hidden">

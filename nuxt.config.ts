@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@nuxt/ui', // componentbibliotheek bovenop Tailwind 4
     '@nuxt/eslint',
     '@nuxtjs/seo', // bundel: sitemap, robots, schema.org, og-image, link-checker
+    'nuxt-gtag', // GA4, loads only after consent (see useConsent)
 
     // Studio is de visuele editor voor content/, en draait alleen lokaal.
     // Meebouwen in productie zou 28 MB aan editor-assets deployen die daar
@@ -77,6 +78,23 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
+  },
+
+  // GA4 property of Spesa da Antonio. NUXT_PUBLIC_GTAG_ID overrides it;
+  // empty means off. Nothing loads until useConsent() calls initialize(),
+  // and Consent Mode starts denied so Google honours the choice too.
+  gtag: {
+    id: 'G-YSLKG6BLSW',
+    initMode: 'manual',
+    initCommands: [
+      ['consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        wait_for_update: 500
+      }]
+    ]
   },
 
   // The prerendered routes give the sitemap its URLs but no dates; this source

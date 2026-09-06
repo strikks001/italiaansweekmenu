@@ -101,7 +101,11 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
          for the tilted card, which would cut the button in half. -->
     <div class="relative">
       <section class="scallop relative overflow-hidden bg-vermilion-500 pb-24 text-vermilion-950">
-        <UContainer class="relative py-12 lg:py-20">
+        <!-- Without the tilted card the band needs far less room below. -->
+        <UContainer
+          class="relative"
+          :class="mainCourse ? 'py-12 lg:py-20' : 'pt-12 pb-2 lg:pt-20 lg:pb-4'"
+        >
           <div
             class="mx-auto max-w-4xl"
           >
@@ -194,9 +198,9 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
                 Binnenkort
               </PillBadge>
               <p class="mt-3 text-lg">
-                De eerste weekmenu's zijn in de maak: elke week vijf avondeten die
-                bij elkaar passen, met de boodschappenlijst erbij. Tot die tijd
-                staan hier de recepten die al klaar zijn.
+                De eerste weekmenu's zijn in de maak: elke week zeven dagen
+                Italiaans eten dat bij elkaar past, met de boodschappenlijst
+                erbij. Tot die tijd staan hier de recepten die al klaar zijn.
               </p>
             </div>
           </div>
@@ -244,7 +248,7 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
       </UCarousel>
     </PageSection>
 
-    <section>
+    <section v-if="restOfWeek.length || nextWeek">
       <UContainer class="py-12 lg:py-16">
         <div class="mx-auto flex max-w-4xl flex-col gap-12">
           <PageSection
@@ -303,11 +307,12 @@ defineOgImage('Default', { title: 'Italiaansweekmenu', description })
     <PageSection
       v-if="!weeks.length && teaser?.length"
       id="alvast"
-      class="scroll-mt-24"
+      class="scroll-mt-24 pt-10 pb-12 lg:pb-16"
       eyebrow="Alvast op tafel"
       title="De recepten die al klaar zijn"
       lead="Elk recept legt per stap uit wat je doet, waaraan je ziet dat het goed gaat en waarom het ertoe doet."
       heading-size="lg"
+      spacing="none"
     >
       <template #actions>
         <UButton

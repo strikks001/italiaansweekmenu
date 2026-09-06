@@ -21,6 +21,7 @@
     "@nuxt/ui": "^4.11.0",
     "@nuxtjs/seo": "^5.3.14",
     "nuxt": "^4.5.2",
+    "nuxt-gtag": "^5.0.0",
     "nuxt-studio": "1.7.0",
     "tailwindcss": "^4.3.3"
   },
