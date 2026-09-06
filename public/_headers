@@ -1,0 +1,9 @@
+# Cloudflare static assets read this file. No CSP yet: gtag, Shopify images
+# and inline Nuxt scripts each need an allow-list first.
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Cross-Origin-Opener-Policy: same-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()

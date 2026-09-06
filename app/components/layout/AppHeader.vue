@@ -23,14 +23,13 @@ watch(() => route.fullPath, () => {
     :toggle="false"
     :ui="{ root: 'print-hide border-b-2 border-default bg-default/90 backdrop-blur' }"
   >
+    <!-- UHeader wraps this slot in its own link to "/". A NuxtLink here would
+         nest <a> in <a>; the browser splits that, and hydration fails. -->
     <template #title>
-      <NuxtLink
-        to="/"
-        class="flex items-center gap-2 text-lg font-bold"
-      >
+      <span class="flex items-center gap-2 text-xl font-bold">
         <BrandMark class="size-7 shrink-0" />
         <span><span class="text-secondary dark:text-ceramic-300">Italiaans</span><span class="text-primary">weekmenu</span></span>
-      </NuxtLink>
+      </span>
     </template>
 
     <UNavigationMenu :items="items" />

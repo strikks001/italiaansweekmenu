@@ -28,9 +28,12 @@ function jump(event: MouseEvent) {
     class="print-hide flex flex-col items-center gap-3 text-center"
     :class="edge ? 'absolute inset-x-0 bottom-0 z-10' : ''"
   >
+    <!-- Outside the band's DOM it would inherit the page colour, which fails
+         contrast on vermilion. -->
     <p
       v-if="text"
       class="text-sm font-semibold"
+      :class="edge ? 'text-vermilion-950' : ''"
     >
       {{ text }}
     </p>

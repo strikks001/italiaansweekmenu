@@ -85,10 +85,12 @@ function search() {
   navigateTo({ path: '/recepten', query: query.value ? { q: query.value } : {} })
 }
 
-const title = 'Italiaans weekmenu — elke week een nieuw menu vol inspiratie'
+const title = 'Italiaans weekmenu | elke week een nieuw menu vol inspiratie'
 const description = site.description
 
 useSeoMeta({ title, description, ogTitle: title, ogDescription: description })
+// The title already names the site; the default template would append it again.
+useHead({ titleTemplate: '%s' })
 defineOgImage('Default', { title: 'Italiaansweekmenu', description })
 </script>
 

@@ -21,6 +21,7 @@ defineProps<{
       format="webp"
       :loading="priority ? 'eager' : 'lazy'"
       :preload="priority"
+      :fetchpriority="priority ? 'high' : undefined"
       class="aspect-[3/2] w-full object-cover transition duration-300 group-hover:scale-[1.02]"
     />
 

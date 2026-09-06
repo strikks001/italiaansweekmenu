@@ -58,6 +58,9 @@ Geen eenheid betekent stuks. Kolom "eenheden" hieronder: `-` is stuks.
 |---|---|---|
 | extra vergine olijfolie | el, ml, - | olijfolie, extra vierge olijfolie |
 | gepelde tomaten | g, blik | pelati, tomaten uit blik |
+| passata | g, ml, fles | tomatenpassata, passata di pomodoro, gezeefde tomaten |
+| doperwten | g, pot | piselli, erwten, diepvriesdoperwten |
+| peperoncino | tl, - | chilivlokken, gedroogde peperoncino, rode pepervlokken |
 | borlottibonen | g, blik | borlottibonen uit blik |
 | zwarte olijven | g | |
 | groentebouillon | ml, l | |
@@ -111,3 +114,4 @@ Geen eenheid betekent stuks. Kolom "eenheden" hieronder: `-` is stuks.
 | kalfsoesters | - | dunne kalfsoesters, kalfslapjes |
 | prosciutto di Parma | plakken, g | plakken prosciutto di Parma, parmaham |
 | kippendijen | - , g | kippendijen met bot en vel, kippendij |
+| salsiccia | g, - | italiaanse worst, salsiccia piccante, salsiccia stick, verse salsiccia |
