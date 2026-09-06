@@ -17,7 +17,8 @@ export default defineSitemapEventHandler(async (event) => {
       .all()
   ])
 
-  const stamp = (item: { gewijzigd?: Date, gepubliceerd: Date }) =>
+  // Dates come out of the content database as strings.
+  const stamp = (item: { gewijzigd?: string, gepubliceerd: string }) =>
     new Date(item.gewijzigd ?? item.gepubliceerd).toISOString()
 
   return [

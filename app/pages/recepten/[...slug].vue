@@ -11,6 +11,8 @@ if (!data.value || data.value.concept) {
 }
 
 const recipe = data.value
+// Typed optional by Nuxt Content even though the schema defaults it.
+const vragen = recipe.vragen ?? []
 
 // Fields with a .default() in the Zod schema are optional in the generated
 // type: the default is applied at read time, so TypeScript cannot know.
@@ -142,10 +144,10 @@ useSchemaOrg([
   }),
   // The questions only attach to the page once it is typed FAQPage; the
   // resolver checks for that before filling mainEntity.
-  ...(recipe.vragen.length
+  ...(vragen.length
     ? [
         defineWebPage({ '@type': ['WebPage', 'FAQPage'] }),
-        ...recipe.vragen.map(item => defineQuestion({
+        ...vragen.map(item => defineQuestion({
           name: item.vraag,
           acceptedAnswer: plainText(item.antwoord)
         }))
@@ -323,7 +325,7 @@ useSchemaOrg([
       </section>
 
       <FaqAccordion
-        :items="recipe.vragen"
+        :items="vragen"
         class="print-hide mx-auto mt-12 max-w-4xl"
       />
 
