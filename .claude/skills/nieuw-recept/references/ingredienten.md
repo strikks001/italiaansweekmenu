@@ -26,7 +26,7 @@ tabellen hieronder, dus een nieuw ingrediënt voeg je **hier** toe.
    Parma, San Marzano.
 
 Eenheden die bestaan: `g`, `kg`, `ml`, `l`, `el`, `tl`, `tenen`, `stengels`,
-`takjes`, `blaadjes`, `plakken`, `sneden`, `bosje`, `korst`, `zakje`, `blik`.
+`takjes`, `blaadjes`, `plakken`, `sneden`, `bosje`, `korst`, `zakje`, `blik`, `pot`.
 Geen eenheid betekent stuks. Kolom "eenheden" hieronder: `-` is stuks.
 
 ## Groenten en verse kruiden
@@ -63,6 +63,7 @@ Geen eenheid betekent stuks. Kolom "eenheden" hieronder: `-` is stuks.
 | peperoncino | tl, - | chilivlokken, gedroogde peperoncino, rode pepervlokken |
 | borlottibonen | g, blik | borlottibonen uit blik |
 | zwarte olijven | g | |
+| groene olijven | g | groene olijven zonder pit |
 | groentebouillon | ml, l | |
 | runderbouillon | ml, l | |
 | kippenbouillon | ml, l | |
@@ -73,7 +74,7 @@ Geen eenheid betekent stuks. Kolom "eenheden" hieronder: `-` is stuks.
 | saffraan | zakje, g | saffraandraadjes |
 | sterke espresso | ml | espresso, koffie |
 | zout | -, g, tl | grof zeezout, zeezout, fijn zout |
-| water | ml, l | lauw water |
+| water | ml, l, - | lauw water, koud water |
 | bloem tipo 00 | g | farina 00, bloem, tarwebloem |
 | semola rimacinata | g | semola, griesmeel van harde tarwe |
 | droge gist | g, zakje | gedroogde gist, instantgist |
@@ -93,6 +94,7 @@ Geen eenheid betekent stuks. Kolom "eenheden" hieronder: `-` is stuks.
 | carnaroli rijst | g | carnaroli of arborio rijst, risottorijst, arborio rijst |
 | savoiardi | g, - | lange vingers |
 | landbrood | sneden | sneden stevig landbrood, brood |
+| friselle | -, g | freselle, frisella, fresella, friselle integrali |
 
 ## Zuivel en eieren
 
@@ -104,6 +106,7 @@ Geen eenheid betekent stuks. Kolom "eenheden" hieronder: `-` is stuks.
 | mascarpone | g | |
 | volle melk | ml | melk |
 | eieren | - | ei |
+| mozzarella | g, - | mozzarella di bufala, bol mozzarella |
 
 ## Vlees en vis
 
@@ -115,3 +118,4 @@ Geen eenheid betekent stuks. Kolom "eenheden" hieronder: `-` is stuks.
 | prosciutto di Parma | plakken, g | plakken prosciutto di Parma, parmaham |
 | kippendijen | - , g | kippendijen met bot en vel, kippendij |
 | salsiccia | g, - | italiaanse worst, salsiccia piccante, salsiccia stick, verse salsiccia |
+| tonijnfilets | pot, g | tonijn, tonijn in olijfolie, filetti di tonno |

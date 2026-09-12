@@ -61,6 +61,7 @@ primo 15, secondo 12, contorno 8, piatto-unico 6, dolce 8.
 | Frittata di pasta | piatto-unico | heel jaar | | idee | |
 | Gattò di patate | piatto-unico | herfst, winter | | idee | |
 | Focaccia barese | piatto-unico | heel jaar | focaccia barese recept | geschreven | |
+| Friselle con pomodoro e mozzarella | piatto-unico | zomer | friselle recept | geschreven | |
 | Focaccia genovese | piatto-unico | heel jaar | | idee | |
 | Pasta al forno | piatto-unico | winter | | idee | |
 | Tiramisù | dolce | heel jaar | | idee | |
