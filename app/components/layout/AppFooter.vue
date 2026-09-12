@@ -1,11 +1,11 @@
 <script setup lang="ts">
 const site = useSiteConfig()
 const { footer } = useAppConfig()
-const jaar = new Date().getFullYear()
+const year = new Date().getFullYear()
 
 // The running week, so the footer points at something current rather than only
 // at archive pages.
-const { data: weken } = await useAsyncData('footer:week', () =>
+const { data: weeks } = await useAsyncData('footer:week', () =>
   queryCollection('weekmenus')
     .where('concept', '=', false)
     .order('gepubliceerd', 'DESC')
@@ -16,8 +16,8 @@ const { data: weken } = await useAsyncData('footer:week', () =>
 
 const today = useToday()
 
-const dezeWeek = computed(() =>
-  (weken.value ?? []).find(m => weekContains(m.jaar, m.week, today.value))
+const thisWeek = computed(() =>
+  (weeks.value ?? []).find(m => weekContains(m.jaar, m.week, today.value))
 )
 
 // Every course from the shared list; base recipes are not a menu course.
@@ -33,7 +33,7 @@ const LINKS = [
 
 const { reopen } = useConsent()
 
-const linkKlasse = 'underline decoration-white/40 underline-offset-4 transition hover:decoration-white'
+const linkClass = 'underline decoration-white/40 underline-offset-4 transition hover:decoration-white'
 </script>
 
 <template>
@@ -52,19 +52,19 @@ const linkKlasse = 'underline decoration-white/40 underline-offset-4 transition 
             </p>
 
             <div
-              v-if="dezeWeek"
+              v-if="thisWeek"
               class="mt-5"
             >
               <p class="font-display text-xs font-bold uppercase tracking-widest text-ceramic-200">
                 Deze week
               </p>
               <UButton
-                :to="dezeWeek.path"
+                :to="thisWeek.path"
                 color="neutral"
                 size="sm"
                 class="mt-2 bg-white text-ceramic-700 hover:bg-butter-200"
                 trailing-icon="i-lucide-arrow-right"
-                :label="`Week ${dezeWeek.week} · ${weekPeriod(dezeWeek.jaar, dezeWeek.week)}`"
+                :label="`Week ${thisWeek.week} · ${weekPeriod(thisWeek.jaar, thisWeek.week)}`"
               />
             </div>
           </div>
@@ -80,7 +80,7 @@ const linkKlasse = 'underline decoration-white/40 underline-offset-4 transition 
               >
                 <NuxtLink
                   :to="link.to"
-                  :class="linkKlasse"
+                  :class="linkClass"
                 >{{ link.label }}</NuxtLink>
               </li>
             </ul>
@@ -97,7 +97,7 @@ const linkKlasse = 'underline decoration-white/40 underline-offset-4 transition 
               >
                 <NuxtLink
                   :to="`/recepten?gang=${gang}`"
-                  :class="linkKlasse"
+                  :class="linkClass"
                 >{{ gangLabel(gang) }}</NuxtLink>
               </li>
             </ul>
@@ -108,9 +108,9 @@ const linkKlasse = 'underline decoration-white/40 underline-offset-4 transition 
 
     <template #left>
       <p class="text-sm text-ceramic-100">
-        © {{ jaar }} {{ footer.bedrijf.naam || site.name }}
-        <template v-if="footer.bedrijf.kvk">
-          · KvK {{ footer.bedrijf.kvk }}
+        © {{ year }} {{ footer.company.name || site.name }}
+        <template v-if="footer.company.kvk">
+          · KvK {{ footer.company.kvk }}
         </template>
       </p>
     </template>
@@ -131,13 +131,13 @@ const linkKlasse = 'underline decoration-white/40 underline-offset-4 transition 
           class="text-white hover:bg-white/10"
         />
         <UButton
-          v-if="footer.bedrijf.email"
-          :to="`mailto:${footer.bedrijf.email}`"
+          v-if="footer.company.email"
+          :to="`mailto:${footer.company.email}`"
           color="neutral"
           variant="ghost"
           size="sm"
           icon="i-lucide-mail"
-          :label="footer.bedrijf.email"
+          :label="footer.company.email"
           class="text-white hover:bg-white/10"
         />
         <UButton

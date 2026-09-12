@@ -3,8 +3,8 @@ export default defineAppConfig({
      empty list renders nothing. */
   footer: {
     social: [] as { label: string, icon: string, to: string }[],
-    bedrijf: {
-      naam: 'Spesa da Antonio',
+    company: {
+      name: 'Spesa da Antonio',
       email: 'italiaansweekmenu@spesadaantonio.nl',
       kvk: '96972378'
     }

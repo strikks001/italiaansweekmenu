@@ -9,7 +9,7 @@ const props = withDefaults(defineProps<{
   tone?: 'default' | 'banner'
 }>(), { image: undefined, tone: 'default' })
 
-const knopStijl = computed(() => props.tone === 'banner'
+const buttonClass = computed(() => props.tone === 'banner'
   ? 'bg-white text-vermilion-950 hover:bg-butter-200'
   : '')
 
@@ -77,7 +77,7 @@ async function shareNatively() {
       size="sm"
       aria-label="Deel dit recept"
       class="sm:hidden"
-      :class="knopStijl"
+      :class="buttonClass"
       @click="shareNatively"
     />
 
@@ -92,7 +92,7 @@ async function shareNatively() {
       color="neutral"
       :variant="tone === 'banner' ? 'solid' : 'outline'"
       size="sm"
-      :class="knopStijl"
+      :class="buttonClass"
     />
 
     <UButton
@@ -100,7 +100,7 @@ async function shareNatively() {
       color="neutral"
       :variant="tone === 'banner' ? 'solid' : 'outline'"
       size="sm"
-      :class="copied ? 'bg-ceramic-500 text-white' : knopStijl"
+      :class="copied ? 'bg-ceramic-500 text-white' : buttonClass"
       :aria-label="copied ? 'Link gekopieerd' : 'Kopieer link'"
       @click="copyLink"
     />

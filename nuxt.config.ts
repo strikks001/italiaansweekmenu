@@ -28,14 +28,37 @@ export default defineNuxtConfig({
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' },
         { rel: 'manifest', href: '/site.webmanifest' }
       ],
-      meta: [{ name: 'theme-color', content: '#ff3b14' }]
+      meta: [{ name: 'theme-color', content: '#ff3b14' }],
+      script: [
+        // Consent Mode must be set before any Google script loads, and AdSense
+        // below loads while Nuxt is still booting - hence inline, not nuxt-gtag.
+        // Everything starts denied; useConsent sends the update that
+        // wait_for_update gives half a second to arrive.
+        //
+        // The number is not a style choice: unhead sorts the head by capo
+        // rules, which rank an async script (30) above an inline one (50), and
+        // the 'critical' alias only shifts that by 8. Only a numeric priority
+        // skips the ranking, so this has to stay below AdSense's 30.
+        {
+          tagPriority: 20,
+          innerHTML: 'window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};'
+            + 'gtag(\'consent\',\'default\',{ad_storage:\'denied\',ad_user_data:\'denied\','
+            + 'ad_personalization:\'denied\',analytics_storage:\'denied\',wait_for_update:500});'
+        },
+
+        // AdSense belongs on every page; without ads consent it serves only
+        // non-personalised ads.
+        {
+          async: true,
+          src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7646327831760066',
+          crossorigin: 'anonymous'
+        }
+      ]
     }
   },
 
   css: ['~/assets/css/main.css', '~/assets/css/transitions.css', '~/assets/css/print.css'],
 
-  // Eén bron van waarheid voor de site-identiteit. @nuxtjs/seo leest dit uit
-  // voor de sitemap, canonical URLs, robots.txt en Open Graph-tags.
   site: {
     url: 'https://www.italiaansweekmenu.nl',
     name: 'Italiaans Weekmenu',
@@ -52,16 +75,7 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2026-06-30',
 
-  // Alle pagina's vooraf renderen naar statische HTML. crawlLinks volgt elke
-  // <NuxtLink> vanaf de startpagina, zodat ook recepten meegenomen worden.
   nitro: {
-    // Vastgezet, want Nitro kijkt naar omgevingsvariabelen. Op de Cloudflare-
-    // builder koos hij daardoor `cloudflare-module`: Nuxt Content schakelde over
-    // op een D1-database die niet bestaat, de `assets` uit wrangler.jsonc werden
-    // genegeerd, en er kwam een `.wrangler/deploy/config.json` die wrangler naar
-    // een server-entry `index.mjs` stuurde die `nuxt generate` nooit maakt.
-    // Daar liep de deploy op stuk. Deze site is statisch; dat hoort niet van de
-    // build-omgeving af te hangen.
     preset: 'static',
 
     prerender: {
@@ -81,20 +95,12 @@ export default defineNuxtConfig({
   },
 
   // GA4 property of Spesa da Antonio. NUXT_PUBLIC_GTAG_ID overrides it;
-  // empty means off. Nothing loads until useConsent() calls initialize(),
-  // and Consent Mode starts denied so Google honours the choice too.
+  // empty means off. Nothing loads until useConsent() calls initialize().
+  // The consent default lives in app.head, not here: this module runs at Nuxt
+  // boot, by which time AdSense has already loaded.
   gtag: {
     id: 'G-YSLKG6BLSW',
-    initMode: 'manual',
-    initCommands: [
-      ['consent', 'default', {
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        analytics_storage: 'denied',
-        wait_for_update: 500
-      }]
-    ]
+    initMode: 'manual'
   },
 
   // The prerendered routes give the sitemap its URLs but no dates; this source

@@ -2,9 +2,8 @@ import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 import { GANGEN } from './app/utils/gang'
 
 /**
- * Zoekwoordonderzoek per recept. Dit staat bewust IN de content, zodat je
- * later kunt terugzien waarom een recept geschreven is en op welke term
- * het moet ranken. De generator vult dit in; jij kunt het bijsturen.
+ * Keyword research per recipe. Deliberately IN the content, so it stays
+ * visible later why a recipe was written and what it should rank for.
  */
 const zoekwoorden = z.object({
   primair: z.string().describe('Hoofdzoekwoord, exact zoals mensen het intypen'),
@@ -15,8 +14,8 @@ const zoekwoorden = z.object({
 })
 
 /**
- * Verwijzing naar een product op spesadaantonio.nl. Zo koppel je een recept
- * aan de webshop zonder de URL's door je hele site te verspreiden.
+ * A product on spesadaantonio.nl. Links a recipe to the shop without
+ * scattering URLs across the site.
  */
 const product = z.object({
   naam: z.string(),
@@ -40,7 +39,7 @@ const ingredientGroep = z.object({
   items: z.array(ingredient)
 })
 
-/** Als velden, niet als kopjes in de body: zo leest Google ze los van de tekst. */
+/** Fields, not headings in the body: Google then reads them apart from the text. */
 const vraag = z.object({
   vraag: z.string(),
   antwoord: z.string().describe('Mag inline markdown bevatten, bijv. *cursief*')
@@ -50,7 +49,7 @@ const stap = z.object({
   titel: z.string().optional().describe('Korte kop, verschijnt in Google als HowTo-stap'),
   tekst: z.string(),
   tip: z.string().optional(),
-  /** Genest: een optionele foto zonder alt-tekst moet onmogelijk zijn. */
+  /** Nested, so an optional photo without alt text cannot happen. */
   afbeelding: z.object({
     src: z.string().editor({ input: 'media' }),
     alt: z.string().describe('Beschrijf wat je ziet - voor toegankelijkheid én afbeeldingszoekresultaten')
@@ -62,7 +61,7 @@ export default defineContentConfig({
     // ---------------------------------------------------------------- recepten
     recepten: defineCollection({
       type: 'page',
-      // `prefix` houdt de URL plat: de mapnaam hoort er niet in.
+      // `prefix` keeps the URL flat: the folder name does not belong in it.
       source: GANGEN.map(gang => ({
         include: `recepten/${gang}/*.md`,
         prefix: '/recepten'
@@ -115,7 +114,7 @@ export default defineContentConfig({
         afbeelding: z.string().editor({ input: 'media' }),
         afbeeldingAlt: z.string(),
 
-        // Verwijst naar het `path` van een recept, bijv. "/recepten/pasta-alla-norma"
+        // Points at a recipe's `path`, e.g. "/recepten/pasta-alla-norma"
         recepten: z.array(z.object({
           dag: z.enum(['maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag', 'zondag']),
           pad: z.string(),

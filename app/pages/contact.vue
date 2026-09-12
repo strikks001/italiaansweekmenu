@@ -3,29 +3,29 @@ const site = useSiteConfig()
 const { footer } = useAppConfig()
 
 // Static site, so no form: every route here is a channel that already exists.
-const KANALEN = [
+const CHANNELS = [
   {
-    titel: 'Vraag over een recept',
-    tekst: 'Iets onduidelijk in een bereiding, of klopt een hoeveelheid niet? Laat het weten, dan passen we het recept aan.',
-    icoon: 'i-lucide-chef-hat',
+    title: 'Vraag over een recept',
+    text: 'Iets onduidelijk in een bereiding, of klopt een hoeveelheid niet? Laat het weten, dan passen we het recept aan.',
+    icon: 'i-lucide-chef-hat',
     tint: 'butter'
   },
   {
-    titel: 'Bestellen en bezorgen',
-    tekst: 'Vragen over een bestelling, verzending of een product lopen via de webshop.',
-    icoon: 'i-lucide-shopping-basket',
+    title: 'Bestellen en bezorgen',
+    text: 'Vragen over een bestelling, verzending of een product lopen via de webshop.',
+    icon: 'i-lucide-shopping-basket',
     tint: 'ceramic',
-    knop: { label: 'Naar Spesa da Antonio', to: 'https://www.spesadaantonio.nl', extern: true }
+    button: { label: 'Naar Spesa da Antonio', to: 'https://www.spesadaantonio.nl', external: true }
   },
   {
-    titel: 'Een gerecht voorstellen',
-    tekst: 'Mis je een klassieker in het archief? Stuur je voorstel, met de regio erbij als je die kent.',
-    icoon: 'i-lucide-lightbulb',
+    title: 'Een gerecht voorstellen',
+    text: 'Mis je een klassieker in het archief? Stuur je voorstel, met de regio erbij als je die kent.',
+    icon: 'i-lucide-lightbulb',
     tint: 'peach'
   }
 ]
 
-const TINTEN: Record<string, string> = {
+const TINTS: Record<string, string> = {
   butter: 'bg-butter-100 text-butter-900 dark:bg-butter-950 dark:text-butter-200',
   ceramic: 'bg-ceramic-100 text-ceramic-900 dark:bg-ceramic-950 dark:text-ceramic-200',
   peach: 'bg-peach-100 text-peach-900 dark:bg-peach-950 dark:text-peach-200'
@@ -59,41 +59,41 @@ useSchemaOrg([
           class="grid gap-8 sm:grid-cols-3"
         >
           <article
-            v-for="kanaal in KANALEN"
-            :key="kanaal.titel"
+            v-for="channel in CHANNELS"
+            :key="channel.title"
             class="flex flex-col rounded-2xl border border-default border-b-4 border-b-primary bg-default p-6"
           >
             <span
               class="flex size-11 items-center justify-center rounded-xl"
-              :class="TINTEN[kanaal.tint]"
+              :class="TINTS[channel.tint]"
             >
               <UIcon
-                :name="kanaal.icoon"
+                :name="channel.icon"
                 class="size-5"
               />
             </span>
 
             <h2 class="mt-4 text-xl">
-              {{ kanaal.titel }}
+              {{ channel.title }}
             </h2>
             <p class="mt-2 flex-1 text-sm text-muted">
-              {{ kanaal.tekst }}
+              {{ channel.text }}
             </p>
 
             <UButton
-              v-if="kanaal.knop"
-              :to="kanaal.knop.to"
-              :target="kanaal.knop.extern ? '_blank' : undefined"
-              :rel="kanaal.knop.extern ? 'noopener' : undefined"
+              v-if="channel.button"
+              :to="channel.button.to"
+              :target="channel.button.external ? '_blank' : undefined"
+              :rel="channel.button.external ? 'noopener' : undefined"
               color="secondary"
               size="sm"
               class="mt-4 self-start"
-              :trailing-icon="kanaal.knop.extern ? 'i-lucide-arrow-up-right' : 'i-lucide-arrow-right'"
-              :label="kanaal.knop.label"
+              :trailing-icon="channel.button.external ? 'i-lucide-arrow-up-right' : 'i-lucide-arrow-right'"
+              :label="channel.button.label"
             />
             <UButton
-              v-else-if="footer.bedrijf.email"
-              :to="`mailto:${footer.bedrijf.email}`"
+              v-else-if="footer.company.email"
+              :to="`mailto:${footer.company.email}`"
               color="secondary"
               size="sm"
               class="mt-4 self-start"
@@ -117,15 +117,15 @@ useSchemaOrg([
           </h2>
 
           <dl class="mt-6 grid gap-8 sm:grid-cols-[repeat(auto-fit,minmax(14rem,1fr))]">
-            <div v-if="footer.bedrijf.email">
+            <div v-if="footer.company.email">
               <dt class="font-display text-xs font-bold uppercase tracking-widest text-ceramic-200">
                 E-mail
               </dt>
               <dd class="mt-2 text-sm">
                 <NuxtLink
-                  :to="`mailto:${footer.bedrijf.email}`"
+                  :to="`mailto:${footer.company.email}`"
                   class="break-all underline decoration-white/40 underline-offset-4 transition hover:decoration-white"
-                >{{ footer.bedrijf.email }}</NuxtLink>
+                >{{ footer.company.email }}</NuxtLink>
               </dd>
             </div>
 
@@ -135,13 +135,13 @@ useSchemaOrg([
               </dt>
               <dd class="mt-2 flex flex-wrap gap-1">
                 <UButton
-                  v-for="kanaal in footer.social"
-                  :key="kanaal.label"
-                  :to="kanaal.to"
+                  v-for="channel in footer.social"
+                  :key="channel.label"
+                  :to="channel.to"
                   target="_blank"
                   rel="noopener"
-                  :icon="kanaal.icon"
-                  :aria-label="kanaal.label"
+                  :icon="channel.icon"
+                  :aria-label="channel.label"
                   color="neutral"
                   variant="ghost"
                   size="sm"
@@ -150,14 +150,14 @@ useSchemaOrg([
               </dd>
             </div>
 
-            <div v-if="footer.bedrijf.naam">
+            <div v-if="footer.company.name">
               <dt class="font-display text-xs font-bold uppercase tracking-widest text-ceramic-200">
                 Bedrijf
               </dt>
               <dd class="mt-2 text-sm">
-                {{ footer.bedrijf.naam }}
-                <template v-if="footer.bedrijf.kvk">
-                  <br>KvK {{ footer.bedrijf.kvk }}
+                {{ footer.company.name }}
+                <template v-if="footer.company.kvk">
+                  <br>KvK {{ footer.company.kvk }}
                 </template>
               </dd>
             </div>
