@@ -64,6 +64,7 @@ Geen eenheid betekent stuks. Kolom "eenheden" hieronder: `-` is stuks.
 | borlottibonen | g, blik | borlottibonen uit blik |
 | zwarte olijven | g | |
 | groene olijven | g | groene olijven zonder pit |
+| melanzane sott'olio | pot, g | aubergine in olie, melanzane a filetti, gegrilde aubergine in olie |
 | groentebouillon | ml, l | |
 | runderbouillon | ml, l | |
 | kippenbouillon | ml, l | |

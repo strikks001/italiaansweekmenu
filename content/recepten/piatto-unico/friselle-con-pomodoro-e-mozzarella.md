@@ -1,15 +1,15 @@
 ---
 title: "Friselle con pomodoro e mozzarella"
-description: "Friselle recept: dubbelgebakken brood uit Zuid-Italië, kort onder de kraan en dan vol beleg van tomaat, ui, olijven en mozzarella. Klaar in 35 minuten."
+description: "Friselle recept: dubbelgebakken brood uit Puglia, kort onder de kraan en dan vol beleg van tomaat, melanzane sott'olio, olijven en mozzarella. Zonder koken."
 gepubliceerd: 2026-09-12
 concept: false
 afbeelding: /images/friselle-con-pomodoro-e-mozzarella.webp
-afbeeldingAlt: "Twee volkoren friselle belegd met stukjes tomaat, gesmoorde ui, groene olijven, mozzarella en oregano"
+afbeeldingAlt: "Twee volkoren friselle belegd met stukjes tomaat, reepjes melanzane sott'olio, groene olijven, mozzarella en oregano"
 gang: piatto-unico
 dieet:
   - vegetarisch
 voorbereidingstijd: 25
-bereidingstijd: 10
+bereidingstijd: 0
 personen: 4
 moeilijkheid: makkelijk
 ingredienten:
@@ -27,10 +27,12 @@ ingredienten:
         eenheid: g
         naam: "trostomaten"
         opmerking: "rijp, in kleine stukken"
-      - hoeveelheid: "2"
-        naam: "rode ui"
-        opmerking: "in dunne halve ringen"
-      - hoeveelheid: "6"
+      - hoeveelheid: "1"
+        eenheid: pot
+        naam: "melanzane sott'olio"
+        opmerking: "280 g, in reepjes, uitgelekt"
+        productUrl: https://spesadaantonio.nl/products/d-amico-melanzane-a-filetti-280g
+      - hoeveelheid: "4"
         eenheid: el
         naam: "extra vergine olijfolie"
         productUrl: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
@@ -59,15 +61,14 @@ stappen:
   - titel: "Tomaten laten trekken"
     tekst: "Snijd de tomaten in stukken van ongeveer 1 cm en doe ze met het sap in een kom. Voeg 3 el olijfolie, 1 tl oregano en een flinke snuf zout toe en laat het 20 minuten staan. Je ziet wanneer het goed is: onderin de kom ligt een laagje rood sap. Dat sap maakt straks de friselle zacht, dus giet het niet af."
     tip: "In Puglia wrijven ze de tomaat soms alleen over het brood, zonder snijden. Voor een belegde frisella wil je juist het sap uit de kom: dat is de saus van dit gerecht."
-  - titel: "Ui zacht smoren"
-    tekst: "Verhit 2 el olijfolie in een koekenpan op laag vuur en voeg de halve ringen ui toe met een snuf zout. Smoor ze 10 minuten en roer af en toe; ze zijn klaar als ze glazig en slap zijn en de pan zoet ruikt, zonder bruine randen. Rauwe rode ui zou de tomaat overstemmen; gesmoord wordt hij zoet en mild. Laat de ui afkoelen in de pan."
-  - titel: "Mozzarella laten uitlekken"
-    tekst: "Scheur de mozzarella in stukken zo groot als een walnoot en leg ze 10 minuten op keukenpapier. Er komt melkachtig vocht uit; dat wil je hier kwijt, want anders loopt het over het brood en maakt het de frisella pap. Scheuren in plaats van snijden geeft rafelige randen die olie en sap opnemen."
+  - titel: "Beleg laten uitlekken"
+    tekst: "Schep de melanzane uit de pot in een zeef boven een kom en laat ze 10 minuten uitlekken tot er geen olie meer van afdruipt; te veel olie maakt het brood vet in plaats van sappig. Scheur intussen de mozzarella in stukken zo groot als een walnoot en leg ze op keukenpapier. Er komt melkachtig vocht uit, en dat wil je kwijt, want anders loopt het over het brood en maakt het de frisella pap. Scheuren in plaats van snijden geeft rafelige randen die olie en sap opnemen."
+    tip: "Melanzane sott'olio zijn reepjes aubergine die gekookt of gegrild in olie zijn ingemaakt, met kruiden en vaak wat paprika. Ze brengen het zachte, licht zure element dat rauwe tomaat mist, zonder dat je een pan hoeft aan te zetten."
   - titel: "Friselle bevochtigen"
     tekst: "Houd elke frisella 3 tot 4 tellen onder de koude kraan, eerst de bolle kant, dan de vlakke kant met de gaatjes. De buitenkant kleurt donker en voelt vochtig, maar in het midden hoort hij nog hard te zijn. Leg ze op de borden en laat ze 1 minuut liggen: het water trekt vanzelf naar binnen. Te lang onder de kraan en de frisella valt uit elkaar; blijft hij te hard, druppel er dan wat sap uit de tomatenkom over."
     tip: "Dit is de sponzatura, de stap die friselle van beschuit onderscheidt. Italianen doen het in een schaal water, 2 tellen per kant. Onder de kraan zie je beter wanneer het genoeg is."
   - titel: "Beleggen"
-    tekst: "Verdeel de tomaten met al hun sap over de friselle en druk ze licht aan. Leg de gesmoorde ui, de olijven en de mozzarella erover en strooi de rest van de oregano erop. Besprenkel met de laatste olijfolie. Wil je tonijn, verdeel die dan als laatste in grove stukken."
+    tekst: "Verdeel de tomaten met al hun sap over de friselle en druk ze licht aan. Leg de reepjes melanzane, de olijven en de mozzarella erover en strooi de rest van de oregano erop. Besprenkel met de laatste olijfolie. Wil je tonijn, verdeel die dan als laatste in grove stukken."
   - titel: "Even laten intrekken"
     tekst: "Laat de friselle 2 tot 3 minuten staan voor je ze serveert. Het sap van de tomaat trekt in de bovenkant en het brood wordt daar zacht, terwijl de onderkant nog kraakt. Test met een mes: het gaat erdoorheen zonder dat de frisella breekt. Eet met mes en vork en wacht niet langer, want na een kwartier is de knap eraf."
 producten:
@@ -76,7 +77,7 @@ producten:
     variantId: "53687778640199"
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Freselle-integrali.png?v=1777833178
     prijs: "€ 3,39"
-    waarom: "Volkoren, zoals op de foto: donkerder, met een vollere graansmaak die tegen de zoete ui en de tomaat op kan."
+    waarom: "Volkoren, zoals op de foto: donkerder, met een vollere graansmaak die tegen de melanzane en de tomaat op kan."
   - naam: "MastroBontà Freselle Classiche 300 g"
     url: https://spesadaantonio.nl/products/freselle-classiche-mastrobonta-300gr
     variantId: "52557459882311"
@@ -89,6 +90,18 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/D_Amico-Olive-Verdi-Snocciolate-in-Salamoia-290gr-D_Amico-48152518.webp?v=1777831008
     prijs: "€ 2,99"
     waarom: "Zonder pit en alleen in water en zout, dus ze smaken naar olijf en niet naar marinade; stevig genoeg om heel op het brood te liggen."
+  - naam: "D'Amico Melanzane a Filetti sott'olio 280 g"
+    url: https://spesadaantonio.nl/products/d-amico-melanzane-a-filetti-280g
+    variantId: "53362197070151"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/d-amico-melanzane-280g.webp?v=1777831293
+    prijs: "€ 4,49"
+    waarom: "Dunne reepjes die plat op het brood liggen, al op smaak met paprika en kruiden; zacht genoeg om met de tomaat mee te geven."
+  - naam: "Iposea Melanzane Trifolate in Olio di Semi di Girasole 520 g"
+    url: https://spesadaantonio.nl/products/iposea-melanzane-sottolio-520-gr
+    variantId: "53887350767943"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Melanzane-trifolate-580ml.png?v=1778415833
+    prijs: "€ 4,99"
+    waarom: "De grote pot, met wijnazijn en stukjes peper: frisser en iets pittiger, voor wie vaker friselle op tafel zet."
   - naam: "Italpepe Origano in Foglie 8 g"
     url: https://spesadaantonio.nl/products/italpepe-origano-foglie-8gr
     variantId: "51834843922759"
@@ -132,7 +145,7 @@ Friselle horen bij Puglia, waar ze als traditioneel streekproduct erkend zijn, e
 
 ## Water, en dan het sap van de tomaat
 
-Het bevochtigen heet in Italië sponzatura en het is de hele techniek. Een paar tellen water maken alleen de buitenkant zacht; het binnenste blijft hard. Daarna doen de tomaten het werk: hun sap trekt in de bovenkant terwijl je eet, en de onderkant houdt zijn knap. Daarom laat je de tomaten eerst 20 minuten met zout en olie staan en giet je dat sap nooit af. Er komt in dit gerecht niets uit de pan behalve de ui, die je zacht smoort zodat hij zoet wordt in plaats van scherp. De rest is rauw: tomaat, olijven, mozzarella, een goede olijfolie en oregano. Het brood zelf is niets anders dan tarwe, water, zout en gist, zonder toegevoegd vet, en de volkoren versie brengt daar vezels bij. Een bord vol groente op een stuk brood, en het voelt niet als een compromis.
+Het bevochtigen heet in Italië sponzatura en het is de hele techniek. Een paar tellen water maken alleen de buitenkant zacht; het binnenste blijft hard. Daarna doen de tomaten het werk: hun sap trekt in de bovenkant terwijl je eet, en de onderkant houdt zijn knap. Daarom laat je de tomaten eerst 20 minuten met zout en olie staan en giet je dat sap nooit af. Er komt in dit gerecht geen pan aan te pas. De melanzane sott'olio komen uit de pot, reepjes aubergine die in olie zijn ingemaakt en het zachte, licht zure element brengen dat rauwe tomaat mist. De rest is rauw: tomaat, olijven, mozzarella, een goede olijfolie en oregano. Het brood zelf is niets anders dan tarwe, water, zout en gist, zonder toegevoegd vet, en de volkoren versie brengt daar vezels bij. Een bord vol groente op een stuk brood, en het voelt niet als een compromis.
 
 ## De meest gemaakte fout
 
