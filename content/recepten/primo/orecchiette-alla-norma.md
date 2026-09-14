@@ -22,6 +22,7 @@ ingredienten:
         eenheid: ml
         naam: "zonnebloemolie"
         opmerking: "om te frituren"
+        productUrl: https://spesadaantonio.nl/products/olio-di-semi-di-girasole-basso-1-l
   - groep: "Saus"
     items:
       - hoeveelheid: "3"
@@ -78,6 +79,12 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/La-Torrente-Pomodorini-Interi-400-gr-La-Torrente-47912866.webp?v=1777834319
     prijs: "€ 1,55"
     waarom: "Kleine hele tomaatjes op eigen sap, niet gepeld: het ene blik knijp je fijn voor de saus, het andere blijft heel en zoet tussen de pasta liggen."
+  - naam: "Basso Olio di Semi di Girasole 1 L"
+    url: https://spesadaantonio.nl/products/olio-di-semi-di-girasole-basso-1-l
+    variantId: "53666418196807"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/basso-olio-girasole-1L_8ace31aa-a5e8-412a-8f7e-7e97d766122f.png?v=1775585746
+    prijs: "€ 2,99"
+    waarom: "Neutraal van smaak, zodat je alleen de aubergine proeft, en goedkoop genoeg om er ruim in te frituren; een liter is genoeg voor twee keer."
   - naam: "Farchioni Olio Extra Vergine di Oliva Classico 1 L"
     url: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
     variantId: "51553065599303"
