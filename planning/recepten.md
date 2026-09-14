@@ -31,7 +31,7 @@ primo 15, secondo 12, contorno 8, piatto-unico 6, dolce 8.
 | Spaghetti alle vongole | primo | heel jaar | | idee | |
 | Gnocchi alla sorrentina | primo | heel jaar | | idee | |
 | Pasta alla genovese | primo | herfst, winter | | idee | |
-| Pasta alla Norma | primo | zomer | | idee | |
+| Orecchiette alla Norma | primo | zomer | pasta alla norma recept | geschreven | |
 | Orecchiette alle cime di rapa | primo | winter | | idee | |
 | Risotto ai funghi | primo | herfst | | idee | |
 | Risotto alla milanese | primo | heel jaar | | idee | |

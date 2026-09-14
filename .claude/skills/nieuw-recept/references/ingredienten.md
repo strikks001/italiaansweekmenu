@@ -57,8 +57,10 @@ Geen eenheid betekent stuks. Kolom "eenheden" hieronder: `-` is stuks.
 | naam | eenheden | ook geschreven als |
 |---|---|---|
 | extra vergine olijfolie | el, ml, - | olijfolie, extra vierge olijfolie |
+| zonnebloemolie | ml | frituurolie, arachideolie |
 | gepelde tomaten | g, blik | pelati, tomaten uit blik |
 | passata | g, ml, fles | tomatenpassata, passata di pomodoro, gezeefde tomaten |
+| pomodorini uit blik | g, blik | pomodorini interi, kleine tomaatjes uit blik, cherrytomaten uit blik |
 | doperwten | g, pot | piselli, erwten, diepvriesdoperwten |
 | peperoncino | tl, - | chilivlokken, gedroogde peperoncino, rode pepervlokken |
 | borlottibonen | g, blik | borlottibonen uit blik |
@@ -89,6 +91,7 @@ Geen eenheid betekent stuks. Kolom "eenheden" hieronder: `-` is stuks.
 | naam | eenheden | ook geschreven als |
 |---|---|---|
 | rigatoni | g | rigatoni of maccheroni |
+| orecchiette | g | orecchiette pugliesi |
 | ditalini | g | ditalini of gebroken spaghetti |
 | spaghetti | g | |
 | verse tagliatelle | g | tagliatelle |
