@@ -22,6 +22,7 @@ primo 15, secondo 12, contorno 8, piatto-unico 6, dolce 8.
 | Peperoni arrostiti | antipasto | zomer, herfst | | idee | |
 | Pasta con salsiccia e piselli | primo | heel jaar | pasta met salsiccia | geschreven | |
 | Pasta al pomodoro | primo | heel jaar | | idee | |
+| Ragù alla bolognese | primo | heel jaar | ragu bolognese recept | geschreven | |
 | Spaghetti aglio e olio | primo | heel jaar | | idee | |
 | Spaghetti alla carbonara | primo | heel jaar | | idee | |
 | Cacio e pepe | primo | heel jaar | | idee | |

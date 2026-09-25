@@ -83,6 +83,7 @@ Geen eenheid betekent stuks. Kolom "eenheden" hieronder: `-` is stuks.
 | droge gist | g, zakje | gedroogde gist, instantgist |
 | verse gist | g | |
 | gedroogde oregano | tl, el | oregano |
+| tomatenpuree | el, g | concentrato di pomodoro, dubbel geconcentreerde tomatenpuree, doppio concentrato |
 | zwarte peper | - | peper, versgemalen zwarte peper |
 | nootmuskaat | - | |
 
@@ -94,7 +95,8 @@ Geen eenheid betekent stuks. Kolom "eenheden" hieronder: `-` is stuks.
 | orecchiette | g | orecchiette pugliesi |
 | ditalini | g | ditalini of gebroken spaghetti |
 | spaghetti | g | |
-| verse tagliatelle | g | tagliatelle |
+| tagliatelle | g | droge tagliatelle, tagliatelle nidi |
+| verse tagliatelle | g | tagliatelle all'uovo |
 | carnaroli rijst | g | carnaroli of arborio rijst, risottorijst, arborio rijst |
 | savoiardi | g, - | lange vingers |
 | landbrood | sneden | sneden stevig landbrood, brood |
