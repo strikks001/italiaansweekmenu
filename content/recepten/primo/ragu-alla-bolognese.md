@@ -11,6 +11,11 @@ voorbereidingstijd: 20
 bereidingstijd: 150
 personen: 4
 moeilijkheid: makkelijk
+voedingswaarde:
+  calorieen: 895
+  eiwitten: 44
+  koolhydraten: 77
+  vetten: 41
 ingredienten:
   - groep: "Ragù"
     items:

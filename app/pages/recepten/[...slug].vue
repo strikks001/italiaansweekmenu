@@ -122,9 +122,11 @@ useSchemaOrg([
     recipeCuisine: 'Italiaans',
     keywords: [recipe.zoekwoorden.primair, ...(recipe.zoekwoorden.secundair ?? [])],
     recipeIngredient: ingredientLines,
-    recipeInstructions: recipe.stappen.map(s => defineHowToStep({
+    // Search Console asks for a `url` per step; it points at the step's anchor.
+    recipeInstructions: recipe.stappen.map((s, i) => defineHowToStep({
       name: s.titel,
       text: s.tekst,
+      url: `${pageUrl}#stap-${i + 1}`,
       ...(s.afbeelding ? { image: new URL(s.afbeelding.src, site.url).toString() } : {})
     })),
     ...(nutritionNode ? { nutrition: nutritionNode } : {}),

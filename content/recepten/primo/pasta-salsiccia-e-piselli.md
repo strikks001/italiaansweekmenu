@@ -11,6 +11,11 @@ voorbereidingstijd: 10
 bereidingstijd: 25
 personen: 4
 moeilijkheid: makkelijk
+voedingswaarde:
+  calorieen: 816
+  eiwitten: 39
+  koolhydraten: 68
+  vetten: 40
 ingredienten:
   - groep: "Saus"
     items:

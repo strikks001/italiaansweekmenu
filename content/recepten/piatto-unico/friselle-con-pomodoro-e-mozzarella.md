@@ -12,6 +12,11 @@ voorbereidingstijd: 25
 bereidingstijd: 0
 personen: 4
 moeilijkheid: makkelijk
+voedingswaarde:
+  calorieen: 918
+  eiwitten: 29
+  koolhydraten: 112
+  vetten: 38
 ingredienten:
   - groep: "Friselle"
     items:

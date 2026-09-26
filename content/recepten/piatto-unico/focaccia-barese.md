@@ -13,6 +13,11 @@ voorbereidingstijd: 180
 bereidingstijd: 20
 personen: 6
 moeilijkheid: gemiddeld
+voedingswaarde:
+  calorieen: 448
+  eiwitten: 9
+  koolhydraten: 64
+  vetten: 16
 ingredienten:
   - groep: "Deeg"
     items:

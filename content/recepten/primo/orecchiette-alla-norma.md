@@ -12,6 +12,11 @@ voorbereidingstijd: 30
 bereidingstijd: 40
 personen: 4
 moeilijkheid: gemiddeld
+voedingswaarde:
+  calorieen: 797
+  eiwitten: 20
+  koolhydraten: 79
+  vetten: 43
 ingredienten:
   - groep: "Aubergine"
     items:

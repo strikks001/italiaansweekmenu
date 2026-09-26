@@ -56,8 +56,10 @@ function toggle(index: number) {
     </p>
 
     <ol class="print-steps mt-5 space-y-4">
+      <!-- The id is the anchor the HowToStep `url` in the Recipe schema points at. -->
       <li
         v-for="(step, i) in steps"
+        :id="`stap-${i + 1}`"
         :key="i"
       >
         <button
