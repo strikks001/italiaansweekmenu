@@ -113,6 +113,7 @@ Geen eenheid betekent stuks. Kolom "eenheden" hieronder: `-` is stuks.
 | volle melk | ml | melk |
 | eieren | - | ei |
 | mozzarella | g, - | mozzarella di bufala, bol mozzarella |
+| kookroom | ml | panna, panna da cucina, room, slagroom |
 
 ## Vlees en vis
 
@@ -125,3 +126,4 @@ Geen eenheid betekent stuks. Kolom "eenheden" hieronder: `-` is stuks.
 | kippendijen | - , g | kippendijen met bot en vel, kippendij |
 | salsiccia | g, - | italiaanse worst, salsiccia piccante, salsiccia stick, verse salsiccia |
 | tonijnfilets | pot, g | tonijn, tonijn in olijfolie, filetti di tonno |
+| zalmfilet | g | zalm, zalmmoot, verse zalm |

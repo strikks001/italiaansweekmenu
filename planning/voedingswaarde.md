@@ -31,4 +31,13 @@ opnieuw uit met dezelfde bron en werk `voedingswaarde` in de frontmatter bij.
 ## Berekening
 
 ```
+## orecchiette-salmone-e-piselli per 4
+  orecchiette                        400 g  1344 kcal  CIQUAL 9810 Pâtes sèches standard, crues
+  zalmfilet                          300 g   582 kcal  CIQUAL 26036 Saumon, cru, élevage
+  doperwten                          200 g   163 kcal  CIQUAL 20036 Petits pois, appertisés, égouttés
+  kookroom                           250 g   376 kcal  CIQUAL 19436 Crème de lait, 15 à 20% MG, légère, fluide (kcal uit macro's)
+  sjalot                              40 g    25 kcal  CIQUAL 20097 Échalote, crue
+  olijfolie 2 el                      28 g   252 kcal  CIQUAL 17270 Huile d'olive vierge extra
+  (Parmigiano is optioneel en telt niet mee)
+  => per portie {'kcal': 686, 'P': 32, 'C': 75, 'F': 27}
 ```
