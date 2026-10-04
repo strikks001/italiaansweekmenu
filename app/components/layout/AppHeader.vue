@@ -26,9 +26,13 @@ watch(() => route.fullPath, () => {
     <!-- UHeader wraps this slot in its own link to "/". A NuxtLink here would
          nest <a> in <a>; the browser splits that, and hydration fails. -->
     <template #title>
-      <span class="flex items-center gap-2 text-xl font-bold">
+      <span class="flex items-center gap-2">
         <BrandMark class="size-7 shrink-0" />
-        <span><span class="text-secondary dark:text-ceramic-300">Italiaans</span><span class="text-primary">weekmenu</span></span>
+        <span class="flex flex-col">
+          <span class="text-xl leading-6 font-bold"><span class="text-secondary dark:text-ceramic-300">Italiaans</span><span class="text-primary">weekmenu</span></span>
+          <!-- Plain text: the whole slot is already one link to "/". -->
+          <span class="text-[0.625rem] leading-3 font-normal text-toned">gemaakt door Spesa da Antonio</span>
+        </span>
       </span>
     </template>
 

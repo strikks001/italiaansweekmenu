@@ -40,4 +40,12 @@ opnieuw uit met dezelfde bron en werk `voedingswaarde` in de frontmatter bij.
   olijfolie 2 el                      28 g   252 kcal  CIQUAL 17270 Huile d'olive vierge extra
   (Parmigiano is optioneel en telt niet mee)
   => per portie {'kcal': 686, 'P': 32, 'C': 75, 'F': 27}
+## melanzane-a-funghetto per 4
+  aubergine rauw                     700 g   107 kcal  CIQUAL 20053 Aubergine, crue (kcal uit macro's)
+  opgenomen frituurolie 15%          105 g   946 kcal  CIQUAL 17440 Huile de tournesol
+  olijfolie 2 el                      28 g   252 kcal  CIQUAL 17270 Huile d'olive vierge extra
+  pomodorini uit blik                400 g   104 kcal  CIQUAL 20169 Tomate, pulpe, appertisée
+  knoflook                            10 g    11 kcal  CIQUAL 11000 Ail, cru
+  basilicum                           10 g     3 kcal  CIQUAL 11033 Basilic, frais
+  => per portie {'kcal': 356, 'P': 3, 'C': 8, 'F': 34}
 ```

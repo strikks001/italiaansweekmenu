@@ -51,7 +51,7 @@ primo 15, secondo 12, contorno 8, piatto-unico 6, dolce 8.
 | Spezzatino di manzo | secondo | winter | | idee | |
 | Pollo arrosto con patate | secondo | heel jaar | | idee | |
 | Patate al forno | contorno | heel jaar | | idee | |
-| Melanzane a funghetto | contorno | zomer | | idee | |
+| Melanzane a funghetto | contorno | zomer | melanzane a funghetto | geschreven | |
 | Zucchine alla scapece | contorno | zomer | | idee | |
 | Peperonata | contorno | zomer, herfst | | idee | |
 | Verdure grigliate | contorno | zomer | | idee | |

@@ -47,6 +47,7 @@ ingredienten:
         eenheid: bosje
         naam: "basilicum"
       - naam: "zout"
+        productUrl: https://spesadaantonio.nl/products/italkali-sale-di-sicilia-iodato-grosso
         opmerking: "ook voor de aubergine en het pastawater"
   - groep: "Pasta en afmaken"
     items:
@@ -96,6 +97,12 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Farchioni-Olio-Extra-Vergine-D_Oliva-1L-Farchioni-47922386.webp?v=1777832911
     prijs: "€ 11,90"
     waarom: "Zacht genoeg om de knoflook op laag vuur in te laten trekken zonder bitter te worden, en de basis van de saus."
+  - naam: "Italkali Sale di Sicilia Iodato Grosso 1 kg"
+    url: https://spesadaantonio.nl/products/italkali-sale-di-sicilia-iodato-grosso
+    variantId: "51553057636679"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Italkali-Sale-Di-Sicilia-Iodato-Grosso-Italkali-47920278.png?v=1777833992
+    prijs: "€ 1,50"
+    waarom: "Grof zout om de aubergine te ontvochten en voor het pastawater: het trekt vocht uit de blokjes en spoelt er makkelijk weer af."
 vragen:
   - vraag: "Welke kaas gebruik je bij pasta alla Norma?"
     antwoord: "Ricotta salata: gezouten en gedroogde ricotta, hard genoeg om te raspen en zout genoeg om de zoete tomaat en de aubergine tegenwicht te geven. Vind je hem niet, dan komt Pecorino Romano het dichtst in de buurt. Parmezaan kan, maar is milder en minder zout; verse ricotta is iets heel anders en maakt de saus romig in plaats van pittig."

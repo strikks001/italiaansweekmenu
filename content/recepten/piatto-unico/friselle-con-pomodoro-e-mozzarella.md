@@ -55,6 +55,7 @@ ingredienten:
         naam: "gedroogde oregano"
         productUrl: https://spesadaantonio.nl/products/italpepe-origano-foglie-8gr
       - naam: "zout"
+        productUrl: https://spesadaantonio.nl/products/italkali-sale-di-sicilia-iodato-fino
   - groep: "Optioneel"
     items:
       - hoeveelheid: "1"
@@ -125,6 +126,12 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Riomare-Filetti-Di-Tonno-All_Olio-Extra-Vergine-180-gr-Rio-Mare-47896634.png?v=1778338406
     prijs: "€ 6,50"
     waarom: "Hele filets in olijfolie blijven in grove stukken liggen en vallen niet uit elkaar tussen de tomaten; de klassieke aanvulling op friselle in Zuid-Italië."
+  - naam: "Italkali Sale di Sicilia Iodato Fino 1 kg"
+    url: https://spesadaantonio.nl/products/italkali-sale-di-sicilia-iodato-fino
+    variantId: "51553055998279"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Italkali-Sale-Di-Sicilia-Iodato-Fino-Italkali-47918462.png?v=1777833987
+    prijs: "€ 1,49"
+    waarom: "Fijn zout lost op in het sap van de tomaten en trekt dat sap eruit; dat is het vocht dat de frisella zacht maakt."
 vragen:
   - vraag: "Wat zijn friselle?"
     antwoord: "Friselle zijn ringen van dubbelgebakken brood uit Zuid-Italië: eerst gebakken als broodje, dan in de lengte doorgesneden en nog een keer gedroogd in de oven. Daardoor zijn ze keihard en maanden houdbaar. Je eet ze nooit droog: even bevochtigen en dan beleggen, zoals in dit recept. In Napels en Campanië heten ze freselle."

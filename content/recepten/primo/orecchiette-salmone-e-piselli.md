@@ -41,6 +41,7 @@ ingredienten:
         opmerking: "2 pakjes panna da cucina"
         productUrl: https://spesadaantonio.nl/products/parmalat-panna-chef-3-x-125-ml
       - naam: "zout"
+        productUrl: https://spesadaantonio.nl/products/italkali-sale-di-sicilia-iodato-fino
       - naam: "zwarte peper"
   - groep: "Pasta en afmaken"
     items:
@@ -97,6 +98,12 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Parmigiano-Reggiano-24_-Mesi-300gr-Spesa-da-Antonio-48199534.png?v=1777835242
     prijs: "€ 9,90"
     waarom: "Een kleine hand lang gerijpte kaas bindt de room zonder draden te trekken en zonder de zalm weg te drukken, wat een jonge of sterke kaas wel doet."
+  - naam: "Italkali Sale di Sicilia Iodato Fino 1 kg"
+    url: https://spesadaantonio.nl/products/italkali-sale-di-sicilia-iodato-fino
+    variantId: "51553055998279"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Italkali-Sale-Di-Sicilia-Iodato-Fino-Italkali-47918462.png?v=1777833987
+    prijs: "€ 1,49"
+    waarom: "Fijn zout hecht aan de zalm vlak voor het bakken en lost meteen op in de roomsaus, zodat je op het eind per snufje kunt bijsturen."
 vragen:
   - vraag: "Kan je pasta met zalm opwarmen?"
     antwoord: "Ja, één keer, en voorzichtig. Bewaar de pasta afgedekt maximaal 1 dag in de koelkast en warm hem op in een pan op laag vuur met een scheutje melk of water, tot hij door en door heet is. In de magnetron wordt de zalm droog en de room vettig. Vers is dit gerecht duidelijk het best, omdat de orecchiette de saus blijven opzuigen."

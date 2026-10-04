@@ -60,6 +60,7 @@ ingredienten:
         opmerking: "warm en niet te zout"
         productUrl: https://spesadaantonio.nl/products/star-il-mio-dado-vegetale-30-di-sale-10-dadi-100-gr
       - naam: "zout"
+        productUrl: https://spesadaantonio.nl/products/italkali-sale-di-sicilia-iodato-fino
       - naam: "zwarte peper"
   - groep: "Pasta en afmaken"
     items:
@@ -125,6 +126,12 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Parmigiano-Reggiano-24_-Mesi-300gr-Spesa-da-Antonio-48199534.png?v=1777835242
     prijs: "€ 9,90"
     waarom: "Lang gerijpt en droog, dus hij smelt korrelig door de saus en bindt hem aan de pasta zonder draden te trekken; de kaas uit dezelfde streek als het ragù."
+  - naam: "Italkali Sale di Sicilia Iodato Fino 1 kg"
+    url: https://spesadaantonio.nl/products/italkali-sale-di-sicilia-iodato-fino
+    variantId: "51553055998279"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Italkali-Sale-Di-Sicilia-Iodato-Fino-Italkali-47918462.png?v=1777833987
+    prijs: "€ 1,49"
+    waarom: "Fijn zout lost meteen op in de saus, zodat je halverwege kunt proeven en precies kunt bijsturen terwijl het ragù inkookt."
 vragen:
   - vraag: "Welk gehakt gebruik je voor ragù bolognese?"
     antwoord: "Rundergehakt, grof gemalen en niet te mager, want het vet en het bindweefsel maken de saus smeuïg. Het officiële recept staat ook gemengd gehakt toe, ongeveer 60 procent rund en 40 procent varken, en vlees dat met het mes fijngehakt is. Kalfsgehakt en alleen varkensvlees horen er niet in. Vraag bij de slager om gehakt van de schouder of de borst in plaats van mager biefstukgehakt."

@@ -45,6 +45,7 @@ ingredienten:
         naam: "passata"
         productUrl: https://spesadaantonio.nl/products/la-torrente-passata-tradizionale-tipo-birra
       - naam: "zout"
+        productUrl: https://spesadaantonio.nl/products/italkali-sale-di-sicilia-iodato-fino
   - groep: "Pasta en afmaken"
     items:
       - hoeveelheid: "320"
@@ -122,6 +123,12 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/aromi-sapori-di-martino-peperoncino-tritato-25g.webp?v=1783197103
     prijs: "€ 1,99"
     waarom: "Alleen voor wie het nog pittiger wil: grof gemalen peperoncino die je meebakt met de ui, zodat de hitte zich door de olie verdeelt in plaats van in losse prikken."
+  - naam: "Italkali Sale di Sicilia Iodato Fino 1 kg"
+    url: https://spesadaantonio.nl/products/italkali-sale-di-sicilia-iodato-fino
+    variantId: "51553055998279"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Italkali-Sale-Di-Sicilia-Iodato-Fino-Italkali-47918462.png?v=1777833987
+    prijs: "€ 1,49"
+    waarom: "Fijn zout lost direct op; je hebt er weinig van nodig, want de worst zout de saus al, en met fijn zout doseer je per snufje."
 vragen:
   - vraag: "Welke salsiccia gebruik je voor pasta met salsiccia?"
     antwoord: "Een gerijpte, pittige salsiccia, zoals de stick van Corbisiero. Die is stevig genoeg om in reepjes te snijden en geeft in de pan zijn rode vet af aan de saus. Heb je verse salsiccia van een Italiaanse slager? Dat kan ook: haal het vlees dan uit het vel, verkruimel het en bak het 5 minuten langer tot het bruin is."
