@@ -1,6 +1,8 @@
 ---
 title: "Friselle con pomodoro e mozzarella"
 description: "Friselle recept: dubbelgebakken brood uit Puglia, kort onder de kraan en dan vol beleg van tomaat, melanzane sott'olio, olijven en mozzarella. Zonder koken."
+seo:
+  title: "Friselle recept met tomaat en mozzarella uit Puglia"
 gepubliceerd: 2026-09-12
 concept: false
 afbeelding: /images/friselle-con-pomodoro-e-mozzarella.webp
@@ -23,7 +25,7 @@ ingredienten:
       - hoeveelheid: "8"
         naam: "friselle"
         opmerking: "2 pakken van 300 g, volkoren of klassiek"
-        productUrl: https://spesadaantonio.nl/products/senza-titolo-11apr_19-25
+        productUrl: https://spesadaantonio.nl/products/freselle-classiche-mastrobonta-300gr
       - naam: "water"
         opmerking: "koud, om de friselle te bevochtigen"
   - groep: "Beleg"
@@ -36,11 +38,11 @@ ingredienten:
         eenheid: pot
         naam: "melanzane sott'olio"
         opmerking: "280 g, in reepjes, uitgelekt"
-        productUrl: https://spesadaantonio.nl/products/d-amico-melanzane-a-filetti-280g
+        productUrl: https://spesadaantonio.nl/products/damico-aubergine-reepjes-280
       - hoeveelheid: "4"
         eenheid: el
         naam: "extra vergine olijfolie"
-        productUrl: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
+        productUrl: https://spesadaantonio.nl/products/desantis-olio-extra-vergine-doliva-100-italia-1-l
       - hoeveelheid: "100"
         eenheid: g
         naam: "groene olijven"
@@ -78,12 +80,6 @@ stappen:
   - titel: "Even laten intrekken"
     tekst: "Laat de friselle 2 tot 3 minuten staan voor je ze serveert. Het sap van de tomaat trekt in de bovenkant en het brood wordt daar zacht, terwijl de onderkant nog kraakt. Test met een mes: het gaat erdoorheen zonder dat de frisella breekt. Eet met mes en vork en wacht niet langer, want na een kwartier is de knap eraf."
 producten:
-  - naam: "MastroBontà Freselle Integrali 300 g"
-    url: https://spesadaantonio.nl/products/senza-titolo-11apr_19-25
-    variantId: "53687778640199"
-    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Freselle-integrali.png?v=1777833178
-    prijs: "€ 3,39"
-    waarom: "Volkoren, zoals op de foto: donkerder, met een vollere graansmaak die tegen de melanzane en de tomaat op kan."
   - naam: "MastroBontà Freselle Classiche 300 g"
     url: https://spesadaantonio.nl/products/freselle-classiche-mastrobonta-300gr
     variantId: "52557459882311"
@@ -97,13 +93,13 @@ producten:
     prijs: "€ 2,99"
     waarom: "Zonder pit en alleen in water en zout, dus ze smaken naar olijf en niet naar marinade; stevig genoeg om heel op het brood te liggen."
   - naam: "D'Amico Melanzane a Filetti sott'olio 280 g"
-    url: https://spesadaantonio.nl/products/d-amico-melanzane-a-filetti-280g
+    url: https://spesadaantonio.nl/products/damico-aubergine-reepjes-280
     variantId: "53362197070151"
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/d-amico-melanzane-280g.webp?v=1777831293
     prijs: "€ 4,49"
     waarom: "Dunne reepjes die plat op het brood liggen, al op smaak met paprika en kruiden; zacht genoeg om met de tomaat mee te geven."
   - naam: "Iposea Melanzane Trifolate in Olio di Semi di Girasole 520 g"
-    url: https://spesadaantonio.nl/products/iposea-melanzane-sottolio-520-gr
+    url: https://spesadaantonio.nl/products/iposea-aubergines-op-olie-520-gr
     variantId: "53887350767943"
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Melanzane-trifolate-580ml.png?v=1778415833
     prijs: "€ 4,99"
@@ -114,11 +110,11 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Italpepe-Origano-Foglie-8gr-Italpepe-48162974.webp?v=1777834020
     prijs: "€ 2,49"
     waarom: "Hele blaadjes in plaats van poeder: je wrijft ze fijn boven het bord en de geur komt pas dan vrij."
-  - naam: "Farchioni Olio Extra Vergine di Oliva Classico 1 L"
-    url: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
-    variantId: "51553065599303"
-    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Farchioni-Olio-Extra-Vergine-D_Oliva-1L-Farchioni-47922386.webp?v=1777832911
-    prijs: "€ 11,90"
+  - naam: "Desantis Extra Vergine Olijfolie 100% Italiaans 1 L"
+    url: https://spesadaantonio.nl/products/desantis-olio-extra-vergine-doliva-100-italia-1-l
+    variantId: "52697902940487"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/desantis-100_-ita-olio.webp?v=1777831232
+    prijs: "€ 15,49"
     waarom: "Rauw over het brood is de olie geen bakvet maar een ingrediënt: hij bindt het tomatensap en houdt de frisella soepel."
   - naam: "Rio Mare Filetti di Tonno all'Olio Extra Vergine di Oliva 180 g"
     url: https://spesadaantonio.nl/products/riomare-filetti-di-tonno-allolio-extra-vergine

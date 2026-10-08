@@ -1,6 +1,8 @@
 ---
 title: "Melanzane a funghetto"
 description: "Melanzane a funghetto uit Napels: aubergine in blokjes gefrituurd en kort gestoofd met pomodorini, knoflook en basilicum. Warm of koud als bijgerecht."
+seo:
+  title: "Melanzane a funghetto recept, Napolitaanse aubergine"
 gepubliceerd: 2026-10-04
 concept: false
 afbeelding: /images/melanzane-a-funghetto.webp
@@ -33,7 +35,7 @@ ingredienten:
       - hoeveelheid: "2"
         eenheid: el
         naam: "extra vergine olijfolie"
-        productUrl: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
+        productUrl: https://spesadaantonio.nl/products/desantis-olio-extra-vergine-doliva-100-italia-1-l
       - hoeveelheid: "2"
         eenheid: tenen
         naam: "knoflook"
@@ -75,12 +77,12 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/pomodorini-ciliegini-mutti-400g.webp?v=1777834904
     prijs: "€ 1,85"
     waarom: "Hele, ongepelde kerstomaatjes op eigen sap: een deel druk je plat tot saus, de rest blijft als zoete bolletjes tussen de aubergine liggen, ook buiten het tomatenseizoen."
-  - naam: "Farchioni Olio Extra Vergine di Oliva Classico 1 L"
-    url: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
-    variantId: "51553065599303"
-    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Farchioni-Olio-Extra-Vergine-D_Oliva-1L-Farchioni-47922386.webp?v=1777832911
-    prijs: "€ 11,90"
-    waarom: "De olie waarin de knoflook trekt en de pomodorini pruttelen; mild genoeg om op laag vuur niet bitter te worden, en je proeft hem terug als het gerecht is afgekoeld."
+  - naam: "Desantis Extra Vergine Olijfolie 100% Italiaans 1 L"
+    url: https://spesadaantonio.nl/products/desantis-olio-extra-vergine-doliva-100-italia-1-l
+    variantId: "52697902940487"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/desantis-100_-ita-olio.webp?v=1777831232
+    prijs: "€ 15,49"
+    waarom: "De olie waarin de knoflook trekt en de pomodorini pruttelen, en je proeft hem terug als het gerecht is afgekoeld."
   - naam: "Italkali Sale di Sicilia Iodato Grosso 1 kg"
     url: https://spesadaantonio.nl/products/italkali-sale-di-sicilia-iodato-grosso
     variantId: "51553057636679"

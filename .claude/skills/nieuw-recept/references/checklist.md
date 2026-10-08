@@ -30,6 +30,7 @@ Vervang `<pad>` door `content/recepten/<gang>/<slug>.md`.
 - [ ] Elk ingrediënt dat Spesa verkoopt heeft een `productUrl` én staat in
       `producten` met `variantId`, `prijs` en `afbeelding`.
 - [ ] Elke `waarom` benoemt iets functioneels, geen lofprijzing.
+- [ ] `node scripts/voorraad-check.mjs` meldt dat alle producten leverbaar zijn.
 
 ## 3. Body
 

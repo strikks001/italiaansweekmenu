@@ -1,6 +1,6 @@
 ---
 name: nieuw-recept
-description: Schrijf een nieuw Italiaans recept voor italiaansweekmenu, inclusief zoekwoordonderzoek, SEO-metadata en schema-conforme frontmatter. Gebruik dit wanneer er een recept toegevoegd moet worden, of wanneer een weekmenu een ontbrekend recept nodig heeft.
+description: Schrijf een nieuw Italiaans recept voor italiaansweekmenu, inclusief zoekwoordonderzoek, SEO-metadata en schema-conforme frontmatter. Gebruik dit wanneer er een recept toegevoegd moet worden.
 ---
 
 # Nieuw recept schrijven
@@ -161,7 +161,22 @@ grep -rh -A 5 "^  - naam:" content/recepten/ | grep -B 1 -A 4 spesadaantonio
 Zoek daarna de rest op via de Shopify-connector (`search_products`) of op
 spesadaantonio.nl. Elk gevonden product krijgt een `productUrl` op het
 ingrediënt én een item in `producten`; zie `references/schrijfstijl.md`.
-Ken je de precieze product-URL niet, gebruik dan `https://www.spesadaantonio.nl`
+
+**Zet alleen producten in het recept die nu leverbaar zijn.** De knop "Bestel
+de ingrediënten" legt alles in één keer in de winkelmand; één uitverkocht
+product geeft een onvolledig mandje of een foutmelding. Draai daarom, voordat
+je links zet en nogmaals bij het opleveren:
+
+```
+node scripts/voorraad-check.mjs
+```
+
+Dat leest de openbare productfeed van de webshop en meldt uitverkochte
+producten, verdwenen producten en `variantId`s die niet meer kloppen. Is een
+product op, zoek dan een leverbaar alternatief; is er geen, haal het product
+uit `producten` én de `productUrl` van het ingrediënt weg. Zet nooit een
+uitverkocht product erin "voor als het weer binnenkomt".
+Ken je de precieze product-URL niet, gebruik dan `https://spesadaantonio.nl`
 en meld dat de diepe link nog ingevuld moet worden.
 
 ## Stap 6 — Reviewen
@@ -249,6 +264,6 @@ recept wat je aanpaste. Status: `gereviewd`.
 
 ### Fase E — Live zetten
 
-Gebeurt per weekmenu, niet per batch. Zodra een weekmenu een recept nodig
-heeft: `concept` weg, `gepubliceerd` op de publicatiedatum, en de kolom
-`week` invullen. Status: `live`. De foto moet er op dat moment zijn.
+Per recept, wanneer de foto er is: `concept` weg en `gepubliceerd` op de
+publicatiedatum. Draai vlak ervoor `node scripts/voorraad-check.mjs` nog
+eens. Status: `live`.

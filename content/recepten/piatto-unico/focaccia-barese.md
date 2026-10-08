@@ -1,6 +1,8 @@
 ---
 title: "Focaccia barese"
 description: "Focaccia barese zoals in Bari: hoog en luchtig, met tomaat die half in het deeg zakt, oregano en veel olijfolie. 2,5 uur rijzen, 20 minuten bakken."
+seo:
+  title: "Focaccia barese recept, hoog en luchtig zoals in Bari"
 gepubliceerd: 2026-09-04
 concept: false
 afbeelding: /images/focaccia-barese.webp
@@ -47,7 +49,7 @@ ingredienten:
         eenheid: ml
         naam: "extra vergine olijfolie"
         opmerking: "voor het deeg en de vorm"
-        productUrl: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
+        productUrl: https://spesadaantonio.nl/products/desantis-olio-extra-vergine-doliva-100-italia-1-l
   - groep: "Erop"
     items:
       - hoeveelheid: "400"
@@ -111,12 +113,12 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Italpepe-Origano-Foglie-8gr-Italpepe-48162974.webp?v=1777834020
     prijs: "€ 2,49"
     waarom: "Hele gedroogde blaadjes houden hun geur in de hete oven beter vast dan gemalen oregano, die na 20 minuten op 250 °C vlak smaakt."
-  - naam: "Farchioni Olio Extra Vergine di Oliva Classico 1 L"
-    url: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
-    variantId: "51553065599303"
-    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Farchioni-Olio-Extra-Vergine-D_Oliva-1L-Farchioni-47922386.webp?v=1777832911
-    prijs: "€ 11,90"
-    waarom: "Je gebruikt hier bijna 100 ml, in het deeg, in de vorm en erover; een milde extra vergine bakt de bodem knapperig zonder bitter te worden."
+  - naam: "Desantis Extra Vergine Olijfolie 100% Italiaans 1 L"
+    url: https://spesadaantonio.nl/products/desantis-olio-extra-vergine-doliva-100-italia-1-l
+    variantId: "52697902940487"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/desantis-100_-ita-olio.webp?v=1777831232
+    prijs: "€ 15,49"
+    waarom: "Je gebruikt hier bijna 100 ml, in het deeg, in de vorm en erover: een extra vergine uit alleen Italiaanse olijven geeft de bodem smaak en maakt hem knapperig."
   - naam: "Italkali Sale di Sicilia Iodato Fino 1 kg"
     url: https://spesadaantonio.nl/products/italkali-sale-di-sicilia-iodato-fino
     variantId: "51553055998279"

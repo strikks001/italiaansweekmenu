@@ -1,8 +1,7 @@
 # Ingrediëntenlexicon
 
-Eén naam per ingrediënt, altijd dezelfde. De boodschappenlijst van een
-weekmenu voegt samen op naam plus eenheid; elke afwijkende spelling wordt een
-extra regel. Controle: `pnpm ingredienten` (alle recepten) of
+Eén naam per ingrediënt, altijd dezelfde. Eén spelling per ingrediënt houdt de recepten onderling vergelijkbaar en
+de zoekindex schoon. Controle: `pnpm ingredienten` (alle recepten) of
 `node scripts/ingredienten-check.mjs <pad>` (één recept). Het script leest de
 tabellen hieronder, dus een nieuw ingrediënt voeg je **hier** toe.
 

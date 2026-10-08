@@ -2,16 +2,14 @@
 import type { CommandPaletteItem } from '@nuxt/ui'
 
 type Recipe = { path: string, title: string, description: string, gang: string, termen: string }
-type Menu = { path: string, title: string, description: string, jaar: number, week: number, thema: string }
 
 const open = ref(false)
 const term = ref('')
-const today = useToday()
 
 // Fetched on first open: nobody pays for the index until they search.
 const { data: index, execute, status } = useLazyAsyncData(
   'zoekindex',
-  () => $fetch<{ recepten: Recipe[], weekmenus: Menu[] }>('/zoekindex.json'),
+  () => $fetch<{ recepten: Recipe[] }>('/zoekindex.json'),
   { immediate: false }
 )
 
@@ -42,24 +40,6 @@ const recipes = computed<CommandPaletteItem[]>(() =>
   }))
 )
 
-// Same rule as everywhere else: the running week and the archive, next week
-// only from Friday. A menu that is not published yet must not surface here.
-const menus = computed<CommandPaletteItem[]>(() =>
-  (index.value?.weekmenus ?? [])
-    .filter(m => menuVisibleOn(m.jaar, m.week, today.value))
-    .map(m => ({
-      label: m.title,
-      description: m.thema,
-      badge: `Week ${m.week}`,
-      badgeTone: 'ceramic',
-      termen: `week ${m.week} ${m.jaar}`,
-      icon: 'i-lucide-calendar-days',
-      tint: 'ceramic',
-      to: m.path,
-      onSelect: close
-    }))
-)
-
 // Same tints as the contact cards, so a result reads as part of the family.
 const TINTS: Record<string, string> = {
   butter: 'bg-butter-200 text-butter-900 dark:bg-butter-900 dark:text-butter-100',
@@ -69,7 +49,6 @@ const TINTS: Record<string, string> = {
 
 const groups = computed(() => [
   { id: 'recepten', label: 'Recepten', items: recipes.value },
-  { id: 'weekmenus', label: 'Weekmenu\'s', items: menus.value },
   ...(term.value
     ? [{
         id: 'archief',
@@ -103,7 +82,7 @@ const groups = computed(() => [
   <UModal
     v-model:open="open"
     title="Zoeken"
-    description="Doorzoek alle recepten en weekmenu's"
+    description="Doorzoek alle recepten"
     :ui="{ content: 'sm:max-w-2xl rounded-2xl overflow-hidden border-b-4 border-b-ceramic-500' }"
   >
     <template #content>
@@ -116,7 +95,7 @@ const groups = computed(() => [
               Wat zoek je?
             </h2>
             <p class="mt-1 text-sm">
-              Alle recepten en weekmenu's, in één keer doorzocht.
+              Alle recepten, in één keer doorzocht.
             </p>
           </div>
 

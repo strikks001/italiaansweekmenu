@@ -1,7 +1,7 @@
 # italiaansweekmenu
 
-Statische Nuxt 4-site: elke week een Italiaans weekmenu met recepten, die
-verwijst naar de webshop spesadaantonio.nl.
+Statische Nuxt 4-site met Italiaanse recepten, die verwijst naar de webshop
+spesadaantonio.nl. Er zijn geen weekmenu's meer: de site toont alleen recepten.
 
 ## Werkafspraken
 
@@ -32,12 +32,27 @@ filters op /recepten en de labels komen daar vandaan.
 
 **Ingrediëntnamen zijn de naam van het product, verder niets.** De hoeveelheid
 hoort in `hoeveelheid` en `eenheid` ("2" + "tenen" + "knoflook"), de bereiding
-in `opmerking`. Eén ingrediënt per regel. De boodschappenlijst voegt samen op
-naam plus eenheid, dus "boter" naast "koude roomboter" wordt twee regels.
+in `opmerking`. Eén ingrediënt per regel. Eén spelling per product houdt de recepten
+vergelijkbaar: "boter" naast "koude roomboter" zijn twee verschillende producten.
 
-Recepten en weekmenu's schrijf je via de skills in `.claude/skills/`. De
+Recepten schrijf je via de skill in `.claude/skills/`. De
 schrijfstijl ligt vast in `.claude/skills/nieuw-recept/references/schrijfstijl.md`
 en moet over alle recepten consistent blijven.
+
+**De `title` van een recept is de naam van het gerecht** ("Focaccia barese"),
+want die staat als kop op de pagina. Het woord "recept" hoort in `seo.title`,
+de meta-titel voor Google: "Focaccia barese recept, hoog en luchtig zoals in
+Bari", rond 55 tekens en beginnend met het gerecht zoals mensen het intypen.
+
+**Alleen leverbare producten.** De knop "Bestel de ingrediënten" legt alles in
+één mandje; één uitverkocht product geeft een onvolledig mandje. Draai
+`node scripts/voorraad-check.mjs` voordat je producten in een recept zet en
+voordat je publiceert. Het script leest de openbare productfeed van de webshop.
+Is iets op en is er geen alternatief, haal het product dan uit `producten` en
+de `productUrl` van het ingrediënt.
+
+**Link naar `https://spesadaantonio.nl`, zonder www.** De webshop verwijst
+www door naar de kale domeinnaam; een link met www kost een extra redirect.
 
 ## Styling
 
@@ -71,6 +86,11 @@ Search Console zodra de site geïndexeerd is. Verzin ze nooit.
 
 Cloudflare **Workers** (Pages is daarin opgegaan), service `italiaansweekmenu`,
 gekoppeld aan `main` op github.com/strikks001/italiaansweekmenu.
+
+De canonieke host is `www.italiaansweekmenu.nl`. `italiaansweekmenu.nl` zonder
+www hoort met een permanente redirect (301) naar www te verwijzen; dat staat in
+Cloudflare (Rules > Redirect Rules), niet in deze repo. Zonder die regel laden
+beide versies en meldt Search Console dubbele pagina's.
 
 De deploy leest `wrangler.jsonc`, niet een formulier in het dashboard. Er staat
 bewust geen `main` in: zonder worker-script serveert Cloudflare alleen de

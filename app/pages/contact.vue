@@ -15,7 +15,7 @@ const CHANNELS = [
     text: 'Vragen over een bestelling, verzending of een product lopen via de webshop.',
     icon: 'i-lucide-shopping-basket',
     tint: 'ceramic',
-    button: { label: 'Naar Spesa da Antonio', to: 'https://www.spesadaantonio.nl', external: true }
+    button: { label: 'Naar Spesa da Antonio', to: 'https://spesadaantonio.nl', external: true }
   },
   {
     title: 'Een gerecht voorstellen',

@@ -1,6 +1,8 @@
 ---
 title: "Orecchiette alla Norma"
 description: "Pasta alla Norma recept zoals in Puglia: orecchiette, krokant gefrituurde aubergine, een saus van hele pomodorini uit blik en grof geraspte ricotta salata."
+seo:
+  title: "Pasta alla Norma recept met orecchiette en aubergine"
 gepubliceerd: 2026-09-14
 concept: false
 afbeelding: /images/orecchiette-alla-norma.webp
@@ -33,7 +35,7 @@ ingredienten:
       - hoeveelheid: "3"
         eenheid: el
         naam: "extra vergine olijfolie"
-        productUrl: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
+        productUrl: https://spesadaantonio.nl/products/desantis-olio-extra-vergine-doliva-100-italia-1-l
       - hoeveelheid: "2"
         eenheid: tenen
         naam: "knoflook"
@@ -91,12 +93,12 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/basso-olio-girasole-1L_8ace31aa-a5e8-412a-8f7e-7e97d766122f.png?v=1775585746
     prijs: "€ 2,99"
     waarom: "Neutraal van smaak, zodat je alleen de aubergine proeft, en goedkoop genoeg om er ruim in te frituren; een liter is genoeg voor twee keer."
-  - naam: "Farchioni Olio Extra Vergine di Oliva Classico 1 L"
-    url: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
-    variantId: "51553065599303"
-    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Farchioni-Olio-Extra-Vergine-D_Oliva-1L-Farchioni-47922386.webp?v=1777832911
-    prijs: "€ 11,90"
-    waarom: "Zacht genoeg om de knoflook op laag vuur in te laten trekken zonder bitter te worden, en de basis van de saus."
+  - naam: "Desantis Extra Vergine Olijfolie 100% Italiaans 1 L"
+    url: https://spesadaantonio.nl/products/desantis-olio-extra-vergine-doliva-100-italia-1-l
+    variantId: "52697902940487"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/desantis-100_-ita-olio.webp?v=1777831232
+    prijs: "€ 15,49"
+    waarom: "De basis van de saus en de olie waarin de knoflook op laag vuur trekt."
   - naam: "Italkali Sale di Sicilia Iodato Grosso 1 kg"
     url: https://spesadaantonio.nl/products/italkali-sale-di-sicilia-iodato-grosso
     variantId: "51553057636679"

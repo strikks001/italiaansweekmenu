@@ -3,28 +3,10 @@ const site = useSiteConfig()
 const { footer } = useAppConfig()
 const year = new Date().getFullYear()
 
-// The running week, so the footer points at something current rather than only
-// at archive pages.
-const { data: weeks } = await useAsyncData('footer:week', () =>
-  queryCollection('weekmenus')
-    .where('concept', '=', false)
-    .order('gepubliceerd', 'DESC')
-    .select('path', 'jaar', 'week')
-    .limit(4)
-    .all()
-)
-
-const today = useToday()
-
-const thisWeek = computed(() =>
-  (weeks.value ?? []).find(m => weekContains(m.jaar, m.week, today.value))
-)
-
-// Every course from the shared list; base recipes are not a menu course.
+// Every course from the shared list; base recipes are building blocks, not something to browse.
 const FOOTER_GANGEN = GANGEN.filter(g => g !== 'basis')
 
 const LINKS = [
-  { label: 'Alle weekmenu\'s', to: '/weekmenu' },
   { label: 'Alle recepten', to: '/recepten' },
   { label: 'Over dit project', to: '/over' },
   { label: 'Contact', to: '/contact' },
@@ -45,28 +27,11 @@ const linkClass = 'underline decoration-white/40 underline-offset-4 transition h
         <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr]">
           <div>
             <p class="font-display text-2xl font-extrabold leading-tight tracking-tight">
-              Elke week een compleet Italiaans menu
+              Italiaanse recepten, stap voor stap
             </p>
             <p class="mt-3 max-w-xs text-sm text-ceramic-100">
-              Met de boodschappenlijst erbij, zodat je alleen nog hoeft te koken.
+              Met de juiste Italiaanse producten erbij, zodat je weet waarmee je begint.
             </p>
-
-            <div
-              v-if="thisWeek"
-              class="mt-5"
-            >
-              <p class="font-display text-xs font-bold uppercase tracking-widest text-ceramic-200">
-                Deze week
-              </p>
-              <UButton
-                :to="thisWeek.path"
-                color="neutral"
-                size="sm"
-                class="mt-2 bg-white text-ceramic-700 hover:bg-butter-200"
-                trailing-icon="i-lucide-arrow-right"
-                :label="`Week ${thisWeek.week} · ${weekPeriod(thisWeek.jaar, thisWeek.week)}`"
-              />
-            </div>
           </div>
 
           <nav aria-label="Site">

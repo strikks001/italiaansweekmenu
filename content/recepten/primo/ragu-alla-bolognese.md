@@ -1,6 +1,8 @@
 ---
 title: "Ragù alla bolognese"
 description: "Ragù alla bolognese volgens het recept dat de Accademia Italiana della Cucina deponeerde: veel vlees, weinig tomaat, 2 uur sudderen. Met tagliatelle."
+seo:
+  title: "Ragù bolognese recept, veel vlees en weinig tomaat"
 gepubliceerd: 2026-09-25
 concept: false
 afbeelding: /images/ragu-alla-bolognese.webp
@@ -40,7 +42,7 @@ ingredienten:
       - hoeveelheid: "3"
         eenheid: el
         naam: "extra vergine olijfolie"
-        productUrl: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
+        productUrl: https://spesadaantonio.nl/products/desantis-olio-extra-vergine-doliva-100-italia-1-l
       - hoeveelheid: "150"
         eenheid: ml
         naam: "droge rode wijn"
@@ -68,7 +70,6 @@ ingredienten:
         eenheid: g
         naam: "tagliatelle"
         opmerking: "verse tagliatelle kan ook, neem dan 500 g"
-        productUrl: https://spesadaantonio.nl/products/rummo-tagliatelle-500-gr
       - hoeveelheid: "40"
         eenheid: g
         naam: "Parmigiano Reggiano"
@@ -90,12 +91,6 @@ stappen:
   - titel: "Tagliatelle in de saus"
     tekst: "Kook de tagliatelle in ruim gezouten water 1 minuut korter dan de verpakking zegt, roer de nesten meteen los, en bewaar een kop kookwater. Verwarm het ragù in een brede pan, doe de pasta erbij met een scheut kookwater en schep 2 minuten om op hoog vuur tot de saus glanst en aan de linten kleeft in plaats van op de bodem te liggen. Haal van het vuur, roer de Parmigiano erdoor en serveer meteen; tagliatelle die staat, wordt binnen een minuut droog. Het ragù dat overblijft, is de volgende dag nog beter."
 producten:
-  - naam: "Rummo Tagliatelle N°107 500 g"
-    url: https://spesadaantonio.nl/products/rummo-tagliatelle-500-gr
-    variantId: "52699543732551"
-    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Tagliatelle-rummo-500g.png?v=1777836493
-    prijs: "€ 2,99"
-    waarom: "Brede linten van 6 mm met een ruw oppervlak, zodat het ragù eraan blijft hangen in plaats van onderin het bord te zakken; door de langzame droging blijven ze stevig in een zware saus."
   - naam: "La Torrente Passata di Pomodoro Tradizionale 690 g"
     url: https://spesadaantonio.nl/products/la-torrente-passata-tradizionale-tipo-birra
     variantId: "51553051607367"
@@ -114,12 +109,12 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Star-Il-mio-Dado-Vegetale-30_-di-sale-10-dadi-100-gr-Star-48149853.png?v=1786117102
     prijs: "€ 1,85"
     waarom: "De bouillon voor een ragù mag niet zout zijn, omdat de saus 2 uur inkookt; dit blokje heeft 30 procent minder zout, zodat je op het eind zelf kunt bijzouten."
-  - naam: "Farchioni Olio Extra Vergine di Oliva Classico 1 L"
-    url: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
-    variantId: "51553065599303"
-    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Farchioni-Olio-Extra-Vergine-D_Oliva-1L-Farchioni-47922386.webp?v=1777832911
-    prijs: "€ 11,90"
-    waarom: "Mild genoeg om de pancetta in te laten uitsmelten zonder bitter te worden; daarna neemt het varkensvet het over."
+  - naam: "Desantis Extra Vergine Olijfolie 100% Italiaans 1 L"
+    url: https://spesadaantonio.nl/products/desantis-olio-extra-vergine-doliva-100-italia-1-l
+    variantId: "52697902940487"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/desantis-100_-ita-olio.webp?v=1777831232
+    prijs: "€ 15,49"
+    waarom: "Om de pancetta in uit te laten smelten; daarna neemt het varkensvet het over."
   - naam: "Parmigiano Reggiano 24+ Mesi 300 g"
     url: https://spesadaantonio.nl/products/parmigiano-reggiano-24-mesi-300gr
     variantId: "52021021180231"

@@ -4,7 +4,7 @@ description: "Wat Italiaansweekmenu meet, welke cookies statistieken en adverten
 gewijzigd: 2026-09-12
 ---
 
-Deze site is van Spesa da Antonio (KvK 96972378). Je kunt hier recepten en weekmenu's lezen zonder dat er iets over je wordt vastgelegd. In de melding onderaan de pagina vragen we toestemming voor twee dingen, die je los van elkaar aan of uit kunt zetten: statistieken en advertenties.
+Deze site is van Spesa da Antonio (KvK 96972378). Je kunt hier recepten lezen zonder dat er iets over je wordt vastgelegd. In de melding onderaan de pagina vragen we toestemming voor twee dingen, die je los van elkaar aan of uit kunt zetten: statistieken en advertenties.
 
 ## Statistieken
 
@@ -36,4 +36,4 @@ Je mag opvragen welke gegevens er over je zijn vastgelegd, en vragen om ze te ve
 
 ## Links naar de webshop
 
-Bij recepten staan links naar producten van [Spesa da Antonio](https://www.spesadaantonio.nl). Klik je daarop, dan kom je op de webshop, die zijn eigen privacyverklaring en cookiemelding heeft.
+Bij recepten staan links naar producten van [Spesa da Antonio](https://spesadaantonio.nl). Klik je daarop, dan kom je op de webshop, die zijn eigen privacyverklaring en cookiemelding heeft.

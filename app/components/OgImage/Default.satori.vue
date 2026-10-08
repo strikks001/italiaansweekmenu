@@ -70,7 +70,7 @@ const DOTS = 24
         style="display: flex; font-size: 26px; font-weight: 600;"
         :style="{ color: CERAMIC }"
       >
-        Elke week een nieuw Italiaans menu
+        Italiaanse recepten, stap voor stap
       </div>
       <div
         style="display: flex; font-size: 24px;"

@@ -1,6 +1,8 @@
 ---
 title: "Orecchiette con salmone, piselli e panna"
 description: "Pasta met zalm, doperwten en room: verse zalm kort aangebakken, erwten erbij en de orecchiette in de roomsaus afgemaakt. In 30 minuten op tafel."
+seo:
+  title: "Pasta met zalm en doperwten recept, klaar in 30 minuten"
 gepubliceerd: 2026-10-04
 concept: false
 afbeelding: /images/orecchiette-salmone-e-piselli.webp
@@ -25,7 +27,7 @@ ingredienten:
       - hoeveelheid: "2"
         eenheid: el
         naam: "extra vergine olijfolie"
-        productUrl: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
+        productUrl: https://spesadaantonio.nl/products/desantis-olio-extra-vergine-doliva-100-italia-1-l
       - hoeveelheid: "300"
         eenheid: g
         naam: "zalmfilet"
@@ -39,7 +41,6 @@ ingredienten:
         eenheid: ml
         naam: "kookroom"
         opmerking: "2 pakjes panna da cucina"
-        productUrl: https://spesadaantonio.nl/products/parmalat-panna-chef-3-x-125-ml
       - naam: "zout"
         productUrl: https://spesadaantonio.nl/products/italkali-sale-di-sicilia-iodato-fino
       - naam: "zwarte peper"
@@ -74,24 +75,18 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/IMG-0150.webp?v=1777834189
     prijs: "€ 1,69"
     waarom: "De holle vorm schept de roomsaus op en vangt een doperwt of een stukje zalm per oortje; het dikkere midden houdt beet naast de zachte vis."
-  - naam: "Parmalat Chef Panna Classica 3 x 125 ml"
-    url: https://spesadaantonio.nl/products/parmalat-panna-chef-3-x-125-ml
-    variantId: "51568667033927"
-    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Parmalat-Panna-Chef-3-x-125-ml-Spesa-da-Antonio-52911823094087.webp?v=1777835198
-    prijs: "€ 3,99"
-    waarom: "Italiaanse kookroom is dikker dan Nederlandse en schift niet als hij warm wordt; twee pakjes zijn precies de 250 ml voor dit gerecht, het derde bewaar je buiten de koelkast."
   - naam: "Cirio Piselli Fini Italiani 370 g"
     url: https://spesadaantonio.nl/products/cirio-piselli-fini
     variantId: "51553079099719"
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/ciriopisellifini370gr.png?v=1777830666
     prijs: "€ 2,35"
     waarom: "Kleine, zachte doperwten die al gaar zijn en alleen hoeven op te warmen; ze blijven heel tussen de pasta en brengen het zoet dat de room en de zalm in evenwicht houdt."
-  - naam: "Farchioni Olio Extra Vergine di Oliva Classico 1 L"
-    url: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
-    variantId: "51553065599303"
-    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Farchioni-Olio-Extra-Vergine-D_Oliva-1L-Farchioni-47922386.webp?v=1777832911
-    prijs: "€ 11,90"
-    waarom: "Mild van smaak, zodat hij de sjalot laat zweten en de zalm laat bakken zonder de vis te overstemmen."
+  - naam: "Desantis Extra Vergine Olijfolie 100% Italiaans 1 L"
+    url: https://spesadaantonio.nl/products/desantis-olio-extra-vergine-doliva-100-italia-1-l
+    variantId: "52697902940487"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/desantis-100_-ita-olio.webp?v=1777831232
+    prijs: "€ 15,49"
+    waarom: "Voor de sjalot en de zalm: een olie die de vis niet overstemt."
   - naam: "Parmigiano Reggiano 24+ Mesi 300 g"
     url: https://spesadaantonio.nl/products/parmigiano-reggiano-24-mesi-300gr
     variantId: "52021021180231"

@@ -339,58 +339,6 @@
     display: none !important;
   }
 
-  /* ---------- week agenda ---------- */
-
-  .print-roomy {
-    margin-top: 0.9cm !important;
-  }
-
-  .print-break {
-    break-before: page;
-    margin-top: 0 !important;
-  }
-
-  .print-agenda {
-    gap: 0.25cm !important;
-    margin-top: 0.35cm !important;
-  }
-
-  .print-agenda > li {
-    border-radius: 0.25cm !important;
-    border-color: #ecdfc4 !important;
-  }
-
-  .print-day {
-    width: 1.6cm !important;
-    padding: 0.18cm 0.1cm !important;
-    background: #2b2d7a !important;
-    color: #fff !important;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-
-  .print-day span:nth-child(2) {
-    font-size: 15pt !important;
-  }
-
-  .print-course {
-    padding: 0.22cm 0.4cm !important;
-    gap: 0.3cm !important;
-  }
-
-  .print-course h3 {
-    font-family: var(--font-sans) !important;
-    font-size: 10pt !important;
-    font-weight: 600 !important;
-    letter-spacing: 0;
-    color: #1a1a1a !important;
-    margin: 0.04cm 0 0 !important;
-  }
-
-  .print-course p {
-    font-size: 8.5pt !important;
-  }
-
   /* ---------- foot ---------- */
 
   .print-foot {

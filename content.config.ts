@@ -98,40 +98,12 @@ export default defineContentConfig({
       })
     }),
 
-    // --------------------------------------------------------------- weekmenus
-    weekmenus: defineCollection({
-      type: 'page',
-      source: 'weekmenu/**/*.md',
-      schema: z.object({
-        gepubliceerd: z.date(),
-        gewijzigd: z.date().optional(),
-        concept: z.boolean().default(false),
-
-        jaar: z.number(),
-        week: z.number().min(1).max(53),
-        thema: z.string().describe('Bijv. "Sicilië in de zomer"'),
-
-        afbeelding: z.string().editor({ input: 'media' }),
-        afbeeldingAlt: z.string(),
-
-        // Points at a recipe's `path`, e.g. "/recepten/pasta-alla-norma"
-        recepten: z.array(z.object({
-          dag: z.enum(['maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag', 'zondag']),
-          pad: z.string(),
-          toelichting: z.string().optional()
-        })),
-
-        producten: z.array(product).default([]),
-        zoekwoorden: zoekwoorden
-      })
-    }),
-
     // ------------------------------------------------------------ losse pagina's
     paginas: defineCollection({
       type: 'page',
       source: {
         include: '**/*.md',
-        exclude: ['recepten/**', 'weekmenu/**']
+        exclude: ['recepten/**']
       },
       schema: z.object({
         gewijzigd: z.date().optional()

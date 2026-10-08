@@ -1,6 +1,8 @@
 ---
 title: "Pasta con salsiccia e piselli"
 description: "Pasta met salsiccia en doperwten in tomatensaus: reepjes pittige gerijpte worst geven hun vet aan de saus en de pasta wordt erin gaar. Klaar in 35 minuten."
+seo:
+  title: "Pasta met salsiccia en doperwten recept, in 35 minuten"
 gepubliceerd: 2026-09-06
 concept: false
 afbeelding: /images/pasta-salsiccia-e-piselli.webp
@@ -30,7 +32,7 @@ ingredienten:
       - hoeveelheid: "3"
         eenheid: el
         naam: "extra vergine olijfolie"
-        productUrl: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
+        productUrl: https://spesadaantonio.nl/products/desantis-olio-extra-vergine-doliva-100-italia-1-l
       - hoeveelheid: "100"
         eenheid: ml
         naam: "droge witte wijn"
@@ -105,12 +107,12 @@ producten:
     afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/La-Torrente-Passata-Tradizionale-Tipo-Birra-690-gr-La-Torrente-47917513.webp?v=1777834300
     prijs: "€ 2,35"
     waarom: "Een gladde passata wordt in 10 minuten een saus; gepelde tomaten hebben het dubbele nodig en dat is precies de tijd die dit gerecht niet heeft."
-  - naam: "Farchioni Olio Extra Vergine di Oliva Classico 1 L"
-    url: https://spesadaantonio.nl/products/farchioni-olio-extra-vergine-d-oliva-1l
-    variantId: "51553065599303"
-    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/Farchioni-Olio-Extra-Vergine-D_Oliva-1L-Farchioni-47922386.webp?v=1777832911
-    prijs: "€ 11,90"
-    waarom: "Mild genoeg om de ui in te zweten zonder bitter te worden, en het vet van de worst neemt daarna de smaak over."
+  - naam: "Desantis Extra Vergine Olijfolie 100% Italiaans 1 L"
+    url: https://spesadaantonio.nl/products/desantis-olio-extra-vergine-doliva-100-italia-1-l
+    variantId: "52697902940487"
+    afbeelding: https://cdn.shopify.com/s/files/1/0894/8747/5015/files/desantis-100_-ita-olio.webp?v=1777831232
+    prijs: "€ 15,49"
+    waarom: "Een Italiaanse extra vergine om de ui in te zweten; het vet van de worst neemt daarna de smaak over."
   - naam: "Parmigiano Reggiano 24+ Mesi 300 g"
     url: https://spesadaantonio.nl/products/parmigiano-reggiano-24-mesi-300gr
     variantId: "52021021180231"

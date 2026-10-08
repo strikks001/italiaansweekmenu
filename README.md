@@ -1,15 +1,11 @@
 # italiaansweekmenu
 
-Een receptenblog die elke week een compleet Italiaans weekmenu publiceert:
-vijf gerechten die op elkaar aansluiten, met één gedeelde boodschappenlijst.
+Een receptenblog met authentieke Italiaanse recepten, stap voor stap uitgelegd,
+met de bijpassende producten uit de webshop van Spesa da Antonio.
 
 🔗 [www.italiaansweekmenu.nl](https://www.italiaansweekmenu.nl)
 
 ## Wat dit project is
-
-De meeste receptensites geven je losse gerechten. Dit project stelt een hele
-week samen — licht op maandag, de stoofpot op donderdag, en gerechten die
-elkaars ingrediënten hergebruiken zodat er niets overblijft.
 
 De recepten houden zich aan wat er in Italië daadwerkelijk gekookt wordt, ook
 waar dat afwijkt van de vernederlandste versie. Waar we van de gebaande paden
@@ -52,12 +48,12 @@ pnpm typecheck
 ## Structuur
 
 ```
-content/recepten/<slug>.md            een recept
-content/weekmenu/<jaar>-week-<nr>.md  een week, verwijst naar recepten
-content.config.ts                     het Zod-schema dat beide valideert
+content/recepten/<gang>/<slug>.md     een recept
+content.config.ts                     het Zod-schema dat recepten valideert
 app/pages/                            de routes
 app/components/                       de bouwstenen
 scripts/zoekwoorden.mjs               zoekwoordonderzoek via Google Autocomplete
+scripts/voorraad-check.mjs            controleert of de producten in de recepten leverbaar zijn
 .claude/skills/                       schrijfrichtlijnen voor nieuwe recepten
 ```
 

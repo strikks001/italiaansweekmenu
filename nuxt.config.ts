@@ -62,7 +62,7 @@ export default defineNuxtConfig({
   site: {
     url: 'https://www.italiaansweekmenu.nl',
     name: 'Italiaans Weekmenu',
-    description: 'Elke week een nieuw Italiaans weekmenu met authentieke recepten, boodschappenlijst en de juiste Italiaanse producten.',
+    description: 'Authentieke Italiaanse recepten, stap voor stap uitgelegd, met de juiste Italiaanse producten erbij.',
     defaultLocale: 'nl'
   },
 
